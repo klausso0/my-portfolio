@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neeraj Bhatt | Graphic Designer &amp; Product Researcher</title>
+<meta name="description" content="Portfolio of Neeraj Bhatt, a graphic designer who researches before designing. Brand, social, and campaign work, plus the SmartCV Builders case study.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffaf2;--fg:#1f3340;--mut:#546a7a;--ac:#1d62ad;--ac2:#3a82cf;--btn:#2b6fb8;--card:#eaf3fb;--line:#d3e3f3}
+body.dark{--bg:#06051a;--fg:#e9f3ef;--mut:#a3b5b0;--ac:#7dffb3;--card:#12112b;--line:#27254a}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.65 'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac2);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.hero{text-align:center;padding:104px 0 72px;background:radial-gradient(60% 60% at 80% 0,#e3eefb 0,transparent 70%),radial-gradient(50% 50% at 10% 90%,#fdf0dc 0,transparent 70%)}
+.hi{color:var(--ac);font-weight:500}
+.hero h1{font-size:clamp(3.4rem,11vw,7rem);line-height:1;color:#46606f;margin:6px 0 4px}
+.hero h1 em{color:var(--ac2)}
+.a{font:italic 1.9rem 'Instrument Serif',Georgia,serif;color:var(--mut);line-height:1.2}
+.role{font:italic clamp(1.7rem,5vw,2.6rem)/1.2 'Instrument Serif',Georgia,serif;color:var(--ac2)}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;padding:14px 28px;border-radius:14px;background:var(--btn);color:#fff;text-decoration:none;font-weight:500;border:1px solid var(--btn);transition:background .2s}
+.btn:hover{background:#215a9b}
+.btn.ghost{background:transparent;color:var(--fg);border-color:#b9cadb}
+.btn.ghost:hover{background:#fff}
+.stats{display:flex;gap:clamp(24px,6vw,64px);justify-content:center;flex-wrap:wrap;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:620px;margin-inline:auto}
+.stats dt{font:2.3rem/1 'Instrument Serif',Georgia,serif;color:var(--ac2)}
+.stats dd{font-size:.9rem;color:var(--mut)}
+.about{max-width:780px;margin:0 auto;padding:72px 24px 40px;font:clamp(1.5rem,3.4vw,2rem)/1.4 'Instrument Serif',Georgia,serif}
+#work,#contact{padding:56px 0}
+h2.sec{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:28px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.media{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--m)}
+.media img{width:100%;height:100%;object-fit:contain}
+.card h3{font-size:1.7rem;line-height:1.15;margin:18px 6px 4px}
+.card p{color:var(--mut);margin:0 6px}
+.card .open{display:inline-block;margin:14px 6px 6px;color:var(--ac);font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact h2{font-size:clamp(3rem,8vw,5rem);line-height:1}
+.contact h2 em{color:var(--ac2)}
+.contact p{margin-top:16px;max-width:42ch}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.info a,.info div{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;min-height:104px;word-break:break-word}
+.info small{display:block;color:var(--ac);font-weight:500;margin-bottom:6px}
+.info a.mail{background:var(--btn);color:#fff;border-color:var(--btn)}
+.info a.mail small{color:#d8e8f8}
+.info a:hover{border-color:var(--ac2)}
+footer{padding:28px 0 48px;color:var(--mut);font-size:.9rem;border-top:1px solid var(--line)}
+.project{padding:40px 0 96px}
+.back{display:inline-block;color:var(--ac);font-weight:700;text-underline-offset:4px;margin-bottom:20px}
+.project h1{font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.05;margin-bottom:14px}
+.lede{font-size:1.2rem;color:var(--mut);max-width:62ch}
+.meta{margin-top:10px;color:var(--mut);font-size:.95rem;max-width:62ch}
+.project h2{font-size:2rem;line-height:1.15;margin:52px 0 12px}
+.project p{max-width:66ch;margin-bottom:14px}
+.project figure{margin:34px 0}
+.project img{border-radius:14px;border:1px solid var(--line)}
+figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:34px 0}
+.g2 figure{margin:0}
+.pair{max-width:540px}
+.narrow{max-width:760px}
+.visit{display:inline-block;margin-top:24px;font-weight:700;color:var(--ac);text-underline-offset:4px}
+@media (max-width:760px){.cards,.contact{grid-template-columns:1fr}.hero{padding-top:72px}.project h2{margin-top:40px}}
+@media (max-width:480px){.info{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main id="home">
+  <section class="hero">
+    <div class="wrap">
+      <p class="hi">Hello, I’m</p>
+      <h1>Neeraj <em>Bhatt</em></h1>
+      <p class="a">a</p>
+      <p class="role">Graphic Designer &amp; Product Researcher</p>
+      <div class="cta">
+        <a class="btn" href="#work">View my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+      <dl class="stats">
+        <div><dt>7K+</dt><dd>search impressions in 6 months</dd></div>
+        <div><dt>5+</dt><dd>clients</dd></div>
+        <div><dt>44+</dt><dd>CV templates designed</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <p class="about">I’m a graphic designer who researches before designing. Here’s a selection of brand, social, and campaign work, and the thinking behind it.</p>
+
+  <section id="work">
+    <div class="wrap">
+      <h2 class="sec">Selected projects</h2>
+      <div class="cards">
+        <a class="card" href="#kraymer-art">
+          <div class="media" style="--m:#03060f"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post showing blue sapphire earrings on dark velvet" loading="lazy"></div>
+          <h3>Kraymer Art: “Beyond Limits” Jewelry Launch</h3>
+          <p>Jewelry launch campaign in deep blue and silver.</p>
+          <span class="open">Open project</span>
+        </a>
+        <a class="card" href="#sadiksha-overseas">
+          <div class="media" style="--m:#dbe9f7"><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas trifold brochure in blue and white" loading="lazy"></div>
+          <h3>Sadiksha Overseas: One Brand, Every Channel</h3>
+          <p>Brochure, job posts, and festival greetings for a recruitment agency.</p>
+          <span class="open">Open project</span>
+        </a>
+        <a class="card" href="#client-campaigns">
+          <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
+          <h3>Client Campaigns: Food and Tax</h3>
+          <p>Social posts for two businesses with different audiences.</p>
+          <span class="open">Open project</span>
+        </a>
+        <a class="card" href="#smartcv-builders">
+          <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
+          <h3>SmartCV Builders</h3>
+          <p>A free CV builder I founded and designed.</p>
+          <span class="open">Open project</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Let’s work <em>together.</em></h2>
+        <p>Have a brand, campaign, or product that needs a designer? Send me a message.</p>
+        <p>Based in Nepal, open to opportunities abroad.</p>
+      </div>
+      <div class="info">
+        <a class="mail" href="mailto:bhattneeraj742@gmail.com"><small>Send a message</small>bhattneeraj742@gmail.com</a>
+        <a href="tel:+9779765440265"><small>Phone</small>+977 9765440265</a>
+        <a href="https://smartcvbuilders.com" target="_blank" rel="noopener"><small>Website</small>smartcvbuilders.com</a>
+        <div><small>Location</small>Nepal</div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="wrap">© 2026 Neeraj Bhatt</div></footer>
+</main>
+
+<article class="project dark" id="kraymer-art" data-t="Kraymer Art" hidden>
+  <div class="wrap">
+    <a class="back" href="#work">Back to all projects</a>
+    <h1>Kraymer Art: “Beyond Limits” Jewelry Launch</h1>
+    <p class="lede">Designed a launch campaign for a jewelry line, from concept and copy to the final layout. I used deep blue, silver, and dark backgrounds so the stones stand out and the brand feels exclusive.</p>
+    <figure class="narrow"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post with sapphire earrings, four feature columns, and three close-up shots"></figure>
+  </div>
+</article>
+
+<article class="project" id="sadiksha-overseas" data-t="Sadiksha Overseas" hidden>
+  <div class="wrap">
+    <a class="back" href="#work">Back to all projects</a>
+    <h1>Sadiksha Overseas: One Brand, Every Channel</h1>
+    <p class="lede">Designed the brochure, job posts, festival greetings, and promotional posts for an overseas recruitment agency. Every piece looks like it came from the same company, whether printed or posted online.</p>
+    <figure><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas brochure, outside panels: why choose us, about the company, seamless recruitment solutions"><figcaption>Trifold brochure, outside.</figcaption></figure>
+    <figure><img src="images/sadiksha-brochure-inner.jpg" alt="Sadiksha Overseas brochure, inside panels: services, team, and investing in your success"><figcaption>Trifold brochure, inside.</figcaption></figure>
+    <div class="g2">
+      <figure><img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas social post: your one stop global recruitment partner"><figcaption>Recruitment social post.</figcaption></figure>
+      <figure><img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas Bhai Tika festival greeting in Nepali"><figcaption>Festival greeting in Nepali.</figcaption></figure>
+    </div>
+  </div>
+</article>
+
+<article class="project" id="client-campaigns" data-t="Client Campaigns" hidden>
+  <div class="wrap">
+    <a class="back" href="#work">Back to all projects</a>
+    <h1>Client Campaigns: Food and Tax</h1>
+    <p class="lede">Social posts for businesses with different audiences. Each design has a clear message, a strong focal point, and an easy next step for the viewer.</p>
+    <div class="g2">
+      <figure><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year special offer: mega party combo for Rs. 2999"><figcaption>Swaadmandu: New Year party combo offer.</figcaption></figure>
+      <figure><img src="images/campaign-taxmate.jpg" alt="TaxMate post: looking for hassle-free tax, get free tax advice"><figcaption>TaxMate: free tax advice.</figcaption></figure>
+    </div>
+  </div>
+</article>
+
+<article class="project dark" id="smartcv-builders" data-t="SmartCV Builders" hidden>
+  <div class="wrap">
+    <a class="back" href="#work">Back to all projects</a>
+    <h1>SmartCV Builders</h1>
+    <p class="lede">A free CV builder with no login and no watermark. I designed and built it myself over 4 months.</p>
+    <p class="meta">Founder and designer. Brand, product design, website, 44+ templates, 30 career guides, and SEO.</p>
+    <figure><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage: build a professional CV that gets interviews, with a build my free CV button"><figcaption>Free, no login, no watermarks, instant PDF.</figcaption></figure>
+
+    <h2>Why I built it</h2>
+    <p>I wanted normal people to be able to make a CV without paying for it. When I searched on Google, I saw that most CV builders were slow to use, asked for a login, added watermarks you had to pay to remove, or cost too much for something as simple as a CV. I wanted people to open the site, make their CV, and download the PDF in seconds.</p>
+
+    <h2>Who it’s for</h2>
+    <p>People who are new in their career and looking for their first job, and students looking for internships.</p>
+
+    <h2>What I looked at</h2>
+    <p>I started with Google searches to see what competitors were doing. Most of them had been around for years, and I saw the same problems again and again: too much hassle and too high a price for a single CV. That told me what to remove from my own product: login, watermarks, and payment.</p>
+
+    <h2>What I built</h2>
+    <p>I did everything myself: the brand, the design, the website, 44+ templates, 30 career guides, and the system that lets people build a CV and download it. The hardest part was making it work properly on a phone, so people can build and download a CV from their mobile too.</p>
+    <figure><img src="images/smartcv-builder.jpg" alt="The CV builder: form sections on the left and a live CV preview on the right"><figcaption>Fill in your details on the left and watch the CV update on the right.</figcaption></figure>
+    <div class="g2">
+      <img src="images/smartcv-template-1.jpg" alt="CV template with a pink sidebar">
+      <img src="images/smartcv-template-2.jpg" alt="CV template with a blue header">
+      <img src="images/smartcv-template-3.jpg" alt="CV template with a coral header">
+      <img src="images/smartcv-template-4.jpg" alt="Classic single-column CV template">
+    </div>
+    <p style="font-size:.92rem;color:var(--mut)">Templates in different styles and colors.</p>
+    <div class="g2 pair">
+      <img src="images/smartcv-mobile-home.jpg" alt="SmartCV Builders on a phone: homepage with a build my free CV button">
+      <img src="images/smartcv-mobile-guides.jpg" alt="SmartCV Builders on a phone: career guides page">
+    </div>
+    <p style="font-size:.92rem;color:var(--mut)">The same flow works on a phone.</p>
+
+    <h2>Design decisions</h2>
+    <p><strong>Green for freedom.</strong> I chose mint green because it reminds me of a forest: fresh, open, and free. That’s the feeling I wanted for the product, since it’s free and doesn’t trap you behind a login.</p>
+    <p><strong>Private by design.</strong> There’s no login, and your data stays in your own browser. Nothing is stored on a server.</p>
+
+    <h2>Growth</h2>
+    <p>For the first 2 months, the site got about 4 impressions a day. Then I worked on the SEO and meta data. In the third month, impressions and clicks started to grow, and I kept improving it after that. Over 6 months, the site reached 7K+ search impressions.</p>
+    <figure><img src="images/smartcv-search-console.jpg" alt="Google Search Console performance chart for smartcvbuilders.com over 6 months"><figcaption>Search impressions over 6 months.</figcaption></figure>
+
+    <h2>What’s next</h2>
+    <p>Clicks are still low compared with impressions, so my next job is improving the page titles and rankings so more people who see the site actually open it.</p>
+    <a class="visit" href="https://smartcvbuilders.com" target="_blank" rel="noopener">Visit smartcvbuilders.com</a>
+  </div>
+</article>
+
+<script>
+(function(){
+  var home=document.getElementById('home'),base=document.title;
+  function route(){
+    var id=location.hash.slice(1),list=document.querySelectorAll('.project'),p=null;
+    list.forEach(function(e){if(e.id===id)p=e;});
+    list.forEach(function(e){e.hidden=e!==p;});
+    home.hidden=!!p;
+    document.body.classList.toggle('dark',!!p&&p.classList.contains('dark'));
+    if(p){document.title=p.getAttribute('data-t')+' | Neeraj Bhatt';window.scrollTo(0,0);}
+    else{
+      document.title=base;
+      var t=id&&document.getElementById(id);
+      if(t){t.scrollIntoView();}else{window.scrollTo(0,0);}
+    }
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>
