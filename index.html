@@ -156,20 +156,54 @@ a { color: inherit; }
   pointer-events: auto;
 }
 
+/* Big low-opacity ambient glass circle aura with cinematic rim light */
+.icon-ambient-circle {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(215, 235, 255, 0.45) 0%, rgba(225, 240, 255, 0.18) 55%, transparent 75%);
+  /* Crisp, luminous cinematic rim light outline */
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 35px rgba(145, 195, 255, 0.45),
+    inset 0 0 20px rgba(255, 255, 255, 0.6),
+    inset 0 0 35px rgba(160, 210, 255, 0.2);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+  animation: auraBreathe 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes auraBreathe {
+  0% { 
+    transform: scale(0.94); 
+    box-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.7),
+      0 0 25px rgba(135, 185, 255, 0.35),
+      inset 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% { 
+    transform: scale(1.06); 
+    box-shadow: 
+      0 0 22px rgba(255, 255, 255, 0.95),
+      0 0 45px rgba(155, 205, 255, 0.55),
+      inset 0 0 25px rgba(255, 255, 255, 0.75);
+  }
+}
+
 /* Glass Motion-Blurred Trail / Path directly under/behind the icon */
 .motion-blur-trail {
   position: absolute;
-  width: 86px;
-  height: 86px;
+  width: 82px;
+  height: 96px;
   border-radius: 26px;
-  background: rgba(140, 185, 245, 0.55);
-  box-shadow: 
-    0 10px 30px rgba(60, 120, 210, 0.4),
-    0 0 35px rgba(160, 205, 255, 0.6);
+  background: radial-gradient(ellipse at center, rgba(160, 210, 255, 0.75) 0%, rgba(215, 235, 255, 0.35) 50%, transparent 80%);
   filter: blur(12px);
   pointer-events: none;
   z-index: 1;
-  animation: trailLag 3.6s ease-in-out infinite alternate;
+  animation: fluidGlassTrail 3.6s ease-in-out infinite alternate;
 }
 
 /* The Solid White Glass Card */
@@ -649,8 +683,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <main id="home">
   <section class="hero">
-    <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails -->
+    <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails & Ambient Aura Circles -->
     <div class="icon-container c-ps" title="Adobe Photoshop">
+      <div class="icon-ambient-circle"></div>
       <div class="motion-blur-trail"></div>
       <div class="floating-icon">
         <div class="app-badge-bw">Ps</div>
@@ -658,6 +693,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
 
     <div class="icon-container c-ai" title="Adobe Illustrator">
+      <div class="icon-ambient-circle"></div>
       <div class="motion-blur-trail"></div>
       <div class="floating-icon">
         <div class="app-badge-bw">Ai</div>
@@ -665,6 +701,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
 
     <div class="icon-container c-figma" title="Figma">
+      <div class="icon-ambient-circle"></div>
       <div class="motion-blur-trail"></div>
       <div class="floating-icon">
         <svg width="26" height="38" viewBox="0 0 38 57" fill="none">
@@ -683,6 +720,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
 
     <div class="icon-container c-pr" title="Adobe Premiere Pro">
+      <div class="icon-ambient-circle"></div>
       <div class="motion-blur-trail"></div>
       <div class="floating-icon">
         <div class="app-badge-bw">Pr</div>
