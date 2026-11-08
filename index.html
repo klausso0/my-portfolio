@@ -58,7 +58,8 @@ a { color: inherit; }
 .hero {
   position: relative;
   text-align: center;
-  padding: 100px 0 80px;
+  padding: 84px 0 72px;
+  min-height: 480px;
   background: 
     radial-gradient(45% 45% at 50% 35%, rgba(220, 235, 252, 0.5) 0%, transparent 80%),
     radial-gradient(40% 40% at 85% 15%, rgba(240, 246, 255, 0.7) 0%, transparent 70%),
@@ -84,11 +85,11 @@ a { color: inherit; }
   display: inline-block;
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #5c84b4;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 /* Name: Instrument Serif Italic */
@@ -96,10 +97,10 @@ a { color: inherit; }
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(3.8rem, 11vw, 7.5rem);
-  line-height: 1.05;
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  line-height: 1.1;
   color: #3f5869;
-  margin: 0 0 10px;
+  margin: 0 0 6px;
 }
 .hero-name span {
   color: #5280b8;
@@ -108,10 +109,10 @@ a { color: inherit; }
 .hero-connector {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 1.1;
   color: #4f7cb8;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 /* Job Title: Instrument Serif Italic with Typewriter effect */
@@ -119,13 +120,13 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3.2rem;
+  min-height: 2.4rem;
 }
 .role-text {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-size: clamp(1.5rem, 3.8vw, 2.3rem);
   line-height: 1.2;
   color: #4a7ebb;
 }
@@ -133,7 +134,7 @@ a { color: inherit; }
   display: inline-block;
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: normal;
-  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  font-size: clamp(1.5rem, 3.8vw, 2.3rem);
   color: #4a7ebb;
   margin-left: 2px;
   animation: blink 0.85s infinite;
@@ -143,72 +144,178 @@ a { color: inherit; }
   50%, 100% { opacity: 0; }
 }
 
-/* Floating App Icons (Ps, Ai, Figma, Pr) with Glassmorphism & Hover Motion Blur */
-.floating-icon {
+/* App Icon Container Wrapper for Floating Motion */
+.icon-container {
   position: absolute;
-  width: 72px;
-  height: 72px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+/* Glass Motion-Blurred Trail / Path directly under/behind the icon */
+.motion-blur-trail {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border-radius: 26px;
+  background: rgba(140, 185, 245, 0.55);
   box-shadow: 
-    0 12px 30px rgba(78, 115, 155, 0.12),
-    0 4px 10px rgba(0, 0, 0, 0.04),
-    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    0 10px 30px rgba(60, 120, 210, 0.4),
+    0 0 35px rgba(160, 205, 255, 0.6);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 1;
+  animation: trailLag 3.6s ease-in-out infinite alternate;
+}
+
+/* The Solid White Glass Card */
+.floating-icon {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(220, 235, 250, 0.95);
+  box-shadow: 
+    0 14px 32px rgba(45, 80, 130, 0.15),
+    0 3px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              filter 0.35s ease, 
-              box-shadow 0.35s ease,
-              background 0.35s ease;
+  z-index: 2;
   user-select: none;
+  animation: floatUpDown 3.6s ease-in-out infinite alternate;
 }
 
-/* Floating positions matching screenshot */
-.icon-ps { top: 18%; left: 8%; transform: rotate(-5deg); }
-.icon-ai { top: 14%; right: 9%; transform: rotate(6deg); }
-.icon-figma { bottom: 12%; left: 9%; transform: rotate(4deg); }
-.icon-pr { bottom: 10%; right: 8%; transform: rotate(-6deg); }
+/* Up and Down Vertical Floating Animation */
+@keyframes floatUpDown {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-24px); }
+}
 
-/* Glass type motion blur hover path effect */
+/* Fluid Glass Motion-Blurred Trail / Path directly under/behind the icon */
+.motion-blur-trail {
+  position: absolute;
+  width: 82px;
+  height: 96px;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at center, rgba(160, 210, 255, 0.75) 0%, rgba(215, 235, 255, 0.35) 50%, transparent 80%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 1;
+  animation: fluidGlassTrail 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes fluidGlassTrail {
+  0% {
+    transform: translateY(18px) scaleY(1.25) scaleX(0.92);
+    opacity: 0.9;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(-6px) scaleY(1.4) scaleX(0.88);
+    opacity: 0.6;
+    filter: blur(15px);
+  }
+}
+
+.c-ps .floating-icon { animation-duration: 3.5s; }
+.c-ps .motion-blur-trail { animation-duration: 3.5s; }
+
+.c-ai .floating-icon { animation-duration: 4.2s; animation-delay: -1.4s; }
+.c-ai .motion-blur-trail { animation-duration: 4.2s; animation-delay: -1.4s; }
+
+.c-figma .floating-icon { animation-duration: 3.8s; animation-delay: -2.3s; }
+.c-figma .motion-blur-trail { animation-duration: 3.8s; animation-delay: -2.3s; }
+
+.c-pr .floating-icon { animation-duration: 4.5s; animation-delay: -0.9s; }
+.c-pr .motion-blur-trail { animation-duration: 4.5s; animation-delay: -0.9s; }
+
+/* 4 Corner Absolute Positions for App Badges */
+.c-ps {
+  top: 14% !important;
+  left: 8% !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+.c-ai {
+  top: 10% !important;
+  right: 9% !important;
+  left: auto !important;
+  bottom: auto !important;
+}
+.c-figma {
+  bottom: 14% !important;
+  left: 9% !important;
+  top: auto !important;
+  right: auto !important;
+}
+.c-pr {
+  bottom: 12% !important;
+  right: 8% !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+/* Hover glow effect */
 .floating-icon:hover {
-  transform: translateY(-8px) scale(1.08) rotate(0deg);
-  background: rgba(255, 255, 255, 0.88);
-  filter: drop-shadow(0 0 16px rgba(74, 126, 187, 0.45)) blur(0.2px);
-  box-shadow: 
-    0 20px 40px rgba(74, 126, 187, 0.25),
-    -4px -2px 18px rgba(255, 255, 255, 0.9),
-    0 0 20px rgba(138, 182, 235, 0.4);
+  filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
 
-.floating-icon:active {
-  transform: scale(0.96);
+/* Ensure icons remain visible on all screen sizes */
+@media (max-width: 900px) {
+  .floating-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+  }
+  .app-badge-bw {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.05rem !important;
+  }
+  .icon-figma svg {
+    width: 20px !important;
+    height: 30px !important;
+  }
+}
+@media (max-width: 540px) {
+  .floating-icon { display: none; }
 }
 
-/* Icon Badges */
-.app-badge {
+/* Pure Black & White App Badges Matching Screenshot */
+.app-badge-bw {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #000000;
+  color: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 800;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.25rem;
   letter-spacing: -0.5px;
-  color: #fff;
-  background: #000005;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
 }
-.floating-icon:hover .app-badge {
-  transform: scale(1.05);
+
+.floating-icon:hover .app-badge-bw {
+  transform: scale(1.06);
+}
+
+.floating-icon svg {
+  transition: transform 0.15s ease;
+}
+
+.floating-icon:hover svg {
+  transform: scale(1.08);
 }
 
 /* CTA BUTTONS */
@@ -280,24 +387,24 @@ a { color: inherit; }
 
 /* ABOUT SECTION */
 .about-section {
-  padding: 80px 0 50px;
+  padding: 56px 0 40px;
 }
 .section-tag {
   display: block;
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #6a91c1;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .about-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
-  line-height: 1.5;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.6;
   color: #2b3e4a;
-  max-width: 860px;
+  max-width: 820px;
   font-weight: 400;
 }
 
@@ -450,21 +557,42 @@ footer {
 
 /* PROJECT VIEW */
 .project { padding: 40px 0 96px; }
-.back {
-  display: inline-block;
-  color: #4a7ebb;
-  font-weight: 700;
-  text-underline-offset: 4px;
-  margin-bottom: 24px;
+.btn-close-gallery {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #1f3340;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 28px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-close-gallery:hover {
+  background: #f0f4f8;
+  transform: translateY(-2px);
 }
 .project h1 {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
-  font-size: clamp(2.4rem, 6.5vw, 4rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.15;
   margin-bottom: 14px;
 }
-.lede { font-size: 1.2rem; color: var(--mut); max-width: 64ch; }
+.project-tag {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--mut);
+  margin: 24px 0 16px;
+}
+.lede { font-size: 1.15rem; color: var(--mut); max-width: 72ch; line-height: 1.6; }
 .meta { margin-top: 10px; color: var(--mut); font-size: 0.95rem; max-width: 64ch; }
 .project h2 {
   font-family: 'DM Sans', sans-serif;
@@ -475,7 +603,22 @@ footer {
 }
 .project p { max-width: 68ch; margin-bottom: 14px; }
 .project figure { margin: 34px 0; }
-.project img { border-radius: 14px; border: 1px solid var(--line); }
+.project figure.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 28px auto;
+  text-align: center;
+}
+.project figure.centered img {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 580px; /* Standard 1080x1080 social post square proportion in layout */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.project img { border-radius: 16px; border: 1px solid var(--line); }
 figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 34px 0; }
 .g2 figure { margin: 0; }
@@ -489,9 +632,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   text-underline-offset: 4px;
 }
 
-@media (max-width: 900px) {
-  .floating-icon { display: none; }
-}
 @media (max-width: 760px) {
   .cards, .contact { grid-template-columns: 1fr; }
   .hero { padding-top: 72px; }
@@ -509,24 +649,44 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <main id="home">
   <section class="hero">
-    <!-- Floating App Icons with Glass Blur & Hover Motion Effect -->
-    <div class="floating-icon icon-ps" title="Adobe Photoshop">
-      <div class="app-badge" style="background:#001e36; color:#31a8ff;">Ps</div>
+    <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails -->
+    <div class="icon-container c-ps" title="Adobe Photoshop">
+      <div class="motion-blur-trail"></div>
+      <div class="floating-icon">
+        <div class="app-badge-bw">Ps</div>
+      </div>
     </div>
-    <div class="floating-icon icon-ai" title="Adobe Illustrator">
-      <div class="app-badge" style="background:#330000; color:#ff9a00;">Ai</div>
+
+    <div class="icon-container c-ai" title="Adobe Illustrator">
+      <div class="motion-blur-trail"></div>
+      <div class="floating-icon">
+        <div class="app-badge-bw">Ai</div>
+      </div>
     </div>
-    <div class="floating-icon icon-figma" title="Figma">
-      <svg width="28" height="28" viewBox="0 0 38 57" fill="none">
-        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
-        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
-        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
-        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
-        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
-      </svg>
+
+    <div class="icon-container c-figma" title="Figma">
+      <div class="motion-blur-trail"></div>
+      <div class="floating-icon">
+        <svg width="26" height="38" viewBox="0 0 38 57" fill="none">
+          <!-- Top Left -->
+          <path d="M19 0H9.5C4.25329 0 0 4.25329 0 9.5C0 14.7467 4.25329 19 9.5 19H19V0Z" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+          <!-- Top Right -->
+          <path d="M19 0H28.5C33.7467 0 38 4.25329 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+          <!-- Middle Left -->
+          <path d="M19 19H9.5C4.25329 19 0 23.2533 0 28.5C0 33.7467 4.25329 38 9.5 38H19V19Z" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+          <!-- Middle Right Circle -->
+          <circle cx="28.5" cy="28.5" r="9.5" stroke="#000000" stroke-width="4.5"/>
+          <!-- Bottom Left -->
+          <path d="M19 38H9.5C4.25329 38 0 42.2533 0 47.5C0 52.7467 4.25329 57 9.5 57C14.7467 57 19 52.7467 19 47.5V38Z" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
-    <div class="floating-icon icon-pr" title="Adobe Premiere Pro">
-      <div class="app-badge" style="background:#00005b; color:#9999ff;">Pr</div>
+
+    <div class="icon-container c-pr" title="Adobe Premiere Pro">
+      <div class="motion-blur-trail"></div>
+      <div class="floating-icon">
+        <div class="app-badge-bw">Pr</div>
+      </div>
     </div>
 
     <div class="wrap">
@@ -634,25 +794,26 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <a class="mail" href="mailto:bhattneeraj742@gmail.com"><small>Send a message</small>bhattneeraj742@gmail.com</a>
         <a href="tel:+9779765440265"><small>Phone</small>+977 9765440265</a>
         <a href="https://smartcvbuilders.com" target="_blank" rel="noopener"><small>Website</small>smartcvbuilders.com</a>
-        <div><small>Location</small>Nepal</div>
+        <a href="resume.pdf" download="Neeraj_Bhatt_Resume.pdf"><small>Resume / CV</small>Download CV ↓</a>
       </div>
     </div>
   </section>
-  <footer><div class="wrap">© 2026 Neeraj Bhatt</div></footer>
+  
 </main>
 
 <article class="project dark" id="kraymer-art" data-t="Kraymer Art" hidden>
   <div class="wrap">
-    <a class="back" href="#work">← Back to all projects</a>
+    <a class="btn-close-gallery" href="#work">Close gallery</a>
     <h1>Kraymer Art: “Beyond Limits” Jewelry Launch</h1>
-    <p class="lede">Designed a launch campaign for a jewelry line, from concept and copy to the final layout. I used deep blue, silver, and dark backgrounds so the stones stand out and the brand feels exclusive.</p>
-    <figure class="narrow"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post with sapphire earrings, four feature columns, and three close-up shots"></figure>
+    <p class="lede">Designed a launch campaign for two jewelry pieces, from concept and copy to the final layout. I used deep blue, gold, and dark backgrounds so the stones stand out and the brand feels exclusive.</p>
+    <span class="project-tag">Earrings</span>
+    <figure class="centered"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post with sapphire earrings, four feature columns, and three close-up shots"></figure>
   </div>
 </article>
 
 <article class="project" id="sadiksha-overseas" data-t="Sadiksha Overseas" hidden>
   <div class="wrap">
-    <a class="back" href="#work">← Back to all projects</a>
+    <a class="btn-close-gallery" href="#work">Close gallery</a>
     <h1>Sadiksha Overseas: One Brand, Every Channel</h1>
     <p class="lede">Designed the brochure, job posts, festival greetings, and promotional posts for an overseas recruitment agency. Every piece looks like it came from the same company, whether printed or posted online.</p>
     <figure><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas brochure, outside panels: why choose us, about the company, seamless recruitment solutions"><figcaption>Trifold brochure, outside.</figcaption></figure>
@@ -666,7 +827,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project" id="client-campaigns" data-t="Client Campaigns" hidden>
   <div class="wrap">
-    <a class="back" href="#work">← Back to all projects</a>
+    <a class="btn-close-gallery" href="#work">Close gallery</a>
     <h1>Client Campaigns: Food and Tax</h1>
     <p class="lede">Social posts for businesses with different audiences. Each design has a clear message, a strong focal point, and an easy next step for the viewer.</p>
     <div class="g2">
@@ -678,7 +839,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project dark" id="smartcv-builders" data-t="SmartCV Builders" hidden>
   <div class="wrap">
-    <a class="back" href="#work">← Back to all projects</a>
+    <a class="btn-close-gallery" href="#work">Close gallery</a>
     <h1>SmartCV Builders</h1>
     <p class="lede">A free CV builder with no login and no watermark. I designed and built it myself over 4 months.</p>
     <p class="meta">Founder and designer. Brand, product design, website, 44+ templates, 30 career guides, and SEO.</p>
