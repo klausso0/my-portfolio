@@ -7,129 +7,622 @@
 <meta name="description" content="Portfolio of Neeraj Bhatt, a graphic designer who researches before designing. Brand, social, and campaign work, plus the SmartCV Builders case study.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fffaf2;--fg:#1f3340;--mut:#546a7a;--ac:#1d62ad;--ac2:#3a82cf;--btn:#2b6fb8;--card:#eaf3fb;--line:#d3e3f3}
-body.dark{--bg:#06051a;--fg:#e9f3ef;--mut:#a3b5b0;--ac:#7dffb3;--card:#12112b;--line:#27254a}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{font:17px/1.65 'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--ac2);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-h1,h2,h3,.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
-.hero{text-align:center;padding:104px 0 72px;background:radial-gradient(60% 60% at 80% 0,#e3eefb 0,transparent 70%),radial-gradient(50% 50% at 10% 90%,#fdf0dc 0,transparent 70%)}
-.hi{color:var(--ac);font-weight:500}
-.hero h1{font-size:clamp(3.4rem,11vw,7rem);line-height:1;color:#46606f;margin:6px 0 4px}
-.hero h1 em{color:var(--ac2)}
-.a{font:italic 1.9rem 'Instrument Serif',Georgia,serif;color:var(--mut);line-height:1.2}
-.role{font:italic clamp(1.7rem,5vw,2.6rem)/1.2 'Instrument Serif',Georgia,serif;color:var(--ac2)}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.btn{display:inline-block;padding:14px 28px;border-radius:14px;background:var(--btn);color:#fff;text-decoration:none;font-weight:500;border:1px solid var(--btn);transition:background .2s}
-.btn:hover{background:#215a9b}
-.btn.ghost{background:transparent;color:var(--fg);border-color:#b9cadb}
-.btn.ghost:hover{background:#fff}
-.stats{display:flex;gap:clamp(24px,6vw,64px);justify-content:center;flex-wrap:wrap;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:620px;margin-inline:auto}
-.stats dt{font:2.3rem/1 'Instrument Serif',Georgia,serif;color:var(--ac2)}
-.stats dd{font-size:.9rem;color:var(--mut)}
-.about{max-width:780px;margin:0 auto;padding:72px 24px 40px;font:clamp(1.5rem,3.4vw,2rem)/1.4 'Instrument Serif',Georgia,serif}
-#work,#contact{padding:56px 0}
-h2.sec{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-bottom:28px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;transition:transform .2s}
-.card:hover{transform:translateY(-4px)}
-.media{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--m)}
-.media img{width:100%;height:100%;object-fit:contain}
-.card h3{font-size:1.7rem;line-height:1.15;margin:18px 6px 4px}
-.card p{color:var(--mut);margin:0 6px}
-.card .open{display:inline-block;margin:14px 6px 6px;color:var(--ac);font-weight:700;text-decoration:underline;text-underline-offset:4px}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.contact h2{font-size:clamp(3rem,8vw,5rem);line-height:1}
-.contact h2 em{color:var(--ac2)}
-.contact p{margin-top:16px;max-width:42ch}
-.info{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.info a,.info div{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;min-height:104px;word-break:break-word}
-.info small{display:block;color:var(--ac);font-weight:500;margin-bottom:6px}
-.info a.mail{background:var(--btn);color:#fff;border-color:var(--btn)}
-.info a.mail small{color:#d8e8f8}
-.info a:hover{border-color:var(--ac2)}
-footer{padding:28px 0 48px;color:var(--mut);font-size:.9rem;border-top:1px solid var(--line)}
-.project{padding:40px 0 96px}
-.back{display:inline-block;color:var(--ac);font-weight:700;text-underline-offset:4px;margin-bottom:20px}
-.project h1{font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.05;margin-bottom:14px}
-.lede{font-size:1.2rem;color:var(--mut);max-width:62ch}
-.meta{margin-top:10px;color:var(--mut);font-size:.95rem;max-width:62ch}
-.project h2{font-size:2rem;line-height:1.15;margin:52px 0 12px}
-.project p{max-width:66ch;margin-bottom:14px}
-.project figure{margin:34px 0}
-.project img{border-radius:14px;border:1px solid var(--line)}
-figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:34px 0}
-.g2 figure{margin:0}
-.pair{max-width:540px}
-.narrow{max-width:760px}
-.visit{display:inline-block;margin-top:24px;font-weight:700;color:var(--ac);text-underline-offset:4px}
-@media (max-width:760px){.cards,.contact{grid-template-columns:1fr}.hero{padding-top:72px}.project h2{margin-top:40px}}
-@media (max-width:480px){.info{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+:root {
+  --bg: #fbfbfd;
+  --fg: #1f3340;
+  --mut: #687e8f;
+  --ac: #225c99;
+  --ac2: #4a7ebb;
+  --btn: #4f7cb8;
+  --card: #f0f5fa;
+  --card-border: #dde7f0;
+  --line: #e3ebf2;
+}
+body.dark {
+  --bg: #06051a;
+  --fg: #e9f3ef;
+  --mut: #a3b5b0;
+  --ac: #7dffb3;
+  --card: #12112b;
+  --card-border: #27254a;
+  --line: #27254a;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font: 16px/1.65 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ac2); outline-offset: 3px; border-radius: 6px; }
+
+/* Font Rules Requested:
+   - Instrument Serif Italic: Your name & The job title under your name
+   - DM Sans: Everything else
+*/
+.serif-italic {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 100px 0 80px;
+  background: 
+    radial-gradient(45% 45% at 50% 35%, rgba(220, 235, 252, 0.5) 0%, transparent 80%),
+    radial-gradient(40% 40% at 85% 15%, rgba(240, 246, 255, 0.7) 0%, transparent 70%),
+    radial-gradient(35% 35% at 15% 75%, rgba(254, 246, 235, 0.5) 0%, transparent 70%);
+  overflow: hidden;
+}
+
+/* Subtle background waveform accent from design */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(210, 228, 245, 0.15) 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.hi-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5c84b4;
+  margin-bottom: 12px;
+}
+
+/* Name: Instrument Serif Italic */
+.hero-name {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3.8rem, 11vw, 7.5rem);
+  line-height: 1.05;
+  color: #3f5869;
+  margin: 0 0 10px;
+}
+.hero-name span {
+  color: #5280b8;
+}
+
+.hero-connector {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: #4f7cb8;
+  margin-bottom: 6px;
+}
+
+/* Job Title: Instrument Serif Italic with Typewriter effect */
+.typewriter-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+}
+.role-text {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  line-height: 1.2;
+  color: #4a7ebb;
+}
+.cursor {
+  display: inline-block;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: normal;
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  color: #4a7ebb;
+  margin-left: 2px;
+  animation: blink 0.85s infinite;
+}
+@keyframes blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Floating App Icons (Ps, Ai, Figma, Pr) with Glassmorphism & Hover Motion Blur */
+.floating-icon {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 12px 30px rgba(78, 115, 155, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              filter 0.35s ease, 
+              box-shadow 0.35s ease,
+              background 0.35s ease;
+  user-select: none;
+}
+
+/* Floating positions matching screenshot */
+.icon-ps { top: 18%; left: 8%; transform: rotate(-5deg); }
+.icon-ai { top: 14%; right: 9%; transform: rotate(6deg); }
+.icon-figma { bottom: 12%; left: 9%; transform: rotate(4deg); }
+.icon-pr { bottom: 10%; right: 8%; transform: rotate(-6deg); }
+
+/* Glass type motion blur hover path effect */
+.floating-icon:hover {
+  transform: translateY(-8px) scale(1.08) rotate(0deg);
+  background: rgba(255, 255, 255, 0.88);
+  filter: drop-shadow(0 0 16px rgba(74, 126, 187, 0.45)) blur(0.2px);
+  box-shadow: 
+    0 20px 40px rgba(74, 126, 187, 0.25),
+    -4px -2px 18px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(138, 182, 235, 0.4);
+}
+
+.floating-icon:active {
+  transform: scale(0.96);
+}
+
+/* Icon Badges */
+.app-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+  color: #fff;
+  background: #000005;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.floating-icon:hover .app-badge {
+  transform: scale(1.05);
+}
+
+/* CTA BUTTONS */
+.cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.btn {
+  display: inline-block;
+  padding: 13px 30px;
+  border-radius: 14px;
+  background: #507bb5;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.98rem;
+  border: 1px solid #507bb5;
+  box-shadow: 0 4px 14px rgba(80, 123, 181, 0.28);
+  transition: all 0.22s ease;
+}
+.btn:hover {
+  background: #416799;
+  box-shadow: 0 6px 20px rgba(80, 123, 181, 0.38);
+  transform: translateY(-2px);
+}
+.btn.ghost {
+  background: #ffffff;
+  color: #3b5062;
+  border: 1px solid #c7d8e6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.btn.ghost:hover {
+  background: #f7fbff;
+  border-color: #a9c3db;
+  transform: translateY(-2px);
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: clamp(32px, 7vw, 72px);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  max-width: 660px;
+  margin-inline: auto;
+}
+.stats > div { text-align: center; }
+.stats dt {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #4a7ebb;
+}
+.stats dd {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--mut);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 80px 0 50px;
+}
+.section-tag {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6a91c1;
+  margin-bottom: 16px;
+}
+.about-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+  line-height: 1.5;
+  color: #2b3e4a;
+  max-width: 860px;
+  font-weight: 400;
+}
+
+/* SELECTED PROJECTS */
+#work, #contact { padding: 48px 0 72px; }
+h2.sec {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #203544;
+  margin-bottom: 32px;
+}
+
+/* Folder tab aesthetic matching screenshot */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.card-wrapper {
+  position: relative;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.card-wrapper:hover {
+  transform: translateY(-5px);
+}
+.folder-tab {
+  display: inline-block;
+  width: 130px;
+  height: 18px;
+  background: #d8e5f2;
+  border-radius: 12px 12px 0 0;
+  margin-left: 20px;
+  position: relative;
+  top: 1px;
+}
+.card {
+  background: #f0f5fa;
+  border: 1px solid #dde7f0;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.media {
+  aspect-ratio: 4/3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--m);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 18px 8px 6px;
+  color: #1f3340;
+}
+.card p {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--mut);
+  margin: 0 8px;
+  font-size: 0.96rem;
+}
+.card .open {
+  display: inline-block;
+  margin: 14px 8px 6px;
+  color: #4a7ebb;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* CONTACT */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.contact h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  color: #203544;
+}
+.contact h2 em {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #4a7ebb;
+}
+.contact p {
+  margin-top: 16px;
+  max-width: 44ch;
+  color: var(--mut);
+}
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.info a, .info div {
+  display: block;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  min-height: 100px;
+  word-break: break-word;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.info a:hover {
+  border-color: #4a7ebb;
+  transform: translateY(-2px);
+}
+.info small {
+  display: block;
+  color: #4a7ebb;
+  font-weight: 600;
+  font-size: 0.84rem;
+  margin-bottom: 6px;
+}
+.info a.mail {
+  background: #507bb5;
+  color: #fff;
+  border-color: #507bb5;
+}
+.info a.mail small { color: #dbe8f7; }
+
+footer {
+  padding: 32px 0 48px;
+  color: var(--mut);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* PROJECT VIEW */
+.project { padding: 40px 0 96px; }
+.back {
+  display: inline-block;
+  color: #4a7ebb;
+  font-weight: 700;
+  text-underline-offset: 4px;
+  margin-bottom: 24px;
+}
+.project h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6.5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.lede { font-size: 1.2rem; color: var(--mut); max-width: 64ch; }
+.meta { margin-top: 10px; color: var(--mut); font-size: 0.95rem; max-width: 64ch; }
+.project h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 48px 0 12px;
+}
+.project p { max-width: 68ch; margin-bottom: 14px; }
+.project figure { margin: 34px 0; }
+.project img { border-radius: 14px; border: 1px solid var(--line); }
+figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 34px 0; }
+.g2 figure { margin: 0; }
+.pair { max-width: 540px; }
+.narrow { max-width: 760px; }
+.visit {
+  display: inline-block;
+  margin-top: 24px;
+  font-weight: 700;
+  color: #4a7ebb;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .floating-icon { display: none; }
+}
+@media (max-width: 760px) {
+  .cards, .contact { grid-template-columns: 1fr; }
+  .hero { padding-top: 72px; }
+}
+@media (max-width: 480px) {
+  .info { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
 </style>
 </head>
 <body>
 
 <main id="home">
   <section class="hero">
+    <!-- Floating App Icons with Glass Blur & Hover Motion Effect -->
+    <div class="floating-icon icon-ps" title="Adobe Photoshop">
+      <div class="app-badge" style="background:#001e36; color:#31a8ff;">Ps</div>
+    </div>
+    <div class="floating-icon icon-ai" title="Adobe Illustrator">
+      <div class="app-badge" style="background:#330000; color:#ff9a00;">Ai</div>
+    </div>
+    <div class="floating-icon icon-figma" title="Figma">
+      <svg width="28" height="28" viewBox="0 0 38 57" fill="none">
+        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+      </svg>
+    </div>
+    <div class="floating-icon icon-pr" title="Adobe Premiere Pro">
+      <div class="app-badge" style="background:#00005b; color:#9999ff;">Pr</div>
+    </div>
+
     <div class="wrap">
-      <p class="hi">Hello, I’m</p>
-      <h1>Neeraj <em>Bhatt</em></h1>
-      <p class="a">a</p>
-      <p class="role">Graphic Designer &amp; Product Researcher</p>
-      <div class="cta">
-        <a class="btn" href="#work">View my work</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
+      <span class="hi-badge">HELLO, I’M</span>
+      
+      <!-- Name in Instrument Serif Italic -->
+      <h1 class="hero-name">Neeraj <span>Bhatt</span></h1>
+      
+      <p class="hero-connector">a</p>
+      
+      <!-- Job Title in Instrument Serif Italic with Typewriter effect -->
+      <div class="typewriter-container">
+        <span class="role-text" id="typewriter-target"></span><span class="cursor">|</span>
       </div>
+
+      <div class="cta">
+        <a class="btn" href="#work">View My Work</a>
+        <a class="btn ghost" href="#contact">Get in Touch</a>
+      </div>
+
       <dl class="stats">
-        <div><dt>7K+</dt><dd>search impressions in 6 months</dd></div>
-        <div><dt>5+</dt><dd>clients</dd></div>
-        <div><dt>44+</dt><dd>CV templates designed</dd></div>
+        <div>
+          <dt>1+</dt>
+          <dd>Year Exp.</dd>
+        </div>
+        <div>
+          <dt>5+</dt>
+          <dd>Clients</dd>
+        </div>
+        <div>
+          <dt>4</dt>
+          <dd>Design Roles</dd>
+        </div>
       </dl>
     </div>
   </section>
 
-  <p class="about">I’m a graphic designer who researches before designing. Here’s a selection of brand, social, and campaign work, and the thinking behind it.</p>
+  <!-- About Me Section -->
+  <section class="about-section">
+    <div class="wrap">
+      <span class="section-tag">About me</span>
+      <p class="about-text">
+        I’m a graphic designer who researches before designing. Here’s a selection of brand, social, and campaign work, and the thinking behind it.
+      </p>
+    </div>
+  </section>
 
+  <!-- Selected Projects Section -->
   <section id="work">
     <div class="wrap">
       <h2 class="sec">Selected projects</h2>
       <div class="cards">
-        <a class="card" href="#kraymer-art">
-          <div class="media" style="--m:#03060f"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post showing blue sapphire earrings on dark velvet" loading="lazy"></div>
-          <h3>Kraymer Art: “Beyond Limits” Jewelry Launch</h3>
-          <p>Jewelry launch campaign in deep blue and silver.</p>
-          <span class="open">Open project</span>
+        <a class="card-wrapper" href="#kraymer-art">
+          <div class="folder-tab"></div>
+          <div class="card">
+            <div class="media" style="--m:#03060f"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post showing blue sapphire earrings on dark velvet" loading="lazy"></div>
+            <h3>Kraymer Art: “Beyond Limits” Jewelry Launch</h3>
+            <p>Jewelry launch campaign in deep blue and silver.</p>
+            <span class="open">Open project</span>
+          </div>
         </a>
-        <a class="card" href="#sadiksha-overseas">
-          <div class="media" style="--m:#dbe9f7"><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas trifold brochure in blue and white" loading="lazy"></div>
-          <h3>Sadiksha Overseas: One Brand, Every Channel</h3>
-          <p>Brochure, job posts, and festival greetings for a recruitment agency.</p>
-          <span class="open">Open project</span>
+
+        <a class="card-wrapper" href="#sadiksha-overseas">
+          <div class="folder-tab"></div>
+          <div class="card">
+            <div class="media" style="--m:#dbe9f7"><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas trifold brochure in blue and white" loading="lazy"></div>
+            <h3>Sadiksha Overseas: One Brand, Every Channel</h3>
+            <p>Brochure, job posts, and festival greetings for a recruitment agency.</p>
+            <span class="open">Open project</span>
+          </div>
         </a>
-        <a class="card" href="#client-campaigns">
-          <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
-          <h3>Client Campaigns: Food and Tax</h3>
-          <p>Social posts for two businesses with different audiences.</p>
-          <span class="open">Open project</span>
+
+        <a class="card-wrapper" href="#client-campaigns">
+          <div class="folder-tab"></div>
+          <div class="card">
+            <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
+            <h3>Client Campaigns: Food and Tax</h3>
+            <p>Social posts for two businesses with different audiences.</p>
+            <span class="open">Open project</span>
+          </div>
         </a>
-        <a class="card" href="#smartcv-builders">
-          <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
-          <h3>SmartCV Builders</h3>
-          <p>A free CV builder I founded and designed.</p>
-          <span class="open">Open project</span>
+
+        <a class="card-wrapper" href="#smartcv-builders">
+          <div class="folder-tab"></div>
+          <div class="card">
+            <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
+            <h3>SmartCV Builders</h3>
+            <p>A free CV builder I founded and designed.</p>
+            <span class="open">Open project</span>
+          </div>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
     <div class="wrap contact">
       <div>
@@ -150,7 +643,7 @@ figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
 
 <article class="project dark" id="kraymer-art" data-t="Kraymer Art" hidden>
   <div class="wrap">
-    <a class="back" href="#work">Back to all projects</a>
+    <a class="back" href="#work">← Back to all projects</a>
     <h1>Kraymer Art: “Beyond Limits” Jewelry Launch</h1>
     <p class="lede">Designed a launch campaign for a jewelry line, from concept and copy to the final layout. I used deep blue, silver, and dark backgrounds so the stones stand out and the brand feels exclusive.</p>
     <figure class="narrow"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post with sapphire earrings, four feature columns, and three close-up shots"></figure>
@@ -159,7 +652,7 @@ figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
 
 <article class="project" id="sadiksha-overseas" data-t="Sadiksha Overseas" hidden>
   <div class="wrap">
-    <a class="back" href="#work">Back to all projects</a>
+    <a class="back" href="#work">← Back to all projects</a>
     <h1>Sadiksha Overseas: One Brand, Every Channel</h1>
     <p class="lede">Designed the brochure, job posts, festival greetings, and promotional posts for an overseas recruitment agency. Every piece looks like it came from the same company, whether printed or posted online.</p>
     <figure><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas brochure, outside panels: why choose us, about the company, seamless recruitment solutions"><figcaption>Trifold brochure, outside.</figcaption></figure>
@@ -173,7 +666,7 @@ figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
 
 <article class="project" id="client-campaigns" data-t="Client Campaigns" hidden>
   <div class="wrap">
-    <a class="back" href="#work">Back to all projects</a>
+    <a class="back" href="#work">← Back to all projects</a>
     <h1>Client Campaigns: Food and Tax</h1>
     <p class="lede">Social posts for businesses with different audiences. Each design has a clear message, a strong focal point, and an easy next step for the viewer.</p>
     <div class="g2">
@@ -185,7 +678,7 @@ figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
 
 <article class="project dark" id="smartcv-builders" data-t="SmartCV Builders" hidden>
   <div class="wrap">
-    <a class="back" href="#work">Back to all projects</a>
+    <a class="back" href="#work">← Back to all projects</a>
     <h1>SmartCV Builders</h1>
     <p class="lede">A free CV builder with no login and no watermark. I designed and built it myself over 4 months.</p>
     <p class="meta">Founder and designer. Brand, product design, website, 44+ templates, 30 career guides, and SEO.</p>
@@ -231,23 +724,66 @@ figcaption{font-size:.92rem;color:var(--mut);margin-top:10px}
 </article>
 
 <script>
+// Hash routing
 (function(){
-  var home=document.getElementById('home'),base=document.title;
+  var home = document.getElementById('home'), base = document.title;
   function route(){
-    var id=location.hash.slice(1),list=document.querySelectorAll('.project'),p=null;
-    list.forEach(function(e){if(e.id===id)p=e;});
-    list.forEach(function(e){e.hidden=e!==p;});
-    home.hidden=!!p;
-    document.body.classList.toggle('dark',!!p&&p.classList.contains('dark'));
-    if(p){document.title=p.getAttribute('data-t')+' | Neeraj Bhatt';window.scrollTo(0,0);}
-    else{
-      document.title=base;
-      var t=id&&document.getElementById(id);
-      if(t){t.scrollIntoView();}else{window.scrollTo(0,0);}
+    var id = location.hash.slice(1), list = document.querySelectorAll('.project'), p = null;
+    list.forEach(function(e){ if(e.id === id) p = e; });
+    list.forEach(function(e){ e.hidden = (e !== p); });
+    home.hidden = !!p;
+    document.body.classList.toggle('dark', !!p && p.classList.contains('dark'));
+    if(p){
+      document.title = p.getAttribute('data-t') + ' | Neeraj Bhatt';
+      window.scrollTo(0, 0);
+    } else {
+      document.title = base;
+      var t = id && document.getElementById(id);
+      if(t){ t.scrollIntoView(); } else { window.scrollTo(0, 0); }
     }
   }
-  window.addEventListener('hashchange',route);
+  window.addEventListener('hashchange', route);
   route();
+})();
+
+// Typewriter Animation: switches between "Graphic Designer" and "Product Researcher"
+(function(){
+  var words = ["Graphic Designer", "Product Researcher"];
+  var target = document.getElementById('typewriter-target');
+  if(!target) return;
+  var wordIndex = 0;
+  var charIndex = 0;
+  var isDeleting = false;
+  var typeSpeed = 110;
+  var deleteSpeed = 60;
+  var pauseEnd = 1800;
+  var pauseStart = 400;
+
+  function type() {
+    var currentWord = words[wordIndex];
+    if (isDeleting) {
+      target.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      target.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    var delay = isDeleting ? deleteSpeed : typeSpeed;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      delay = pauseEnd;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = pauseStart;
+    }
+
+    setTimeout(type, delay);
+  }
+
+  type();
 })();
 </script>
 </body>
