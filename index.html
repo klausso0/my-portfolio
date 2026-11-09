@@ -743,6 +743,24 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   text-underline-offset: 4px;
 }
 
+/* Scroll Reveal Transitions */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger card children nicely */
+.cards .card-wrapper:nth-child(1).reveal { transition-delay: 0.05s; }
+.cards .card-wrapper:nth-child(2).reveal { transition-delay: 0.15s; }
+.cards .card-wrapper:nth-child(3).reveal { transition-delay: 0.1s; }
+.cards .card-wrapper:nth-child(4).reveal { transition-delay: 0.2s; }
+
 @media (max-width: 760px) {
   .cards, .contact { grid-template-columns: 1fr; }
   .hero { padding-top: 72px; }
@@ -840,7 +858,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
   <!-- About Me Section -->
-  <section class="about-section">
+  <section class="about-section reveal">
     <div class="wrap">
       <span class="section-tag">About me</span>
       <p class="about-text">
@@ -852,9 +870,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <!-- Selected Projects Section -->
   <section id="work">
     <div class="wrap">
-      <h2 class="sec">Selected projects</h2>
+      <h2 class="sec reveal">Selected projects</h2>
       <div class="cards">
-        <a class="card-wrapper" href="#kraymer-art">
+        <a class="card-wrapper reveal" href="#kraymer-art">
           <div class="folder-tab"></div>
           <div class="card">
             <div class="media" style="--m:#03060f"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post showing blue sapphire earrings on dark velvet" loading="lazy"></div>
@@ -864,7 +882,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </a>
 
-        <a class="card-wrapper" href="#sadiksha-overseas">
+        <a class="card-wrapper reveal" href="#sadiksha-overseas">
           <div class="folder-tab"></div>
           <div class="card">
             <div class="media" style="--m:#dbe9f7"><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas trifold brochure in blue and white" loading="lazy"></div>
@@ -874,7 +892,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </a>
 
-        <a class="card-wrapper" href="#client-campaigns">
+        <a class="card-wrapper reveal" href="#client-campaigns">
           <div class="folder-tab"></div>
           <div class="card">
             <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
@@ -884,7 +902,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </a>
 
-        <a class="card-wrapper" href="#smartcv-builders">
+        <a class="card-wrapper reveal" href="#smartcv-builders">
           <div class="folder-tab"></div>
           <div class="card">
             <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
@@ -898,7 +916,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact" class="reveal">
     <div class="wrap contact">
       <div>
         <h2>Let’s work <em>together.</em></h2>
@@ -1042,7 +1060,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 // Hash routing
 (function(){
   var home = document.getElementById('home'), base = document.title;
-  function route(){
+  function route(isInitial){
     var id = location.hash.slice(1), list = document.querySelectorAll('.project'), p = null;
     list.forEach(function(e){ if(e.id === id) p = e; });
     list.forEach(function(e){ e.hidden = (e !== p); });
@@ -1053,12 +1071,43 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       window.scrollTo(0, 0);
     } else {
       document.title = base;
-      var t = id && document.getElementById(id);
-      if(t){ t.scrollIntoView(); } else { window.scrollTo(0, 0); }
+      if (isInitial && (id === 'work' || !id)) {
+        // When opening or reloading the home page, always stay at the top hero section
+        window.scrollTo(0, 0);
+      } else {
+        var t = id && document.getElementById(id);
+        if(t){ t.scrollIntoView({ behavior: 'smooth' }); } else { window.scrollTo(0, 0); }
+      }
     }
   }
-  window.addEventListener('hashchange', route);
-  route();
+  window.addEventListener('hashchange', function(){ route(false); });
+  route(true);
+})();
+
+// Scroll Reveal Observer
+(function(){
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback for older browsers
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
 })();
 
 // Typewriter Animation: switches between "Graphic Designer" and "Product Researcher"
