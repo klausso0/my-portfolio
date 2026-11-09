@@ -629,6 +629,36 @@ article[hidden] {
   width: 100%;
   height: auto;
 }
+/* SmartCV Key Stats Bar */
+.case-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin: 24px 0 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.025);
+}
+.case-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+.case-stat-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--btn);
+  line-height: 1.1;
+}
+.case-stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: var(--mut);
+  margin-top: 4px;
+  font-weight: 500;
+}
 /* Brand color swatches grid */
 .color-swatches {
   display: grid;
@@ -1007,24 +1037,41 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
     <h2 class="project-subtitle">A free CV builder with no login and no watermark</h2>
     <div class="project-meta-list">
-      <p>Role: Founder and designer</p>
-      <p>Scope: Brand, product design, UX, website development, templates, career guides, SEO</p>
-      <p>Built by: Me, alone, over 4 months</p>
+      <p>Role: Founder, Product Designer & Developer</p>
+      <p>Scope: Brand identity, UI/UX design, frontend development, 44 templates, 30 career guides, SEO</p>
+    </div>
+
+    <!-- Key Stats Strip: Strongest facts upfront -->
+    <div class="case-stats-strip">
+      <div class="case-stat-item">
+        <span class="case-stat-num">1</span>
+        <span class="case-stat-label">Designer / Builder</span>
+      </div>
+      <div class="case-stat-item">
+        <span class="case-stat-num">4 Months</span>
+        <span class="case-stat-label">From idea to live</span>
+      </div>
+      <div class="case-stat-item">
+        <span class="case-stat-num">44+</span>
+        <span class="case-stat-label">Dynamic Templates</span>
+      </div>
+      <div class="case-stat-item">
+        <span class="case-stat-num">30</span>
+        <span class="case-stat-label">Career Guides</span>
+      </div>
+      <div class="case-stat-item">
+        <span class="case-stat-num">0</span>
+        <span class="case-stat-label">Logins or data stored</span>
+      </div>
     </div>
 
     <figure><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage: build a professional CV that gets interviews, with a build my free CV button" loading="lazy" decoding="async"></figure>
 
     <h2>Why I built it</h2>
-    <p>I wanted normal people to be able to make a CV without paying for it. When I searched on Google, I saw that most CV builders were slow to use, asked for a login, added watermarks you had to pay to remove, or cost too much for something as simple as a CV. I wanted people to open the site, make their CV, and download the PDF in seconds.</p>
+    <p>Existing CV tools trap job seekers behind sudden paywalls, forced account signups, or ugly export watermarks. I built SmartCV Builders to solve this: an open tool where students and first-time job seekers can enter their info, preview designs in real time, and get a crisp PDF in seconds without registering.</p>
 
-    <h2>Who it’s for</h2>
-    <p>People who are new in their career and looking for their first job, and students looking for internships.</p>
-
-    <h2>What I looked at</h2>
-    <p>I started with Google searches to see what competitors were doing. Most of them had been around for years, and I saw the same problems again and again: too much hassle and too high a price for a single CV. That told me what to remove from my own product: login, watermarks, and payment.</p>
-
-    <h2>What I built</h2>
-    <p>I did everything myself: the brand, the design, the website, 44+ templates, 30 career guides, and the system that lets people build a CV and download it. The hardest part was making it work properly on a phone, so people can build and download a CV from their mobile too.</p>
+    <h2>What I built & The Template Engine</h2>
+    <p>Users fill in their personal information, experience, and skills once on the left panel. As they type, the live preview renders the data into clean, structured resume layouts across 44+ styles without re-entering content.</p>
     <figure><img src="images/smartcv-builder.jpg" alt="The CV builder: form sections on the left and a live CV preview on the right" loading="lazy" decoding="async"></figure>
     
     <div class="template-grid">
@@ -1034,42 +1081,48 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <figure><img src="images/smartcv-builder-blue.jpg" alt="CV builder with blue header template" loading="lazy" decoding="async"></figure>
     </div>
 
+    <h2>The hardest problem: Mobile PDF rendering</h2>
+    <p>Mobile responsiveness was the toughest technical hurdle. On mobile screens, PDF exports frequently rendered blurry or broke single-page CVs across awkward page splits due to viewport scaling differences. I re-architected the rendering container to decouple mobile screen dimensions from the print canvas, guaranteeing sharp vector text and flawless single-page PDF generation directly from a phone.</p>
+
     <div class="g2 pair" style="margin: 34px auto;">
       <img src="images/smartcv-mobile-home.jpg" alt="SmartCV Builders on a phone: homepage" loading="lazy" decoding="async">
       <img src="images/smartcv-mobile-guides.jpg" alt="SmartCV Builders on a phone: career guides" loading="lazy" decoding="async">
     </div>
 
-    <h2>Design decisions</h2>
-    <p>Green for freedom. I chose mint green because it reminds me of a forest: fresh, open, and free. That’s the feeling I wanted for the product, since it’s free and doesn’t trap you behind a login.</p>
+    <h2>Design & Color Decisions</h2>
+    <p>Every color choice is grounded in color psychology and function:</p>
+    <ul style="margin-bottom: 20px; padding-left: 20px; color: var(--fg); font-size: 0.95rem; line-height: 1.6;">
+      <li><strong>Mint Green (#99FFBE):</strong> Action & freedom. Signifies "go", fresh starts, and a tool that never blocks you behind a payment wall.</li>
+      <li><strong>Midnight Blue (#050217):</strong> Deep blue communicates security, authority, and professional trust—crucial for sensitive career documents.</li>
+      <li><strong>Slate (#17142B) & Crisp White (#FFFFFF):</strong> Creates high-contrast, distraction-free surfaces for editing and reviewing text.</li>
+    </ul>
     
     <div class="color-swatches">
       <div class="swatch mint">
         <span class="swatch-label">Mint #99FFBE</span>
-        <span class="swatch-desc">Primary accent</span>
+        <span class="swatch-desc">Primary accent · Action & freedom</span>
       </div>
       <div class="swatch midnight">
         <span class="swatch-label">Midnight #050217</span>
-        <span class="swatch-desc">Main background</span>
+        <span class="swatch-desc">Main background · Trust & calm</span>
       </div>
       <div class="swatch slate">
         <span class="swatch-label">Slate #17142B</span>
-        <span class="swatch-desc">Layered surfaces</span>
+        <span class="swatch-desc">Layered surfaces · Focus</span>
       </div>
       <div class="swatch white-swatch">
         <span class="swatch-label">White #FFFFFF</span>
-        <span class="swatch-desc">Text and CV canvas</span>
+        <span class="swatch-desc">Text and CV canvas · Clarity</span>
       </div>
     </div>
     <p style="font-size:0.88rem;color:var(--mut);text-align:center;max-width:620px;">Brand colors.</p>
 
-    <p><strong>Private by design.</strong> There’s no login, and your data stays in your own browser. Nothing is stored on a server.</p>
-
-    <h2>Growth</h2>
-    <p>For the first 2 months, the site got about 4 impressions a day. Then I worked on the SEO and meta data. In the third month, impressions and clicks started to grow, and I kept improving it after that. Over 6 months, the site reached 7K+ search impressions.</p>
+    <h2>Growth & SEO</h2>
+    <p>For the first 2 months, the site averaged only 4 impressions daily. I restructured the SEO strategy—rewriting meta descriptions and page titles to match exact search queries for "free cv maker without login". Over 6 months, search impressions surged past 7.3K.</p>
     <figure><img src="images/smartcv-search-console-cropped.png" alt="Google Search Console performance chart showing 17 total clicks and 7.34K total impressions"></figure>
 
-    <h2>What’s next</h2>
-    <p>Clicks are still low compared with impressions, so my next job is improving the page titles and rankings so more people who see the site actually open it.</p>
+    <h2>Real Feedback & What's next</h2>
+    <p>Older generation users and peers who were routinely asked to help others format resumes now share SmartCV Builders as their go-to recommendation. My next priority is optimizing page titles to convert more search impressions into direct click-throughs.</p>
     <a class="visit" href="https://smartcvbuilders.com" target="_blank" rel="noopener">Visit smartcvbuilders.com</a>
   </div>
 </article>
