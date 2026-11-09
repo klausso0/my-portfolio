@@ -743,23 +743,29 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   text-underline-offset: 4px;
 }
 
-/* Scroll Reveal Transitions */
+/* Modern Framer-style Scroll Reveal Transitions */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0 !important;
+  transform: translateY(44px) scale(0.98) !important;
+  transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   will-change: opacity, transform;
 }
 .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
 }
 
-/* Stagger card children nicely */
-.cards .card-wrapper:nth-child(1).reveal { transition-delay: 0.05s; }
-.cards .card-wrapper:nth-child(2).reveal { transition-delay: 0.15s; }
-.cards .card-wrapper:nth-child(3).reveal { transition-delay: 0.1s; }
-.cards .card-wrapper:nth-child(4).reveal { transition-delay: 0.2s; }
+/* Smooth stagger on the project cards when scrolling into view */
+.cards .card-wrapper:nth-child(1).reveal { transition-delay: 0.05s !important; }
+.cards .card-wrapper:nth-child(2).reveal { transition-delay: 0.16s !important; }
+.cards .card-wrapper:nth-child(3).reveal { transition-delay: 0.1s !important; }
+.cards .card-wrapper:nth-child(4).reveal { transition-delay: 0.22s !important; }
+
+/* Keep hover transform working even after reveal */
+.card-wrapper.reveal.is-visible:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
 
 @media (max-width: 760px) {
   .cards, .contact { grid-template-columns: 1fr; }
@@ -1086,27 +1092,42 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 // Scroll Reveal Observer
 (function(){
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+  function initReveal() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      reveals.forEach(function(el) {
+        // If element is already below the viewport, observe it
+        var rect = el.getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.85) {
+          observer.observe(el);
+        } else {
+          // If already in top viewport on load, show it smoothly right away
+          setTimeout(function(){ el.classList.add('is-visible'); }, 80);
         }
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
+    } else {
+      reveals.forEach(function(el) { el.classList.add('is-visible'); });
+    }
+  }
 
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      observer.observe(el);
-    });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
   } else {
-    // Fallback for older browsers
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      el.classList.add('is-visible');
-    });
+    initReveal();
   }
 })();
 
