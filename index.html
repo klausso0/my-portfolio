@@ -607,6 +607,34 @@ footer {
   line-height: 1.15;
   margin-bottom: 14px;
 }
+.smartcv-header-banner {
+  margin: 18px 0 28px;
+  max-width: 520px;
+}
+.smartcv-header-banner img {
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+.project-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3.2vw, 1.85rem);
+  color: var(--fg);
+  line-height: 1.3;
+  margin: 28px 0 16px;
+}
+.project-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.project-meta-list p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--mut);
+  line-height: 1.5;
+}
 .project-tag {
   display: block;
   font-family: 'DM Sans', sans-serif;
@@ -876,8 +904,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <div class="wrap">
     <a class="btn-close-gallery" href="#work">Close gallery</a>
     <h1>SmartCV Builders</h1>
-    <p class="lede">A free CV builder with no login and no watermark. I designed and built it myself over 4 months.</p>
-    <p class="meta">Founder and designer. Brand, product design, website, 44+ templates, 30 career guides, and SEO.</p>
+    <div class="smartcv-header-banner">
+      <img src="images/smartcv-header-logo.jpg" alt="SmartCV Builders logo with mint leaf icon" loading="lazy">
+    </div>
+
+    <h2 class="project-subtitle">A free CV builder with no login and no watermark</h2>
+    <div class="project-meta-list">
+      <p>Role: Founder and designer</p>
+      <p>Scope: Brand, product design, UX, website development, templates, career guides, SEO</p>
+      <p>Built by: Me, alone, over 4 months</p>
+    </div>
+
     <figure><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage: build a professional CV that gets interviews, with a build my free CV button"><figcaption>Free, no login, no watermarks, instant PDF.</figcaption></figure>
 
     <h2>Why I built it</h2>
@@ -892,26 +929,28 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <h2>What I built</h2>
     <p>I did everything myself: the brand, the design, the website, 44+ templates, 30 career guides, and the system that lets people build a CV and download it. The hardest part was making it work properly on a phone, so people can build and download a CV from their mobile too.</p>
     <figure><img src="images/smartcv-builder.jpg" alt="The CV builder: form sections on the left and a live CV preview on the right"><figcaption>Fill in your details on the left and watch the CV update on the right.</figcaption></figure>
+    
     <div class="g2">
-      <img src="images/smartcv-template-1.jpg" alt="CV template with a pink sidebar">
-      <img src="images/smartcv-template-2.jpg" alt="CV template with a blue header">
-      <img src="images/smartcv-template-3.jpg" alt="CV template with a coral header">
-      <img src="images/smartcv-template-4.jpg" alt="Classic single-column CV template">
+      <figure><img src="images/smartcv-builder-blue.jpg" alt="CV builder with blue header resume template preview"></figure>
+      <figure><img src="images/smartcv-builder-coral.jpg" alt="CV builder with coral header resume template preview"></figure>
+      <figure><img src="images/smartcv-builder-pink.jpg" alt="CV builder with pink header resume template preview"></figure>
+      <figure><img src="images/smartcv-builder.jpg" alt="CV builder interface"></figure>
     </div>
-    <p style="font-size:.92rem;color:var(--mut)">Templates in different styles and colors.</p>
-    <div class="g2 pair">
-      <img src="images/smartcv-mobile-home.jpg" alt="SmartCV Builders on a phone: homepage with a build my free CV button">
-      <img src="images/smartcv-mobile-guides.jpg" alt="SmartCV Builders on a phone: career guides page">
-    </div>
-    <p style="font-size:.92rem;color:var(--mut)">The same flow works on a phone.</p>
+
+    <figure><img src="images/smartcv-templates-quad.jpg" alt="SmartCV Builders four resume templates in grid view"><figcaption>Templates in different styles and colors.</figcaption></figure>
+
+    <figure><img src="images/smartcv-mobile-pair.jpg" alt="SmartCV Builders mobile interface: homepage and career guides"><figcaption>The same flow works on a phone.</figcaption></figure>
 
     <h2>Design decisions</h2>
-    <p><strong>Green for freedom.</strong> I chose mint green because it reminds me of a forest: fresh, open, and free. That’s the feeling I wanted for the product, since it’s free and doesn’t trap you behind a login.</p>
+    <p>Green for freedom. I chose mint green because it reminds me of a forest: fresh, open, and free. That’s the feeling I wanted for the product, since it’s free and doesn’t trap you behind a login.</p>
+    
+    <figure><img src="images/smartcv-brand-colors.png" alt="SmartCV Builders brand color swatches: Mint #99FFBE, Midnight #050217, Slate #17142B, White #FFFFFF"><figcaption>Brand colors.</figcaption></figure>
+
     <p><strong>Private by design.</strong> There’s no login, and your data stays in your own browser. Nothing is stored on a server.</p>
 
     <h2>Growth</h2>
     <p>For the first 2 months, the site got about 4 impressions a day. Then I worked on the SEO and meta data. In the third month, impressions and clicks started to grow, and I kept improving it after that. Over 6 months, the site reached 7K+ search impressions.</p>
-    <figure><img src="images/smartcv-search-console.jpg" alt="Google Search Console performance chart for smartcvbuilders.com over 6 months"><figcaption>Search impressions over 6 months.</figcaption></figure>
+    <figure><img src="images/smartcv-search-console.jpg" alt="Google Search Console performance chart showing 17 total clicks and 7.34K total impressions"><figcaption>Search impressions over 6 months.</figcaption></figure>
 
     <h2>What’s next</h2>
     <p>Clicks are still low compared with impressions, so my next job is improving the page titles and rankings so more people who see the site actually open it.</p>
