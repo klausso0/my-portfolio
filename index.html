@@ -707,8 +707,23 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .g2 figure { margin: 0; }
 .pair { max-width: 540px; }
 #smartcv-builders figure img { max-width: 820px; }
-#smartcv-builders .g2 { max-width: 620px; gap: 12px; }
-#smartcv-builders .g2 img { border-radius: 10px; }
+#smartcv-builders .template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 600px;
+  margin: 24px 0 32px;
+}
+#smartcv-builders .template-grid figure {
+  margin: 0;
+}
+#smartcv-builders .template-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  display: block;
+}
 #smartcv-builders .g2.pair { max-width: 380px; margin-left: auto; margin-right: auto; }
 .narrow { max-width: 760px; }
 .visit {
@@ -967,7 +982,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <p>I did everything myself: the brand, the design, the website, 44+ templates, 30 career guides, and the system that lets people build a CV and download it. The hardest part was making it work properly on a phone, so people can build and download a CV from their mobile too.</p>
     <figure><img src="images/smartcv-builder.jpg" alt="The CV builder: form sections on the left and a live CV preview on the right"></figure>
     
-    <div class="g2">
+    <div class="template-grid">
       <figure><img src="images/smartcv-builder-coral.jpg" alt="CV builder with coral header template"></figure>
       <figure><img src="images/smartcv-builder-classic.jpg" alt="CV builder with classic template"></figure>
       <figure><img src="images/smartcv-builder-pink.jpg" alt="CV builder with pink header template"></figure>
@@ -1004,7 +1019,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
     <p><strong>Private by design.</strong> There’s no login, and your data stays in your own browser. Nothing is stored on a server.</p>
 
-    <figure><img src="images/smartcv-search-console.jpg" alt="Google Search Console performance chart showing 17 total clicks and 7.34K total impressions"></figure>
+    <h2>Growth</h2>
+    <p>For the first 2 months, the site got about 4 impressions a day. Then I worked on the SEO and meta data. In the third month, impressions and clicks started to grow, and I kept improving it after that. Over 4 months, the site reached 7K+ search impressions.</p>
+    <figure><img src="images/smartcv-search-console-cropped.png" alt="Google Search Console performance chart showing 17 total clicks and 7.34K total impressions"></figure>
 
     <h2>What’s next</h2>
     <p>Clicks are still low compared with impressions, so my next job is improving the page titles and rankings so more people who see the site actually open it.</p>
