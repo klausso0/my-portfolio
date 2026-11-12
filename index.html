@@ -436,15 +436,27 @@ a { color: inherit; }
   font-weight: 400;
 }
 
-/* SELECTED PROJECTS */
-#work, #contact { padding: 36px 0 64px; }
+/* SELECTED PROJECTS & GRAPHIC WORKS */
+#work, #graphic-works, #contact { padding: 36px 0 64px; }
 h2.sec {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.65rem;
   font-weight: 700;
   line-height: 1.2;
   color: #203544;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
+}
+.sec-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--mut);
+  margin-bottom: 26px;
+  line-height: 1.5;
+}
+
+/* Single featured project card */
+.featured-card-wrapper {
+  max-width: 680px;
 }
 
 /* Folder tab aesthetic matching screenshot */
@@ -919,6 +931,25 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="work">
     <div class="wrap">
       <h2 class="sec reveal">Selected projects</h2>
+      <div class="featured-card-wrapper">
+        <a class="card-wrapper reveal" href="#smartcv-builders">
+          <div class="folder-tab"></div>
+          <div class="card">
+            <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
+            <h3>SmartCV Builders</h3>
+            <p>A free CV builder I founded, designed, and developed from scratch.</p>
+            <span class="open">Open case study →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Graphic Works Section -->
+  <section id="graphic-works">
+    <div class="wrap">
+      <h2 class="sec reveal">Graphic works</h2>
+      <p class="sec-sub reveal">These are some of the graphic design works I have done. You can click on each folder to view the full campaign galleries.</p>
       <div class="cards">
         <a class="card-wrapper reveal" href="#kraymer-art">
           <div class="folder-tab"></div>
@@ -944,18 +975,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="folder-tab"></div>
           <div class="card">
             <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
-            <h3>Client Campaigns: Food and Tax</h3>
-            <p>Social posts for two businesses with different audiences.</p>
-            <span class="open">Open project</span>
-          </div>
-        </a>
-
-        <a class="card-wrapper reveal" href="#smartcv-builders">
-          <div class="folder-tab"></div>
-          <div class="card">
-            <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
-            <h3>SmartCV Builders</h3>
-            <p>A free CV builder I founded and designed.</p>
+            <h3>Client Campaigns: Food, Loans and Tax</h3>
+            <p>Social posts and ad campaigns for businesses across diverse industries.</p>
             <span class="open">Open project</span>
           </div>
         </a>
