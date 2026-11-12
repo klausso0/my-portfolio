@@ -175,6 +175,11 @@ a { color: inherit; }
   justify-content: center;
   z-index: 50;
   pointer-events: auto;
+  opacity: 0; /* Hidden initially until stack transform is applied, avoiding any corner flash */
+  will-change: transform, opacity;
+}
+.icon-container.is-ready {
+  opacity: 1;
 }
 
 /* Big low-opacity ambient glass circle aura surrounding the icon */
@@ -306,53 +311,85 @@ a { color: inherit; }
   filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
 
-/* Hero Content Entrance: hidden while icons are stacked in center, revealed after scatter */
-.hero-content {
+/* Cinematic Staggered Hero Text Reveal (Movie Title Cascade) */
+.hero-content .hi-badge,
+.hero-content .hero-name,
+.hero-content .hero-connector,
+.hero-content .typewriter-container,
+.hero-content .cta,
+.hero-content .stats {
   opacity: 0;
-  transform: translateY(22px) scale(0.96);
+  transform: translateY(28px) scale(0.97);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-.hero-content.is-revealed {
+
+.hero-content.is-revealed .hi-badge {
   opacity: 1;
   transform: translateY(0) scale(1);
+  transition-delay: 0.05s;
 }
+
+.hero-content.is-revealed .hero-name {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.20s;
+}
+
+.hero-content.is-revealed .hero-connector,
+.hero-content.is-revealed .typewriter-container {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.36s;
+}
+
+.hero-content.is-revealed .cta {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.52s;
+}
+
+.hero-content.is-revealed .stats {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.68s;
+}
+
 @media (max-width: 540px) {
-  .hero-content {
+  .hero-content .hi-badge,
+  .hero-content .hero-name,
+  .hero-content .hero-connector,
+  .hero-content .typewriter-container,
+  .hero-content .cta,
+  .hero-content .stats {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
   }
 }
 
-/* Motion Blur Trail during flight from center to corners */
+/* Motion Blur Trail during flight from center to corners (Composite-only: pure GPU transform & opacity) */
 .icon-container.is-scattering .motion-blur-trail {
   opacity: 1 !important;
-  filter: blur(14px) !important;
-  transition: width 0.82s ease, height 0.82s ease, opacity 0.82s ease, transform 0.82s ease !important;
+  filter: blur(16px) !important;
+  transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.88s ease !important;
+  animation-play-state: paused !important;
 }
 .c-ps.is-scattering .motion-blur-trail {
-  width: 140px;
-  height: 140px;
-  transform: translate(24px, 24px) scale(1.3) !important;
-  background: radial-gradient(ellipse at 30% 30%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+  transform: translate(32px, 32px) scale(1.65) !important;
+  background: radial-gradient(ellipse at 30% 30%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
 }
 .c-ai.is-scattering .motion-blur-trail {
-  width: 140px;
-  height: 140px;
-  transform: translate(-24px, 24px) scale(1.3) !important;
-  background: radial-gradient(ellipse at 70% 30%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+  transform: translate(-32px, 32px) scale(1.65) !important;
+  background: radial-gradient(ellipse at 70% 30%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
 }
 .c-figma.is-scattering .motion-blur-trail {
-  width: 140px;
-  height: 140px;
-  transform: translate(24px, -24px) scale(1.3) !important;
-  background: radial-gradient(ellipse at 30% 70%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+  transform: translate(32px, -32px) scale(1.65) !important;
+  background: radial-gradient(ellipse at 30% 70%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
 }
 .c-pr.is-scattering .motion-blur-trail {
-  width: 140px;
-  height: 140px;
-  transform: translate(-24px, -24px) scale(1.3) !important;
-  background: radial-gradient(ellipse at 70% 70%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+  transform: translate(-32px, -32px) scale(1.65) !important;
+  background: radial-gradient(ellipse at 70% 70%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
 }
 
 
@@ -1566,7 +1603,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
-// ====== ICON SCATTER ANIMATION ======
+// ====== CINEMATIC SCATTER & STAGGERED REVEAL ======
 (function initScatter() {
   if (window.innerWidth < 540) {
     // On mobile, show content immediately
@@ -1579,46 +1616,50 @@ window.scrollTo(0, 0);
   var icons = document.querySelectorAll('.icon-container');
   if (!hero || !heroContent || !icons.length) return;
 
-  // Deck rotation angles for stacked physical appearance
-  var stackRotations = [-6, 5, -3, 4];
+  // Deck configuration: physical card-deck offsets & rotations
+  var deckStyles = [
+    { rot: -8, dx: -5, dy: -4 },
+    { rot: 6,  dx: 7,  dy: -2 },
+    { rot: -3, dx: -3, dy: 7  },
+    { rot: 4,  dx: 5,  dy: 5  }
+  ];
 
   function runScatter() {
-    // Optical center of the hero section
     var hRect = hero.getBoundingClientRect();
     var targetCenterX = hRect.left + hRect.width / 2;
-    var targetCenterY = hRect.top + Math.min(200, hRect.height * 0.42);
+    var targetCenterY = hRect.top + Math.min(210, hRect.height * 0.42);
 
-    // 1. Stack all 4 icons at center over title area
+    // 1. Stack all 4 icons at center before making them visible (no corner flash)
     icons.forEach(function(icon, i) {
       var iRect = icon.getBoundingClientRect();
       var currentCenterX = iRect.left + iRect.width / 2;
       var currentCenterY = iRect.top + iRect.height / 2;
-      var dx = targetCenterX - currentCenterX;
-      var dy = targetCenterY - currentCenterY;
-      var rot = stackRotations[i % stackRotations.length];
+      var conf = deckStyles[i % deckStyles.length];
+      var totalDx = (targetCenterX - currentCenterX) + conf.dx;
+      var totalDy = (targetCenterY - currentCenterY) + conf.dy;
 
       icon.style.transition = 'none';
-      icon.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) rotate(' + rot + 'deg) scale(1.08)';
+      icon.style.transform = 'translate(' + totalDx + 'px, ' + totalDy + 'px) rotate(' + conf.rot + 'deg) scale(1.12)';
       icon.style.zIndex = (60 - i);
+      icon.classList.add('is-ready');
     });
 
-    // 2. Viewers see them stacked for 550ms, then they scatter with motion blur path
+    // 2. Viewers clearly see them stacked in the center for 600ms
     setTimeout(function() {
+      // 3. Smooth, cinematic outward flight to corners
       icons.forEach(function(icon, i) {
         icon.classList.add('is-scattering');
-        // Cinematic curve: rich burst, smooth deceleration to corners
-        icon.style.transition = 'transform 0.85s cubic-bezier(0.18, 0.9, 0.25, 1) ' + (i * 0.05) + 's';
+        // Hardware-accelerated cinematic curve with light stagger
+        icon.style.transition = 'transform 0.88s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.045) + 's';
         icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
 
-      // 3. As the icons scatter outward and clear the center, reveal name and titles
+      // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
       setTimeout(function() {
-        if (heroContent) {
-          heroContent.classList.add('is-revealed');
-        }
+        heroContent.classList.add('is-revealed');
       }, 420);
 
-      // 4. Once icons land in corners, clear scatter classes so continuous float resumes
+      // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
       setTimeout(function() {
         icons.forEach(function(icon) {
           icon.classList.remove('is-scattering');
@@ -1626,15 +1667,13 @@ window.scrollTo(0, 0);
           icon.style.transform = '';
           icon.style.zIndex = '';
         });
-      }, 980);
-    }, 550);
+      }, 1050);
+    }, 600);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runScatter);
-  } else {
+  requestAnimationFrame(function() {
     runScatter();
-  }
+  });
 })();
 
 // Hash routing & Scroll fix
@@ -1758,8 +1797,8 @@ window.scrollTo(0, 0);
     setTimeout(type, delay);
   }
 
-  // Start typewriter after name and title have gracefully revealed
-  setTimeout(type, 1500);
+  // Start typewriter after name, titles, and stats have completed their cascade
+  setTimeout(type, 1850);
 })();
 
 // Lightbox Modal for Native Resolution Images
