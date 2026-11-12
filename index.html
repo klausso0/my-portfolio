@@ -368,28 +368,55 @@ a { color: inherit; }
   }
 }
 
-/* Motion Blur Trail during flight from center to corners (Composite-only: pure GPU transform & opacity) */
+/* Scatter SVG Paths: Blurred Glossy Beams along flight paths */
+.scatter-svg-paths {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.scatter-svg-paths.is-active {
+  opacity: 1;
+}
+.scatter-line {
+  stroke-dasharray: 650;
+  stroke-dashoffset: 650;
+  transition: stroke-dashoffset 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scatter-svg-paths.is-active .scatter-line {
+  stroke-dashoffset: 0;
+}
+
+/* Motion Blur Trail during flight from center to corners (Glossy comet wake) */
 .icon-container.is-scattering .motion-blur-trail {
   opacity: 1 !important;
-  filter: blur(16px) !important;
+  filter: blur(14px) !important;
   transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.88s ease !important;
   animation-play-state: paused !important;
 }
 .c-ps.is-scattering .motion-blur-trail {
-  transform: translate(32px, 32px) scale(1.65) !important;
-  background: radial-gradient(ellipse at 30% 30%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
+  transform: translate(36px, 36px) scale(1.8) rotate(45deg) !important;
+  background: radial-gradient(ellipse at 25% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
+  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
 }
 .c-ai.is-scattering .motion-blur-trail {
-  transform: translate(-32px, 32px) scale(1.65) !important;
-  background: radial-gradient(ellipse at 70% 30%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
+  transform: translate(-36px, 36px) scale(1.8) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at 75% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
+  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
 }
 .c-figma.is-scattering .motion-blur-trail {
-  transform: translate(32px, -32px) scale(1.65) !important;
-  background: radial-gradient(ellipse at 30% 70%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
+  transform: translate(36px, -36px) scale(1.8) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at 25% 75%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
+  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
 }
 .c-pr.is-scattering .motion-blur-trail {
-  transform: translate(-32px, -32px) scale(1.65) !important;
-  background: radial-gradient(ellipse at 70% 70%, rgba(97, 134, 200, 0.95) 0%, rgba(180, 215, 255, 0.45) 50%, transparent 80%) !important;
+  transform: translate(-36px, -36px) scale(1.8) rotate(45deg) !important;
+  background: radial-gradient(ellipse at 75% 75%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
+  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
 }
 
 
@@ -1144,50 +1171,73 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 16px;
 }
-.video-nav-btn {
-  width: 38px;
-  height: 38px;
+.video-nav-numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video-num-btn {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--card-border);
-  background: #ffffff;
-  color: #3b5062;
-  font-size: 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.94rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.22s ease;
+  /* Vivid signature blue number button */
+  color: #6186C8;
+  background: #ffffff;
+  border: 2px solid #6186C8;
+  box-shadow: 0 2px 8px rgba(97, 134, 200, 0.16);
+}
+.video-num-btn:hover {
+  background: rgba(97, 134, 200, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(97, 134, 200, 0.25);
+}
+.video-num-btn.active {
+  background: #6186C8;
+  color: #ffffff;
+  border-color: #6186C8;
+  box-shadow: 0 4px 16px rgba(97, 134, 200, 0.45);
+  transform: scale(1.08);
+}
+.video-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(97, 134, 200, 0.4);
+  background: #ffffff;
+  color: #6186C8; /* Blue arrows */
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(97, 134, 200, 0.12);
   transition: all 0.2s ease;
 }
-.video-nav-btn:hover {
+.video-nav-btn:hover:not(:disabled) {
   background: #6186C8;
   color: #ffffff;
   border-color: #6186C8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(97, 134, 200, 0.3);
+  box-shadow: 0 4px 12px rgba(97, 134, 200, 0.35);
 }
 .video-nav-btn:disabled {
-  opacity: 0.35;
+  opacity: 0.32;
   cursor: default;
-  transform: none;
-  box-shadow: none;
-}
-.video-nav-btn:disabled:hover {
-  background: #ffffff;
-  color: #3b5062;
   border-color: var(--card-border);
-}
-.video-nav-counter {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
   color: var(--mut);
-  min-width: 40px;
-  text-align: center;
 }
 
 @media (max-width: 820px) {
@@ -1218,6 +1268,49 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <main id="home">
   <section class="hero">
+    <!-- Blurred Glossy Trails / Beams connecting center to corners during scatter -->
+    <svg class="scatter-svg-paths" id="scatter-svg-paths" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <filter id="glossy-glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="9" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <linearGradient id="p-grad-ps" x1="100%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
+          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
+          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+        <linearGradient id="p-grad-ai" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
+          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
+          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+        <linearGradient id="p-grad-figma" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
+          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
+          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+        <linearGradient id="p-grad-pr" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
+          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
+          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
+          <stop offset="100%" stop-color="#ffffff" />
+        </linearGradient>
+      </defs>
+
+      <!-- 4 Glowing Glossy Paths along the flight trajectory -->
+      <line class="scatter-line" x1="500" y1="230" x2="100" y2="85" stroke="url(#p-grad-ps)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
+      <line class="scatter-line" x1="500" y1="230" x2="900" y2="65" stroke="url(#p-grad-ai)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
+      <line class="scatter-line" x1="500" y1="230" x2="110" y2="500" stroke="url(#p-grad-figma)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
+      <line class="scatter-line" x1="500" y1="230" x2="890" y2="510" stroke="url(#p-grad-pr)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
+    </svg>
+
     <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails & Ambient Aura Circles -->
     <div class="icon-container c-ps" title="Adobe Photoshop">
       <div class="icon-ambient-circle"></div>
@@ -1387,9 +1480,13 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             </video>
           </div>
           <div class="video-carousel-nav">
-            <button class="video-nav-btn" id="video-prev" aria-label="Previous video" disabled>‹</button>
-            <span class="video-nav-counter" id="video-counter">1 / 1</span>
-            <button class="video-nav-btn" id="video-next" aria-label="Next video" disabled>›</button>
+            <button class="video-nav-btn" id="video-prev" aria-label="Previous video">‹</button>
+            <div class="video-nav-numbers" id="video-nav-numbers">
+              <button class="video-num-btn active" data-index="0" title="Watch Edit #1">1</button>
+              <button class="video-num-btn" data-index="1" title="Watch Edit #2">2</button>
+              <button class="video-num-btn" data-index="2" title="Watch Edit #3">3</button>
+            </div>
+            <button class="video-nav-btn" id="video-next" aria-label="Next video">›</button>
           </div>
         </div>
         <div class="video-actions-sidebar">
@@ -1654,6 +1751,10 @@ window.scrollTo(0, 0);
         icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
 
+      // Activate glossy beams along flight paths
+      var svgPaths = document.getElementById('scatter-svg-paths');
+      if (svgPaths) svgPaths.classList.add('is-active');
+
       // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
       setTimeout(function() {
         heroContent.classList.add('is-revealed');
@@ -1661,6 +1762,7 @@ window.scrollTo(0, 0);
 
       // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
       setTimeout(function() {
+        if (svgPaths) svgPaths.classList.remove('is-active');
         icons.forEach(function(icon) {
           icon.classList.remove('is-scattering');
           icon.style.transition = '';
@@ -1843,7 +1945,7 @@ window.scrollTo(0, 0);
 })();
 
 // ====== VIDEO CAROUSEL ======
-// To add more videos: push objects into the videoList array below.
+// To add more videos: update or push objects into the videoList array below.
 // Each object: { src: 'videos/filename.mp4', raw: 'google-drive-url', premiere: 'google-drive-url' }
 (function(){
   var videoList = [
@@ -1851,40 +1953,69 @@ window.scrollTo(0, 0);
       src: 'videos/video-edit.mp4',
       raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
       premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
+    },
+    {
+      src: 'videos/video-edit.mp4', // Slot ready for edit #2
+      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
+      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
+    },
+    {
+      src: 'videos/video-edit.mp4', // Slot ready for edit #3
+      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
+      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
     }
-    // Add more videos here, e.g.:
-    // { src: 'videos/video-edit-2.mp4', raw: '...', premiere: '...' }
   ];
 
   var videoEl = document.getElementById('portfolio-video');
   var prevBtn = document.getElementById('video-prev');
   var nextBtn = document.getElementById('video-next');
-  var counter = document.getElementById('video-counter');
+  var numContainer = document.getElementById('video-nav-numbers');
   var rawLink = document.getElementById('btn-raw-video');
   var prLink  = document.getElementById('btn-premiere-file');
-  if (!videoEl || !prevBtn || !nextBtn || videoList.length < 1) return;
+  if (!videoEl || !numContainer) return;
 
   var currentIndex = 0;
 
   function loadVideo(idx) {
+    if (idx < 0 || idx >= videoList.length) return;
+    currentIndex = idx;
     videoEl.pause();
-    videoEl.querySelector('source').src = videoList[idx].src;
+    var source = videoEl.querySelector('source');
+    if (source) source.src = videoList[idx].src;
     videoEl.load();
     if (rawLink) rawLink.href = videoList[idx].raw;
     if (prLink)  prLink.href  = videoList[idx].premiere;
-    counter.textContent = (idx + 1) + ' / ' + videoList.length;
-    prevBtn.disabled = (idx === 0);
-    nextBtn.disabled = (idx === videoList.length - 1);
+
+    // Update active highlight on 1, 2, 3 buttons
+    var btns = numContainer.querySelectorAll('.video-num-btn');
+    btns.forEach(function(b, i) {
+      b.classList.toggle('active', i === idx);
+    });
+
+    if (prevBtn) prevBtn.disabled = (idx === 0);
+    if (nextBtn) nextBtn.disabled = (idx === videoList.length - 1);
   }
 
-  prevBtn.addEventListener('click', function() {
-    if (currentIndex > 0) { currentIndex--; loadVideo(currentIndex); }
-  });
-  nextBtn.addEventListener('click', function() {
-    if (currentIndex < videoList.length - 1) { currentIndex++; loadVideo(currentIndex); }
+  // Bind click handlers to 1, 2, 3 buttons
+  numContainer.querySelectorAll('.video-num-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-index'), 10);
+      loadVideo(idx);
+    });
   });
 
-  // Initial state
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      if (currentIndex > 0) loadVideo(currentIndex - 1);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (currentIndex < videoList.length - 1) loadVideo(currentIndex + 1);
+    });
+  }
+
+  // Initial state: video 1 active
   loadVideo(0);
 })();
 </script>
