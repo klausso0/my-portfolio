@@ -821,6 +821,123 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
+/* 4-Column Graphic Works Grid & Native Modal */
+.graphic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.graphic-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 14px rgba(45, 80, 130, 0.05);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.graphic-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(45, 80, 130, 0.12);
+}
+.graphic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.graphic-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(2px);
+}
+.graphic-item:hover .graphic-item-overlay {
+  opacity: 1;
+}
+
+/* Lightbox Modal for Native Resolution View */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 14, 25, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 92vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.lightbox-caption {
+  font-family: 'DM Sans', sans-serif;
+  color: #f1f5f9;
+  margin-top: 14px;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.lightbox-close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 900px) {
+  .graphic-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .graphic-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 760px) {
   .cards, .contact { grid-template-columns: 1fr; }
   .hero { padding-top: 72px; }
@@ -949,40 +1066,68 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="graphic-works">
     <div class="wrap">
       <h2 class="sec reveal">Graphic works</h2>
-      <p class="sec-sub reveal">These are some of the graphic design works I have done. You can click on each folder to view the full campaign galleries.</p>
-      <div class="cards">
-        <a class="card-wrapper reveal" href="#kraymer-art">
-          <div class="folder-tab"></div>
-          <div class="card">
-            <div class="media" style="--m:#03060f"><img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits launch post showing blue sapphire earrings on dark velvet" loading="lazy"></div>
-            <h3>Kraymer Art: “Beyond Limits” Jewelry Launch</h3>
-            <p>Jewelry launch campaign in deep blue and silver.</p>
-            <span class="open">Open project</span>
-          </div>
-        </a>
-
-        <a class="card-wrapper reveal" href="#sadiksha-overseas">
-          <div class="folder-tab"></div>
-          <div class="card">
-            <div class="media" style="--m:#dbe9f7"><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas trifold brochure in blue and white" loading="lazy"></div>
-            <h3>Sadiksha Overseas: One Brand, Every Channel</h3>
-            <p>Brochure, job posts, and festival greetings for a recruitment agency.</p>
-            <span class="open">Open project</span>
-          </div>
-        </a>
-
-        <a class="card-wrapper reveal" href="#client-campaigns">
-          <div class="folder-tab"></div>
-          <div class="card">
-            <div class="media" style="--m:#6e0f12"><img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year party combo offer post" loading="lazy"></div>
-            <h3>Client Campaigns: Food, Loans and Tax</h3>
-            <p>Social posts and ad campaigns for businesses across diverse industries.</p>
-            <span class="open">Open project</span>
-          </div>
-        </a>
+      <p class="sec-sub reveal">These are some of the graphic design works I have done. You can click on any design to inspect it in full native resolution.</p>
+      <div class="graphic-grid">
+        <div class="graphic-item reveal" data-src="images/kraymer-earrings.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings">
+          <img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/kraymer-bracelet.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Bracelet">
+          <img src="images/kraymer-bracelet.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Bracelet" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/campaign-smartmortgage.jpg" data-alt="SmartMortgage Hub - Fast Approval Home Loan Campaign">
+          <img src="images/campaign-smartmortgage.jpg" alt="SmartMortgage Hub - Fast Approval Home Loan Campaign" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/campaign-tirra-mcdonalds.jpg" data-alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies">
+          <img src="images/campaign-tirra-mcdonalds.jpg" alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/campaign-cold-coffee.jpg" data-alt="Premium Cold Coffee Campaign">
+          <img src="images/campaign-cold-coffee.jpg" alt="Premium Cold Coffee Campaign" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign">
+          <img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign">
+          <img src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/sadiksha-employment-trust.jpg" data-alt="Sadiksha Overseas - Foreign Employment Trust Campaign">
+          <img src="images/sadiksha-employment-trust.jpg" alt="Sadiksha Overseas - Foreign Employment Trust Campaign" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post">
+          <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting">
+          <img src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting">
+          <img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
+        <div class="graphic-item reveal" data-src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels">
+          <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels" loading="lazy">
+          <div class="graphic-item-overlay">View Full Res ↗</div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Lightbox Modal for Native Resolution Viewing -->
+  <div id="lightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close full view">&times;</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
 
   <!-- Contact Section -->
   <section id="contact" class="reveal">
@@ -1255,6 +1400,47 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   }
 
   type();
+})();
+
+// Lightbox Modal for Native Resolution Images
+(function(){
+  var modal = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var caption = document.getElementById('lightbox-caption');
+  var closeBtn = document.getElementById('lightbox-close');
+  if (!modal || !img) return;
+
+  function openLightbox(src, alt) {
+    img.src = src;
+    img.alt = alt;
+    caption.textContent = alt || '';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    img.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.graphic-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var src = item.getAttribute('data-src');
+      var alt = item.getAttribute('data-alt');
+      openLightbox(src, alt);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeLightbox();
+  });
 })();
 </script>
 </body>
