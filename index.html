@@ -17,6 +17,17 @@
 <link rel="preload" as="image" href="images/sadiksha-brochure-outer.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/campaign-swaadmandu.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/smartcv-homepage.jpg" fetchpriority="high">
+<script>
+// Prevent auto-scroll restoration on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+// Strip section hash if present so browser reload never auto-jumps to sections like #contact
+if (window.location.hash && !window.location.hash.match(/^#(smartcv-builders|kraymer-art|sadiksha-overseas|client-campaigns)$/)) {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+window.scrollTo(0, 0);
+</script>
 <style>
 :root {
   --bg: #f9f6ef; /* Warm creamy ivory */
@@ -294,60 +305,6 @@ a { color: inherit; }
 .floating-icon:hover {
   filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
-
-/* Icon Scatter-In Animation: start stacked at center, burst to corners */
-.icon-container {
-  /* Start at center of hero (will be overridden by JS after scatter) */
-  transition: none;
-}
-.icon-container.scatter-ready {
-  top: 50% !important;
-  left: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: translate(-50%, -50%) scale(0.7);
-  opacity: 0.9;
-}
-.icon-container.scatter-ready .floating-icon,
-.icon-container.scatter-ready .motion-blur-trail,
-.icon-container.scatter-ready .icon-ambient-circle {
-  animation-play-state: paused;
-}
-.icon-container.scatter-go {
-  transition: top 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-              left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-              right 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-              bottom 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.3s ease;
-  opacity: 1;
-  transform: translate(0, 0) scale(1);
-}
-.c-ps.scatter-go {
-  top: 14% !important;
-  left: 8% !important;
-}
-.c-ai.scatter-go {
-  top: 10% !important;
-  right: 9% !important;
-  left: auto !important;
-}
-.c-figma.scatter-go {
-  bottom: 14% !important;
-  left: 9% !important;
-  top: auto !important;
-}
-.c-pr.scatter-go {
-  bottom: 12% !important;
-  right: 8% !important;
-  top: auto !important;
-  left: auto !important;
-}
-/* Stagger each icon slightly */
-.c-ps.scatter-go   { transition-delay: 0s; }
-.c-ai.scatter-go   { transition-delay: 0.06s; }
-.c-figma.scatter-go { transition-delay: 0.12s; }
-.c-pr.scatter-go   { transition-delay: 0.18s; }
 
 
 /* Ensure icons remain visible on all screen sizes */
@@ -1556,32 +1513,67 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 </article>
 
 <script>
+// Force scroll to top on every page load/reload
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // ====== ICON SCATTER ANIMATION ======
-(function(){
+(function initScatter() {
+  if (window.innerWidth < 540) return; // Icons hidden on mobile
+  var hero = document.querySelector('.hero');
+  var nameEl = document.querySelector('.hero-name');
   var icons = document.querySelectorAll('.icon-container');
-  if (!icons.length || window.innerWidth < 540) return; // skip on mobile where icons are hidden
+  if (!hero || !nameEl || !icons.length) return;
 
-  // 1. Immediately stack them all at center
-  icons.forEach(function(ic) { ic.classList.add('scatter-ready'); });
+  // Deck rotation angles for stacked physical appearance
+  var stackRotations = [-6, 5, -3, 4];
 
-  // 2. After a tiny paint delay, trigger the scatter outward
-  requestAnimationFrame(function(){
-    setTimeout(function(){
-      icons.forEach(function(ic) {
-        ic.classList.remove('scatter-ready');
-        ic.classList.add('scatter-go');
+  function runScatter() {
+    // Target center over "Neeraj Bhatt"
+    var nRect = nameEl.getBoundingClientRect();
+    var targetCenterX = nRect.left + nRect.width / 2;
+    var targetCenterY = nRect.top + nRect.height / 2;
+
+    // 1. Stack all 4 icons at center over title
+    icons.forEach(function(icon, i) {
+      var iRect = icon.getBoundingClientRect();
+      var currentCenterX = iRect.left + iRect.width / 2;
+      var currentCenterY = iRect.top + iRect.height / 2;
+      var dx = targetCenterX - currentCenterX;
+      var dy = targetCenterY - currentCenterY;
+      var rot = stackRotations[i % stackRotations.length];
+
+      icon.style.transition = 'none';
+      icon.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) rotate(' + rot + 'deg) scale(0.92)';
+      icon.style.zIndex = (60 - i);
+    });
+
+    // 2. Burst outward to corner positions after 160ms
+    setTimeout(function() {
+      icons.forEach(function(icon, i) {
+        icon.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.04) + 's';
+        icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
-      // 3. After scatter completes, remove scatter classes so normal float resumes
-      setTimeout(function(){
-        icons.forEach(function(ic) {
-          ic.classList.remove('scatter-go');
+
+      // 3. Clear inline transforms so natural floating and responsive CSS continue
+      setTimeout(function() {
+        icons.forEach(function(icon) {
+          icon.style.transition = '';
+          icon.style.transform = '';
+          icon.style.zIndex = '';
         });
-      }, 650);
-    }, 120);
-  });
+      }, 750);
+    }, 160);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runScatter);
+  } else {
+    runScatter();
+  }
 })();
 
-// Hash routing
+// Hash routing & Scroll fix
 (function(){
   var home = document.getElementById('home'), base = document.title;
   function route(isInitial){
@@ -1595,8 +1587,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       window.scrollTo(0, 0);
     } else {
       document.title = base;
-      if (isInitial && (id === 'work' || !id)) {
-        // When opening or reloading the home page, always stay at the top hero section
+      if (isInitial) {
+        // ALWAYS stay at top on initial load/reload
         window.scrollTo(0, 0);
       } else {
         var t = id && document.getElementById(id);
@@ -1606,6 +1598,24 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   }
   window.addEventListener('hashchange', function(){ route(false); });
   route(true);
+
+  // Smooth scroll for page section anchors without setting #hash in URL
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    var targetId = anchor.getAttribute('href').slice(1);
+    var targetEl = document.getElementById(targetId);
+    if (targetEl && !targetEl.classList.contains('project')) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  });
+
+  window.addEventListener('load', function() {
+    if (!location.hash || !document.querySelector(location.hash + '.project')) {
+      window.scrollTo(0, 0);
+    }
+  });
 })();
 
 // Scroll Reveal Observer
@@ -1623,18 +1633,16 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           }
         });
       }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -20px 0px'
       });
 
       reveals.forEach(function(el) {
-        // If element is already below the viewport, observe it
         var rect = el.getBoundingClientRect();
-        if (rect.top > window.innerHeight * 0.85) {
+        if (rect.top > window.innerHeight * 0.9) {
           observer.observe(el);
         } else {
-          // If already in top viewport on load, show it smoothly right away
-          setTimeout(function(){ el.classList.add('is-visible'); }, 80);
+          setTimeout(function(){ el.classList.add('is-visible'); }, 60);
         }
       });
     } else {
