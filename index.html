@@ -306,6 +306,55 @@ a { color: inherit; }
   filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
 
+/* Hero Content Entrance: hidden while icons are stacked in center, revealed after scatter */
+.hero-content {
+  opacity: 0;
+  transform: translateY(22px) scale(0.96);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.hero-content.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+@media (max-width: 540px) {
+  .hero-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Motion Blur Trail during flight from center to corners */
+.icon-container.is-scattering .motion-blur-trail {
+  opacity: 1 !important;
+  filter: blur(14px) !important;
+  transition: width 0.82s ease, height 0.82s ease, opacity 0.82s ease, transform 0.82s ease !important;
+}
+.c-ps.is-scattering .motion-blur-trail {
+  width: 140px;
+  height: 140px;
+  transform: translate(24px, 24px) scale(1.3) !important;
+  background: radial-gradient(ellipse at 30% 30%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+}
+.c-ai.is-scattering .motion-blur-trail {
+  width: 140px;
+  height: 140px;
+  transform: translate(-24px, 24px) scale(1.3) !important;
+  background: radial-gradient(ellipse at 70% 30%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+}
+.c-figma.is-scattering .motion-blur-trail {
+  width: 140px;
+  height: 140px;
+  transform: translate(24px, -24px) scale(1.3) !important;
+  background: radial-gradient(ellipse at 30% 70%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+}
+.c-pr.is-scattering .motion-blur-trail {
+  width: 140px;
+  height: 140px;
+  transform: translate(-24px, -24px) scale(1.3) !important;
+  background: radial-gradient(ellipse at 70% 70%, rgba(97, 134, 200, 0.85) 0%, rgba(180, 215, 255, 0.4) 50%, transparent 80%) !important;
+}
+
 
 /* Ensure icons remain visible on all screen sizes */
 @media (max-width: 900px) {
@@ -1176,7 +1225,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       </div>
     </div>
 
-    <div class="wrap">
+    <div class="wrap hero-content" id="hero-content">
       <span class="hi-badge">HELLO, I’M</span>
       
       <!-- Name in Instrument Serif Italic -->
@@ -1519,22 +1568,27 @@ window.scrollTo(0, 0);
 
 // ====== ICON SCATTER ANIMATION ======
 (function initScatter() {
-  if (window.innerWidth < 540) return; // Icons hidden on mobile
+  if (window.innerWidth < 540) {
+    // On mobile, show content immediately
+    var hc = document.getElementById('hero-content');
+    if (hc) hc.classList.add('is-revealed');
+    return;
+  }
   var hero = document.querySelector('.hero');
-  var nameEl = document.querySelector('.hero-name');
+  var heroContent = document.getElementById('hero-content');
   var icons = document.querySelectorAll('.icon-container');
-  if (!hero || !nameEl || !icons.length) return;
+  if (!hero || !heroContent || !icons.length) return;
 
   // Deck rotation angles for stacked physical appearance
   var stackRotations = [-6, 5, -3, 4];
 
   function runScatter() {
-    // Target center over "Neeraj Bhatt"
-    var nRect = nameEl.getBoundingClientRect();
-    var targetCenterX = nRect.left + nRect.width / 2;
-    var targetCenterY = nRect.top + nRect.height / 2;
+    // Optical center of the hero section
+    var hRect = hero.getBoundingClientRect();
+    var targetCenterX = hRect.left + hRect.width / 2;
+    var targetCenterY = hRect.top + Math.min(200, hRect.height * 0.42);
 
-    // 1. Stack all 4 icons at center over title
+    // 1. Stack all 4 icons at center over title area
     icons.forEach(function(icon, i) {
       var iRect = icon.getBoundingClientRect();
       var currentCenterX = iRect.left + iRect.width / 2;
@@ -1544,26 +1598,36 @@ window.scrollTo(0, 0);
       var rot = stackRotations[i % stackRotations.length];
 
       icon.style.transition = 'none';
-      icon.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) rotate(' + rot + 'deg) scale(0.92)';
+      icon.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) rotate(' + rot + 'deg) scale(1.08)';
       icon.style.zIndex = (60 - i);
     });
 
-    // 2. Burst outward to corner positions after 160ms
+    // 2. Viewers see them stacked for 550ms, then they scatter with motion blur path
     setTimeout(function() {
       icons.forEach(function(icon, i) {
-        icon.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.04) + 's';
+        icon.classList.add('is-scattering');
+        // Cinematic curve: rich burst, smooth deceleration to corners
+        icon.style.transition = 'transform 0.85s cubic-bezier(0.18, 0.9, 0.25, 1) ' + (i * 0.05) + 's';
         icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
 
-      // 3. Clear inline transforms so natural floating and responsive CSS continue
+      // 3. As the icons scatter outward and clear the center, reveal name and titles
+      setTimeout(function() {
+        if (heroContent) {
+          heroContent.classList.add('is-revealed');
+        }
+      }, 420);
+
+      // 4. Once icons land in corners, clear scatter classes so continuous float resumes
       setTimeout(function() {
         icons.forEach(function(icon) {
+          icon.classList.remove('is-scattering');
           icon.style.transition = '';
           icon.style.transform = '';
           icon.style.zIndex = '';
         });
-      }, 750);
-    }, 160);
+      }, 980);
+    }, 550);
   }
 
   if (document.readyState === 'loading') {
@@ -1694,7 +1758,8 @@ window.scrollTo(0, 0);
     setTimeout(type, delay);
   }
 
-  type();
+  // Start typewriter after name and title have gracefully revealed
+  setTimeout(type, 1500);
 })();
 
 // Lightbox Modal for Native Resolution Images
