@@ -295,6 +295,61 @@ a { color: inherit; }
   filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
 
+/* Icon Scatter-In Animation: start stacked at center, burst to corners */
+.icon-container {
+  /* Start at center of hero (will be overridden by JS after scatter) */
+  transition: none;
+}
+.icon-container.scatter-ready {
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0.9;
+}
+.icon-container.scatter-ready .floating-icon,
+.icon-container.scatter-ready .motion-blur-trail,
+.icon-container.scatter-ready .icon-ambient-circle {
+  animation-play-state: paused;
+}
+.icon-container.scatter-go {
+  transition: top 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              right 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              bottom 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.3s ease;
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+.c-ps.scatter-go {
+  top: 14% !important;
+  left: 8% !important;
+}
+.c-ai.scatter-go {
+  top: 10% !important;
+  right: 9% !important;
+  left: auto !important;
+}
+.c-figma.scatter-go {
+  bottom: 14% !important;
+  left: 9% !important;
+  top: auto !important;
+}
+.c-pr.scatter-go {
+  bottom: 12% !important;
+  right: 8% !important;
+  top: auto !important;
+  left: auto !important;
+}
+/* Stagger each icon slightly */
+.c-ps.scatter-go   { transition-delay: 0s; }
+.c-ai.scatter-go   { transition-delay: 0.06s; }
+.c-figma.scatter-go { transition-delay: 0.12s; }
+.c-pr.scatter-go   { transition-delay: 0.18s; }
+
+
 /* Ensure icons remain visible on all screen sizes */
 @media (max-width: 900px) {
   .floating-icon {
@@ -442,11 +497,12 @@ a { color: inherit; }
 /* SELECTED PROJECTS & GRAPHIC WORKS */
 #work, #graphic-works, #contact { padding: 36px 0 64px; }
 h2.sec {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.65rem;
-  font-weight: 700;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 1.85rem;
+  font-weight: 400;
   line-height: 1.2;
-  color: #203544;
+  color: #6186C8;
   margin-bottom: 8px;
 }
 .sec-sub {
@@ -1034,6 +1090,63 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   opacity: 0.85;
 }
 
+/* Video Carousel Navigation */
+.video-carousel-wrap {
+  position: relative;
+  width: 310px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+.video-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+.video-nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background: #ffffff;
+  color: #3b5062;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+.video-nav-btn:hover {
+  background: #6186C8;
+  color: #ffffff;
+  border-color: #6186C8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(97, 134, 200, 0.3);
+}
+.video-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+.video-nav-btn:disabled:hover {
+  background: #ffffff;
+  color: #3b5062;
+  border-color: var(--card-border);
+}
+.video-nav-counter {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--mut);
+  min-width: 40px;
+  text-align: center;
+}
+
 @media (max-width: 820px) {
   .video-showcase { grid-template-columns: 1fr; }
 }
@@ -1223,11 +1336,18 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <h2 class="sec reveal">Video editing</h2>
       <p class="sec-sub reveal">These videos weren't done for any client; I edited them to practice video editing.</p>
       <div class="video-showcase reveal">
-        <div class="video-player-container">
-          <video id="portfolio-video" controls playsinline preload="metadata">
-            <source src="videos/video-edit.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+        <div class="video-carousel-wrap">
+          <div class="video-player-container">
+            <video id="portfolio-video" controls playsinline preload="metadata">
+              <source src="videos/video-edit.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-carousel-nav">
+            <button class="video-nav-btn" id="video-prev" aria-label="Previous video" disabled>‹</button>
+            <span class="video-nav-counter" id="video-counter">1 / 1</span>
+            <button class="video-nav-btn" id="video-next" aria-label="Next video" disabled>›</button>
+          </div>
         </div>
         <div class="video-actions-sidebar">
           <a id="btn-raw-video" class="video-btn primary" href="https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing" target="_blank" rel="noopener">
@@ -1436,6 +1556,31 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 </article>
 
 <script>
+// ====== ICON SCATTER ANIMATION ======
+(function(){
+  var icons = document.querySelectorAll('.icon-container');
+  if (!icons.length || window.innerWidth < 540) return; // skip on mobile where icons are hidden
+
+  // 1. Immediately stack them all at center
+  icons.forEach(function(ic) { ic.classList.add('scatter-ready'); });
+
+  // 2. After a tiny paint delay, trigger the scatter outward
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      icons.forEach(function(ic) {
+        ic.classList.remove('scatter-ready');
+        ic.classList.add('scatter-go');
+      });
+      // 3. After scatter completes, remove scatter classes so normal float resumes
+      setTimeout(function(){
+        icons.forEach(function(ic) {
+          ic.classList.remove('scatter-go');
+        });
+      }, 650);
+    }, 120);
+  });
+})();
+
 // Hash routing
 (function(){
   var home = document.getElementById('home'), base = document.title;
@@ -1583,6 +1728,52 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeLightbox();
   });
+})();
+
+// ====== VIDEO CAROUSEL ======
+// To add more videos: push objects into the videoList array below.
+// Each object: { src: 'videos/filename.mp4', raw: 'google-drive-url', premiere: 'google-drive-url' }
+(function(){
+  var videoList = [
+    {
+      src: 'videos/video-edit.mp4',
+      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
+      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
+    }
+    // Add more videos here, e.g.:
+    // { src: 'videos/video-edit-2.mp4', raw: '...', premiere: '...' }
+  ];
+
+  var videoEl = document.getElementById('portfolio-video');
+  var prevBtn = document.getElementById('video-prev');
+  var nextBtn = document.getElementById('video-next');
+  var counter = document.getElementById('video-counter');
+  var rawLink = document.getElementById('btn-raw-video');
+  var prLink  = document.getElementById('btn-premiere-file');
+  if (!videoEl || !prevBtn || !nextBtn || videoList.length < 1) return;
+
+  var currentIndex = 0;
+
+  function loadVideo(idx) {
+    videoEl.pause();
+    videoEl.querySelector('source').src = videoList[idx].src;
+    videoEl.load();
+    if (rawLink) rawLink.href = videoList[idx].raw;
+    if (prLink)  prLink.href  = videoList[idx].premiere;
+    counter.textContent = (idx + 1) + ' / ' + videoList.length;
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === videoList.length - 1);
+  }
+
+  prevBtn.addEventListener('click', function() {
+    if (currentIndex > 0) { currentIndex--; loadVideo(currentIndex); }
+  });
+  nextBtn.addEventListener('click', function() {
+    if (currentIndex < videoList.length - 1) { currentIndex++; loadVideo(currentIndex); }
+  });
+
+  // Initial state
+  loadVideo(0);
 })();
 </script>
 </body>
