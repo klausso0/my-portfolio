@@ -429,11 +429,14 @@ a { color: inherit; }
 }
 .about-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.22rem; /* increased by ~3px for optimal presence */
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.68;
   color: #2b3e4a;
-  max-width: 800px;
+  max-width: 820px;
   font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* SELECTED PROJECTS & GRAPHIC WORKS */
@@ -1142,9 +1145,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section class="about-section reveal">
     <div class="wrap">
       <span class="section-tag">About me</span>
-      <p class="about-text">
-        I’m a graphic designer who researches before designing. Here’s a selection of brand, social, and campaign work, and the thinking behind it.
-      </p>
+      <div class="about-text">
+        <p>
+          I’ve been working as a graphic designer for a little over a year. Somewhere along the way I got really curious about the thinking behind a product: why someone would like it and how they’d actually use it. That’s now the part of design I enjoy most.
+        </p>
+        <p>
+          I also love editing. I haven’t done it professionally yet, but I want to get better at it, along with app and website building. I’m not looking for a place where I just get a task and hand it in. I want to be somewhere I can learn everything the work has to offer and be part of how things get made.
+        </p>
+        <p>
+          Where I think I’d be most useful is looking at a project as a whole: checking the work, saying what’s wrong with it, and helping the team figure out how to fix it. I’d like to grow into that.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1210,7 +1221,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="video-editing">
     <div class="wrap">
       <h2 class="sec reveal">Video editing</h2>
-      <p class="sec-sub reveal">Video cut, paced, and graded for digital campaigns and social media.</p>
+      <p class="sec-sub reveal">These are some videos I edited to practice.</p>
       <div class="video-showcase reveal">
         <div class="video-player-container">
           <video id="portfolio-video" controls playsinline preload="metadata">
@@ -1219,12 +1230,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </video>
         </div>
         <div class="video-actions-sidebar">
-          <a id="btn-raw-video" class="video-btn primary" href="#" target="_blank" rel="noopener">
+          <a id="btn-raw-video" class="video-btn primary" href="https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Raw Video ↗</span>
             <span class="video-btn-desc">Unedited original footage</span>
           </a>
-          <a id="btn-premiere-file" class="video-btn secondary" href="#" download>
-            <span class="video-btn-title">See Premiere File ↓</span>
+          <a id="btn-premiere-file" class="video-btn secondary" href="https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing" target="_blank" rel="noopener">
+            <span class="video-btn-title">See Premiere File ↗</span>
             <span class="video-btn-desc">Project sequence & cut (.prproj)</span>
           </a>
         </div>
