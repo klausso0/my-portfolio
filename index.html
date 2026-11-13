@@ -414,29 +414,29 @@ a { color: inherit; }
 /* Motion Blur Trail during scatter flight (Fluid watery wake) */
 .icon-container.is-scattering .motion-blur-trail {
   opacity: 1 !important;
-  filter: blur(22px) !important;
-  transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.88s ease, filter 0.6s ease !important;
+  filter: blur(25px) !important;
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.15s ease, filter 0.8s ease !important;
   animation-play-state: paused !important;
 }
 .c-ps.is-scattering .motion-blur-trail {
-  transform: translate(36px, 36px) scale(2.2) rotate(45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
-  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
+  transform: translate(40px, 40px) scale(2.35) rotate(45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
+  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
 }
 .c-ai.is-scattering .motion-blur-trail {
-  transform: translate(-36px, 36px) scale(2.2) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
-  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
+  transform: translate(-40px, 40px) scale(2.35) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
+  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
 }
 .c-figma.is-scattering .motion-blur-trail {
-  transform: translate(36px, -36px) scale(2.2) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
-  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
+  transform: translate(40px, -40px) scale(2.35) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
+  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
 }
 .c-pr.is-scattering .motion-blur-trail {
-  transform: translate(-36px, -36px) scale(2.2) rotate(45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
-  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
+  transform: translate(-40px, -40px) scale(2.35) rotate(45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
+  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
 }
 
 
@@ -1769,13 +1769,13 @@ window.scrollTo(0, 0);
       icon.classList.add('is-ready');
     });
 
-    // 2. Viewers clearly see them stacked in the center for 600ms
+    // 2. Viewers clearly see them stacked in the center for 700ms
     setTimeout(function() {
-      // 3. Smooth, cinematic outward flight to corners
+      // 3. Smooth, cinematic outward flight to corners (increased slightly for more visible flight)
       icons.forEach(function(icon, i) {
         icon.classList.add('is-scattering');
         // Hardware-accelerated cinematic curve with light stagger
-        icon.style.transition = 'transform 0.88s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.045) + 's';
+        icon.style.transition = 'transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.055) + 's';
         icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
 
@@ -1786,7 +1786,7 @@ window.scrollTo(0, 0);
       // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
       setTimeout(function() {
         heroContent.classList.add('is-revealed');
-      }, 420);
+      }, 500);
 
       // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
       setTimeout(function() {
@@ -1797,8 +1797,8 @@ window.scrollTo(0, 0);
           icon.style.transform = '';
           icon.style.zIndex = '';
         });
-      }, 1050);
-    }, 600);
+      }, 1380);
+    }, 700);
   }
 
   requestAnimationFrame(function() {
