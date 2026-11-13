@@ -711,6 +711,7 @@ article[hidden] {
 }
 .project { padding: 40px 0 96px; }
 .btn-close-gallery {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1402,7 +1403,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="video-editing">
     <div class="wrap">
       <h2 class="sec reveal">Video editing</h2>
-      <p class="sec-sub reveal">These videos weren't done for any client; I edited them to practice video editing.</p>
+      <p class="sec-sub reveal">These videos weren't done for any client; I edited them to practice video editing. I am more than capable of doing editing with text, cuts, transitions, and sound, and I wish to learn motion graphics and reach a more proficient level in color grading.</p>
       <div class="video-showcase reveal">
         <div class="video-carousel-wrap">
           <div class="video-player-container">
@@ -1484,7 +1485,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project dark" id="kraymer-art" data-t="Kraymer Art" hidden>
   <div class="wrap">
-    <a class="btn-close-gallery" href="#work">Close gallery</a>
+    <a class="btn-close-gallery" href="#work">← Close gallery</a>
     <h1>Kraymer Art: “Beyond Limits” Jewelry Launch</h1>
     <p class="lede">Designed a launch campaign for two jewelry pieces, from concept and copy to the final layout. I used deep blue, gold, and dark backgrounds so the stones stand out and the brand feels exclusive.</p>
     
@@ -1498,7 +1499,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project" id="sadiksha-overseas" data-t="Sadiksha Overseas" hidden>
   <div class="wrap">
-    <a class="btn-close-gallery" href="#work">Close gallery</a>
+    <a class="btn-close-gallery" href="#work">← Close gallery</a>
     <h1>Sadiksha Overseas: One Brand, Every Channel</h1>
     <p class="lede">Designed the brochure, job posts, festival greetings, and promotional posts for an overseas recruitment agency. Every piece looks like it came from the same company, whether printed or posted online.</p>
     <figure><img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas brochure, outside panels: why choose us, about the company, seamless recruitment solutions" loading="lazy" decoding="async"><figcaption>Trifold brochure, outside.</figcaption></figure>
@@ -1514,7 +1515,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project" id="client-campaigns" data-t="Client Campaigns" hidden>
   <div class="wrap">
-    <a class="btn-close-gallery" href="#work">Close gallery</a>
+    <a class="btn-close-gallery" href="#work">← Close gallery</a>
     <h1>Client Campaigns</h1>
     <p class="lede">Social and digital campaign designs created for various businesses and brands, each tailored with distinct visual identities, clear focal points, and compelling calls to action.</p>
     <div class="g2">
@@ -1529,7 +1530,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <article class="project" id="smartcv-builders" data-t="SmartCV Builders" hidden>
   <div class="wrap">
-    <a class="btn-close-gallery" href="#work">Close gallery</a>
+    <a class="btn-close-gallery" href="#work">← Close gallery</a>
     <h1>SmartCV Builders</h1>
     <div class="smartcv-header-banner">
       <img src="images/smartcv-logo-clean.png" alt="SmartCV Builders logo" loading="lazy">
@@ -1623,7 +1624,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
     <h2>Real Feedback & What's next</h2>
     <p>Older generation users and peers who were routinely asked to help others format resumes now share SmartCV Builders as their go-to recommendation. My next priority is optimizing page titles to convert more search impressions into direct click-throughs.</p>
-    <a class="visit" href="https://smartcvbuilders.com" target="_blank" rel="noopener">Visit smartcvbuilders.com</a>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:24px;">
+      <a class="visit" href="https://smartcvbuilders.com" target="_blank" rel="noopener">Visit smartcvbuilders.com</a>
+      <a class="btn-close-gallery" href="#work" style="margin-bottom:0;">← Close gallery</a>
+    </div>
   </div>
 </article>
 
@@ -1736,8 +1740,9 @@ window.scrollTo(0, 0);
   window.addEventListener('hashchange', function(){ route(false); });
   route(true);
 
-  // Smooth scroll for page section anchors without setting #hash in URL
+  // Smooth scroll for page section anchors without setting #hash in URL (ignore close gallery links)
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    if (anchor.classList.contains('btn-close-gallery')) return;
     var targetId = anchor.getAttribute('href').slice(1);
     var targetEl = document.getElementById(targetId);
     if (targetEl && !targetEl.classList.contains('project')) {
@@ -1746,6 +1751,31 @@ window.scrollTo(0, 0);
         targetEl.scrollIntoView({ behavior: 'smooth' });
       });
     }
+  });
+
+  // Explicit close gallery handler for case study / project views
+  document.querySelectorAll('.btn-close-gallery').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var list = document.querySelectorAll('.project');
+      list.forEach(function(el){ el.hidden = true; });
+      home.hidden = false;
+      document.body.classList.remove('dark');
+      document.title = base;
+
+      if (history.pushState) {
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      } else {
+        location.hash = '';
+      }
+
+      var workSection = document.getElementById('work');
+      if (workSection) {
+        workSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
   });
 
   window.addEventListener('load', function() {
