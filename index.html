@@ -368,55 +368,33 @@ a { color: inherit; }
   }
 }
 
-/* Scatter SVG Paths: Blurred Glossy Beams along flight paths */
-.scatter-svg-paths {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 15;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.scatter-svg-paths.is-active {
-  opacity: 1;
-}
-.scatter-line {
-  stroke-dasharray: 650;
-  stroke-dashoffset: 650;
-  transition: stroke-dashoffset 0.82s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.scatter-svg-paths.is-active .scatter-line {
-  stroke-dashoffset: 0;
-}
 
-/* Motion Blur Trail during flight from center to corners (Glossy comet wake) */
+/* Motion Blur Trail during scatter flight (Fluid watery wake) */
 .icon-container.is-scattering .motion-blur-trail {
   opacity: 1 !important;
-  filter: blur(14px) !important;
-  transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.88s ease !important;
+  filter: blur(22px) !important;
+  transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.88s ease, filter 0.6s ease !important;
   animation-play-state: paused !important;
 }
 .c-ps.is-scattering .motion-blur-trail {
-  transform: translate(36px, 36px) scale(1.8) rotate(45deg) !important;
-  background: radial-gradient(ellipse at 25% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
-  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
+  transform: translate(36px, 36px) scale(2.2) rotate(45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
+  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
 }
 .c-ai.is-scattering .motion-blur-trail {
-  transform: translate(-36px, 36px) scale(1.8) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at 75% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
-  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
+  transform: translate(-36px, 36px) scale(2.2) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
+  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
 }
 .c-figma.is-scattering .motion-blur-trail {
-  transform: translate(36px, -36px) scale(1.8) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at 25% 75%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
-  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
+  transform: translate(36px, -36px) scale(2.2) rotate(-45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
+  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
 }
 .c-pr.is-scattering .motion-blur-trail {
-  transform: translate(-36px, -36px) scale(1.8) rotate(45deg) !important;
-  background: radial-gradient(ellipse at 75% 75%, rgba(255, 255, 255, 0.95) 0%, rgba(97, 134, 200, 0.85) 40%, rgba(180, 215, 255, 0.35) 65%, transparent 80%) !important;
-  box-shadow: 0 0 30px rgba(97, 134, 200, 0.6) !important;
+  transform: translate(-36px, -36px) scale(2.2) rotate(45deg) !important;
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.6) 0%, rgba(140, 210, 255, 0.3) 50%, transparent 80%) !important;
+  box-shadow: 0 0 40px rgba(100, 180, 255, 0.4) !important;
 }
 
 
@@ -1268,49 +1246,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <main id="home">
   <section class="hero">
-    <!-- Blurred Glossy Trails / Beams connecting center to corners during scatter -->
-    <svg class="scatter-svg-paths" id="scatter-svg-paths" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <filter id="glossy-glow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="9" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <linearGradient id="p-grad-ps" x1="100%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
-          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
-          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
-          <stop offset="100%" stop-color="#ffffff" />
-        </linearGradient>
-        <linearGradient id="p-grad-ai" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
-          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
-          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
-          <stop offset="100%" stop-color="#ffffff" />
-        </linearGradient>
-        <linearGradient id="p-grad-figma" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
-          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
-          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
-          <stop offset="100%" stop-color="#ffffff" />
-        </linearGradient>
-        <linearGradient id="p-grad-pr" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="rgba(97, 134, 200, 0)" />
-          <stop offset="35%" stop-color="rgba(97, 134, 200, 0.5)" />
-          <stop offset="85%" stop-color="rgba(255, 255, 255, 0.95)" />
-          <stop offset="100%" stop-color="#ffffff" />
-        </linearGradient>
-      </defs>
-
-      <!-- 4 Glowing Glossy Paths along the flight trajectory -->
-      <line class="scatter-line" x1="500" y1="230" x2="100" y2="85" stroke="url(#p-grad-ps)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
-      <line class="scatter-line" x1="500" y1="230" x2="900" y2="65" stroke="url(#p-grad-ai)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
-      <line class="scatter-line" x1="500" y1="230" x2="110" y2="500" stroke="url(#p-grad-figma)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
-      <line class="scatter-line" x1="500" y1="230" x2="890" y2="510" stroke="url(#p-grad-pr)" stroke-width="14" stroke-linecap="round" filter="url(#glossy-glow)" />
-    </svg>
-
     <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails & Ambient Aura Circles -->
     <div class="icon-container c-ps" title="Adobe Photoshop">
       <div class="icon-ambient-circle"></div>
@@ -1396,13 +1331,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <span class="section-tag">About me</span>
       <div class="about-text">
         <p>
-          I’ve been working as a graphic designer for a little over a year. Somewhere along the way I got really curious about the thinking behind a product: why someone would like it and how they’d actually use it. That’s now the part of design I enjoy most.
+          I've been working as a graphic designer for a little over a year. I got curious about the thinking behind a product, why someone would like it and how they'd actually use it, and that's the part of design I enjoy most.
         </p>
         <p>
-          I also love editing. I haven’t done it professionally yet, but I want to get better at it, along with app and website building. I’m not looking for a place where I just get a task and hand it in. I want to be somewhere I can learn everything the work has to offer and be part of how things get made.
-        </p>
-        <p>
-          Where I think I’d be most useful is looking at a project as a whole: checking the work, saying what’s wrong with it, and helping the team figure out how to fix it. I’d like to grow into that.
+          I also like editing. I haven't done it professionally yet, but I want to get better at it, along with app and website building. I want to be somewhere I can learn everything the work has to offer, and I think I'd be most useful looking at a project as a whole, saying what's wrong with it, and helping the team fix it. Here's some of my work, Have a look.
         </p>
       </div>
     </div>
@@ -1751,9 +1683,9 @@ window.scrollTo(0, 0);
         icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
       });
 
-      // Activate glossy beams along flight paths
-      var svgPaths = document.getElementById('scatter-svg-paths');
-      if (svgPaths) svgPaths.classList.add('is-active');
+
+      // SVG beam paths removed
+
 
       // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
       setTimeout(function() {
@@ -1762,7 +1694,7 @@ window.scrollTo(0, 0);
 
       // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
       setTimeout(function() {
-        if (svgPaths) svgPaths.classList.remove('is-active');
+
         icons.forEach(function(icon) {
           icon.classList.remove('is-scattering');
           icon.style.transition = '';
