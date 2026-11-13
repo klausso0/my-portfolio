@@ -1499,7 +1499,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <div class="video-carousel-wrap">
           <div class="video-player-container">
             <video id="portfolio-video" controls playsinline preload="metadata">
-              <source src="videos/video-edit.mp4" type="video/mp4">
+              <source src="videos/video-edit-2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -1513,11 +1513,11 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </div>
         <div class="video-actions-sidebar">
-          <a id="btn-raw-video" class="video-btn primary" href="https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-raw-video" class="video-btn primary" href="" target="_blank" rel="noopener" style="display: none;">
             <span class="video-btn-title">See Raw Video ↗</span>
             <span class="video-btn-desc">Unedited original footage</span>
           </a>
-          <a id="btn-premiere-file" class="video-btn secondary" href="https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Premiere File ↗</span>
             <span class="video-btn-desc">Project sequence & cut (.prproj)</span>
           </a>
@@ -2036,14 +2036,14 @@ window.scrollTo(0, 0);
 (function(){
   var videoList = [
     {
-      src: 'videos/video-edit.mp4',
-      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
-      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
-    },
-    {
       src: 'videos/video-edit-2.mp4',
       raw: '',
       premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing'
+    },
+    {
+      src: 'videos/video-edit.mp4',
+      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
+      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
     }
   ];
 
