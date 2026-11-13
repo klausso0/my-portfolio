@@ -2039,9 +2039,9 @@ window.scrollTo(0, 0);
       premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
     },
     {
-      src: 'videos/video-edit.mp4', // Slot ready for edit #2
-      raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
-      premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing'
+      src: 'videos/video-edit-2.mp4',
+      raw: '',
+      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing'
     },
     {
       src: 'videos/video-edit.mp4', // Slot ready for edit #3
@@ -2067,8 +2067,27 @@ window.scrollTo(0, 0);
     var source = videoEl.querySelector('source');
     if (source) source.src = videoList[idx].src;
     videoEl.load();
-    if (rawLink) rawLink.href = videoList[idx].raw;
-    if (prLink)  prLink.href  = videoList[idx].premiere;
+
+    // Dynamically show/hide raw video button if not available
+    if (rawLink) {
+      if (videoList[idx].raw) {
+        rawLink.href = videoList[idx].raw;
+        rawLink.style.display = 'flex';
+        if (prLink) {
+          prLink.classList.remove('primary');
+          prLink.classList.add('secondary');
+        }
+      } else {
+        rawLink.style.display = 'none';
+        if (prLink) {
+          prLink.classList.remove('secondary');
+          prLink.classList.add('primary');
+        }
+      }
+    }
+    if (prLink) {
+      prLink.href = videoList[idx].premiere;
+    }
 
     // Update active highlight on 1, 2, 3 buttons
     var btns = numContainer.querySelectorAll('.video-num-btn');
