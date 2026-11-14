@@ -603,82 +603,350 @@ h2.sec {
   line-height: 1.5;
 }
 
-/* Single featured project card */
-.featured-card-wrapper {
-  max-width: 680px;
+/* FEATURED PRODUCT CASE STUDY HERO CARD */
+.case-study-hero-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 246, 253, 0.9) 100%);
+  border: 1px solid rgba(195, 215, 240, 0.75);
+  border-radius: 26px;
+  padding: 40px 44px;
+  box-shadow: 
+    0 20px 48px -12px rgba(60, 95, 145, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+  overflow: hidden;
+  color: inherit;
+  margin-top: 24px;
+}
+.case-study-hero-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(97, 134, 200, 0.6);
+  box-shadow: 
+    0 28px 56px -12px rgba(60, 95, 145, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.05);
+}
+.case-study-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(97, 134, 200, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.case-study-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 44px;
+  align-items: center;
 }
 
-/* Folder tab aesthetic matching screenshot */
-.cards {
+/* Left Column: Story, Metrics & Actions */
+.case-study-info {
+  display: flex;
+  flex-direction: column;
+}
+.case-study-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.case-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 13px;
+  border-radius: 999px;
+}
+.case-badge-live {
+  background: rgba(39, 201, 63, 0.12);
+  color: #178a2e;
+  border: 1px solid rgba(39, 201, 63, 0.32);
+}
+.case-badge-live .live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #27c93f;
+  box-shadow: 0 0 8px #27c93f;
+  animation: livePulse 2s infinite ease-in-out;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.case-badge-role {
+  background: rgba(97, 134, 200, 0.12);
+  color: #4a71b2;
+  border: 1px solid rgba(97, 134, 200, 0.28);
+}
+
+.case-study-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  font-weight: 700;
+  color: #1c2e3d;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.case-study-title em {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #6186C8;
+}
+.case-study-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  color: #4f6577;
+  margin-bottom: 22px;
+}
+
+/* Impact Metrics Grid */
+.case-metrics-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 16px 0;
+  margin-bottom: 22px;
+  border-top: 1px solid rgba(195, 215, 240, 0.55);
+  border-bottom: 1px solid rgba(195, 215, 240, 0.55);
 }
-.card-wrapper {
-  position: relative;
-  text-decoration: none;
-  display: block;
-  transition: transform 0.25s ease;
+.case-metric-box {
+  display: flex;
+  flex-direction: column;
 }
-.card-wrapper:hover {
-  transform: translateY(-4px);
+.case-metric-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #6186C8;
+  line-height: 1.1;
 }
-.folder-tab {
-  display: inline-block;
-  width: 120px;
-  height: 16px;
-  background: #d8e5f2;
-  border-radius: 10px 10px 0 0;
-  margin-left: 20px;
-  position: relative;
-  top: 1px;
+.case-metric-lbl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #687e8f;
+  margin-top: 4px;
+  line-height: 1.35;
 }
-.card {
-  background: #f0f5fa;
-  border: 1px solid #dde7f0;
-  border-radius: 18px;
-  padding: 14px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.025);
+
+/* Scope & Tech Tags */
+.case-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 26px;
 }
-.media {
-  aspect-ratio: 4/3;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--m);
+.case-tag-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #556e82;
+  background: #ffffff;
+  border: 1px solid #dbe6f2;
+  padding: 5px 11px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* Call to Action Row */
+.case-action-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
-.media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.card h3 {
+.case-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #6186C8;
+  color: #ffffff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.08rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin: 14px 6px 4px;
-  color: #233440;
-}
-.card p {
-  font-family: 'DM Sans', sans-serif;
-  color: #647b8d;
-  margin: 0 6px;
-  font-size: 0.85rem;
-  line-height: 1.45;
-}
-.card .open {
-  display: inline-block;
-  margin: 10px 6px 4px;
-  color: #5b84bc;
+  font-size: 0.92rem;
   font-weight: 600;
-  font-size: 0.82rem;
-  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(97, 134, 200, 0.35);
+  transition: all 0.25s ease;
 }
-.card .open:hover {
+.case-study-hero-card:hover .case-primary-btn {
+  background: #4f73b5;
+  box-shadow: 0 6px 22px rgba(97, 134, 200, 0.5);
+  transform: translateY(-1px);
+}
+.case-primary-btn .btn-arrow {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+.case-study-hero-card:hover .case-primary-btn .btn-arrow {
+  transform: translateX(4px);
+}
+.case-secondary-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  color: #687e8f;
   text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.case-study-hero-card:hover .case-secondary-link {
+  color: #6186C8;
+}
+
+/* Right Column: Realistic Browser Mockup */
+.case-mockup-wrapper {
+  position: relative;
+}
+.browser-window-frame {
+  background: #0d121c;
+  border-radius: 16px;
+  box-shadow: 
+    0 18px 45px -8px rgba(10, 20, 35, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+.case-study-hero-card:hover .browser-window-frame {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 
+    0 24px 55px -6px rgba(10, 20, 35, 0.55),
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(97, 134, 200, 0.4);
+}
+.browser-window-bar {
+  background: #161e2e;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.browser-window-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.browser-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.browser-dot.red { background: #ff5f56; }
+.browser-dot.yellow { background: #ffbd2e; }
+.browser-dot.green { background: #27c93f; }
+
+.browser-url-pill {
+  flex: 1;
+  background: #0d121c;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.74rem;
+  color: #8c9fb5;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  max-width: 250px;
+  margin: 0 auto;
+}
+.browser-url-pill svg {
+  width: 10px;
+  height: 10px;
+  fill: #27c93f;
+  flex-shrink: 0;
+}
+.browser-screen-view {
+  position: relative;
+  overflow: hidden;
+  background: #06051a;
+  line-height: 0;
+}
+.browser-screen-view img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.case-study-hero-card:hover .browser-screen-view img {
+  transform: scale(1.02);
+}
+.browser-screen-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(6, 5, 26, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.browser-screen-badge span {
+  color: #6186C8;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+  .case-study-hero-card {
+    padding: 28px 24px;
+  }
+  .case-study-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .case-metrics-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .case-metric-val {
+    font-size: 1.35rem;
+  }
+}
+@media (max-width: 520px) {
+  .case-metrics-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .case-metric-box {
+    border-left: 2px solid #6186C8;
+    padding-left: 10px;
+  }
+  .case-action-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* CONTACT */
@@ -1784,19 +2052,79 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <!-- Product Case Study Section -->
   <section id="work">
     <div class="wrap">
-      <h2 class="sec reveal">Product case study</h2>
-      <p class="sec-sub reveal">An end-to-end web product designed and built from scratch—covering brand, UX, frontend, and growth.</p>
-      <div class="featured-card-wrapper">
-        <a class="card-wrapper reveal" href="#smartcv-builders">
-          <div class="folder-tab"></div>
-          <div class="card">
-            <div class="media" style="--m:#06051a"><img src="images/smartcv-homepage.jpg" alt="SmartCV Builders homepage on a dark navy background with mint green accents" loading="lazy"></div>
-            <h3>SmartCV Builders</h3>
-            <p>A free CV builder I founded, designed, and developed from scratch.</p>
-            <span class="open">Open case study →</span>
+      <span class="section-tag reveal">Featured Product</span>
+      <h2 class="sec reveal">Product Case Study</h2>
+      <p class="sec-sub reveal">An end-to-end web product designed, built, and launched from scratch—spanning branding, UX architecture, frontend code, and organic search growth.</p>
+      
+      <a class="case-study-hero-card reveal" href="#smartcv-builders" aria-label="Open SmartCV Builders Case Study">
+        <div class="case-study-grid">
+          <!-- Left Column: Story, Metrics & CTAs -->
+          <div class="case-study-info">
+            <div class="case-study-badges">
+              <span class="case-badge-pill case-badge-live">
+                <span class="live-dot"></span> Live SaaS
+              </span>
+              <span class="case-badge-pill case-badge-role">Solo Founder &amp; Designer</span>
+            </div>
+
+            <h3 class="case-study-title">SmartCV <em>Builders</em></h3>
+            <p class="case-study-desc">A privacy-first, free ATS resume builder built to solve paywalled templates and forced logins. Zero data stored, instantaneous live preview, and high-fidelity PDF exports.</p>
+
+            <div class="case-metrics-row">
+              <div class="case-metric-box">
+                <span class="case-metric-val">44+</span>
+                <span class="case-metric-lbl">Dynamic Templates</span>
+              </div>
+              <div class="case-metric-box">
+                <span class="case-metric-val">7.3K+</span>
+                <span class="case-metric-lbl">Search Impressions</span>
+              </div>
+              <div class="case-metric-box">
+                <span class="case-metric-val">100%</span>
+                <span class="case-metric-lbl">Free · Zero Logins</span>
+              </div>
+            </div>
+
+            <div class="case-tags-wrap">
+              <span class="case-tag-item">Product Design</span>
+              <span class="case-tag-item">UI/UX Architecture</span>
+              <span class="case-tag-item">Frontend Development</span>
+              <span class="case-tag-item">SEO Growth</span>
+            </div>
+
+            <div class="case-action-row">
+              <div class="case-primary-btn">
+                <span>Explore Full Case Study</span>
+                <span class="btn-arrow">→</span>
+              </div>
+              <span class="case-secondary-link">smartcvbuilders.com ↗</span>
+            </div>
           </div>
-        </a>
-      </div>
+
+          <!-- Right Column: Realistic Browser Mockup -->
+          <div class="case-mockup-wrapper">
+            <div class="browser-window-frame">
+              <div class="browser-window-bar">
+                <div class="browser-window-dots">
+                  <span class="browser-dot red"></span>
+                  <span class="browser-dot yellow"></span>
+                  <span class="browser-dot green"></span>
+                </div>
+                <div class="browser-url-pill">
+                  <svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V6zm3 8a2 2 0 0 1 2 2 2 2 0 0 1-1 1.73V19a1 1 0 1 1-2 0v-1.27A2 2 0 0 1 12 14z"/></svg>
+                  <span>smartcvbuilders.com</span>
+                </div>
+              </div>
+              <div class="browser-screen-view">
+                <img src="images/smartcv-homepage.jpg" alt="SmartCV Builders live web app interface: Build a professional CV that gets interviews" loading="lazy">
+                <div class="browser-screen-badge">
+                  <span>ATS-Optimized</span> · 3 Free Tools
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 
