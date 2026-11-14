@@ -17,6 +17,8 @@
 <link rel="preload" as="image" href="images/sadiksha-brochure-outer.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/campaign-swaadmandu.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/smartcv-homepage.jpg" fetchpriority="high">
+<!-- Prefetch video 2 in background so switching is much faster -->
+<link rel="prefetch" as="video" href="videos/video-edit.mp4">
 <script>
 // Prevent auto-scroll restoration on reload
 if ('scrollRestoration' in history) {
@@ -3395,6 +3397,21 @@ window.scrollTo(0, 0);
 
   // Initial state: video 1 active
   loadVideo(0);
+
+  // Background preload inactive video into browser cache once page is idle
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(function() {
+      var bgVideo = document.createElement('video');
+      bgVideo.preload = 'auto';
+      bgVideo.src = videoList[1].src;
+    });
+  } else {
+    setTimeout(function() {
+      var bgVideo = document.createElement('video');
+      bgVideo.preload = 'auto';
+      bgVideo.src = videoList[1].src;
+    }, 2000);
+  }
 })();
 
 // Progressive disclosure for Graphic Works (4 -> 8 -> 12)
