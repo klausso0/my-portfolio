@@ -971,51 +971,154 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* 4-Column Graphic Works Grid & Native Modal */
+/* 4-Column Graphic Works Grid & Case Study Cards */
 .graphic-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
-.graphic-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: 14px;
-  overflow: hidden;
+.graphic-card {
   background: #ffffff;
   border: 1px solid var(--card-border);
-  box-shadow: 0 4px 14px rgba(45, 80, 130, 0.05);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(45, 80, 130, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+.graphic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(45, 80, 130, 0.12);
+}
+.graphic-card.is-hidden {
+  display: none !important;
+}
+.graphic-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f8fafc;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.graphic-item:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 24px rgba(45, 80, 130, 0.12);
-}
-.graphic-item img {
+.graphic-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
 }
-.graphic-item-overlay {
+.graphic-thumb:hover img {
+  transform: scale(1.05);
+}
+.graphic-thumb .graphic-item-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.45);
   opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: opacity 0.2s ease;
-  backdrop-filter: blur(2px);
+  letter-spacing: 0.02em;
+  transition: opacity 0.22s ease;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
-.graphic-item:hover .graphic-item-overlay {
+.graphic-thumb:hover .graphic-item-overlay {
   opacity: 1;
+}
+.graphic-info {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+  background: #ffffff;
+}
+.graphic-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.graphic-client {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6186C8;
+}
+.graphic-category {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--mut);
+}
+.graphic-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #233440;
+  line-height: 1.35;
+  margin: 0;
+}
+.graphic-case-study {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #647b8d;
+  margin: 2px 0 0;
+}
+
+/* Centered Glassmorphic "See More" Button */
+.graphic-more-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 36px;
+}
+.btn-see-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(220, 235, 250, 0.9);
+  border-radius: 999px;
+  color: #6186C8;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 
+    0 8px 24px rgba(97, 134, 200, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.btn-see-more:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #6186C8;
+  color: #4469a7;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 28px rgba(97, 134, 200, 0.22),
+    0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.btn-see-more svg {
+  transition: transform 0.25s ease;
+}
+.btn-see-more.is-collapsed svg {
+  transform: rotate(180deg);
 }
 
 /* Lightbox Modal for Native Resolution View */
@@ -1437,55 +1540,206 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <div class="wrap">
       <h2 class="sec reveal">Graphic works</h2>
       <p class="sec-sub reveal">Some of my branding, social campaigns, print work, and digital ads, for clients in different industries. Click any design to see it in full size.</p>
-      <div class="graphic-grid">
-        <div class="graphic-item reveal" data-src="images/kraymer-earrings.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings">
-          <img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+      <div class="graphic-grid" id="graphic-grid">
+        <!-- Card 1 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/kraymer-earrings.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings">
+            <img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Kraymer Art</span>
+              <span class="graphic-category">Jewelry Launch</span>
+            </div>
+            <h3 class="graphic-card-title">“Beyond Limits” Sapphire Earrings</h3>
+            <p class="graphic-case-study">High-contrast luxury visual showcasing sapphire earrings against dark blues and gold accents, with close-ups emphasizing gemstone radiance.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-rmit-application.jpg" data-alt="RMIT University - Last Minute Application Call for Intake Campaign">
-          <img src="images/campaign-rmit-application.jpg" alt="RMIT University - Last Minute Application Call for Intake Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 2 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-rmit-application.jpg" data-alt="RMIT University - Last Minute Application Call for Intake Campaign">
+            <img src="images/campaign-rmit-application.jpg" alt="RMIT University - Last Minute Application Call for Intake Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">RMIT University</span>
+              <span class="graphic-category">Admissions Campaign</span>
+            </div>
+            <h3 class="graphic-card-title">Last-Minute Intake Application</h3>
+            <p class="graphic-case-study">High-urgency admissions campaign featuring clean degree pathways, accreditation badges, and direct call CTAs to drive quick student inquiries.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-smartmortgage.jpg" data-alt="SmartMortgage Hub - Fast Approval Home Loan Campaign">
-          <img src="images/campaign-smartmortgage.jpg" alt="SmartMortgage Hub - Fast Approval Home Loan Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 3 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-smartmortgage.jpg" data-alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign">
+            <img src="images/campaign-smartmortgage.jpg" alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">SmartMortgage Hub</span>
+              <span class="graphic-category">Social Proof Campaign</span>
+            </div>
+            <h3 class="graphic-card-title">Good Friday · Final Approval Secured</h3>
+            <p class="graphic-case-study">Trust-building financial creative framing an unconditional approval letter inside a smartphone mockup to deliver authentic social proof and calls.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-tirra-mcdonalds.jpg" data-alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies">
-          <img src="images/campaign-tirra-mcdonalds.jpg" alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 4 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-tirra-mcdonalds.jpg" data-alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies">
+            <img src="images/campaign-tirra-mcdonalds.jpg" alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Tirra Recruitment</span>
+              <span class="graphic-category">Overseas Staffing</span>
+            </div>
+            <h3 class="graphic-card-title">McDonald's Global Hiring Drive</h3>
+            <p class="graphic-case-study">Targeted overseas hiring campaign for McDonald's Saudi Arabia with clear vacancy tiers and accredited agency branding to maximize applicant conversion.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-cold-coffee.jpg" data-alt="Premium Cold Coffee Campaign">
-          <img src="images/campaign-cold-coffee.jpg" alt="Premium Cold Coffee Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 5 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-cold-coffee.jpg" data-alt="Premium Cold Coffee Campaign">
+            <img src="images/campaign-cold-coffee.jpg" alt="Premium Cold Coffee Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Artisan Beverage</span>
+              <span class="graphic-category">Product Promo</span>
+            </div>
+            <h3 class="graphic-card-title">Cold Brew Coffee Promotion</h3>
+            <p class="graphic-case-study">High-energy beverage creative with dynamic contrasting backdrops and bold typography engineered for stopping power on mobile feeds.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign">
-          <img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 6 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-swaadmandu.jpg" data-alt="Swaadmandu New Year Mega Party Combo Campaign">
+            <img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Swaadmandu</span>
+              <span class="graphic-category">Festive Promo</span>
+            </div>
+            <h3 class="graphic-card-title">New Year Mega Party Combo Offer</h3>
+            <p class="graphic-case-study">High-converting holiday promotion designed to boost group party platter orders, blending appetizing food imagery with prominent value-led pricing.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign">
-          <img src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 7 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/campaign-taxmate.jpg" data-alt="TaxMate Advisory Social Campaign">
+            <img src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">TaxMate Advisory</span>
+              <span class="graphic-category">B2B Financial</span>
+            </div>
+            <h3 class="graphic-card-title">Hassle-Free Tax Consultation</h3>
+            <p class="graphic-case-study">Lead-generation ad addressing tax compliance anxiety with friendly advisory tone and clear free consultation offer to convert small business leads.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/sadiksha-employment-trust.jpg" data-alt="Sadiksha Overseas - Foreign Employment Trust Campaign">
-          <img src="images/sadiksha-employment-trust.jpg" alt="Sadiksha Overseas - Foreign Employment Trust Campaign" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 8 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/sadiksha-employment-trust.jpg" data-alt="Sadiksha Overseas - Foreign Employment Trust Campaign">
+            <img src="images/sadiksha-employment-trust.jpg" alt="Sadiksha Overseas - Foreign Employment Trust Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Sadiksha Overseas</span>
+              <span class="graphic-category">Brand Trust</span>
+            </div>
+            <h3 class="graphic-card-title">Foreign Employment Trust Campaign</h3>
+            <p class="graphic-case-study">Brand awareness campaign establishing the agency as an ethical recruiter, with institutional color hierarchy reassuring candidate families.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post">
-          <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 9 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/sadiksha-recruitment-post.jpg" data-alt="Sadiksha Overseas - Global Recruitment Partner Social Post">
+            <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Sadiksha Overseas</span>
+              <span class="graphic-category">Partner Announcement</span>
+            </div>
+            <h3 class="graphic-card-title">Global Manpower Recruitment Partner</h3>
+            <p class="graphic-case-study">B2B social card communicating overseas networks and legal licensing, positioning the agency as a trusted partner for international employers.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting">
-          <img src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 10 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/sadiksha-teej.jpg" data-alt="Sadiksha Overseas - Haritalika Teej Festival Greeting">
+            <img src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Sadiksha Overseas</span>
+              <span class="graphic-category">Cultural Holiday</span>
+            </div>
+            <h3 class="graphic-card-title">Haritalika Teej Festival Greeting</h3>
+            <p class="graphic-case-study">Festive greeting celebrating Nepali culture and women's heritage, integrating traditional crimson motifs with clean typography to build community rapport.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting">
-          <img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 11 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/sadiksha-bhai-tika.jpg" data-alt="Sadiksha Overseas - Bhai Tika Festival Greeting">
+            <img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Sadiksha Overseas</span>
+              <span class="graphic-category">Cultural Holiday</span>
+            </div>
+            <h3 class="graphic-card-title">Bhai Tika Festive Greeting</h3>
+            <p class="graphic-case-study">Heartfelt holiday greeting celebrating family bonds for diaspora workers abroad, strengthening community connection across foreign employment markets.</p>
+          </div>
         </div>
-        <div class="graphic-item reveal" data-src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels">
-          <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels" loading="lazy">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
+
+        <!-- Card 12 -->
+        <div class="graphic-card reveal">
+          <div class="graphic-thumb graphic-item" data-src="images/sadiksha-brochure-outer.jpg" data-alt="Sadiksha Overseas Trifold Brochure - Outside Panels">
+            <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Sadiksha Overseas</span>
+              <span class="graphic-category">Print Collateral</span>
+            </div>
+            <h3 class="graphic-card-title">Corporate Trifold Print Brochure</h3>
+            <p class="graphic-case-study">Physical marketing brochure detailing recruitment licenses and placement steps with a multi-panel grid system and cohesive brand typography.</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Centered Glassmorphic "See More" Button -->
+      <div class="graphic-more-wrap">
+        <button id="btn-see-more-graphic" class="btn-see-more" aria-label="See more graphic designs">
+          <span>See more</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -2117,6 +2371,52 @@ window.scrollTo(0, 0);
 
   // Initial state: video 1 active
   loadVideo(0);
+})();
+
+// Progressive disclosure for Graphic Works (4 -> 8 -> 12)
+(function initGraphicSeeMore() {
+  var cards = document.querySelectorAll('.graphic-card');
+  var btn = document.getElementById('btn-see-more-graphic');
+  var btnText = btn ? btn.querySelector('span') : null;
+  if (!cards.length || !btn) return;
+
+  var visibleCount = 4;
+  var batchSize = 4;
+  var total = cards.length;
+
+  function updateVisibility() {
+    cards.forEach(function(card, idx) {
+      if (idx < visibleCount) {
+        card.classList.remove('is-hidden');
+        card.classList.add('is-visible');
+      } else {
+        card.classList.add('is-hidden');
+      }
+    });
+
+    if (visibleCount >= total) {
+      if (btnText) btnText.textContent = 'Show less';
+      btn.classList.add('is-collapsed');
+    } else {
+      if (btnText) btnText.textContent = 'See more';
+      btn.classList.remove('is-collapsed');
+    }
+  }
+
+  btn.addEventListener('click', function() {
+    if (visibleCount >= total) {
+      visibleCount = batchSize;
+      updateVisibility();
+      var sec = document.getElementById('graphic-works');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      visibleCount = Math.min(visibleCount + batchSize, total);
+      updateVisibility();
+    }
+  });
+
+  // Initial load: show only first 4
+  updateVisibility();
 })();
 </script>
 </body>
