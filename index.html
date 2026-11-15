@@ -3092,73 +3092,7 @@ var SoundFX = (function() {
       } catch (e) {}
     },
 
-    // 2. Low-dB subtle harmonic reveal chord (E4, B4, E5)
-    reveal: function() {
-      if (!isHeroAudible()) return;
-      var c = getCtx();
-      if (!c) return;
-      try {
-        var now = c.currentTime;
-        var freqs = [329.63, 493.88, 659.25];
-        var masterGain = c.createGain();
-        masterGain.gain.setValueAtTime(0.0001, now);
-        masterGain.gain.linearRampToValueAtTime(0.028, now + 0.05); // low dB
-        masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.75);
-        masterGain.connect(c.destination);
-
-        freqs.forEach(function(f, idx) {
-          var osc = c.createOscillator();
-          var noteGain = c.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(f, now);
-          noteGain.gain.setValueAtTime(0.33, now);
-          osc.connect(noteGain);
-          noteGain.connect(masterGain);
-          osc.start(now + idx * 0.025);
-          osc.stop(now + 0.75);
-        });
-      } catch (e) {}
-    },
-
-    // 3. Crisp mechanical typewriter key click (forward typing & backspace clearing)
-    typewriter: function(isBackspace) {
-      if (!isHeroAudible()) return;
-      var c = getCtx();
-      if (!c) return;
-      try {
-        var now = c.currentTime;
-        var osc = c.createOscillator();
-        var gain = c.createGain();
-
-        if (isBackspace) {
-          // Tactile, slightly softer backspace strike for erasing
-          var backFreq = 780 + (Math.random() - 0.5) * 160;
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(backFreq, now);
-          osc.frequency.exponentialRampToValueAtTime(220, now + 0.015);
-
-          gain.gain.setValueAtTime(0.018, now);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.016);
-        } else {
-          // Tactile key press for forward typing
-          var typeFreq = 1200 + (Math.random() - 0.5) * 260;
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(typeFreq, now);
-          osc.frequency.exponentialRampToValueAtTime(320, now + 0.018);
-
-          gain.gain.setValueAtTime(0.025, now);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.019);
-        }
-
-        osc.connect(gain);
-        gain.connect(c.destination);
-
-        osc.start(now);
-        osc.stop(now + 0.022);
-      } catch (e) {}
-    },
-
-    // 4. Bouncy pop sound for buttons / interactive elements
+    // 2. Bouncy pop sound for buttons / interactive elements
     pop: function() {
       var c = getCtx();
       if (!c) return;
@@ -3253,8 +3187,6 @@ document.addEventListener('click', function(e) {
       // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
       setTimeout(function() {
         heroContent.classList.add('is-revealed');
-        // Trigger gentle low-dB reveal chime
-        SoundFX.reveal();
       }, 500);
 
       // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
@@ -3403,13 +3335,9 @@ document.addEventListener('click', function(e) {
     if (isDeleting) {
       target.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
-      // Tactile backspace sound when erasing/clearing
-      SoundFX.typewriter(true);
     } else {
       target.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
-      // Tactile key click when typing
-      SoundFX.typewriter(false);
     }
 
     var delay = isDeleting ? deleteSpeed : typeSpeed;
@@ -3426,8 +3354,8 @@ document.addEventListener('click', function(e) {
     setTimeout(type, delay);
   }
 
-  // Start typewriter well after reveal sound and hero cascade have fully settled
-  setTimeout(type, 2800);
+  // Start typewriter after name, titles, and stats have completed their cascade
+  setTimeout(type, 1850);
 })();
 
 // Lightbox Modal for Native Resolution Images with Next & Prev
