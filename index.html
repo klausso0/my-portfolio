@@ -77,151 +77,31 @@ a { color: inherit; }
 
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-/* ==========================================================================
-   CINEMATIC DARK FLUID BLUE SMOKY HERO
-   ========================================================================== */
+/* HERO SECTION */
 .hero {
   position: relative;
   text-align: center;
-  padding: 104px 0 96px;
-  min-height: 520px;
-  background: #04060d; /* Deep oceanic midnight void */
+  padding: 84px 0 72px;
+  min-height: 480px;
+  background: 
+    radial-gradient(55% 55% at 50% 40%, rgba(254, 252, 246, 0.9) 0%, transparent 80%),
+    radial-gradient(45% 45% at 85% 15%, rgba(215, 235, 255, 0.45) 0%, transparent 65%),
+    radial-gradient(40% 40% at 12% 80%, rgba(255, 246, 230, 0.6) 0%, transparent 70%);
   overflow: hidden;
-  color: #ffffff;
 }
 
-.hero-smoke-wrap {
+/* Subtle background waveform accent from design */
+.hero::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-  contain: strict;
-}
-
-.smoke-blob {
-  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(210, 228, 245, 0.15) 70%, transparent 100%);
   border-radius: 50%;
-  filter: blur(80px);
-  -webkit-filter: blur(80px);
-  opacity: 0.72;
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Blob 1: Top-left / center electric cerulean fluid cloud */
-.smoke-blob.smoke-1 {
-  width: 580px;
-  height: 520px;
-  top: -10%;
-  left: 6%;
-  background: radial-gradient(circle at 45% 45%, rgba(56, 138, 255, 0.75) 0%, rgba(20, 75, 195, 0.45) 55%, transparent 75%);
-  animation: smokeFluid1 18s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-}
-
-/* Blob 2: Right-hand fluid cyan-blue smoke wisp */
-.smoke-blob.smoke-2 {
-  width: 620px;
-  height: 540px;
-  top: 12%;
-  right: -6%;
-  background: radial-gradient(circle at 50% 50%, rgba(97, 175, 255, 0.68) 0%, rgba(25, 80, 195, 0.4) 50%, transparent 75%);
-  animation: smokeFluid2 22s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-}
-
-/* Blob 3: Center-bottom deep ocean abyss glow */
-.smoke-blob.smoke-3 {
-  width: 700px;
-  height: 480px;
-  bottom: -15%;
-  left: 18%;
-  background: radial-gradient(circle at 50% 50%, rgba(38, 105, 240, 0.6) 0%, rgba(12, 40, 115, 0.3) 55%, transparent 75%);
-  animation: smokeFluid3 20s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-}
-
-/* Blob 4: Central ambient breathing aura */
-.smoke-blob.smoke-4 {
-  width: 440px;
-  height: 400px;
-  top: 25%;
-  left: 32%;
-  background: radial-gradient(circle at 50% 50%, rgba(125, 195, 255, 0.48) 0%, rgba(30, 90, 210, 0.25) 50%, transparent 75%);
-  animation: smokeFluid4 15s ease-in-out infinite alternate;
-}
-
-/* Subtle organic morphing & drifting keyframes */
-@keyframes smokeFluid1 {
-  0% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translate(50px, 40px) scale(1.15) rotate(14deg);
-    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
-  }
-  100% {
-    transform: translate(-35px, 55px) scale(0.95) rotate(-10deg);
-    border-radius: 58% 42% 38% 62% / 55% 60% 40% 45%;
-  }
-}
-
-@keyframes smokeFluid2 {
-  0% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translate(-60px, -35px) scale(1.12) rotate(-18deg);
-    border-radius: 60% 40% 55% 45% / 50% 65% 35% 50%;
-  }
-  100% {
-    transform: translate(-30px, 45px) scale(0.96) rotate(12deg);
-    border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%;
-  }
-}
-
-@keyframes smokeFluid3 {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  50% {
-    transform: translate(45px, -50px) scale(1.18);
-    border-radius: 52% 48% 60% 40% / 40% 55% 45% 60%;
-  }
-  100% {
-    transform: translate(-50px, -20px) scale(0.92);
-    border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
-  }
-}
-
-@keyframes smokeFluid4 {
-  0% {
-    transform: translate(0px, 0px) scale(0.92);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translate(-30px, 25px) scale(1.2);
-    opacity: 0.68;
-  }
-  100% {
-    transform: translate(35px, -30px) scale(1.02);
-    opacity: 0.45;
-  }
-}
-
-/* Seamless bottom fade into the ivory background below */
-.hero-smoke-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, rgba(4, 6, 13, 0) 0%, rgba(4, 6, 13, 0.75) 55%, var(--bg) 100%);
   pointer-events: none;
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
+  opacity: 0.8;
 }
 
 .hi-badge {
@@ -229,33 +109,24 @@ a { color: inherit; }
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #9ec5ff;
-  background: rgba(45, 115, 235, 0.18);
-  border: 1px solid rgba(135, 190, 255, 0.35);
-  padding: 5px 14px;
-  border-radius: 999px;
-  margin-bottom: 12px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 18px rgba(45, 115, 235, 0.25);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6186C8;
+  margin-bottom: 8px;
 }
 
-/* Name: Instrument Serif Italic in Crisp Luminous White */
+/* Name: Instrument Serif Italic */
 .hero-name {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
   font-size: calc(clamp(2.8rem, 6.5vw, 4.8rem) - 3px);
   line-height: 1.1;
-  color: #ffffff;
-  text-shadow: 0 4px 35px rgba(60, 130, 240, 0.45);
+  color: #435b6a;
   margin: 0 0 6px;
 }
 .hero-name span {
-  color: #72a8ff;
-  text-shadow: 0 4px 30px rgba(114, 168, 255, 0.6);
+  color: #6186C8;
 }
 
 .hero-connector {
@@ -263,7 +134,7 @@ a { color: inherit; }
   font-style: italic;
   font-size: 1.45rem;
   line-height: 1.1;
-  color: #8bbaff;
+  color: #6186C8;
   margin-bottom: 4px;
 }
 
@@ -280,15 +151,14 @@ a { color: inherit; }
   font-weight: 400;
   font-size: calc(clamp(1.5rem, 3.8vw, 2.3rem) - 8px);
   line-height: 1.2;
-  color: #ffffff;
-  text-shadow: 0 4px 28px rgba(97, 168, 255, 0.45);
+  color: #6186C8;
 }
 .cursor {
   display: inline-block;
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: normal;
   font-size: calc(clamp(1.5rem, 3.8vw, 2.3rem) - 8px);
-  color: #7cb5ff;
+  color: #6186C8;
   margin-left: 2px;
   animation: blink 0.85s infinite;
 }
@@ -320,19 +190,19 @@ a { color: inherit; }
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(65, 145, 255, 0.45) 0%, rgba(20, 65, 175, 0.18) 45%, transparent 72%);
-  border: 1px solid rgba(135, 190, 255, 0.28);
-  box-shadow: 0 0 44px rgba(65, 145, 255, 0.35);
+  background: radial-gradient(circle at center, rgba(200, 225, 255, 0.45) 0%, rgba(220, 235, 255, 0.2) 45%, transparent 72%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 40px rgba(180, 215, 255, 0.25);
   filter: blur(14px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.75;
+  opacity: 0.65;
   animation: auraBreathe 4s ease-in-out infinite alternate;
 }
 
 @keyframes auraBreathe {
   0% { transform: scale(0.92); opacity: 0.45; }
-  100% { transform: scale(1.08); opacity: 0.82; }
+  100% { transform: scale(1.08); opacity: 0.75; }
 }
 
 /* Fluid Watery Blue Motion-Blurred Trail behind the icon (Persists even after scatter) */
@@ -341,8 +211,8 @@ a { color: inherit; }
   width: 90px;
   height: 104px;
   border-radius: 28px;
-  background: radial-gradient(ellipse at center, rgba(80, 165, 255, 0.75) 0%, rgba(30, 95, 225, 0.4) 50%, transparent 80%);
-  box-shadow: 0 0 44px rgba(70, 150, 255, 0.55);
+  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%);
+  box-shadow: 0 0 42px rgba(100, 180, 255, 0.45);
   filter: blur(20px);
   pointer-events: none;
   z-index: 1;
@@ -350,19 +220,17 @@ a { color: inherit; }
   will-change: transform, opacity, filter;
 }
 
-/* Translucent Frosted Glass Card for Floating Icons */
+/* The Solid White Glass Card */
 .floating-icon {
   position: relative;
   width: 82px;
   height: 82px;
   border-radius: 24px;
-  background: rgba(10, 16, 32, 0.78);
-  border: 1px solid rgba(135, 190, 255, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #ffffff;
+  border: 1px solid rgba(220, 235, 250, 0.95);
   box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.5),
-    0 0 28px rgba(65, 145, 255, 0.3);
+    0 14px 32px rgba(45, 80, 130, 0.15),
+    0 3px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -603,26 +471,22 @@ a { color: inherit; }
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: #000000;
   color: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.5px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.15s ease;
 }
 
 .floating-icon:hover .app-badge-bw {
   transform: scale(1.06);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.3);
 }
 
-.floating-icon svg path,
-.floating-icon svg circle {
-  stroke: #ffffff !important;
+.floating-icon svg {
+  transition: transform 0.15s ease;
 }
 
 .floating-icon:hover svg {
@@ -668,32 +532,6 @@ a { color: inherit; }
   transform: translateY(-2px);
 }
 
-/* Luminous Hero Specific Buttons */
-.hero .cta .btn {
-  background: #2563eb;
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.55);
-}
-.hero .cta .btn:hover {
-  background: #1d4ed8;
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.75);
-}
-.hero .cta .btn.ghost {
-  background: rgba(255, 255, 255, 0.08);
-  color: #f1f5f9;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-}
-.hero .cta .btn.ghost:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #ffffff;
-}
-
 /* STATS */
 .stats {
   display: flex;
@@ -720,18 +558,6 @@ a { color: inherit; }
   color: var(--mut);
   margin-top: 4px;
   font-weight: 500;
-}
-
-/* Luminous Hero Specific Stats */
-.hero .stats {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-.hero .stats dt {
-  color: #ffffff;
-  text-shadow: 0 2px 20px rgba(97, 168, 255, 0.4);
-}
-.hero .stats dd {
-  color: #94a3b8;
 }
 
 /* ABOUT SECTION */
@@ -2244,15 +2070,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 <main id="home">
   <section class="hero">
-    <!-- Animated Fluid Blue Smoky Aurora Background -->
-    <div class="hero-smoke-wrap" aria-hidden="true">
-      <div class="smoke-blob smoke-1"></div>
-      <div class="smoke-blob smoke-2"></div>
-      <div class="smoke-blob smoke-3"></div>
-      <div class="smoke-blob smoke-4"></div>
-      <div class="hero-smoke-fade"></div>
-    </div>
-
     <!-- Floating App Icons: Pure Black & White with Visible Motion Blur Trails & Ambient Aura Circles -->
     <div class="icon-container c-ps" title="Adobe Photoshop">
       <div class="icon-ambient-circle"></div>
