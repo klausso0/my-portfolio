@@ -2712,7 +2712,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <h2>Client-Side DOM-to-PDF &amp; Platform Support Architecture</h2>
     <p>Generating print-ready PDFs entirely client-side presented unique browser constraints. To maintain 100% privacy without transmitting user resumes to an external server, I engineered a high-resolution DOM-to-PDF compilation pipeline using <code>html2pdf.js</code>, <code>jsPDF</code>, and <code>html2canvas</code>.</p>
 
-    <figure><img src="images/smartcv-builder.jpg" alt="The CV builder workspace: form sections on the left and a live CV preview on the right" loading="lazy" decoding="async"></figure>
+    <figure><img src="images/smartcv-templates-arc.jpg" alt="SmartCV Builders: Packed with templates to choose from - ATS-tested layouts" loading="lazy" decoding="async"></figure>
     
     <div class="template-grid">
       <figure><img src="images/smartcv-builder-coral.jpg" alt="CV builder with modern coral header template" loading="lazy" decoding="async"><figcaption>Modern Coral Layout</figcaption></figure>
@@ -2892,32 +2892,95 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <ul style="margin-bottom: 24px; padding-left: 20px; color: var(--fg); font-size: 0.95rem; line-height: 1.65;">
       <li><strong>Frictionless Onboarding:</strong> Zero required fields. Users are greeted directly with an interactive resume template ready to edit—no credit card modals, no forced email entry.</li>
       <li><strong>Instant Gratification:</strong> Side-by-side editing workspace with real-time updates—every keystroke instantly re-renders the document preview without UI stutter.</li>
-      <li><strong>Design System Colors:</strong>
-        <ul style="margin-top:6px;padding-left:18px;">
-          <li><strong>Electric Emerald (#96FFBD):</strong> Primary action accent denoting unblocked access, fresh career starts, and freedom from paywalls.</li>
-          <li><strong>Midnight Navy (#05001A):</strong> Base canvas establishing security, authority, and deep visual contrast.</li>
-          <li><strong>Cyber Indigo &amp; Slate (#17142B):</strong> Layered elevated surfaces for input groups and dropdown panels.</li>
-          <li><strong>Pure White (#FFFFFF):</strong> High-clarity CV canvas providing authentic tactile paper realism.</li>
-        </ul>
-      </li>
     </ul>
 
+    <!-- Core Website Color Palette Specification Table -->
+    <h3 style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.15rem;color:#1c2e3d;margin:28px 0 12px;">Core Website Color Palette</h3>
+    
+    <div class="case-summary-card" style="margin-bottom:28px;">
+      <div class="case-summary-header">
+        <span>SmartCV Design System · Core Color Specification</span>
+        <span style="font-size:0.75rem;opacity:0.9;background:rgba(150,255,189,0.2);color:#96FFBD;padding:3px 10px;border-radius:999px;font-weight:600;">Aurora Mint Theme</span>
+      </div>
+      <table class="case-summary-table">
+        <thead>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.12); text-align: left;">
+            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Category</th>
+            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Color Name</th>
+            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">HEX / Value</th>
+            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Role / Where It Is Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-label">Canvas</td>
+            <td><strong style="color:#ffffff;">Midnight Void</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#05001A</code></td>
+            <td class="dim-value">Main page background across all sections</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Surface</td>
+            <td><strong style="color:#ffffff;">Deep Card Obsidian</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#0A0D22</code></td>
+            <td class="dim-value">Template preview cards &amp; squircle containers</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Surface Glass</td>
+            <td><strong style="color:#ffffff;">Ultra-Thin White</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.03)</code></td>
+            <td class="dim-value">Recruiter insight cards &amp; FAQ card backgrounds</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Surface Hover</td>
+            <td><strong style="color:#ffffff;">Interactive Glass</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.05)</code></td>
+            <td class="dim-value">Card hover state</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Brand Primary</td>
+            <td><strong style="color:#ffffff;">Aurora Mint</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#96FFBD</code></td>
+            <td class="dim-value">Primary CTA buttons (Build my CV), key badges, mint glows</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Brand Hover</td>
+            <td><strong style="color:#ffffff;">Electric Mint</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#7AFFAE</code></td>
+            <td class="dim-value">Primary button hover state</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Primary Button Text</td>
+            <td><strong style="color:#ffffff;">Dark Ink</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#05001A</code></td>
+            <td class="dim-value">Dark text inside the Mint Green buttons for high contrast</td>
+          </tr>
+          <tr>
+            <td class="dim-label">Glass Button</td>
+            <td><strong style="color:#ffffff;">Frosted White</strong></td>
+            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.04)</code></td>
+            <td class="dim-value">Secondary button (FAQ) background</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Visual Swatches Grid -->
     <div class="color-swatches">
-      <div class="swatch mint" style="background:#96FFBD;">
-        <span class="swatch-label">Emerald #96FFBD</span>
-        <span class="swatch-desc">Primary action · Freedom &amp; growth</span>
+      <div class="swatch mint" style="background:#96FFBD;color:#05001A;">
+        <span class="swatch-label">Aurora Mint #96FFBD</span>
+        <span class="swatch-desc" style="color:#05001A;opacity:0.85;">Primary CTA &amp; Brand Accent</span>
       </div>
-      <div class="swatch midnight" style="background:#05001A;">
-        <span class="swatch-label">Midnight #05001A</span>
-        <span class="swatch-desc">Dark fintech base · Security &amp; calm</span>
+      <div class="swatch electric-mint" style="background:#7AFFAE;color:#05001A;">
+        <span class="swatch-label">Electric Mint #7AFFAE</span>
+        <span class="swatch-desc" style="color:#05001A;opacity:0.85;">Button Hover &amp; Mint Glow</span>
       </div>
-      <div class="swatch slate" style="background:#17142B;">
-        <span class="swatch-label">Slate #17142B</span>
-        <span class="swatch-desc">Layered controls · Focus</span>
+      <div class="swatch midnight" style="background:#05001A;color:#e2e8f0;border:1px solid rgba(255,255,255,0.12);">
+        <span class="swatch-label">Midnight Void #05001A</span>
+        <span class="swatch-desc">Main Canvas &amp; Button Ink</span>
       </div>
-      <div class="swatch white-swatch" style="background:#FFFFFF;">
-        <span class="swatch-label">White #FFFFFF</span>
-        <span class="swatch-desc">CV paper canvas · 1:1 Clarity</span>
+      <div class="swatch obsidian" style="background:#0A0D22;color:#e2e8f0;border:1px solid rgba(255,255,255,0.12);">
+        <span class="swatch-label">Card Obsidian #0A0D22</span>
+        <span class="swatch-desc">Template Cards &amp; Squircles</span>
       </div>
     </div>
 
