@@ -1536,6 +1536,83 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   font-weight: 700;
 }
 
+/* Core Website Color Palette Table */
+.palette-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.palette-table th {
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 18px;
+  text-align: left;
+}
+.palette-table tr {
+  border-bottom: 1px solid #edf2f7;
+  transition: background 0.15s ease;
+}
+.palette-table tr:last-child {
+  border-bottom: none;
+}
+.palette-table tr:hover {
+  background: #f8fafc;
+}
+.palette-table td {
+  padding: 13px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #1e293b;
+  vertical-align: middle;
+}
+.palette-table td.cat-cell {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.84rem;
+  width: 16%;
+}
+.palette-table td.name-cell {
+  font-weight: 700;
+  color: #0f172a;
+  width: 24%;
+}
+.palette-table td.hex-cell {
+  width: 25%;
+}
+.palette-table td.role-cell {
+  color: #334155;
+  font-weight: 500;
+}
+.color-swatch-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.palette-code-chip {
+  display: inline-block;
+  background: #05001A;
+  color: #96FFBD;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(150, 255, 189, 0.35);
+  box-shadow: 0 2px 6px rgba(5, 0, 26, 0.18);
+}
+
 /* SEO Topic Cluster Cards */
 .seo-cluster-grid {
   display: grid;
@@ -2902,63 +2979,63 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <span>SmartCV Design System · Core Color Specification</span>
         <span style="font-size:0.75rem;opacity:0.9;background:rgba(150,255,189,0.2);color:#96FFBD;padding:3px 10px;border-radius:999px;font-weight:600;">Aurora Mint Theme</span>
       </div>
-      <table class="case-summary-table">
+      <table class="palette-table">
         <thead>
-          <tr style="border-bottom: 1px solid rgba(255,255,255,0.12); text-align: left;">
-            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Category</th>
-            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Color Name</th>
-            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">HEX / Value</th>
-            <th style="padding: 10px 14px; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5);">Role / Where It Is Used</th>
+          <tr>
+            <th>Category</th>
+            <th>Color Name</th>
+            <th>HEX / Value</th>
+            <th>Role / Where It Is Used</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="dim-label">Canvas</td>
-            <td><strong style="color:#ffffff;">Midnight Void</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#05001A</code></td>
-            <td class="dim-value">Main page background across all sections</td>
+            <td class="cat-cell">Canvas</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:#05001A;"></span>Midnight Void</td>
+            <td class="hex-cell"><code class="palette-code-chip">#05001A</code></td>
+            <td class="role-cell">Main page background across all sections</td>
           </tr>
           <tr>
-            <td class="dim-label">Surface</td>
-            <td><strong style="color:#ffffff;">Deep Card Obsidian</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#0A0D22</code></td>
-            <td class="dim-value">Template preview cards &amp; squircle containers</td>
+            <td class="cat-cell">Surface</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:#0A0D22;"></span>Deep Card Obsidian</td>
+            <td class="hex-cell"><code class="palette-code-chip">#0A0D22</code></td>
+            <td class="role-cell">Template preview cards &amp; squircle containers</td>
           </tr>
           <tr>
-            <td class="dim-label">Surface Glass</td>
-            <td><strong style="color:#ffffff;">Ultra-Thin White</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.03)</code></td>
-            <td class="dim-value">Recruiter insight cards &amp; FAQ card backgrounds</td>
+            <td class="cat-cell">Surface Glass</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:rgba(255,255,255,0.03);border:1px solid #cbd5e1;"></span>Ultra-Thin White</td>
+            <td class="hex-cell"><code class="palette-code-chip">rgba(255, 255, 255, 0.03)</code></td>
+            <td class="role-cell">Recruiter insight cards &amp; FAQ card backgrounds</td>
           </tr>
           <tr>
-            <td class="dim-label">Surface Hover</td>
-            <td><strong style="color:#ffffff;">Interactive Glass</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.05)</code></td>
-            <td class="dim-value">Card hover state</td>
+            <td class="cat-cell">Surface Hover</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:rgba(255,255,255,0.05);border:1px solid #cbd5e1;"></span>Interactive Glass</td>
+            <td class="hex-cell"><code class="palette-code-chip">rgba(255, 255, 255, 0.05)</code></td>
+            <td class="role-cell">Card hover state</td>
           </tr>
           <tr>
-            <td class="dim-label">Brand Primary</td>
-            <td><strong style="color:#ffffff;">Aurora Mint</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#96FFBD</code></td>
-            <td class="dim-value">Primary CTA buttons (Build my CV), key badges, mint glows</td>
+            <td class="cat-cell">Brand Primary</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:#96FFBD;"></span>Aurora Mint</td>
+            <td class="hex-cell"><code class="palette-code-chip">#96FFBD</code></td>
+            <td class="role-cell">Primary CTA buttons (Build my CV), key badges, mint glows</td>
           </tr>
           <tr>
-            <td class="dim-label">Brand Hover</td>
-            <td><strong style="color:#ffffff;">Electric Mint</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#7AFFAE</code></td>
-            <td class="dim-value">Primary button hover state</td>
+            <td class="cat-cell">Brand Hover</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:#7AFFAE;"></span>Electric Mint</td>
+            <td class="hex-cell"><code class="palette-code-chip" style="color:#7AFFAE;border-color:rgba(122,255,174,0.35);">#7AFFAE</code></td>
+            <td class="role-cell">Primary button hover state</td>
           </tr>
           <tr>
-            <td class="dim-label">Primary Button Text</td>
-            <td><strong style="color:#ffffff;">Dark Ink</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">#05001A</code></td>
-            <td class="dim-value">Dark text inside the Mint Green buttons for high contrast</td>
+            <td class="cat-cell">Primary Button Text</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:#05001A;"></span>Dark Ink</td>
+            <td class="hex-cell"><code class="palette-code-chip">#05001A</code></td>
+            <td class="role-cell">Dark text inside the Mint Green buttons for high contrast</td>
           </tr>
           <tr>
-            <td class="dim-label">Glass Button</td>
-            <td><strong style="color:#ffffff;">Frosted White</strong></td>
-            <td><code style="color:#96FFBD;background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;">rgba(255, 255, 255, 0.04)</code></td>
-            <td class="dim-value">Secondary button (FAQ) background</td>
+            <td class="cat-cell">Glass Button</td>
+            <td class="name-cell"><span class="color-swatch-dot" style="background:rgba(255,255,255,0.04);border:1px solid #cbd5e1;"></span>Frosted White</td>
+            <td class="hex-cell"><code class="palette-code-chip">rgba(255, 255, 255, 0.04)</code></td>
+            <td class="role-cell">Secondary button (FAQ) background</td>
           </tr>
         </tbody>
       </table>
