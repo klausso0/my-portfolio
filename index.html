@@ -177,11 +177,8 @@ a { color: inherit; }
   justify-content: center;
   z-index: 50;
   pointer-events: auto;
-  opacity: 0; /* Hidden initially until stack transform is applied, avoiding any corner flash */
-  will-change: transform, opacity;
-}
-.icon-container.is-ready {
   opacity: 1;
+  will-change: transform;
 }
 
 /* Big low-opacity ambient glass circle aura surrounding the icon */
@@ -355,90 +352,15 @@ a { color: inherit; }
   filter: drop-shadow(0 12px 24px rgba(70, 130, 210, 0.5));
 }
 
-/* Cinematic Staggered Hero Text Reveal (Movie Title Cascade) */
+/* Hero Text Display */
 .hero-content .hi-badge,
 .hero-content .hero-name,
 .hero-content .hero-connector,
 .hero-content .typewriter-container,
 .hero-content .cta,
 .hero-content .stats {
-  opacity: 0;
-  transform: translateY(28px) scale(0.97);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.hero-content.is-revealed .hi-badge {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.05s;
-}
-
-.hero-content.is-revealed .hero-name {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.20s;
-}
-
-.hero-content.is-revealed .hero-connector,
-.hero-content.is-revealed .typewriter-container {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.36s;
-}
-
-.hero-content.is-revealed .cta {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.52s;
-}
-
-.hero-content.is-revealed .stats {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: 0.68s;
-}
-
-@media (max-width: 540px) {
-  .hero-content .hi-badge,
-  .hero-content .hero-name,
-  .hero-content .hero-connector,
-  .hero-content .typewriter-container,
-  .hero-content .cta,
-  .hero-content .stats {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-
-/* Motion Blur Trail during scatter flight (Fluid watery wake) */
-.icon-container.is-scattering .motion-blur-trail {
-  opacity: 1 !important;
-  filter: blur(25px) !important;
-  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.15s ease, filter 0.8s ease !important;
-  animation-play-state: paused !important;
-}
-.c-ps.is-scattering .motion-blur-trail {
-  transform: translate(40px, 40px) scale(2.35) rotate(45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
-  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
-}
-.c-ai.is-scattering .motion-blur-trail {
-  transform: translate(-40px, 40px) scale(2.35) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
-  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
-}
-.c-figma.is-scattering .motion-blur-trail {
-  transform: translate(40px, -40px) scale(2.35) rotate(-45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
-  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
-}
-.c-pr.is-scattering .motion-blur-trail {
-  transform: translate(-40px, -40px) scale(2.35) rotate(45deg) !important;
-  background: radial-gradient(ellipse at center, rgba(100, 180, 255, 0.65) 0%, rgba(140, 210, 255, 0.35) 50%, transparent 80%) !important;
-  box-shadow: 0 0 44px rgba(100, 180, 255, 0.45) !important;
+  transform: none;
 }
 
 
@@ -3189,60 +3111,8 @@ var SoundFX = (function() {
   window.addEventListener('touchstart', unlock, { passive: true, once: true });
   window.addEventListener('keydown', unlock, { passive: true, once: true });
 
-  // Check if hero section is currently visible in viewport
-  function isHeroAudible() {
-    var home = document.getElementById('home');
-    if (home && home.hidden) return false;
-    var heroEl = document.querySelector('.hero');
-    if (!heroEl) return false;
-    var r = heroEl.getBoundingClientRect();
-    // Only audible when hero is actively visible on screen
-    return (r.bottom > 100 && r.top < window.innerHeight);
-  }
-
   return {
-    isHeroAudible: isHeroAudible,
-
-    // 1. Whoosh sound for hero icons scattering
-    whoosh: function() {
-      if (!isHeroAudible()) return;
-      var c = getCtx();
-      if (!c) return;
-      try {
-        var now = c.currentTime;
-        var duration = 0.46;
-        var bufferSize = Math.floor(c.sampleRate * duration);
-        var buffer = c.createBuffer(1, bufferSize, c.sampleRate);
-        var data = buffer.getChannelData(0);
-        for (var i = 0; i < bufferSize; i++) {
-          data[i] = Math.random() * 2 - 1;
-        }
-
-        var noise = c.createBufferSource();
-        noise.buffer = buffer;
-
-        var filter = c.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.Q.setValueAtTime(2.2, now);
-        filter.frequency.setValueAtTime(240, now);
-        filter.frequency.exponentialRampToValueAtTime(1400, now + 0.16);
-        filter.frequency.exponentialRampToValueAtTime(160, now + duration);
-
-        var gain = c.createGain();
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.linearRampToValueAtTime(0.085, now + 0.14);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(c.destination);
-
-        noise.start(now);
-        noise.stop(now + duration);
-      } catch (e) {}
-    },
-
-    // 2. Bouncy pop sound for buttons / interactive elements
+    // Bouncy pop sound for buttons / interactive elements
     pop: function() {
       var c = getCtx();
       if (!c) return;
@@ -3277,85 +3147,6 @@ document.addEventListener('click', function(e) {
     SoundFX.pop();
   }
 }, { passive: true });
-
-// ====== CINEMATIC SCATTER & STAGGERED REVEAL ======
-(function initScatter() {
-  if (window.innerWidth < 540) {
-    // On mobile, show content immediately
-    var hc = document.getElementById('hero-content');
-    if (hc) hc.classList.add('is-revealed');
-    return;
-  }
-  var hero = document.querySelector('.hero');
-  var heroContent = document.getElementById('hero-content');
-  var icons = document.querySelectorAll('.icon-container');
-  if (!hero || !heroContent || !icons.length) return;
-
-  // Deck configuration: physical card-deck offsets & rotations
-  var deckStyles = [
-    { rot: -8, dx: -5, dy: -4 },
-    { rot: 6,  dx: 7,  dy: -2 },
-    { rot: -3, dx: -3, dy: 7  },
-    { rot: 4,  dx: 5,  dy: 5  }
-  ];
-
-  function runScatter() {
-    var hRect = hero.getBoundingClientRect();
-    var targetCenterX = hRect.left + hRect.width / 2;
-    var targetCenterY = hRect.top + Math.min(210, hRect.height * 0.42);
-
-    // 1. Stack all 4 icons at center before making them visible (no corner flash)
-    icons.forEach(function(icon, i) {
-      var iRect = icon.getBoundingClientRect();
-      var currentCenterX = iRect.left + iRect.width / 2;
-      var currentCenterY = iRect.top + iRect.height / 2;
-      var conf = deckStyles[i % deckStyles.length];
-      var totalDx = (targetCenterX - currentCenterX) + conf.dx;
-      var totalDy = (targetCenterY - currentCenterY) + conf.dy;
-
-      icon.style.transition = 'none';
-      icon.style.transform = 'translate(' + totalDx + 'px, ' + totalDy + 'px) rotate(' + conf.rot + 'deg) scale(1.12)';
-      icon.style.zIndex = (60 - i);
-      icon.classList.add('is-ready');
-    });
-
-    // 2. Viewers clearly see them stacked in the center for 700ms
-    setTimeout(function() {
-      // Trigger cinematic whoosh sound
-      SoundFX.whoosh();
-
-      // 3. Smooth, cinematic outward flight to corners (increased slightly for more visible flight)
-      icons.forEach(function(icon, i) {
-        icon.classList.add('is-scattering');
-        // Hardware-accelerated cinematic curve with light stagger
-        icon.style.transition = 'transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) ' + (i * 0.055) + 's';
-        icon.style.transform = 'translate(0px, 0px) rotate(0deg) scale(1)';
-      });
-
-      // SVG beam paths removed
-
-      // 4. As the icons scatter outward and clear the middle, trigger the staggered cascade reveal
-      setTimeout(function() {
-        heroContent.classList.add('is-revealed');
-      }, 500);
-
-      // 5. Once icons land at their corners, clean up classes so floating animation continues smoothly
-      setTimeout(function() {
-
-        icons.forEach(function(icon) {
-          icon.classList.remove('is-scattering');
-          icon.style.transition = '';
-          icon.style.transform = '';
-          icon.style.zIndex = '';
-        });
-      }, 1380);
-    }, 700);
-  }
-
-  requestAnimationFrame(function() {
-    runScatter();
-  });
-})();
 
 // Hash routing & Scroll fix
 (function(){
