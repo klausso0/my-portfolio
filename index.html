@@ -11,7 +11,7 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <!-- Preload hero card images for instant visual display -->
 <link rel="preload" as="image" href="images/kraymer-earrings.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/sadiksha-brochure-outer.jpg" fetchpriority="high">
@@ -509,7 +509,7 @@ a { color: inherit; }
 }
 
 /* SELECTED PROJECTS & GRAPHIC WORKS */
-#work, #graphic-works, #contact { padding: 36px 0 64px; }
+#branding, #work, #graphic-works, #contact { padding: 36px 0 64px; }
 h2.sec {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
@@ -1605,6 +1605,438 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
+/* ==========================================================================
+   BRAND IDENTITY BENTO GRID SYSTEM (SADIKSHA OVERSEAS)
+   ========================================================================== */
+.branding-section {
+  padding: 64px 0 32px;
+}
+.bento-showcase {
+  background: radial-gradient(circle at 15% 15%, rgba(3, 94, 235, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 85% 85%, rgba(245, 166, 35, 0.08) 0%, transparent 40%),
+              linear-gradient(160deg, #060a17 0%, #030611 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 28px 80px rgba(1, 15, 45, 0.35);
+  margin-top: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.bento-showcase::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.bento-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+.bento-client-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.bento-client-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #035eeb;
+  box-shadow: 0 0 10px #035eeb;
+}
+.bento-client-title {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+.bento-meta-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(3, 94, 235, 0.15);
+  border: 1px solid rgba(3, 94, 235, 0.35);
+  color: #72aeff;
+}
+
+/* 12-Column Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+}
+.bento-card {
+  background: rgba(12, 18, 34, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+}
+.bento-card:hover {
+  border-color: rgba(3, 94, 235, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+/* Card 1: Brand Hero (Span 7) */
+.bento-hero-card {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  background: linear-gradient(135deg, rgba(3, 94, 235, 0.2) 0%, rgba(1, 65, 126, 0.35) 60%, rgba(12, 18, 34, 0.95) 100%);
+  border-color: rgba(3, 94, 235, 0.3);
+}
+.bento-brand-tag {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #72aeff;
+}
+.bento-brand-wordmark {
+  margin: 20px 0;
+}
+.bento-brand-logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #ffffff;
+}
+.bento-brand-logo-sub {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f5a623;
+  margin-top: 6px;
+  font-weight: 600;
+}
+.bento-brand-motto {
+  font-size: 0.95rem;
+  color: #b0b8cb;
+  line-height: 1.55;
+  max-width: 480px;
+}
+
+/* Card 2: Construction Blueprint Grid (Span 5) */
+.bento-blueprint-card {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  background: #080f22;
+  position: relative;
+}
+.blueprint-svg-wrap {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blueprint-svg-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+.blueprint-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.72rem;
+  color: #72aeff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+/* Card 3: Typography Specimen (Span 4) */
+.bento-type-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.type-card-lbl {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #72aeff;
+}
+.type-card-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 14px 0 8px;
+}
+.type-card-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.type-card-big-aa {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #72aeff;
+}
+.type-card-char-sample {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  color: #8c97b0;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.type-card-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.type-pill {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Card 4: Color Palette Specification (Span 4) */
+.bento-color-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bento-swatch-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+.bento-swatch-col {
+  display: flex;
+  flex-direction: column;
+}
+.bento-swatch-bar {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 8px;
+}
+.bento-swatch-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+.bento-swatch-hex {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.66rem;
+  color: #72aeff;
+  margin: 2px 0;
+}
+.bento-swatch-cmyk {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.62rem;
+  color: #8c97b0;
+  line-height: 1.3;
+}
+
+/* Card 5: Geometric Brand Pattern (Span 4) */
+.bento-pattern-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #060b1c;
+}
+.bento-pattern-canvas {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  background-color: #03081a;
+  background-image: radial-gradient(circle at center, rgba(3, 94, 235, 0.4) 1px, transparent 1px),
+                    radial-gradient(circle at 50% 50%, rgba(245, 166, 35, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card 6: Print Architecture / Trifold Brochure (Span 8) */
+.bento-print-card {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bento-print-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.bento-print-img-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a0f20;
+}
+.bento-print-img-wrap img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.bento-print-card:hover .bento-print-img-wrap img {
+  transform: scale(1.03);
+}
+.bento-img-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(6, 10, 22, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Card 7: Digital Touchpoint / Mobile UI (Span 4) */
+.bento-digital-card {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bento-mobile-frame {
+  margin-top: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #020714;
+}
+.bento-mobile-frame img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.bento-digital-card:hover .bento-mobile-frame img {
+  transform: scale(1.03);
+}
+
+/* Card 8: Bottom Banner & Case Study Portal (Span 12) */
+.bento-footer-card {
+  grid-column: span 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(3, 94, 235, 0.18) 0%, rgba(12, 18, 34, 0.95) 70%, rgba(245, 166, 35, 0.12) 100%);
+  border-color: rgba(3, 94, 235, 0.28);
+  padding: 20px 28px;
+}
+.bento-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bento-footer-sign {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 700;
+}
+.bento-footer-desc {
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+.bento-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #035eeb;
+  color: #ffffff !important;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(3, 94, 235, 0.4);
+}
+.bento-cta-btn:hover {
+  background: #024bcc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(3, 94, 235, 0.6);
+}
+
+/* Responsive Breakpoints for Bento Grid */
+@media (max-width: 980px) {
+  .bento-hero-card { grid-column: span 12; min-height: auto; }
+  .bento-blueprint-card { grid-column: span 12; min-height: auto; }
+  .bento-type-card { grid-column: span 6; }
+  .bento-color-card { grid-column: span 6; }
+  .bento-pattern-card { grid-column: span 12; }
+  .bento-print-card { grid-column: span 12; }
+  .bento-digital-card { grid-column: span 12; }
+  .bento-footer-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 640px) {
+  .bento-showcase { padding: 20px 16px; border-radius: 20px; }
+  .bento-type-card { grid-column: span 12; }
+  .bento-color-card { grid-column: span 12; }
+  .bento-swatch-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .bento-print-grid { grid-template-columns: 1fr; }
+}
+
 /* 4-Column Graphic Works Grid & Case Study Cards */
 .graphic-grid {
   display: grid;
@@ -2131,7 +2563,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       </div>
 
       <div class="cta">
-        <a class="btn" href="#work">View My Work</a>
+        <a class="btn" href="#branding">View My Work</a>
         <a class="btn ghost" href="#contact">Get in Touch</a>
       </div>
     </div>
@@ -2155,11 +2587,210 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
-  <!-- Graphic Works Section (Top Priority) -->
+  <!-- ==========================================================================
+       SECTION 01: BRAND IDENTITY SYSTEM (SADIKSHA OVERSEAS BENTO SHOWCASE)
+       ========================================================================== -->
+  <section id="branding" class="branding-section">
+    <div class="wrap">
+      <span class="section-tag reveal">01 / Brand Identity System</span>
+      <h2 class="sec reveal">Brand Identity: Sadiksha Overseas</h2>
+      <p class="sec-sub reveal">A comprehensive corporate visual identity, Poppins typography system, geometric construction, and multi-channel collateral architecture built for an international recruitment agency.</p>
+
+      <div class="bento-showcase reveal">
+        <!-- Bento Header Bar -->
+        <div class="bento-header-bar">
+          <div class="bento-client-pill">
+            <span class="bento-client-dot"></span>
+            <span class="bento-client-title">Sadiksha Overseas Pvt. Ltd. · Brand Identity System</span>
+          </div>
+          <span class="bento-meta-badge">Case Specimen · 2025</span>
+        </div>
+
+        <!-- 12-Column Bento Grid -->
+        <div class="bento-grid">
+
+          <!-- Card 1: Brand Wordmark Hero (Span 7) -->
+          <div class="bento-card bento-hero-card">
+            <div>
+              <span class="bento-brand-tag">Corporate Identity &amp; Positioning</span>
+              <div class="bento-brand-wordmark">
+                <div class="bento-brand-logo-text">SADIKSHA</div>
+                <div class="bento-brand-logo-sub">Overseas Pvt. Ltd. · Global Recruitment Partner</div>
+              </div>
+            </div>
+            <p class="bento-brand-motto">
+              <em>"One Brand, Every Channel."</em> Engineered to build immediate corporate authority, ethical recruitment trust, and seamless visual consistency across print collateral and digital feeds.
+            </p>
+          </div>
+
+          <!-- Card 2: Technical Logo Construction Blueprint (Span 5) -->
+          <div class="bento-card bento-blueprint-card">
+            <div>
+              <span class="type-card-lbl">02 / Construction Geometry</span>
+              <div class="blueprint-svg-wrap">
+                <svg viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Technical Grid -->
+                  <defs>
+                    <pattern id="bento-grid-pat" width="16" height="16" patternUnits="userSpaceOnUse">
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="rgba(3, 94, 235, 0.18)" stroke-width="0.75"/>
+                    </pattern>
+                  </defs>
+                  <rect width="320" height="140" fill="url(#bento-grid-pat)"/>
+                  <!-- Construction Axes & Tangents -->
+                  <circle cx="160" cy="70" r="48" stroke="#035eeb" stroke-width="1" stroke-dasharray="3 3"/>
+                  <circle cx="160" cy="70" r="30" stroke="rgba(245, 166, 35, 0.6)" stroke-width="0.8" stroke-dasharray="2 2"/>
+                  <line x1="60" y1="70" x2="260" y2="70" stroke="#035eeb" stroke-width="0.8" stroke-dasharray="4 3"/>
+                  <line x1="160" y1="10" x2="160" y2="130" stroke="#035eeb" stroke-width="0.8" stroke-dasharray="4 3"/>
+                  <line x1="85" y1="110" x2="235" y2="30" stroke="rgba(255,255,255,0.2)" stroke-width="0.75"/>
+                  <!-- Stylized Logo Emblem Vectors -->
+                  <path d="M125 70 C125 45, 145 35, 160 35 C175 35, 195 45, 195 70 C195 95, 175 105, 160 105 C145 105, 125 95, 125 70 Z" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+                  <path d="M142 58 L160 40 L178 58 L160 76 Z" fill="rgba(3, 94, 235, 0.7)" stroke="#72aeff" stroke-width="1.2"/>
+                  <circle cx="160" cy="70" r="5" fill="#f5a623"/>
+                  <!-- Dimension Callouts -->
+                  <text x="165" y="28" font-family="'Space Grotesk', monospace" font-size="8" fill="#72aeff">1.5x Tangent</text>
+                  <text x="215" y="74" font-family="'Space Grotesk', monospace" font-size="8" fill="#f5a623">2x Safe Space</text>
+                </svg>
+              </div>
+            </div>
+            <div class="blueprint-caption">
+              <span>Vector Math &amp; Modular Tangents</span>
+              <span>Grid Ratio 1:1.618</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Poppins Typography Specimen (Span 4) -->
+          <div class="bento-card bento-type-card">
+            <div>
+              <span class="type-card-lbl">03 / Brand Typography</span>
+              <div class="type-card-hero">
+                <span class="type-card-name">Poppins</span>
+                <span class="type-card-big-aa">Aa</span>
+              </div>
+              <p class="type-card-char-sample">
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                abcdefghijklmnopqrstuvwxyz · 0123456789
+              </p>
+            </div>
+            <div>
+              <div class="type-card-pills">
+                <span class="type-pill">300 Light</span>
+                <span class="type-pill">400 Regular</span>
+                <span class="type-pill">600 SemiBold</span>
+                <span class="type-pill">700 Bold</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Color Palette Specimen (Span 4) -->
+          <div class="bento-card bento-color-card">
+            <div>
+              <span class="type-card-lbl">04 / Color Architecture</span>
+              <div class="bento-swatch-list">
+                <div class="bento-swatch-col">
+                  <div class="bento-swatch-bar" style="background:#01417E;"></div>
+                  <div class="bento-swatch-name">Imperial Navy</div>
+                  <div class="bento-swatch-hex">#01417E</div>
+                  <div class="bento-swatch-cmyk">C99 M55 Y0 K44</div>
+                </div>
+                <div class="bento-swatch-col">
+                  <div class="bento-swatch-bar" style="background:#035EEB;"></div>
+                  <div class="bento-swatch-name">Cobalt Digital</div>
+                  <div class="bento-swatch-hex">#035EEB</div>
+                  <div class="bento-swatch-cmyk">C98 M60 Y0 K8</div>
+                </div>
+                <div class="bento-swatch-col">
+                  <div class="bento-swatch-bar" style="background:#F5A623;"></div>
+                  <div class="bento-swatch-name">Warm Amber</div>
+                  <div class="bento-swatch-hex">#F5A623</div>
+                  <div class="bento-swatch-cmyk">C0 M38 Y90 K4</div>
+                </div>
+                <div class="bento-swatch-col">
+                  <div class="bento-swatch-bar" style="background:#FFFFFF; border:1px solid #334155;"></div>
+                  <div class="bento-swatch-name">Pure Canvas</div>
+                  <div class="bento-swatch-hex">#FFFFFF</div>
+                  <div class="bento-swatch-cmyk">C0 M0 Y0 K0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Geometric Brand Pattern (Span 4) -->
+          <div class="bento-card bento-pattern-card">
+            <div>
+              <span class="type-card-lbl">05 / Brand Texture</span>
+              <div class="bento-pattern-canvas" style="margin-top:14px;">
+                <svg width="100%" height="100%" viewBox="0 0 200 120" preserveAspectRatio="none">
+                  <defs>
+                    <pattern id="sadiksha-geom" width="28" height="28" patternUnits="userSpaceOnUse">
+                      <circle cx="14" cy="14" r="1.5" fill="rgba(3, 94, 235, 0.6)"/>
+                      <path d="M14 4 L24 14 L14 24 L4 14 Z" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="0.8"/>
+                      <circle cx="28" cy="0" r="1" fill="rgba(245, 166, 35, 0.5)"/>
+                    </pattern>
+                  </defs>
+                  <rect width="200" height="120" fill="url(#sadiksha-geom)"/>
+                </svg>
+              </div>
+            </div>
+            <div style="font-size:0.78rem;color:#8c97b0;margin-top:12px;">
+              Stationery &amp; Print Packaging System
+            </div>
+          </div>
+
+          <!-- Card 6: Print Architecture / Trifold Brochure (Span 8) -->
+          <div class="bento-card bento-print-card">
+            <div>
+              <span class="type-card-lbl">06 / Print Architecture · Offset Trifold</span>
+              <div class="bento-print-grid">
+                <div class="bento-print-img-wrap graphic-item" data-src="images/sadiksha-brochure-outer.jpg" data-alt="Sadiksha Overseas Trifold Outside Panels">
+                  <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Outside" loading="lazy">
+                  <span class="bento-img-tag">Outside Spread · Fold Geometry</span>
+                </div>
+                <div class="bento-print-img-wrap graphic-item" data-src="images/sadiksha-brochure-inner.jpg" data-alt="Sadiksha Overseas Trifold Inside Panels">
+                  <img src="images/sadiksha-brochure-inner.jpg" alt="Sadiksha Overseas Trifold Inside" loading="lazy">
+                  <span class="bento-img-tag">Inside Spread · Information Grid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7: Digital Mobile Touchpoint (Span 4) -->
+          <div class="bento-card bento-digital-card">
+            <div>
+              <span class="type-card-lbl">07 / Digital Touchpoint</span>
+              <div class="bento-mobile-frame graphic-item" data-src="images/sadiksha-recruitment-post.jpg" data-alt="Sadiksha Overseas Social Recruitment Ad">
+                <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas Social Recruitment Ad" loading="lazy">
+              </div>
+            </div>
+            <div style="font-size:0.78rem;color:#8c97b0;margin-top:10px;">
+              Multi-channel social feed consistency
+            </div>
+          </div>
+
+          <!-- Card 8: Bottom Banner & Case Study Portal (Span 12) -->
+          <div class="bento-card bento-footer-card">
+            <div class="bento-footer-left">
+              <span class="bento-footer-sign">SADIKSHA OVERSEAS</span>
+              <span class="bento-footer-desc">End-to-End Brand System across Brochure, Posters &amp; Social Channels</span>
+            </div>
+            <a class="bento-cta-btn" href="#sadiksha-overseas">
+              <span>View Full Case Study</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 02: SOCIAL MEDIA DESIGNS (FORMERLY GRAPHIC WORKS)
+       ========================================================================== -->
   <section id="graphic-works">
     <div class="wrap">
-      <h2 class="sec reveal">Graphic works</h2>
-      <p class="sec-sub reveal">Some of my branding, social campaigns, print work, and digital ads, for clients in different industries. Click any design to see it in full size.</p>
+      <span class="section-tag reveal">02 / Social Media Designs</span>
+      <h2 class="sec reveal">Social Media Designs</h2>
+      <p class="sec-sub reveal">Selected social campaigns, promotional posters, event creative, and digital ad sets designed for engagement, retention, and conversion. Click any design to see it in full size.</p>
       <div class="graphic-grid" id="graphic-grid">
         <!-- Card 1 -->
         <div class="graphic-card reveal">
@@ -2367,6 +2998,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <!-- Video Editing Section -->
   <section id="video-editing">
     <div class="wrap">
+      <span class="section-tag reveal">03 / Motion &amp; Video Editing</span>
       <h2 class="sec reveal">Video editing</h2>
       <p class="sec-sub reveal">These videos are practice pieces, not client work. I edited them to build my skills: text, cuts, transitions, and sound. Next, I want to learn motion graphics and get better at color grading.</p>
       <div class="video-showcase reveal">
@@ -2403,7 +3035,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <!-- Product Case Study Section -->
   <section id="work">
     <div class="wrap">
-      <span class="section-tag reveal">Featured Product</span>
+      <span class="section-tag reveal">04 / Product Case Study</span>
       <h2 class="sec reveal">Product Case Study</h2>
       <p class="sec-sub reveal">An end-to-end web product designed, built, and launched from scratch—spanning branding, UX architecture, frontend code, and organic search growth.</p>
       
@@ -3126,7 +3758,7 @@ var SoundFX = (function() {
 // Interactive pop sound for buttons and cards
 document.addEventListener('click', function(e) {
   var interactiveEl = e.target.closest(
-    '#btn-see-more-graphic, .video-num-btn, .video-nav-btn, .btn, .btn-close-gallery, .graphic-item, .case-study-hero-card, .lightbox-nav-btn, .lightbox-close, .info a, .swatch'
+    '#btn-see-more-graphic, .bento-cta-btn, .video-num-btn, .video-nav-btn, .btn, .btn-close-gallery, .graphic-item, .case-study-hero-card, .lightbox-nav-btn, .lightbox-close, .info a, .swatch'
   );
   if (interactiveEl) {
     SoundFX.pop();
