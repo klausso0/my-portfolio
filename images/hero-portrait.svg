@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0"/>
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d3748"/>
+      <stop offset="40%" stop-color="#1a202c"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.3"/>
+    </linearGradient>
+    <radialGradient id="headGlow" cx="50%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#6186C8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6186C8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Glow Behind Head -->
+  <circle cx="200" cy="180" r="140" fill="url(#headGlow)" filter="blur(20px)" />
+
+  <!-- Shoulders & Torso (Minimalist Monochrome Silhouette looking up) -->
+  <path d="M 60 480 C 70 380, 110 340, 150 310 C 170 325, 230 325, 250 310 C 290 340, 330 380, 340 480 Z" fill="url(#bodyGrad)"/>
+
+  <!-- Neck tilted back/upward -->
+  <path d="M 165 315 C 160 250, 170 230, 185 210 C 200 210, 225 220, 235 240 C 240 265, 240 295, 235 315 Z" fill="#334155"/>
+  <path d="M 175 290 C 185 270, 195 250, 205 235 C 215 255, 220 280, 225 295 Z" fill="#475569" opacity="0.6"/>
+
+  <!-- Jawline & Head angled upward -->
+  <path d="M 155 190 C 145 150, 160 110, 195 95 C 240 80, 275 105, 280 150 C 285 180, 270 215, 245 230 C 220 240, 195 242, 175 225 C 165 215, 158 205, 155 190 Z" fill="url(#bodyGrad)"/>
+
+  <!-- Facial Profile Highlight (Chiseled artistic monochrome) -->
+  <path d="M 195 98 C 230 88, 260 108, 268 142 C 272 165, 265 192, 248 212 C 235 185, 218 150, 195 98 Z" fill="url(#highlightGrad)" opacity="0.35"/>
+  
+  <!-- Nose & Brow Highlight -->
+  <path d="M 235 130 C 248 135, 258 145, 252 155 C 245 158, 238 155, 232 145 Z" fill="#cbd5e1" opacity="0.5"/>
+
+  <!-- Hair / Curls Texture -->
+  <path d="M 155 190 C 140 170, 135 140, 145 110 C 152 88, 170 70, 195 65 C 220 60, 250 68, 270 85 C 260 80, 235 78, 215 82 C 190 88, 172 105, 165 130 C 160 150, 162 170, 155 190 Z" fill="#0f172a"/>
+  
+  <!-- Soft Bottom Blend Gradient Mask -->
+  <rect x="0" y="360" width="400" height="120" fill="url(#bgGrad)"/>
+</svg>
