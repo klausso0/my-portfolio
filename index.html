@@ -18,9 +18,9 @@
 <link rel="preload" as="image" href="images/campaign-swaadmandu.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/smartcv-homepage.jpg?v=2" fetchpriority="high">
 <!-- Prefetch inactive videos in background so switching is much faster -->
-<link rel="prefetch" as="video" href="videos/video-edit.mp4?v=4">
-<link rel="prefetch" as="video" href="videos/video-edit-3.mp4?v=1">
-<link rel="prefetch" as="video" href="videos/video-edit-4.mp4?v=1">
+<link rel="prefetch" as="video" href="videos/video-edit-2.mp4?v=6">
+<link rel="prefetch" as="video" href="videos/video-edit.mp4?v=5">
+<link rel="prefetch" as="video" href="videos/video-edit-3.mp4?v=2">
 <script>
 // Prevent auto-scroll restoration on reload
 if ('scrollRestoration' in history) {
@@ -1970,6 +1970,49 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   font-size: 0.78rem;
   opacity: 0.85;
 }
+.video-meta-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+.video-meta-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #6a91c1;
+}
+.video-meta-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.video-meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  color: #2b3e4a;
+  background: var(--card);
+  padding: 7px 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.35;
+}
+.video-meta-pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6186C8;
+  flex-shrink: 0;
+}
 
 /* Video Carousel Navigation */
 .video-carousel-wrap {
@@ -2389,7 +2432,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <div class="video-carousel-wrap">
           <div class="video-player-container">
             <video id="portfolio-video" controls playsinline preload="metadata">
-              <source src="videos/video-edit-2.mp4?v=5" type="video/mp4">
+              <source src="videos/video-edit-4.mp4?v=2" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -2405,15 +2448,23 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </div>
         <div class="video-actions-sidebar">
-          <a id="btn-raw-video" class="video-btn secondary" href="" target="_blank" rel="noopener" style="display: none;">
-            <span class="video-btn-title">See Raw Video ↗</span>
+          <div id="video-meta-box" class="video-meta-card">
+            <span class="video-meta-heading">Creation Details</span>
+            <div class="video-meta-badges">
+              <div class="video-meta-pill"><span class="dot"></span><span>Character generated from Gemini</span></div>
+              <div class="video-meta-pill"><span class="dot"></span><span>Voiceover generated from ElevenLabs</span></div>
+              <div class="video-meta-pill"><span class="dot"></span><span>Edited on Premiere Pro</span></div>
+            </div>
+          </div>
+          <a id="btn-raw-video" class="video-btn secondary" href="https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing" target="_blank" rel="noopener">
+            <span class="video-btn-title">See Raw Video (Part 1) ↗</span>
             <span class="video-btn-desc">Unedited original footage</span>
           </a>
-          <a id="btn-raw-video-2" class="video-btn secondary" href="" target="_blank" rel="noopener" style="display: none;">
+          <a id="btn-raw-video-2" class="video-btn secondary" href="https://drive.google.com/file/d/19G98J0pEXTnqdVulQQQkd1tOXbyCRh1C/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Raw Video (Part 2) ↗</span>
             <span class="video-btn-desc">Additional raw footage</span>
           </a>
-          <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1d9Rchrq6kvHMBW7vG9U9KJFpBtpGKMtq/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Premiere File ↗</span>
             <span class="video-btn-desc">Project sequence & cut (.prproj)</span>
           </a>
@@ -3376,28 +3427,33 @@ document.addEventListener('click', function(e) {
 (function(){
   var videoList = [
     {
-      src: 'videos/video-edit-2.mp4?v=5',
-      raw: '',
-      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
-      aspect: '9/16'
-    },
-    {
-      src: 'videos/video-edit-4.mp4?v=1',
+      src: 'videos/video-edit-4.mp4?v=2',
       raw: [
         'https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing',
         'https://drive.google.com/file/d/19G98J0pEXTnqdVulQQQkd1tOXbyCRh1C/view?usp=sharing'
       ],
       premiere: 'https://drive.google.com/file/d/1d9Rchrq6kvHMBW7vG9U9KJFpBtpGKMtq/view?usp=sharing',
+      aspect: '9/16',
+      credits: [
+        'Character generated from Gemini',
+        'Voiceover generated from ElevenLabs',
+        'Edited on Premiere Pro'
+      ]
+    },
+    {
+      src: 'videos/video-edit-2.mp4?v=6',
+      raw: '',
+      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
       aspect: '9/16'
     },
     {
-      src: 'videos/video-edit.mp4?v=4',
+      src: 'videos/video-edit.mp4?v=5',
       raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
       premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing',
       aspect: '9/16'
     },
     {
-      src: 'videos/video-edit-3.mp4?v=1',
+      src: 'videos/video-edit-3.mp4?v=2',
       raw: '',
       premiere: 'https://drive.google.com/file/d/1xFyburL-NS5onCt3Dou3XiNr0ybbV_CC/view?usp=sharing',
       aspect: '1/1'
@@ -3411,6 +3467,7 @@ document.addEventListener('click', function(e) {
   var rawLink = document.getElementById('btn-raw-video');
   var rawLink2 = document.getElementById('btn-raw-video-2');
   var prLink  = document.getElementById('btn-premiere-file');
+  var metaBox = document.getElementById('video-meta-box');
   var wrapEl  = document.querySelector('.video-carousel-wrap');
   var playerContainer = document.querySelector('.video-player-container');
   if (!videoEl || !numContainer) return;
@@ -3429,6 +3486,21 @@ document.addEventListener('click', function(e) {
     var isSquare = (videoList[idx].aspect === '1/1');
     if (wrapEl) wrapEl.classList.toggle('is-square', isSquare);
     if (playerContainer) playerContainer.classList.toggle('is-square', isSquare);
+
+    // Dynamic Creation Details box
+    if (metaBox) {
+      if (videoList[idx].credits && videoList[idx].credits.length > 0) {
+        metaBox.style.display = 'flex';
+        var listEl = metaBox.querySelector('.video-meta-badges');
+        if (listEl) {
+          listEl.innerHTML = videoList[idx].credits.map(function(c) {
+            return '<div class="video-meta-pill"><span class="dot"></span><span>' + c + '</span></div>';
+          }).join('');
+        }
+      } else {
+        metaBox.style.display = 'none';
+      }
+    }
 
     // Dynamically show/hide raw video buttons (supports single string or array of URLs)
     var rawData = videoList[idx].raw;
