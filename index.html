@@ -255,7 +255,7 @@ a { color: inherit; }
    ========================================================================== */
 .mindly-stage {
   position: relative;
-  max-width: 1120px;
+  max-width: 1260px;
   margin: 0 auto;
   min-height: 540px;
   display: flex;
@@ -297,10 +297,10 @@ a { color: inherit; }
     0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* Left Card: Elevated high on left (comfortably inside screen margin) */
+/* Left Card: Elevated high on left */
 .mindly-side-card.card-left {
   top: 15px;
-  left: clamp(14px, 3vw, 48px);
+  left: clamp(12px, 2vw, 36px);
   animation: floatLeft 6.5s ease-in-out infinite alternate;
 }
 @keyframes floatLeft {
@@ -308,10 +308,10 @@ a { color: inherit; }
   100% { transform: translateY(-8px); }
 }
 
-/* Right Card: Mid-height on right (comfortably inside screen margin) */
+/* Right Card: Mid-height on right, generous clearance from portrait */
 .mindly-side-card.card-right {
-  top: 170px;
-  right: clamp(14px, 3vw, 48px);
+  top: 195px;
+  right: clamp(-15px, 0.5vw, 22px);
   animation: floatRight 7s ease-in-out infinite alternate;
 }
 @keyframes floatRight {
@@ -540,68 +540,29 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
-   ABOUT ME — EDITORIAL POSTER SECTION (HARMONIZED WITH SITE THEME)
+   ABOUT ME — EDITORIAL SECTION (EXACT REFERENCE LAYOUT & SITE THEME)
    ========================================================================== */
 .about-section {
   padding: 50px 0 70px;
   position: relative;
+  background: transparent;
 }
 
-.about-poster-card {
-  max-width: 680px;
+.about-layout-wrap {
+  max-width: 660px;
   margin: 0 auto;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(243, 248, 254, 0.94) 100%);
-  border-radius: 32px;
-  padding: 52px 46px 44px;
-  box-shadow: 
-    0 24px 64px -16px rgba(97, 134, 200, 0.16),
-    0 4px 16px rgba(0, 0, 0, 0.03);
-  border: 1.5px solid rgba(195, 215, 240, 0.85);
-  position: relative;
-  overflow: hidden;
-  color: #1a2732;
   text-align: center;
-  backdrop-filter: blur(14px);
-}
-
-/* Subtle ambient glow matching theme blue */
-.about-poster-card::before {
-  content: "";
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(97, 134, 200, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.about-handle {
-  display: inline-block;
-  color: #6186C8;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-  text-decoration: none;
   position: relative;
-  z-index: 1;
 }
 
 .about-top-bio {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.05rem;
-  line-height: 1.7;
+  line-height: 1.72;
   color: #2b3e4a;
   text-align: left;
-  max-width: 580px;
-  margin: 0 auto 30px;
-  position: relative;
-  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto 32px;
 }
 .about-top-bio p {
   margin: 0 0 14px;
@@ -610,91 +571,82 @@ a { color: inherit; }
   margin-bottom: 0;
 }
 
-/* THE ICONIC CENTERPIECE: "about me" TYPOGRAPHY + LAYERED PORTRAIT */
-.about-centerpiece {
+/* THE ICONIC REFERENCE LOCKUP:
+   "about" on top line
+   [portrait cutout] on left + "me" on right on bottom line
+   Head extends up overlapping into "about"
+*/
+.about-hero-lockup {
   position: relative;
-  width: 100%;
-  max-width: 540px;
-  margin: 16px auto 24px;
-  height: 310px;
-  z-index: 2;
+  width: fit-content;
+  margin: 24px auto 32px;
+  text-align: left;
   user-select: none;
 }
 
-/* Top word "about" — In theme's editorial serif italic */
-.about-word-about {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(5.4rem, 14vw, 8.5rem);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+.about-text-top {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4.8rem, 13vw, 7.8rem);
+  line-height: 0.82;
+  letter-spacing: -0.045em;
   color: #6186C8;
   margin: 0;
+  position: relative;
   z-index: 1;
-  white-space: nowrap;
 }
 
-/* Bottom word "me" — In theme's editorial serif italic */
-.about-word-me {
-  position: absolute;
-  bottom: 8px;
-  right: clamp(16px, 5vw, 48px);
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(5.4rem, 14vw, 8.5rem);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
-  color: #6186C8;
-  margin: 0;
-  z-index: 1;
-  white-space: nowrap;
+.about-row-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: -38px; /* Head extends up overlapping into "about" */
+  position: relative;
 }
 
-/* Portrait Cutout positioning */
-.about-portrait-frame {
-  position: absolute;
-  bottom: 0;
-  left: clamp(24px, 8vw, 68px);
-  width: 255px;
-  height: 275px;
+.about-portrait-cutout {
+  width: clamp(145px, 20vw, 205px);
+  position: relative;
   z-index: 3;
-  pointer-events: none;
+  margin-right: -10px;
+  margin-bottom: -4px;
+  flex-shrink: 0;
 }
-.about-portrait-frame img {
+.about-portrait-cutout img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  height: auto;
   display: block;
 }
 
-/* Bottom Bio paragraph */
+.about-text-bottom {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4.8rem, 13vw, 7.8rem);
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  color: #6186C8;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom Credentials paragraph */
 .about-bottom-bio {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.98rem;
   line-height: 1.65;
   color: #556979;
-  max-width: 540px;
+  max-width: 580px;
   margin: 0 auto 30px;
   text-align: left;
-  position: relative;
-  z-index: 1;
 }
 
-/* Signature */
+/* Handwritten Signature */
 .about-signature-wrap {
-  position: relative;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 4px;
+  padding-top: 6px;
 }
 .about-signature-text {
   font-family: 'Caveat', cursive;
@@ -708,27 +660,20 @@ a { color: inherit; }
 }
 
 /* Responsive adjustments */
-@media (max-width: 640px) {
-  .about-poster-card {
-    padding: 38px 20px 32px;
-    border-radius: 24px;
+@media (max-width: 600px) {
+  .about-hero-lockup {
+    margin: 18px auto 24px;
   }
-  .about-centerpiece {
-    height: 240px;
-    max-width: 360px;
+  .about-text-top,
+  .about-text-bottom {
+    font-size: 4.4rem;
   }
-  .about-word-about {
-    font-size: 4.8rem;
+  .about-row-bottom {
+    margin-top: -24px;
   }
-  .about-word-me {
-    font-size: 4.8rem;
-    right: 14px;
-    bottom: 6px;
-  }
-  .about-portrait-frame {
-    width: 190px;
-    height: 210px;
-    left: 20px;
+  .about-portrait-cutout {
+    width: 135px;
+    margin-right: -6px;
   }
   .about-signature-text {
     font-size: 2.6rem;
@@ -2489,7 +2434,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <!-- Wire from Left Card right edge to left face ring -->
           <path d="M 230 65 C 310 85, 360 140, 420 180" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
           <!-- Wire from Right Card left edge to right face ring -->
-          <path d="M 770 215 C 700 220, 640 220, 580 215" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <path d="M 810 235 C 740 240, 680 230, 580 215" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
         </svg>
 
         <!-- Left Floating Card (Elevated High on Left, level with subtitle/buttons) -->
@@ -2532,13 +2477,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
-  <!-- About Me Section (Editorial Dark Poster Style) -->
+  <!-- About Me Section (Exact Ronald Mitterer Reference Lockup & Seamless Background) -->
   <section id="about" class="about-section reveal">
     <div class="wrap">
-      <div class="about-poster-card">
-        <!-- Top Tag / Handle -->
-        <span class="about-handle">@neerajbhatt</span>
-
+      <div class="about-layout-wrap">
         <!-- Top Intro Paragraph -->
         <div class="about-top-bio">
           <p>
@@ -2549,13 +2491,15 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </p>
         </div>
 
-        <!-- Iconic Centerpiece: "about me" Typography + Layered Portrait Cutout -->
-        <div class="about-centerpiece">
-          <span class="about-word-about">about</span>
-          <div class="about-portrait-frame">
-            <img src="images/about-portrait-front.png" alt="Neeraj Bhatt - Graphic Designer &amp; Video Editor" loading="lazy">
+        <!-- Iconic Centerpiece: Exact Reference Lockup (about on top, head + me on bottom row) -->
+        <div class="about-hero-lockup">
+          <div class="about-text-top">about</div>
+          <div class="about-row-bottom">
+            <div class="about-portrait-cutout">
+              <img src="images/about-portrait-front.png" alt="Neeraj Bhatt - Designer &amp; Editor" loading="lazy">
+            </div>
+            <div class="about-text-bottom">me</div>
           </div>
-          <span class="about-word-me">me</span>
         </div>
 
         <!-- Lower Credentials & Focus Paragraph -->
