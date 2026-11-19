@@ -252,74 +252,78 @@ a { color: inherit; }
   z-index: 1;
 }
 
-/* SIDE FLOATING GLASS CARDS (EXACT MINDLY POSITIONS) */
+/* SIDE FLOATING GLASS CARDS (COMPACT & PROPORTIONATE) */
 .mindly-side-card {
   position: absolute;
   z-index: 4;
-  width: 236px;
+  width: 172px;
   background: rgba(255, 255, 255, 0.94);
   border: 1.5px solid rgba(255, 255, 255, 0.98);
-  border-radius: 22px;
-  padding: 22px 20px;
+  border-radius: 16px;
+  padding: 13px 14px;
   text-align: left;
   box-shadow: 
-    0 24px 48px -12px rgba(35, 52, 70, 0.12),
+    0 16px 36px -8px rgba(35, 52, 70, 0.12),
     0 2px 6px rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .mindly-side-card:hover {
   transform: translateY(-4px) !important;
   box-shadow: 
-    0 30px 56px -12px rgba(35, 52, 70, 0.18),
-    0 4px 10px rgba(0, 0, 0, 0.05);
+    0 22px 42px -8px rgba(35, 52, 70, 0.16),
+    0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* Left Card: Far out to the left, elevated high */
+/* Left Card: Elevated high on left */
 .mindly-side-card.card-left {
   top: 15px;
-  left: clamp(-60px, -4vw, -10px);
+  left: clamp(5px, 2.5vw, 36px);
   animation: floatLeft 6.5s ease-in-out infinite alternate;
 }
 @keyframes floatLeft {
   0% { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
+  100% { transform: translateY(-8px); }
 }
 
-/* Right Card: Far out to the right, mid-height level with face */
+/* Right Card: Mid-height on right */
 .mindly-side-card.card-right {
-  top: 170px;
-  right: clamp(-60px, -4vw, -10px);
+  top: 160px;
+  right: clamp(5px, 2.5vw, 36px);
   animation: floatRight 7s ease-in-out infinite alternate;
 }
 @keyframes floatRight {
   0% { transform: translateY(0px); }
-  100% { transform: translateY(10px); }
+  100% { transform: translateY(8px); }
 }
 
 .card-icon-pill {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
   background: rgba(240, 246, 253, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+}
+.card-icon-pill svg {
+  width: 14px;
+  height: 14px;
 }
 .mindly-side-card .card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.96rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #1a2732;
-  margin: 0 0 6px;
-  line-height: 1.3;
+  margin: 0 0 3px;
+  line-height: 1.25;
 }
 .mindly-side-card .card-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.68rem;
   color: #637788;
-  line-height: 1.45;
+  line-height: 1.35;
   margin: 0;
 }
 
@@ -1832,36 +1836,95 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* 4-Column Graphic Works — FAN LAYOUT */
+/* 4-Column Graphic Works — RADIAL FAN & DIAL SHOWCASE */
 .graphic-grid {
   position: relative;
   width: 100%;
-  height: 500px;
-  margin: 40px auto 0;
-  max-width: 700px;
+  height: 480px;
+  margin: 36px auto 10px;
+  max-width: 880px;
+  overflow: visible;
 }
 .graphic-card {
   position: absolute;
-  width: 210px;
-  height: 290px;
+  width: 200px;
+  height: 285px;
   left: 50%;
-  bottom: 20px;
-  margin-left: -105px;
-  border-radius: 22px;
+  bottom: 50px;
+  margin-left: -100px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
-    0 18px 44px -8px rgba(15, 23, 42, 0.2),
-    0 4px 12px rgba(0, 0, 0, 0.06);
-  transform-origin: 50% 140%;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.45s ease;
+    0 22px 48px -10px rgba(15, 23, 42, 0.24),
+    0 4px 14px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  will-change: transform, opacity;
   background: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1),
+              opacity 0.45s ease,
+              box-shadow 0.3s ease;
 }
 .graphic-card:hover {
-  filter: brightness(1.05);
+  box-shadow:
+    0 28px 60px -8px rgba(15, 23, 42, 0.32),
+    0 6px 18px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Circular Dial Wheel at Base (Matching Reference) */
+.fan-dial-wheel {
+  position: absolute;
+  bottom: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px dashed rgba(60, 85, 115, 0.28);
+  box-shadow: 
+    0 -12px 36px rgba(15, 23, 42, 0.08),
+    inset 0 0 0 8px rgba(245, 248, 252, 0.7);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.3s ease;
+}
+.fan-dial-wheel:hover {
+  box-shadow: 
+    0 -16px 42px rgba(15, 23, 42, 0.14),
+    inset 0 0 0 8px rgba(235, 243, 252, 0.9);
+}
+.fan-dial-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  user-select: none;
+}
+.dial-arrow {
+  font-size: 0.7rem;
+  color: #1a2732;
+  line-height: 1;
+}
+.dial-me {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #1a2732;
+}
+.dial-track {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #7b8e9f;
+  text-transform: uppercase;
 }
 
 .graphic-thumb {
@@ -2726,6 +2789,15 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             </div>
             <h3 class="graphic-card-title">Trifold Agency Profile Brochure</h3>
             <p class="graphic-case-study">Corporate trifold brochure outer panels highlighting company background, contact details, and overseas placement solutions.</p>
+          </div>
+        </div>
+
+        <!-- Circular Dial Wheel from Reference Image -->
+        <div class="fan-dial-wheel" id="fan-dial-wheel" title="Click to rotate designs">
+          <div class="fan-dial-inner">
+            <span class="dial-arrow">▲</span>
+            <span class="dial-me">ME</span>
+            <span class="dial-track">PORTFOLIO · PORTFOLIO</span>
           </div>
         </div>
       </div>
@@ -3913,11 +3985,12 @@ document.addEventListener('click', function(e) {
   }
 })();
 
-// Fan-style card rotation for Graphic Works (batches of 4)
+// Fan-style card rotation for Graphic Works (batches of 4, radial arc)
 (function initGraphicFan() {
   var cards = Array.from(document.querySelectorAll('.graphic-card'));
   var btn = document.getElementById('btn-see-more-graphic');
   var btnText = btn ? btn.querySelector('span') : null;
+  var dialWheel = document.getElementById('fan-dial-wheel');
   if (!cards.length || !btn) return;
 
   var batchSize = 4;
@@ -3925,30 +3998,56 @@ document.addEventListener('click', function(e) {
   var currentBatch = 0;
   var totalBatches = Math.ceil(total / batchSize);
   var isAnimating = false;
+  var dialRotation = 0;
 
-  // Fan spread angles and lifts for positions 0-3 (left to right)
-  var fanAngles = [-26, -9, 9, 26];
-  var fanLifts  = [-30, -55, -55, -30];
-  var fanZ      = [3, 5, 5, 3];
+  function getFanCoords(fanIdx) {
+    var w = window.innerWidth;
+    if (w <= 520) {
+      return {
+        x: [-125, -42, 42, 125][fanIdx],
+        y: [12, -18, -18, 12][fanIdx],
+        rot: [-18, -6, 6, 18][fanIdx],
+        z: [3, 5, 5, 3][fanIdx]
+      };
+    } else if (w <= 820) {
+      return {
+        x: [-200, -68, 68, 200][fanIdx],
+        y: [16, -26, -26, 16][fanIdx],
+        rot: [-22, -7, 7, 22][fanIdx],
+        z: [3, 5, 5, 3][fanIdx]
+      };
+    } else {
+      return {
+        x: [-270, -90, 90, 270][fanIdx],
+        y: [18, -32, -32, 18][fanIdx],
+        rot: [-24, -8, 8, 24][fanIdx],
+        z: [3, 5, 5, 3][fanIdx]
+      };
+    }
+  }
 
   function applyFan(card, fanIdx) {
-    card.style.transform = 'rotate(' + fanAngles[fanIdx] + 'deg) translateY(' + fanLifts[fanIdx] + 'px)';
-    card.style.zIndex = fanZ[fanIdx];
+    var c = getFanCoords(fanIdx);
+    card.style.transform = 'translateX(' + c.x + 'px) translateY(' + c.y + 'px) rotate(' + c.rot + 'deg)';
+    card.style.zIndex = c.z;
     card.style.opacity = '1';
     card.style.pointerEvents = 'auto';
+    card.setAttribute('data-fan-active', fanIdx);
   }
 
   function hideCard(card) {
-    card.style.transform = 'rotate(0deg) translateY(80px) scale(0.7)';
+    card.style.transform = 'translateX(0px) translateY(80px) rotate(0deg) scale(0.65)';
     card.style.opacity = '0';
     card.style.pointerEvents = 'none';
     card.style.zIndex = '1';
+    card.removeAttribute('data-fan-active');
   }
 
   function exitCard(card) {
-    card.style.transform = 'rotate(0deg) translateY(60px) scale(0.8)';
+    card.style.transform = 'translateX(0px) translateY(70px) rotate(0deg) scale(0.75)';
     card.style.opacity = '0';
     card.style.pointerEvents = 'none';
+    card.removeAttribute('data-fan-active');
   }
 
   function showBatch(batchIndex, animate) {
@@ -3959,14 +4058,11 @@ document.addEventListener('click', function(e) {
       if (idx >= start && idx < end) {
         var fanIdx = idx - start;
         if (animate) {
-          // Start from center collapsed
           card.style.transition = 'none';
-          card.style.transform = 'rotate(0deg) translateY(60px) scale(0.85)';
+          card.style.transform = 'translateX(0px) translateY(60px) rotate(0deg) scale(0.8)';
           card.style.opacity = '0';
-          // Force reflow
-          card.offsetHeight;
-          // Animate to fan position
-          card.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease';
+          card.offsetHeight; // force reflow
+          card.style.transition = 'transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.4s ease';
           setTimeout(function() { applyFan(card, fanIdx); }, 30);
         } else {
           card.style.transition = 'none';
@@ -3983,11 +4079,37 @@ document.addEventListener('click', function(e) {
     }
   }
 
-  btn.addEventListener('click', function() {
+  // Hover elevation for active cards
+  cards.forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      var fanIdxAttr = card.getAttribute('data-fan-active');
+      if (fanIdxAttr !== null && !isAnimating) {
+        var fanIdx = parseInt(fanIdxAttr, 10);
+        var c = getFanCoords(fanIdx);
+        card.style.transform = 'translateX(' + c.x + 'px) translateY(' + (c.y - 18) + 'px) rotate(' + c.rot + 'deg) scale(1.04)';
+        card.style.zIndex = '25';
+      }
+    });
+    card.addEventListener('mouseleave', function() {
+      var fanIdxAttr = card.getAttribute('data-fan-active');
+      if (fanIdxAttr !== null && !isAnimating) {
+        var fanIdx = parseInt(fanIdxAttr, 10);
+        applyFan(card, fanIdx);
+      }
+    });
+  });
+
+  function rotateNext() {
     if (isAnimating) return;
     isAnimating = true;
 
-    // Fan-out current batch
+    // Rotate the dial wheel
+    dialRotation += 90;
+    if (dialWheel) {
+      dialWheel.style.transform = 'translateX(-50%) rotate(' + dialRotation + 'deg)';
+    }
+
+    // Collapse current batch
     var start = currentBatch * batchSize;
     var end = Math.min(start + batchSize, total);
     for (var i = start; i < end; i++) {
@@ -4002,11 +4124,29 @@ document.addEventListener('click', function(e) {
         var sec = document.getElementById('graphic-works');
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       }
-      setTimeout(function() { isAnimating = false; }, 600);
-    }, 400);
+      setTimeout(function() { isAnimating = false; }, 650);
+    }, 380);
+  }
+
+  btn.addEventListener('click', rotateNext);
+  if (dialWheel) {
+    dialWheel.addEventListener('click', rotateNext);
+  }
+
+  // Handle window resize dynamically
+  window.addEventListener('resize', function() {
+    if (!isAnimating) {
+      var start = currentBatch * batchSize;
+      var end = Math.min(start + batchSize, total);
+      cards.forEach(function(card, idx) {
+        if (idx >= start && idx < end) {
+          applyFan(card, idx - start);
+        }
+      });
+    }
   });
 
-  // Initial: show first 4 immediately
+  // Initial render: fan out first 4 immediately
   showBatch(0, false);
 })();
 </script>
