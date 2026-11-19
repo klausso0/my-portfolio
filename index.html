@@ -3169,10 +3169,7 @@ document.addEventListener('click', function(e) {
       window.scrollTo(0, 0);
     } else {
       document.title = base;
-      if (isInitial) {
-        // ALWAYS stay at top on initial load/reload
-        window.scrollTo(0, 0);
-      } else {
+      if (!isInitial) {
         var t = id && document.getElementById(id);
         if(t){ t.scrollIntoView({ behavior: 'smooth' }); } else { window.scrollTo(0, 0); }
       }
@@ -3217,12 +3214,6 @@ document.addEventListener('click', function(e) {
         window.scrollTo(0, 0);
       }
     });
-  });
-
-  window.addEventListener('load', function() {
-    if (!location.hash || !document.querySelector(location.hash + '.project')) {
-      window.scrollTo(0, 0);
-    }
   });
 })();
 
