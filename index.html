@@ -1836,13 +1836,13 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* 4-Column Graphic Works — RADIAL FAN & DIAL SHOWCASE */
+/* 4-Column Graphic Works — BULLETPROOF RADIAL FAN */
 .graphic-grid {
   position: relative;
   width: 100%;
   height: 480px;
-  margin: 36px auto 10px;
-  max-width: 880px;
+  margin: 36px auto 20px;
+  max-width: 900px;
   overflow: visible;
 }
 .graphic-card {
@@ -1850,7 +1850,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   width: 200px;
   height: 285px;
   left: 50%;
-  bottom: 50px;
+  bottom: 40px;
   margin-left: -100px;
   border-radius: 20px;
   overflow: hidden;
@@ -1860,71 +1860,78 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   cursor: pointer;
   background: #f1f5f9;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  opacity: 0;
   will-change: transform, opacity;
   transition: transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1),
               opacity 0.45s ease,
               box-shadow 0.3s ease;
 }
-.graphic-card:hover {
-  box-shadow:
-    0 28px 60px -8px rgba(15, 23, 42, 0.32),
-    0 6px 18px rgba(0, 0, 0, 0.12) !important;
+
+/* Bulletproof Fan Position Classes (Desktop) */
+.graphic-card.fan-pos-0 {
+  transform: translateX(-270px) translateY(18px) rotate(-24deg) !important;
+  z-index: 3 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.graphic-card.fan-pos-1 {
+  transform: translateX(-90px) translateY(-32px) rotate(-8deg) !important;
+  z-index: 5 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.graphic-card.fan-pos-2 {
+  transform: translateX(90px) translateY(-32px) rotate(8deg) !important;
+  z-index: 5 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.graphic-card.fan-pos-3 {
+  transform: translateX(270px) translateY(18px) rotate(24deg) !important;
+  z-index: 3 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.graphic-card.fan-hidden {
+  transform: translateX(0px) translateY(80px) rotate(0deg) scale(0.65) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+.graphic-card.fan-exit {
+  transform: translateX(0px) translateY(70px) rotate(0deg) scale(0.75) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
 }
 
-/* Circular Dial Wheel at Base (Matching Reference) */
-.fan-dial-wheel {
-  position: absolute;
-  bottom: -90px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px dashed rgba(60, 85, 115, 0.28);
-  box-shadow: 
-    0 -12px 36px rgba(15, 23, 42, 0.08),
-    inset 0 0 0 8px rgba(245, 248, 252, 0.7);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 14px;
-  cursor: pointer;
-  z-index: 10;
-  transition: transform 0.6s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.3s ease;
+/* Hover elevation */
+.graphic-card.fan-pos-0:hover { transform: translateX(-270px) translateY(0px) rotate(-24deg) scale(1.04) !important; z-index: 25 !important; }
+.graphic-card.fan-pos-1:hover { transform: translateX(-90px) translateY(-50px) rotate(-8deg) scale(1.04) !important; z-index: 25 !important; }
+.graphic-card.fan-pos-2:hover { transform: translateX(90px) translateY(-50px) rotate(8deg) scale(1.04) !important; z-index: 25 !important; }
+.graphic-card.fan-pos-3:hover { transform: translateX(270px) translateY(0px) rotate(24deg) scale(1.04) !important; z-index: 25 !important; }
+
+/* Responsive Fan Positions (Tablet) */
+@media (max-width: 860px) {
+  .graphic-grid { height: 420px; }
+  .graphic-card { width: 165px; height: 235px; margin-left: -82px; }
+  .graphic-card.fan-pos-0 { transform: translateX(-195px) translateY(16px) rotate(-22deg) !important; }
+  .graphic-card.fan-pos-1 { transform: translateX(-65px) translateY(-24px) rotate(-7deg) !important; }
+  .graphic-card.fan-pos-2 { transform: translateX(65px) translateY(-24px) rotate(7deg) !important; }
+  .graphic-card.fan-pos-3 { transform: translateX(195px) translateY(16px) rotate(22deg) !important; }
+  .graphic-card.fan-pos-0:hover { transform: translateX(-195px) translateY(0px) rotate(-22deg) scale(1.04) !important; }
+  .graphic-card.fan-pos-1:hover { transform: translateX(-65px) translateY(-40px) rotate(-7deg) scale(1.04) !important; }
+  .graphic-card.fan-pos-2:hover { transform: translateX(65px) translateY(-40px) rotate(7deg) scale(1.04) !important; }
+  .graphic-card.fan-pos-3:hover { transform: translateX(195px) translateY(0px) rotate(22deg) scale(1.04) !important; }
 }
-.fan-dial-wheel:hover {
-  box-shadow: 
-    0 -16px 42px rgba(15, 23, 42, 0.14),
-    inset 0 0 0 8px rgba(235, 243, 252, 0.9);
-}
-.fan-dial-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  user-select: none;
-}
-.dial-arrow {
-  font-size: 0.7rem;
-  color: #1a2732;
-  line-height: 1;
-}
-.dial-me {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: #1a2732;
-}
-.dial-track {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: #7b8e9f;
-  text-transform: uppercase;
+
+/* Responsive Fan Positions (Mobile) */
+@media (max-width: 520px) {
+  .graphic-grid { height: 350px; }
+  .graphic-card { width: 135px; height: 195px; margin-left: -67px; }
+  .graphic-card.fan-pos-0 { transform: translateX(-120px) translateY(12px) rotate(-18deg) !important; }
+  .graphic-card.fan-pos-1 { transform: translateX(-40px) translateY(-16px) rotate(-6deg) !important; }
+  .graphic-card.fan-pos-2 { transform: translateX(40px) translateY(-16px) rotate(6deg) !important; }
+  .graphic-card.fan-pos-3 { transform: translateX(120px) translateY(12px) rotate(18deg) !important; }
 }
 
 .graphic-thumb {
@@ -2601,7 +2608,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <p class="sec-sub reveal">Posts that make people stop scrolling and actually act. Here’s what I’ve made for brands in education, jewelry, finance, and recruitment. Tap any design to see it full size.</p>
       <div class="graphic-grid" id="graphic-grid">
         <!-- Card 1 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-pos-0">
           <div class="graphic-thumb graphic-item" data-src="images/kraymer-earrings.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings">
             <img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2617,7 +2624,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 2 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-pos-1">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-rmit-application.jpg" data-alt="RMIT University - September & October Intake Application Call">
             <img src="images/campaign-rmit-application.jpg" alt="RMIT University - September & October Intake Application Call" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2633,7 +2640,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 3 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-pos-2">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-smartmortgage.jpg" data-alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign">
             <img src="images/campaign-smartmortgage.jpg" alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2649,7 +2656,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 4 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-pos-3">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-tirra-mcdonalds.jpg" data-alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies">
             <img src="images/campaign-tirra-mcdonalds.jpg" alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2665,7 +2672,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 5 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-cold-coffee.jpg" data-alt="Premium Cold Coffee Campaign">
             <img src="images/campaign-cold-coffee.jpg" alt="Premium Cold Coffee Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2681,7 +2688,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 6 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-swaadmandu.jpg" data-alt="Swaadmandu New Year Mega Party Combo Campaign">
             <img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2697,7 +2704,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 7 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-taxmate.jpg" data-alt="TaxMate Advisory Social Campaign">
             <img src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2713,7 +2720,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 8 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-employment-trust.jpg" data-alt="Sadiksha Overseas - Foreign Employment Trust Campaign">
             <img src="images/sadiksha-employment-trust.jpg" alt="Sadiksha Overseas - Foreign Employment Trust Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2729,7 +2736,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 9 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-recruitment-post.jpg" data-alt="Sadiksha Overseas - Global Recruitment Partner Social Post">
             <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2745,7 +2752,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 10 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-teej.jpg" data-alt="Sadiksha Overseas - Haritalika Teej Festival Greeting">
             <img src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2761,7 +2768,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 11 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-bhai-tika.jpg" data-alt="Sadiksha Overseas - Bhai Tika Festival Greeting">
             <img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2777,7 +2784,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 12 -->
-        <div class="graphic-card reveal">
+        <div class="graphic-card fan-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-brochure-outer.jpg" data-alt="Sadiksha Overseas Trifold Brochure - Outside Panels">
             <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2789,15 +2796,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             </div>
             <h3 class="graphic-card-title">Trifold Agency Profile Brochure</h3>
             <p class="graphic-case-study">Corporate trifold brochure outer panels highlighting company background, contact details, and overseas placement solutions.</p>
-          </div>
-        </div>
-
-        <!-- Circular Dial Wheel from Reference Image -->
-        <div class="fan-dial-wheel" id="fan-dial-wheel" title="Click to rotate designs">
-          <div class="fan-dial-inner">
-            <span class="dial-arrow">▲</span>
-            <span class="dial-me">ME</span>
-            <span class="dial-track">PORTFOLIO · PORTFOLIO</span>
           </div>
         </div>
       </div>
@@ -3985,12 +3983,11 @@ document.addEventListener('click', function(e) {
   }
 })();
 
-// Fan-style card rotation for Graphic Works (batches of 4, radial arc)
+// Fan-style card rotation for Graphic Works (batches of 4)
 (function initGraphicFan() {
   var cards = Array.from(document.querySelectorAll('.graphic-card'));
   var btn = document.getElementById('btn-see-more-graphic');
   var btnText = btn ? btn.querySelector('span') : null;
-  var dialWheel = document.getElementById('fan-dial-wheel');
   if (!cards.length || !btn) return;
 
   var batchSize = 4;
@@ -3998,79 +3995,18 @@ document.addEventListener('click', function(e) {
   var currentBatch = 0;
   var totalBatches = Math.ceil(total / batchSize);
   var isAnimating = false;
-  var dialRotation = 0;
 
-  function getFanCoords(fanIdx) {
-    var w = window.innerWidth;
-    if (w <= 520) {
-      return {
-        x: [-125, -42, 42, 125][fanIdx],
-        y: [12, -18, -18, 12][fanIdx],
-        rot: [-18, -6, 6, 18][fanIdx],
-        z: [3, 5, 5, 3][fanIdx]
-      };
-    } else if (w <= 820) {
-      return {
-        x: [-200, -68, 68, 200][fanIdx],
-        y: [16, -26, -26, 16][fanIdx],
-        rot: [-22, -7, 7, 22][fanIdx],
-        z: [3, 5, 5, 3][fanIdx]
-      };
-    } else {
-      return {
-        x: [-270, -90, 90, 270][fanIdx],
-        y: [18, -32, -32, 18][fanIdx],
-        rot: [-24, -8, 8, 24][fanIdx],
-        z: [3, 5, 5, 3][fanIdx]
-      };
-    }
-  }
-
-  function applyFan(card, fanIdx) {
-    var c = getFanCoords(fanIdx);
-    card.style.transform = 'translateX(' + c.x + 'px) translateY(' + c.y + 'px) rotate(' + c.rot + 'deg)';
-    card.style.zIndex = c.z;
-    card.style.opacity = '1';
-    card.style.pointerEvents = 'auto';
-    card.setAttribute('data-fan-active', fanIdx);
-  }
-
-  function hideCard(card) {
-    card.style.transform = 'translateX(0px) translateY(80px) rotate(0deg) scale(0.65)';
-    card.style.opacity = '0';
-    card.style.pointerEvents = 'none';
-    card.style.zIndex = '1';
-    card.removeAttribute('data-fan-active');
-  }
-
-  function exitCard(card) {
-    card.style.transform = 'translateX(0px) translateY(70px) rotate(0deg) scale(0.75)';
-    card.style.opacity = '0';
-    card.style.pointerEvents = 'none';
-    card.removeAttribute('data-fan-active');
-  }
-
-  function showBatch(batchIndex, animate) {
+  function setBatch(batchIndex) {
     var start = batchIndex * batchSize;
     var end = Math.min(start + batchSize, total);
 
     cards.forEach(function(card, idx) {
+      card.classList.remove('fan-pos-0', 'fan-pos-1', 'fan-pos-2', 'fan-pos-3', 'fan-hidden', 'fan-exit');
       if (idx >= start && idx < end) {
-        var fanIdx = idx - start;
-        if (animate) {
-          card.style.transition = 'none';
-          card.style.transform = 'translateX(0px) translateY(60px) rotate(0deg) scale(0.8)';
-          card.style.opacity = '0';
-          card.offsetHeight; // force reflow
-          card.style.transition = 'transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1), opacity 0.4s ease';
-          setTimeout(function() { applyFan(card, fanIdx); }, 30);
-        } else {
-          card.style.transition = 'none';
-          applyFan(card, fanIdx);
-        }
+        var pos = idx - start;
+        card.classList.add('fan-pos-' + pos);
       } else {
-        card.style.transition = 'none';
-        hideCard(card);
+        card.classList.add('fan-hidden');
       }
     });
 
@@ -4079,75 +4015,28 @@ document.addEventListener('click', function(e) {
     }
   }
 
-  // Hover elevation for active cards
-  cards.forEach(function(card) {
-    card.addEventListener('mouseenter', function() {
-      var fanIdxAttr = card.getAttribute('data-fan-active');
-      if (fanIdxAttr !== null && !isAnimating) {
-        var fanIdx = parseInt(fanIdxAttr, 10);
-        var c = getFanCoords(fanIdx);
-        card.style.transform = 'translateX(' + c.x + 'px) translateY(' + (c.y - 18) + 'px) rotate(' + c.rot + 'deg) scale(1.04)';
-        card.style.zIndex = '25';
-      }
-    });
-    card.addEventListener('mouseleave', function() {
-      var fanIdxAttr = card.getAttribute('data-fan-active');
-      if (fanIdxAttr !== null && !isAnimating) {
-        var fanIdx = parseInt(fanIdxAttr, 10);
-        applyFan(card, fanIdx);
-      }
-    });
-  });
-
-  function rotateNext() {
+  btn.addEventListener('click', function() {
     if (isAnimating) return;
     isAnimating = true;
 
-    // Rotate the dial wheel
-    dialRotation += 90;
-    if (dialWheel) {
-      dialWheel.style.transform = 'translateX(-50%) rotate(' + dialRotation + 'deg)';
-    }
-
-    // Collapse current batch
+    // Add exit transition to active cards
     var start = currentBatch * batchSize;
     var end = Math.min(start + batchSize, total);
     for (var i = start; i < end; i++) {
-      cards[i].style.transition = 'transform 0.45s ease, opacity 0.35s ease';
-      exitCard(cards[i]);
+      cards[i].classList.remove('fan-pos-0', 'fan-pos-1', 'fan-pos-2', 'fan-pos-3');
+      cards[i].classList.add('fan-exit');
     }
 
     setTimeout(function() {
       currentBatch = (currentBatch + 1) % totalBatches;
-      showBatch(currentBatch, true);
+      setBatch(currentBatch);
       if (currentBatch === 0) {
         var sec = document.getElementById('graphic-works');
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       }
-      setTimeout(function() { isAnimating = false; }, 650);
-    }, 380);
-  }
-
-  btn.addEventListener('click', rotateNext);
-  if (dialWheel) {
-    dialWheel.addEventListener('click', rotateNext);
-  }
-
-  // Handle window resize dynamically
-  window.addEventListener('resize', function() {
-    if (!isAnimating) {
-      var start = currentBatch * batchSize;
-      var end = Math.min(start + batchSize, total);
-      cards.forEach(function(card, idx) {
-        if (idx >= start && idx < end) {
-          applyFan(card, idx - start);
-        }
-      });
-    }
+      setTimeout(function() { isAnimating = false; }, 400);
+    }, 300);
   });
-
-  // Initial render: fan out first 4 immediately
-  showBatch(0, false);
 })();
 </script>
 </body>
