@@ -20,6 +20,7 @@
 <!-- Prefetch inactive videos in background so switching is much faster -->
 <link rel="prefetch" as="video" href="videos/video-edit.mp4?v=4">
 <link rel="prefetch" as="video" href="videos/video-edit-3.mp4?v=1">
+<link rel="prefetch" as="video" href="videos/video-edit-4.mp4?v=1">
 <script>
 // Prevent auto-scroll restoration on reload
 if ('scrollRestoration' in history) {
@@ -2398,14 +2399,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
               <button class="video-num-btn active" data-index="0" title="Watch Edit #1">1</button>
               <button class="video-num-btn" data-index="1" title="Watch Edit #2">2</button>
               <button class="video-num-btn" data-index="2" title="Watch Edit #3 (1:1 Square)">3</button>
+              <button class="video-num-btn" data-index="3" title="Watch Edit #4">4</button>
             </div>
             <button class="video-nav-btn" id="video-next" aria-label="Next video">›</button>
           </div>
         </div>
         <div class="video-actions-sidebar">
-          <a id="btn-raw-video" class="video-btn primary" href="" target="_blank" rel="noopener" style="display: none;">
+          <a id="btn-raw-video" class="video-btn secondary" href="" target="_blank" rel="noopener" style="display: none;">
             <span class="video-btn-title">See Raw Video ↗</span>
             <span class="video-btn-desc">Unedited original footage</span>
+          </a>
+          <a id="btn-raw-video-2" class="video-btn secondary" href="" target="_blank" rel="noopener" style="display: none;">
+            <span class="video-btn-title">See Raw Video (Part 2) ↗</span>
+            <span class="video-btn-desc">Additional raw footage</span>
           </a>
           <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Premiere File ↗</span>
@@ -3395,6 +3401,15 @@ document.addEventListener('click', function(e) {
       raw: '',
       premiere: 'https://drive.google.com/file/d/1xFyburL-NS5onCt3Dou3XiNr0ybbV_CC/view?usp=sharing',
       aspect: '1/1'
+    },
+    {
+      src: 'videos/video-edit-4.mp4?v=1',
+      raw: [
+        'https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing',
+        'https://drive.google.com/file/d/19G98J0pEXTnqdVulQQQkd1tOXbyCRh1C/view?usp=sharing'
+      ],
+      premiere: 'https://drive.google.com/file/d/1d9Rchrq6kvHMBW7vG9U9KJFpBtpGKMtq/view?usp=sharing',
+      aspect: '9/16'
     }
   ];
 
@@ -3403,6 +3418,7 @@ document.addEventListener('click', function(e) {
   var nextBtn = document.getElementById('video-next');
   var numContainer = document.getElementById('video-nav-numbers');
   var rawLink = document.getElementById('btn-raw-video');
+  var rawLink2 = document.getElementById('btn-raw-video-2');
   var prLink  = document.getElementById('btn-premiere-file');
   var wrapEl  = document.querySelector('.video-carousel-wrap');
   var playerContainer = document.querySelector('.video-player-container');
@@ -3423,28 +3439,48 @@ document.addEventListener('click', function(e) {
     if (wrapEl) wrapEl.classList.toggle('is-square', isSquare);
     if (playerContainer) playerContainer.classList.toggle('is-square', isSquare);
 
-    // Dynamically show/hide raw video button if not available
+    // Dynamically show/hide raw video buttons (supports single string or array of URLs)
+    var rawData = videoList[idx].raw;
     if (rawLink) {
-      if (videoList[idx].raw) {
-        rawLink.href = videoList[idx].raw;
+      if (Array.isArray(rawData) && rawData.length > 0) {
+        rawLink.href = rawData[0];
+        var t1 = rawLink.querySelector('.video-btn-title');
+        if (t1) t1.textContent = 'See Raw Video (Part 1) ↗';
         rawLink.style.display = 'flex';
-        if (prLink) {
-          prLink.classList.remove('primary');
-          prLink.classList.add('secondary');
+        rawLink.classList.remove('primary');
+        rawLink.classList.add('secondary');
+
+        if (rawLink2 && rawData.length > 1) {
+          rawLink2.href = rawData[1];
+          var t2 = rawLink2.querySelector('.video-btn-title');
+          if (t2) t2.textContent = 'See Raw Video (Part 2) ↗';
+          rawLink2.style.display = 'flex';
+          rawLink2.classList.remove('primary');
+          rawLink2.classList.add('secondary');
+        } else if (rawLink2) {
+          rawLink2.style.display = 'none';
         }
+      } else if (typeof rawData === 'string' && rawData) {
+        rawLink.href = rawData;
+        var t = rawLink.querySelector('.video-btn-title');
+        if (t) t.textContent = 'See Raw Video ↗';
+        rawLink.style.display = 'flex';
+        rawLink.classList.remove('primary');
+        rawLink.classList.add('secondary');
+        if (rawLink2) rawLink2.style.display = 'none';
       } else {
         rawLink.style.display = 'none';
-        if (prLink) {
-          prLink.classList.remove('secondary');
-          prLink.classList.add('primary');
-        }
+        if (rawLink2) rawLink2.style.display = 'none';
       }
     }
+
     if (prLink) {
       prLink.href = videoList[idx].premiere;
+      prLink.classList.remove('secondary');
+      prLink.classList.add('primary');
     }
 
-    // Update active highlight on 1, 2, 3 buttons
+    // Update active highlight on 1, 2, 3, 4 buttons
     var btns = numContainer.querySelectorAll('.video-num-btn');
     btns.forEach(function(b, i) {
       b.classList.toggle('active', i === idx);
