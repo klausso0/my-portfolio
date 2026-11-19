@@ -452,64 +452,60 @@ a { color: inherit; }
 }
 
 /* ==================================================================
-   CARD POSITIONS — orbit around the face in a wide ellipse.
-   Cards float at a DISTANCE from the face, NOT on it.
-   Left→Right: Mountain | Design | Edit | Research | Moon
-   Edge cards get rotateY + filter:blur for depth.
+   CARD POSITIONS — wrap across the face like a VR headset band.
+   Cards are SMALL and sit ON/across the face with 3D rotateY tilt.
    ================================================================== */
 
-/* 1. Mountain thumbnail — far left, behind the head */
+/* 1. Mountain thumbnail — left of Design, receding behind head */
 .thumb-mountain {
-  width: 68px;
-  height: 48px;
-  top: 80px;
-  left: -65px;
+  width: 62px;
+  height: 44px;
+  top: 115px;
+  left: -20px;
   z-index: 3;
-  transform: rotateY(45deg) rotateZ(-4deg) translateZ(-30px);
-  filter: blur(1.2px);
-  opacity: 0.85;
+  transform: rotateY(50deg) rotateZ(-6deg) translateZ(-20px);
+  filter: blur(1.5px);
+  opacity: 0.75;
   animation: bandFloat 7s ease-in-out infinite alternate;
 }
 
-/* 2. Design card — upper left, well away from face */
+/* 2. Design card — left side of forehead, tilted to wrap around */
 .card-3d-design {
-  top: 25px;
-  left: -45px;
+  top: 70px;
+  left: 30px;
   z-index: 6;
-  transform: rotateY(20deg) rotateZ(-3deg) translateZ(15px);
-  filter: blur(0.3px);
+  transform: rotateY(18deg) rotateZ(-2deg);
   animation: bandFloat 6.2s ease-in-out infinite alternate;
 }
 
-/* 3. Edit card — below chin, centered, pushed down */
+/* 3. Edit card — across chin/throat, most front-facing */
 .card-3d-edit {
-  top: 270px;
+  top: 230px;
   left: 50%;
-  transform: translateX(-50%) rotateY(-2deg) translateZ(50px);
+  transform: translateX(-50%) rotateY(0deg);
   z-index: 8;
   animation: bandFloat 5.8s ease-in-out infinite alternate-reverse;
 }
 
-/* 4. Research card — right side, well away from face */
+/* 4. Research card — right cheek, tilted opposite direction */
 .card-3d-research {
-  top: 75px;
-  right: -60px;
+  top: 95px;
+  right: 15px;
   z-index: 6;
-  transform: rotateY(-22deg) rotateZ(3deg) translateZ(15px);
-  filter: blur(0.3px);
+  transform: rotateY(-20deg) rotateZ(2deg);
   animation: bandFloat 6.5s ease-in-out infinite alternate;
 }
 
-/* 5. Moon thumbnail — far right, below and behind */
+/* 5. Moon thumbnail — right of Research, receding behind */
 .thumb-moon {
-  width: 64px;
-  height: 46px;
-  top: 240px;
-  right: -55px;
+  width: 58px;
+  height: 42px;
+  top: 200px;
+  right: -12px;
   z-index: 3;
-  transform: rotateY(-48deg) rotateZ(5deg) translateZ(-30px);
-  filter: blur(1.4px);
-  opacity: 0.8;
+  transform: rotateY(-52deg) rotateZ(6deg) translateZ(-20px);
+  filter: blur(1.5px);
+  opacity: 0.7;
   animation: bandFloat 7.2s ease-in-out infinite alternate-reverse;
 }
 
@@ -1836,75 +1832,36 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* 4-Column Graphic Works Grid & Case Study Cards */
+/* 4-Column Graphic Works — FAN LAYOUT */
 .graphic-grid {
-  /* FAN LAYOUT: Cards fanned out from bottom-center pivot like playing cards */
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 500px;
   margin: 40px auto 0;
   max-width: 700px;
-  perspective: 1200px;
 }
 .graphic-card {
   position: absolute;
-  width: 220px;
-  height: 300px;
+  width: 210px;
+  height: 290px;
   left: 50%;
-  bottom: 0;
-  margin-left: -110px;  /* center the 220px card */
-  border-radius: 24px;
+  bottom: 20px;
+  margin-left: -105px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 
-    0 20px 50px -10px rgba(15, 23, 42, 0.22),
+  box-shadow:
+    0 18px 44px -8px rgba(15, 23, 42, 0.2),
     0 4px 12px rgba(0, 0, 0, 0.06);
-  transform-origin: 50% 120%; /* pivot below the card for fan spread */
-  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.5s ease,
-              filter 0.5s ease;
+  transform-origin: 50% 140%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.45s ease;
   cursor: pointer;
   will-change: transform, opacity;
   background: #f1f5f9;
+  opacity: 0;
 }
 .graphic-card:hover {
-  z-index: 20 !important;
-  filter: brightness(1.04);
-}
-
-/* Fan positions for 4 visible cards (set via JS data-fan-index) */
-.graphic-card[data-fan="0"] { transform: rotate(-24deg) translateY(-30px); z-index: 4; }
-.graphic-card[data-fan="1"] { transform: rotate(-8deg) translateY(-50px);  z-index: 6; }
-.graphic-card[data-fan="2"] { transform: rotate(8deg)  translateY(-50px);  z-index: 6; }
-.graphic-card[data-fan="3"] { transform: rotate(24deg) translateY(-30px);  z-index: 4; }
-
-/* When a card fans OUT (exiting) */
-.graphic-card.fan-exit {
-  opacity: 0;
-  transform: rotate(0deg) translateY(60px) scale(0.8) !important;
-  pointer-events: none;
-}
-
-/* Hidden (not in current batch) */
-.graphic-card.is-hidden {
-  opacity: 0;
-  transform: rotate(0deg) translateY(80px) scale(0.7) !important;
-  pointer-events: none;
-  transition: none;
-}
-
-/* Fan entrance */
-.graphic-card.fan-enter {
-  animation: fanIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fanIn {
-  0% {
-    opacity: 0;
-    transform: rotate(0deg) translateY(80px) scale(0.8);
-  }
-  100% {
-    opacity: 1;
-  }
+  filter: brightness(1.05);
 }
 
 .graphic-thumb {
@@ -2385,19 +2342,11 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 @media (max-width: 900px) {
   .graphic-grid { height: 420px; }
-  .graphic-card { width: 180px; height: 250px; margin-left: -90px; }
-  .graphic-card[data-fan="0"] { transform: rotate(-20deg) translateY(-20px); }
-  .graphic-card[data-fan="1"] { transform: rotate(-7deg)  translateY(-38px); }
-  .graphic-card[data-fan="2"] { transform: rotate(7deg)   translateY(-38px); }
-  .graphic-card[data-fan="3"] { transform: rotate(20deg)  translateY(-20px); }
+  .graphic-card { width: 170px; height: 240px; margin-left: -85px; }
 }
 @media (max-width: 520px) {
-  .graphic-grid { height: 360px; }
-  .graphic-card { width: 150px; height: 210px; margin-left: -75px; }
-  .graphic-card[data-fan="0"] { transform: rotate(-18deg) translateY(-15px); }
-  .graphic-card[data-fan="1"] { transform: rotate(-6deg)  translateY(-30px); }
-  .graphic-card[data-fan="2"] { transform: rotate(6deg)   translateY(-30px); }
-  .graphic-card[data-fan="3"] { transform: rotate(18deg)  translateY(-15px); }
+  .graphic-grid { height: 350px; }
+  .graphic-card { width: 140px; height: 200px; margin-left: -70px; }
 }
 
 @media (max-width: 760px) {
@@ -3977,6 +3926,31 @@ document.addEventListener('click', function(e) {
   var totalBatches = Math.ceil(total / batchSize);
   var isAnimating = false;
 
+  // Fan spread angles and lifts for positions 0-3 (left to right)
+  var fanAngles = [-26, -9, 9, 26];
+  var fanLifts  = [-30, -55, -55, -30];
+  var fanZ      = [3, 5, 5, 3];
+
+  function applyFan(card, fanIdx) {
+    card.style.transform = 'rotate(' + fanAngles[fanIdx] + 'deg) translateY(' + fanLifts[fanIdx] + 'px)';
+    card.style.zIndex = fanZ[fanIdx];
+    card.style.opacity = '1';
+    card.style.pointerEvents = 'auto';
+  }
+
+  function hideCard(card) {
+    card.style.transform = 'rotate(0deg) translateY(80px) scale(0.7)';
+    card.style.opacity = '0';
+    card.style.pointerEvents = 'none';
+    card.style.zIndex = '1';
+  }
+
+  function exitCard(card) {
+    card.style.transform = 'rotate(0deg) translateY(60px) scale(0.8)';
+    card.style.opacity = '0';
+    card.style.pointerEvents = 'none';
+  }
+
   function showBatch(batchIndex, animate) {
     var start = batchIndex * batchSize;
     var end = Math.min(start + batchSize, total);
@@ -3984,37 +3958,28 @@ document.addEventListener('click', function(e) {
     cards.forEach(function(card, idx) {
       if (idx >= start && idx < end) {
         var fanIdx = idx - start;
-        card.removeAttribute('data-fan');
-        card.classList.remove('is-hidden', 'fan-exit');
-
         if (animate) {
-          card.classList.add('fan-enter');
-          // After animation, set fan position
-          setTimeout(function() {
-            card.classList.remove('fan-enter');
-            card.setAttribute('data-fan', fanIdx);
-          }, 50);
+          // Start from center collapsed
+          card.style.transition = 'none';
+          card.style.transform = 'rotate(0deg) translateY(60px) scale(0.85)';
+          card.style.opacity = '0';
+          // Force reflow
+          card.offsetHeight;
+          // Animate to fan position
+          card.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease';
+          setTimeout(function() { applyFan(card, fanIdx); }, 30);
         } else {
-          card.setAttribute('data-fan', fanIdx);
+          card.style.transition = 'none';
+          applyFan(card, fanIdx);
         }
-        card.style.opacity = '1';
-        card.style.pointerEvents = 'auto';
       } else {
-        card.removeAttribute('data-fan');
-        card.classList.add('is-hidden');
-        card.classList.remove('fan-enter', 'fan-exit');
-        card.style.opacity = '0';
-        card.style.pointerEvents = 'none';
+        card.style.transition = 'none';
+        hideCard(card);
       }
     });
 
-    // Update button text
     if (btnText) {
-      if (batchIndex >= totalBatches - 1) {
-        btnText.textContent = 'Back to first';
-      } else {
-        btnText.textContent = 'See more';
-      }
+      btnText.textContent = (batchIndex >= totalBatches - 1) ? 'Back to first' : 'See more';
     }
   }
 
@@ -4026,26 +3991,22 @@ document.addEventListener('click', function(e) {
     var start = currentBatch * batchSize;
     var end = Math.min(start + batchSize, total);
     for (var i = start; i < end; i++) {
-      cards[i].classList.add('fan-exit');
-      cards[i].removeAttribute('data-fan');
+      cards[i].style.transition = 'transform 0.45s ease, opacity 0.35s ease';
+      exitCard(cards[i]);
     }
 
-    // After exit animation, show next batch
     setTimeout(function() {
       currentBatch = (currentBatch + 1) % totalBatches;
       showBatch(currentBatch, true);
-
-      // Scroll into view if wrapping back
       if (currentBatch === 0) {
         var sec = document.getElementById('graphic-works');
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       }
-
-      setTimeout(function() { isAnimating = false; }, 500);
-    }, 450);
+      setTimeout(function() { isAnimating = false; }, 600);
+    }, 400);
   });
 
-  // Initial: show first 4
+  // Initial: show first 4 immediately
   showBatch(0, false);
 })();
 </script>
