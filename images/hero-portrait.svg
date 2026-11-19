@@ -1,47 +1,100 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 520" width="460" height="520">
   <defs>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0"/>
-      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.8"/>
+    <!-- Skin tones & Shading Gradients -->
+    <linearGradient id="skinMain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5e6d8"/>
+      <stop offset="45%" stop-color="#dfcaa7"/>
+      <stop offset="85%" stop-color="#a78b71"/>
+      <stop offset="100%" stop-color="#644e3b"/>
+    </linearGradient>
+    <linearGradient id="skinShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b2d21" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#19130e" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="jawHighlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#fdf4ec" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f5e6d8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#18181b"/>
+      <stop offset="50%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="fadeBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="75%" stop-color="#ffffff" stop-opacity="0.7"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
     </linearGradient>
-    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2d3748"/>
-      <stop offset="40%" stop-color="#1a202c"/>
-      <stop offset="100%" stop-color="#0f172a"/>
-    </linearGradient>
-    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.3"/>
-    </linearGradient>
-    <radialGradient id="headGlow" cx="50%" cy="35%" r="45%">
-      <stop offset="0%" stop-color="#6186C8" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#6186C8" stop-opacity="0"/>
+    <radialGradient id="rimLight" cx="70%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <!-- Ambient Glow Behind Head -->
-  <circle cx="200" cy="180" r="140" fill="url(#headGlow)" filter="blur(20px)" />
+  <!-- Ambient Head Aura -->
+  <circle cx="230" cy="210" r="170" fill="#6186C8" opacity="0.08" filter="blur(28px)" />
 
-  <!-- Shoulders & Torso (Minimalist Monochrome Silhouette looking up) -->
-  <path d="M 60 480 C 70 380, 110 340, 150 310 C 170 325, 230 325, 250 310 C 290 340, 330 380, 340 480 Z" fill="url(#bodyGrad)"/>
+  <!-- Black T-Shirt & Shoulders (Realistic Studio Silhouette) -->
+  <path d="M 40 520 C 55 420, 110 380, 160 365 C 190 380, 260 380, 290 365 C 340 380, 400 420, 420 520 Z" fill="url(#shirtGrad)"/>
+  <!-- Crewneck Collar Contour -->
+  <path d="M 160 365 C 190 390, 260 390, 290 365 C 280 395, 170 395, 160 365 Z" fill="#27272a"/>
 
-  <!-- Neck tilted back/upward -->
-  <path d="M 165 315 C 160 250, 170 230, 185 210 C 200 210, 225 220, 235 240 C 240 265, 240 295, 235 315 Z" fill="#334155"/>
-  <path d="M 175 290 C 185 270, 195 250, 205 235 C 215 255, 220 280, 225 295 Z" fill="#475569" opacity="0.6"/>
+  <!-- Neck & Throat (Arched Upward & Tilted Back) -->
+  <path d="M 175 365 C 170 290, 185 245, 205 210 C 240 215, 275 235, 280 270 C 285 305, 280 345, 275 365 Z" fill="#8a6e55"/>
+  <!-- Deep Throat Shadow -->
+  <path d="M 180 360 C 185 300, 200 250, 218 225 C 235 270, 240 320, 245 365 Z" fill="url(#skinShadow)"/>
+  <!-- Sternocleidomastoid Muscle Highlight (Chiseled Arched Neck) -->
+  <path d="M 210 218 C 225 255, 248 315, 262 360 C 255 360, 240 320, 225 270 Z" fill="#dfcaa7" opacity="0.65"/>
+  <path d="M 218 220 C 228 260, 248 310, 255 350" stroke="#f5e6d8" stroke-width="3" stroke-linecap="round" opacity="0.4" filter="blur(1px)"/>
 
-  <!-- Jawline & Head angled upward -->
-  <path d="M 155 190 C 145 150, 160 110, 195 95 C 240 80, 275 105, 280 150 C 285 180, 270 215, 245 230 C 220 240, 195 242, 175 225 C 165 215, 158 205, 155 190 Z" fill="url(#bodyGrad)"/>
+  <!-- Head Base Shape (Side/3-Quarter Profile Angled Upward to the Right) -->
+  <path d="M 160 210 C 145 160, 165 100, 215 75 C 265 55, 320 80, 335 135 C 345 175, 330 220, 295 240 C 255 258, 215 255, 185 235 C 170 225, 163 218, 160 210 Z" fill="#a78b71"/>
 
-  <!-- Facial Profile Highlight (Chiseled artistic monochrome) -->
-  <path d="M 195 98 C 230 88, 260 108, 268 142 C 272 165, 265 192, 248 212 C 235 185, 218 150, 195 98 Z" fill="url(#highlightGrad)" opacity="0.35"/>
-  
-  <!-- Nose & Brow Highlight -->
-  <path d="M 235 130 C 248 135, 258 145, 252 155 C 245 158, 238 155, 232 145 Z" fill="#cbd5e1" opacity="0.5"/>
+  <!-- Facial Planes & Soft Lighting (Looking Up) -->
+  <!-- Forehead to Cheekbone Highlight -->
+  <path d="M 230 78 C 275 68, 320 95, 330 140 C 335 165, 328 190, 305 215 C 290 190, 270 150, 240 100 Z" fill="url(#skinMain)"/>
 
-  <!-- Hair / Curls Texture -->
-  <path d="M 155 190 C 140 170, 135 140, 145 110 C 152 88, 170 70, 195 65 C 220 60, 250 68, 270 85 C 260 80, 235 78, 215 82 C 190 88, 172 105, 165 130 C 160 150, 162 170, 155 190 Z" fill="#0f172a"/>
-  
-  <!-- Soft Bottom Blend Gradient Mask -->
-  <rect x="0" y="360" width="400" height="120" fill="url(#bgGrad)"/>
+  <!-- Chiseled Jawline Definition & Rim Light -->
+  <path d="M 205 210 C 235 220, 270 230, 295 240 C 285 248, 250 248, 215 235 Z" fill="#2d2218"/>
+  <path d="M 208 212 C 240 222, 275 232, 295 238" stroke="url(#jawHighlight)" stroke-width="4.5" stroke-linecap="round" filter="blur(0.5px)"/>
+
+  <!-- Nose Profile (Pointed upward) -->
+  <path d="M 305 130 C 322 135, 332 144, 324 154 C 315 157, 305 152, 298 142 Z" fill="#edd6c0"/>
+  <path d="M 308 132 C 320 137, 326 144, 320 150" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+
+  <!-- Closed Eye & Eyelash Curve (Serene Expression) -->
+  <path d="M 275 125 C 283 130, 292 130, 298 126" stroke="#2b1f17" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Eyebrow -->
+  <path d="M 268 112 C 282 112, 298 118, 308 122" stroke="#1c140e" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Lips Contour (Relaxed, parted slightly) -->
+  <path d="M 292 172 C 302 174, 312 177, 308 183 C 298 185, 290 180, 288 174 Z" fill="#8d5b4c"/>
+  <path d="M 294 173 C 304 175, 310 178, 304 180" stroke="#4a251b" stroke-width="2"/>
+
+  <!-- Chin Contour -->
+  <path d="M 288 200 C 302 205, 306 215, 295 225 C 282 225, 275 218, 278 205 Z" fill="#d8be9f"/>
+
+  <!-- Ear Definition -->
+  <path d="M 185 175 C 172 165, 170 145, 180 135 C 192 125, 202 135, 200 155 C 198 175, 192 185, 185 175 Z" fill="#9c7a5e"/>
+  <path d="M 182 160 C 178 150, 180 140, 188 138" stroke="#3d281a" stroke-width="2.5" fill="none"/>
+
+  <!-- Curly Black Hair Volume (Thick Texture matching reference) -->
+  <!-- Base mass -->
+  <path d="M 160 210 C 135 185, 130 145, 140 105 C 150 70, 175 45, 215 38 C 255 30, 295 45, 320 70 C 335 88, 340 115, 325 130 C 315 110, 295 85, 260 75 C 220 65, 180 85, 165 125 C 152 155, 158 185, 160 210 Z" fill="#09090b"/>
+  <!-- Hair Curls & Tuft Layers -->
+  <circle cx="165" cy="100" r="22" fill="#18181b"/>
+  <circle cx="190" cy="65" r="25" fill="#111113"/>
+  <circle cx="225" cy="50" r="26" fill="#18181b"/>
+  <circle cx="265" cy="52" r="24" fill="#111113"/>
+  <circle cx="300" cy="68" r="22" fill="#18181b"/>
+  <circle cx="325" cy="95" r="20" fill="#111113"/>
+  <circle cx="145" cy="135" r="20" fill="#111113"/>
+  <circle cx="148" cy="170" r="18" fill="#18181b"/>
+  <!-- Subtle Hair Rim Highlights -->
+  <path d="M 185 55 C 225 40, 270 42, 305 60" stroke="#52525b" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4" filter="blur(1px)"/>
+  <path d="M 150 120 C 145 95, 160 70, 185 55" stroke="#3f3f46" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+  <!-- Soft Studio Gradient Fade at Bottom -->
+  <rect x="0" y="380" width="460" height="140" fill="url(#fadeBottom)"/>
 </svg>

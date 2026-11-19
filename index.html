@@ -229,13 +229,13 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
-   CENTRAL STAGE (PORTRAIT + FLOATING GLASS CARDS + CONNECTOR WIRES)
+   CENTRAL STAGE (PORTRAIT + 3D CYLINDRICAL CUE CARDS + CONNECTOR WIRES)
    ========================================================================== */
 .mindly-stage {
   position: relative;
   max-width: 1040px;
   margin: 0 auto;
-  min-height: 430px;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,43 +252,45 @@ a { color: inherit; }
   z-index: 1;
 }
 
-/* SIDE FLOATING GLASS CARDS (LEFT & RIGHT) */
+/* SIDE FLOATING GLASS CARDS (EXACT MINDLY POSITIONS) */
 .mindly-side-card {
   position: absolute;
-  z-index: 3;
-  width: 220px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
+  z-index: 4;
+  width: 236px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid rgba(255, 255, 255, 0.98);
+  border-radius: 22px;
   padding: 22px 20px;
   text-align: left;
   box-shadow: 
-    0 20px 40px -10px rgba(45, 62, 80, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.04);
-  backdrop-filter: blur(14px);
+    0 24px 48px -12px rgba(35, 52, 70, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(16px);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .mindly-side-card:hover {
   transform: translateY(-4px) !important;
   box-shadow: 
-    0 26px 50px -10px rgba(45, 62, 80, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.06);
+    0 30px 56px -12px rgba(35, 52, 70, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Left Card: Elevated high on left, next to subtitle/headline */
 .mindly-side-card.card-left {
-  top: 48px;
-  left: clamp(10px, 3.5vw, 44px);
-  animation: floatLeft 6s ease-in-out infinite alternate;
+  top: 15px;
+  left: clamp(10px, 4vw, 56px);
+  animation: floatLeft 6.5s ease-in-out infinite alternate;
 }
 @keyframes floatLeft {
   0% { transform: translateY(0px); }
   100% { transform: translateY(-10px); }
 }
 
+/* Right Card: Positioned at mid-height on right, level with face */
 .mindly-side-card.card-right {
-  top: 68px;
-  right: clamp(10px, 3.5vw, 44px);
-  animation: floatRight 6.5s ease-in-out infinite alternate;
+  top: 170px;
+  right: clamp(10px, 4vw, 56px);
+  animation: floatRight 7s ease-in-out infinite alternate;
 }
 @keyframes floatRight {
   0% { transform: translateY(0px); }
@@ -296,10 +298,10 @@ a { color: inherit; }
 }
 
 .card-icon-pill {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(240, 246, 253, 0.9);
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(240, 246, 253, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +309,7 @@ a { color: inherit; }
 }
 .mindly-side-card .card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 700;
   color: #1a2732;
   margin: 0 0 6px;
@@ -322,23 +324,25 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
-   CENTER PORTRAIT & 3D ORBIT CARDS
+   CENTER PORTRAIT & 3D CYLINDRICAL CUE CARDS WRAPPED AROUND FACE
    ========================================================================== */
 .mindly-center-piece {
   position: relative;
   z-index: 2;
-  width: 380px;
+  width: 440px;
   max-width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   margin: 0 auto;
+  perspective: 900px;
+  perspective-origin: 50% 40%;
 }
 
 .portrait-frame {
   position: relative;
-  width: 320px;
-  height: 390px;
+  width: 330px;
+  height: 410px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -351,120 +355,192 @@ a { color: inherit; }
   object-fit: cover;
   object-position: center bottom;
   display: block;
-  filter: contrast(1.05) grayscale(0.2);
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
 
-/* ORBITING 3D GLASS CARDS AROUND HEAD */
-.orbit-card {
+/* 3D CUE CARDS (RECTANGULAR FROSTED GLASS CARDS WITH ICONS) */
+.cue-card-3d {
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   display: flex;
   align-items: center;
-  gap: 9px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 28px rgba(35, 52, 70, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 999px;
-  padding: 8px 16px;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 20px 42px -6px rgba(18, 30, 48, 0.16),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 16px;
+  padding: 10px 16px;
   white-space: nowrap;
   pointer-events: none;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
 }
-.orbit-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.dot-design { background: #6186C8; box-shadow: 0 0 8px rgba(97, 134, 200, 0.5); }
-.dot-edit   { background: #e07a5f; box-shadow: 0 0 8px rgba(224, 122, 95, 0.5); }
-.dot-research { background: #3d5a80; box-shadow: 0 0 8px rgba(61, 90, 128, 0.5); }
 
-.orbit-content {
+.cue-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
   display: flex;
-  align-items: baseline;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.orbit-name {
+.cue-icon-box.icon-amber {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  color: #ffffff;
+}
+.cue-icon-box.icon-purple {
+  background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+  color: #ffffff;
+}
+.cue-icon-box.icon-coral {
+  background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+  color: #ffffff;
+}
+
+.cue-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+.cue-card-name {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #1a2732;
+  color: #0f172a;
+  line-height: 1.2;
 }
-.orbit-tag {
+.cue-card-desc {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem;
-  color: #6a7e8e;
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
-/* ORBIT CARD POSITIONS (Cylindrical Arch) */
-.orbit-1 {
-  top: 72px;
-  left: -20px;
-  transform: rotate(-6deg);
-  animation: orbitFloat1 5s ease-in-out infinite alternate;
-}
-.orbit-2 {
-  top: 135px;
-  left: 36px;
-  transform: rotate(2deg);
-  animation: orbitFloat2 6s ease-in-out infinite alternate;
-}
-.orbit-3 {
-  top: 105px;
-  right: -10px;
-  transform: rotate(6deg);
-  animation: orbitFloat3 5.5s ease-in-out infinite alternate;
-}
-
-@keyframes orbitFloat1 {
-  0% { transform: translateY(0px) rotate(-6deg); }
-  100% { transform: translateY(-7px) rotate(-4deg); }
-}
-@keyframes orbitFloat2 {
-  0% { transform: translateY(0px) rotate(2deg); }
-  100% { transform: translateY(6px) rotate(3deg); }
-}
-@keyframes orbitFloat3 {
-  0% { transform: translateY(0px) rotate(6deg); }
-  100% { transform: translateY(-8px) rotate(8deg); }
-}
-
-/* BACKGROUND GLASS TILES FOR 3D ARC DEPTH */
-.orbit-glass-tile {
+/* THUMBNAIL CARDS (MOUNTAIN & MOON) */
+.cue-card-thumb {
   position: absolute;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 18px 36px -6px rgba(18, 30, 48, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+.cue-card-thumb svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 3D CYLINDRICAL WRAP POSITIONS (SURROUNDING FACE) */
+/* 1. Mountain card (receding back left) */
+.thumb-mountain {
+  width: 86px;
+  height: 58px;
+  top: 90px;
+  left: -28px;
+  z-index: 3;
+  transform: rotateY(32deg) rotateX(-5deg) scale(0.94);
+  animation: floatMtn 6s ease-in-out infinite alternate;
+}
+@keyframes floatMtn {
+  0% { transform: translateY(0) rotateY(32deg) rotateX(-5deg) scale(0.94); }
+  100% { transform: translateY(-6px) rotateY(34deg) rotateX(-4deg) scale(0.94); }
+}
+
+/* 2. Design card (front top left, replaces Focus) */
+.card-3d-design {
+  top: 48px;
+  left: 28px;
+  z-index: 5;
+  transform: rotateY(18deg) rotateX(-3deg) translateZ(45px);
+  animation: floatDesign 5.5s ease-in-out infinite alternate;
+}
+@keyframes floatDesign {
+  0% { transform: translateY(0) rotateY(18deg) rotateX(-3deg) translateZ(45px); }
+  100% { transform: translateY(-7px) rotateY(16deg) rotateX(-2deg) translateZ(45px); }
+}
+
+/* 3. Edit card (front center across chin/jaw, replaces Ideas) */
+.card-3d-edit {
+  top: 155px;
+  left: 95px;
+  z-index: 7;
+  transform: rotateY(-3deg) rotateX(1deg) translateZ(85px);
+  animation: floatEdit 6s ease-in-out infinite alternate;
+}
+@keyframes floatEdit {
+  0% { transform: translateY(0) rotateY(-3deg) rotateX(1deg) translateZ(85px); }
+  100% { transform: translateY(6px) rotateY(-2deg) rotateX(2deg) translateZ(85px); }
+}
+
+/* 4. Research card (front right, replaces Plan) */
+.card-3d-research {
+  top: 100px;
+  right: -8px;
+  z-index: 5;
+  transform: rotateY(-24deg) rotateX(4deg) translateZ(45px);
+  animation: floatResearch 5.8s ease-in-out infinite alternate;
+}
+@keyframes floatResearch {
+  0% { transform: translateY(0) rotateY(-24deg) rotateX(4deg) translateZ(45px); }
+  100% { transform: translateY(-7px) rotateY(-22deg) rotateX(5deg) translateZ(45px); }
+}
+
+/* 5. Moon card (receding back right) */
+.thumb-moon {
+  width: 82px;
+  height: 56px;
+  top: 195px;
+  right: 15px;
+  z-index: 4;
+  transform: rotateY(-36deg) rotateX(8deg) scale(0.94);
+  animation: floatMoon 6.2s ease-in-out infinite alternate;
+}
+@keyframes floatMoon {
+  0% { transform: translateY(0) rotateY(-36deg) rotateX(8deg) scale(0.94); }
+  100% { transform: translateY(6px) rotateY(-34deg) rotateX(7deg) scale(0.94); }
+}
+
+/* 6. Back curved frosted glass slices */
+.orbit-glass-slice {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.32);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
   pointer-events: none;
   z-index: 1;
 }
-.tile-back-1 {
-  width: 72px;
-  height: 96px;
+.slice-back-left {
+  width: 76px;
+  height: 98px;
+  top: 35px;
+  left: 20px;
+  transform: rotate(-16deg) skewY(-8deg);
+  opacity: 0.55;
+}
+.slice-back-right {
+  width: 84px;
+  height: 108px;
   top: 40px;
-  left: 30px;
-  transform: rotate(-14deg) skewY(-6deg);
-  opacity: 0.6;
-}
-.tile-back-2 {
-  width: 64px;
-  height: 84px;
-  top: 30px;
-  right: 50px;
-  transform: rotate(12deg) skewY(5deg);
-  opacity: 0.5;
-}
-.tile-back-3 {
-  width: 80px;
-  height: 104px;
-  top: 150px;
-  right: -30px;
+  right: 35px;
   transform: rotate(18deg) skewY(10deg);
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
 /* ==========================================================================
@@ -2284,12 +2360,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <div class="mindly-hero-content">
       <!-- Main Editorial Headline -->
       <h1 class="mindly-hero-title">
-        Design that starts with <br><em>why people use it.</em>
+        Design that starts with <br><em>the purpose behind the product.</em>
       </h1>
 
       <!-- Subtitle -->
       <p class="mindly-hero-sub">
-        Graphic designer and aspiring editor, curious about how people actually use what we make.
+        Graphic designer who wants to be an editor, curious about how people actually experience the products we make.
       </p>
 
       <!-- CTA Buttons -->
@@ -2302,15 +2378,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </a>
       </div>
 
-      <!-- Central Stage with Floating Cards & Connector Wires -->
+      <!-- Central Stage with 3D Cylindrical Cards & Connector Wires -->
       <div class="mindly-stage">
         <!-- SVG Curved Connector Wires (Desktop) -->
-        <svg class="mindly-connectors" viewBox="0 0 1000 440" fill="none" preserveAspectRatio="none">
-          <path d="M 230 160 C 330 200, 370 240, 440 260" stroke="rgba(97, 134, 200, 0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
-          <path d="M 770 180 C 670 220, 630 240, 560 260" stroke="rgba(97, 134, 200, 0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <svg class="mindly-connectors" viewBox="0 0 1000 480" fill="none" preserveAspectRatio="none">
+          <!-- Wire from Left Card right edge to left face ring -->
+          <path d="M 235 65 C 320 85, 360 140, 420 180" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <!-- Wire from Right Card left edge to right face ring -->
+          <path d="M 765 210 C 690 220, 640 220, 570 215" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
         </svg>
 
-        <!-- Left Floating Card -->
+        <!-- Left Floating Card (Elevated High on Left, level with subtitle/buttons) -->
         <div class="mindly-side-card card-left">
           <div class="card-icon-pill">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2b3e4a" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5v14M7 9v6M22 10v4M2 10v4"/></svg>
@@ -2319,37 +2397,71 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <p class="card-desc">Posts and visuals crafted to stop the scroll and drive engagement.</p>
         </div>
 
-        <!-- Center Portrait + 3D Glass Arc -->
+        <!-- Center Portrait + 3D Cylindrical Cue Cards Wrapped Around Face -->
         <div class="mindly-center-piece">
-          <!-- Orbiting 3D Glass Badges around Head -->
-          <div class="orbit-card orbit-1">
-            <span class="orbit-dot dot-design"></span>
-            <div class="orbit-content">
-              <span class="orbit-name">Design</span>
-              <span class="orbit-tag">Visuals with purpose</span>
+          <!-- 1. Mountain Photo Thumbnail (Receding Back-Left) -->
+          <div class="cue-card-thumb thumb-mountain">
+            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="70" fill="#18181b"/>
+              <path d="M 0 70 L 25 35 L 45 52 L 70 20 L 100 70 Z" fill="#27272a"/>
+              <path d="M 25 35 L 35 48 L 45 52 L 25 35 Z" fill="#ffffff" opacity="0.4"/>
+              <path d="M 70 20 L 80 40 L 88 50 L 70 20 Z" fill="#ffffff" opacity="0.6"/>
+              <path d="M 40 70 L 60 42 L 75 55 L 100 70 Z" fill="#3f3f46"/>
+              <circle cx="82" cy="16" r="5" fill="#f4f4f5" opacity="0.8"/>
+            </svg>
+          </div>
+
+          <!-- 2. Front Top-Left Card: Design (Replaces Focus) -->
+          <div class="cue-card-3d card-3d-design">
+            <div class="cue-icon-box icon-amber">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <div class="cue-card-text">
+              <span class="cue-card-name">Design</span>
+              <span class="cue-card-desc">Visuals with purpose</span>
             </div>
           </div>
 
-          <div class="orbit-card orbit-2">
-            <span class="orbit-dot dot-edit"></span>
-            <div class="orbit-content">
-              <span class="orbit-name">Edit</span>
-              <span class="orbit-tag">Pacing &amp; sound</span>
+          <!-- 3. Front Center Card: Edit (Across Chin/Throat, Replaces Ideas) -->
+          <div class="cue-card-3d card-3d-edit">
+            <div class="cue-icon-box icon-purple">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <div class="cue-card-text">
+              <span class="cue-card-name">Edit</span>
+              <span class="cue-card-desc">Pacing, cuts &amp; sound</span>
             </div>
           </div>
 
-          <div class="orbit-card orbit-3">
-            <span class="orbit-dot dot-research"></span>
-            <div class="orbit-content">
-              <span class="orbit-name">Research</span>
-              <span class="orbit-tag">User intent first</span>
+          <!-- 4. Front Right Card: Research (Replaces Plan) -->
+          <div class="cue-card-3d card-3d-research">
+            <div class="cue-icon-box icon-coral">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </div>
+            <div class="cue-card-text">
+              <span class="cue-card-name">Research</span>
+              <span class="cue-card-desc">User intent first</span>
             </div>
           </div>
 
-          <!-- Glass Backdrop Tiles for 3D Arc Depth -->
-          <div class="orbit-glass-tile tile-back-1"></div>
-          <div class="orbit-glass-tile tile-back-2"></div>
-          <div class="orbit-glass-tile tile-back-3"></div>
+          <!-- 5. Moon / Space Photo Thumbnail (Receding Back-Right) -->
+          <div class="cue-card-thumb thumb-moon">
+            <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="70" fill="#09090b"/>
+              <circle cx="50" cy="35" r="22" fill="#27272a"/>
+              <path d="M 38 18 A 22 22 0 0 0 62 52 A 20 20 0 0 1 38 18 Z" fill="#d4d4d8" opacity="0.7"/>
+              <circle cx="48" cy="30" r="3" fill="#18181b" opacity="0.6"/>
+              <circle cx="42" cy="40" r="4" fill="#18181b" opacity="0.6"/>
+              <circle cx="20" cy="18" r="1" fill="#ffffff" opacity="0.8"/>
+              <circle cx="82" cy="22" r="1.2" fill="#ffffff" opacity="0.7"/>
+              <circle cx="25" cy="52" r="0.8" fill="#ffffff" opacity="0.5"/>
+              <circle cx="78" cy="55" r="1" fill="#ffffff" opacity="0.6"/>
+            </svg>
+          </div>
+
+          <!-- 6. Back Curved Frosted Glass Slices Completing the Ring -->
+          <div class="orbit-glass-slice slice-back-left"></div>
+          <div class="orbit-glass-slice slice-back-right"></div>
 
           <!-- Central Portrait Frame -->
           <div class="portrait-frame">
@@ -2357,7 +2469,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
         </div>
 
-        <!-- Right Floating Card -->
+        <!-- Right Floating Card (Positioned at mid-height, level with face) -->
         <div class="mindly-side-card card-right">
           <div class="card-icon-pill">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2b3e4a" stroke-width="2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
