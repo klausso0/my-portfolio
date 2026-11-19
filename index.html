@@ -984,64 +984,288 @@ h2.sec {
   }
 }
 
-/* CONTACT */
-.contact {
+/* ==========================================================================
+   CREATIVE STUDIO CONTACT SECTION (ECHOING HERO CRAFT & GLASS AESTHETIC)
+   ========================================================================== */
+.contact-section {
+  position: relative;
+  padding: 85px 0 100px;
+  overflow: hidden;
+}
+
+.contact-stage-wrap {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Background connector dashed wires */
+.contact-wire-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Spinning contact stamp badge */
+.contact-badge {
+  position: absolute;
+  top: -20px;
+  right: 15px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.contact-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
   align-items: center;
 }
-.contact h2 {
+
+/* Left Column */
+.contact-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(195, 215, 240, 0.85);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2b3e4a;
+  box-shadow: 0 2px 8px rgba(97, 134, 200, 0.08);
+  margin-bottom: 20px;
+}
+.status-dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.contact-editorial-title {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
-  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-size: clamp(2.8rem, 6vw, 4.4rem);
   line-height: 1.05;
-  color: #203544;
+  color: #17242d;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
 }
-.contact h2 em {
+.contact-editorial-title em {
   font-family: 'Instrument Serif', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  color: #4a7ebb;
+  color: #6186C8;
 }
-.contact p {
-  margin-top: 16px;
-  max-width: 44ch;
-  color: var(--mut);
+
+.contact-editorial-copy {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.68;
+  color: #536777;
+  max-width: 480px;
+  margin: 0 0 32px;
 }
-.info {
+
+.contact-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.contact-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #6186C8;
+  color: #ffffff;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(97, 134, 200, 0.32);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-btn-primary:hover {
+  background: #4d73b6;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(97, 134, 200, 0.42);
+}
+.contact-btn-primary .arrow {
+  transition: transform 0.2s ease;
+}
+.contact-btn-primary:hover .arrow {
+  transform: translateX(3px);
+}
+
+.contact-btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2b3e4a;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid rgba(195, 215, 240, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.contact-btn-copy:hover {
+  background: #ffffff;
+  border-color: #6186C8;
+  color: #6186C8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(97, 134, 200, 0.16);
+}
+
+/* Right Column — Floating Glass Channel Cards */
+.contact-cards-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-.info a, .info div {
-  display: block;
+
+.contact-channel-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-decoration: none;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 20px;
-  min-height: 100px;
-  word-break: break-word;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  border-radius: 20px;
+  padding: 18px 20px;
+  min-height: 125px;
+  box-shadow: 
+    0 12px 28px -6px rgba(35, 52, 70, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
 }
-.info a:hover {
-  border-color: #4a7ebb;
-  transform: translateY(-2px);
+
+.contact-channel-card:hover {
+  transform: translateY(-4px);
+  border-color: #6186C8;
+  box-shadow: 
+    0 20px 40px -8px rgba(97, 134, 200, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.03);
 }
-.info small {
-  display: block;
-  color: #4a7ebb;
-  font-weight: 600;
-  font-size: 0.84rem;
+
+/* Staggered micro-float animations like the hero */
+.contact-channel-card:nth-child(1) { animation: floatSubtle1 6.5s ease-in-out infinite alternate; }
+.contact-channel-card:nth-child(2) { animation: floatSubtle2 7s ease-in-out infinite alternate; }
+.contact-channel-card:nth-child(3) { animation: floatSubtle2 6.8s ease-in-out infinite alternate; }
+.contact-channel-card:nth-child(4) { animation: floatSubtle1 7.2s ease-in-out infinite alternate; }
+
+@keyframes floatSubtle1 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+@keyframes floatSubtle2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* Card Elements */
+.channel-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.channel-icon-pill {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: rgba(240, 246, 253, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6186C8;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.contact-channel-card:hover .channel-icon-pill {
+  background: #6186C8;
+  color: #ffffff;
+}
+
+.channel-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #647b8d;
+}
+
+.channel-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #17242d;
+  line-height: 1.3;
   margin-bottom: 6px;
+  word-break: break-all;
 }
-.info a.mail {
-  background: #507bb5;
-  color: #fff;
-  border-color: #507bb5;
+
+.channel-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #6186C8;
 }
-.info a.mail small { color: #dbe8f7; }
+
+/* Primary Highlight on Email Card */
+.contact-channel-card.card-email {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 246, 255, 0.94) 100%);
+  border-color: rgba(97, 134, 200, 0.55);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .contact-wire-svg { display: none; }
+  .contact-badge { display: none; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+@media (max-width: 540px) {
+  .contact-cards-col {
+    grid-template-columns: 1fr;
+  }
+}
 
 footer {
   padding: 32px 0 48px;
@@ -2730,18 +2954,105 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
   </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="reveal">
-    <div class="wrap contact">
-      <div>
-        <h2>Think we’d <em>get along?</em></h2>
-        <p>I’m a designer who loves the thinking behind products, and I’m looking for a place to keep learning design and editing. If that sounds like your team, send me a message.</p>
+  <!-- Contact Section (Creative Studio Hub) -->
+  <section id="contact" class="contact-section reveal">
+    <div class="wrap contact-stage-wrap">
+      <!-- Background SVG curved connector lines echoing the hero -->
+      <svg class="contact-wire-svg" viewBox="0 0 1000 450" fill="none" preserveAspectRatio="none">
+        <path d="M 280 180 C 420 180, 520 130, 640 110" stroke="rgba(97, 134, 200, 0.28)" stroke-width="1.5" stroke-dasharray="4 4" />
+        <path d="M 320 280 C 460 300, 540 280, 640 260" stroke="rgba(97, 134, 200, 0.28)" stroke-width="1.5" stroke-dasharray="4 4" />
+      </svg>
+
+      <!-- Rotating stamp badge in top-right of contact section -->
+      <div class="contact-badge" aria-label="Let’s connect · Open to opportunities">
+        <svg viewBox="0 0 100 100" class="badge-spin-svg">
+          <path id="contact-badge-path" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+          <text font-family="'DM Sans', sans-serif" font-size="8.4" font-weight="600" letter-spacing="2.2" fill="#2b3e4a">
+            <textPath xlink:href="#contact-badge-path">
+              LET’S CONNECT · START A PROJECT ·
+            </textPath>
+          </text>
+        </svg>
+        <div class="badge-center-icon">✦</div>
       </div>
-      <div class="info">
-        <a class="mail" href="mailto:bhattneeraj742@gmail.com"><small>Send a message</small>bhattneeraj742@gmail.com</a>
-        <a href="tel:+9779765440265"><small>Phone</small>+977 9765440265</a>
-        <a href="https://smartcvbuilders.com" target="_blank" rel="noopener"><small>Website</small>smartcvbuilders.com</a>
-        <a href="resume.pdf?v=4" download="Neeraj_Bhatt_Resume.pdf"><small>Resume / CV</small>Download CV ↓</a>
+
+      <div class="contact-grid">
+        <!-- Left: Editorial Headline & Actions -->
+        <div class="contact-lead-col">
+          <div class="contact-status-pill">
+            <span class="status-dot-pulse"></span>
+            <span>Open to design &amp; editing roles</span>
+          </div>
+
+          <h2 class="contact-editorial-title">
+            Think we’d <br><em>get along?</em>
+          </h2>
+
+          <p class="contact-editorial-copy">
+            I’m a designer who loves the thinking behind products, and I’m looking for a place to keep learning design and editing. If that sounds like your team, send me a message.
+          </p>
+
+          <div class="contact-cta-row">
+            <a class="contact-btn-primary" href="mailto:bhattneeraj742@gmail.com">
+              Write to my inbox <span class="arrow">→</span>
+            </a>
+            <button type="button" class="contact-btn-copy" id="btn-copy-email" data-email="bhattneeraj742@gmail.com" title="Copy email address to clipboard">
+              <span id="copy-btn-text">Copy email</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Floating Glass Channel Cards -->
+        <div class="contact-cards-col">
+          <!-- Card 1: Direct Email -->
+          <a class="contact-channel-card card-email" href="mailto:bhattneeraj742@gmail.com">
+            <div class="channel-card-top">
+              <div class="channel-icon-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span class="channel-tag">Direct Email</span>
+            </div>
+            <div class="channel-value">bhattneeraj742@gmail.com</div>
+            <div class="channel-hint">Compose in default app ↗</div>
+          </a>
+
+          <!-- Card 2: Phone & WhatsApp -->
+          <a class="contact-channel-card card-phone" href="tel:+9779765440265">
+            <div class="channel-card-top">
+              <div class="channel-icon-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <span class="channel-tag">Direct Call &amp; WhatsApp</span>
+            </div>
+            <div class="channel-value">+977 9765440265</div>
+            <div class="channel-hint">Available GMT+5:45 ↗</div>
+          </a>
+
+          <!-- Card 3: Live Product -->
+          <a class="contact-channel-card card-web" href="https://smartcvbuilders.com" target="_blank" rel="noopener">
+            <div class="channel-card-top">
+              <div class="channel-icon-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <span class="channel-tag">Live Startup</span>
+            </div>
+            <div class="channel-value">smartcvbuilders.com</div>
+            <div class="channel-hint">9.3K+ search impressions ↗</div>
+          </a>
+
+          <!-- Card 4: Resume Download -->
+          <a class="contact-channel-card card-cv" href="resume.pdf?v=4" download="Neeraj_Bhatt_Resume.pdf">
+            <div class="channel-card-top">
+              <div class="channel-icon-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+              </div>
+              <span class="channel-tag">Curriculum Vitae</span>
+            </div>
+            <div class="channel-value">Download Resume (PDF)</div>
+            <div class="channel-hint">One-page printable CV ↓</div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -3817,6 +4128,34 @@ document.addEventListener('click', function(e) {
       }
       setTimeout(function() { isAnimating = false; }, 400);
     }, 300);
+  });
+})();
+
+// ====== COPY EMAIL TO CLIPBOARD ======
+(function() {
+  var copyBtn = document.getElementById('btn-copy-email');
+  var copyText = document.getElementById('copy-btn-text');
+  if (!copyBtn || !copyText) return;
+
+  copyBtn.addEventListener('click', function() {
+    var email = copyBtn.getAttribute('data-email') || 'bhattneeraj742@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function() {
+        var orig = copyText.textContent;
+        copyText.textContent = 'Copied! ✓';
+        copyBtn.style.borderColor = '#10b981';
+        copyBtn.style.color = '#10b981';
+        setTimeout(function() {
+          copyText.textContent = orig;
+          copyBtn.style.borderColor = '';
+          copyBtn.style.color = '';
+        }, 2000);
+      }).catch(function() {
+        window.location.href = 'mailto:' + email;
+      });
+    } else {
+      window.location.href = 'mailto:' + email;
+    }
   });
 })();
 </script>
