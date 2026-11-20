@@ -2093,42 +2093,58 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 /* ==========================================================================
-   POSTER DESIGNS SECTION
+   POSTER DESIGNS SECTION — FOCUSED SINGLE POSTER SHOWCASE WITH NEXT/PREV
    ========================================================================== */
 #poster-designs {
   padding: 40px 0 95px;
 }
 
-.poster-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
-  gap: 32px;
+.poster-carousel-wrap {
+  position: relative;
+  max-width: 440px;
+  margin: 36px auto 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: start;
-  margin-top: 32px;
+}
+
+.poster-stage {
+  position: relative;
+  width: 100%;
+}
+
+.poster-slide {
+  display: none;
+  animation: posterFadeIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.poster-slide.active {
+  display: block;
+}
+
+@keyframes posterFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .poster-card {
   background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid rgba(220, 235, 250, 0.9);
-  border-radius: 20px;
+  border-radius: 22px;
   overflow: hidden;
   box-shadow: 
-    0 12px 28px -6px rgba(35, 52, 70, 0.08),
-    0 2px 6px rgba(0, 0, 0, 0.02);
+    0 14px 34px -6px rgba(35, 52, 70, 0.09),
+    0 2px 8px rgba(0, 0, 0, 0.02);
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.28s ease,
               border-color 0.28s ease;
-  display: flex;
-  flex-direction: column;
 }
 
 .poster-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: #6186C8;
   box-shadow: 
-    0 20px 40px -8px rgba(97, 134, 200, 0.22),
-    0 4px 10px rgba(0, 0, 0, 0.03);
+    0 22px 44px -8px rgba(97, 134, 200, 0.24),
+    0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .poster-thumb {
@@ -2147,7 +2163,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 .poster-thumb:hover img {
-  transform: scale(1.03);
+  transform: scale(1.025);
 }
 
 .poster-thumb .graphic-item-overlay {
@@ -2171,7 +2187,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 .poster-info {
-  padding: 18px 20px 22px;
+  padding: 18px 22px 22px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -2197,9 +2213,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   border: 1px solid rgba(195, 215, 240, 0.6);
 }
 
+.poster-count {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #7b91a3;
+  letter-spacing: 0.05em;
+}
+
 .poster-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #17242d;
   margin: 0;
@@ -2208,10 +2232,80 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-card-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   line-height: 1.55;
   color: #556877;
   margin: 0;
+}
+
+/* Navigation Arrow Buttons */
+.poster-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  color: #2b3e4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(35, 52, 70, 0.1);
+  transition: all 0.22s ease;
+}
+.poster-prev {
+  left: -60px;
+}
+.poster-next {
+  right: -60px;
+}
+.poster-nav-btn:hover {
+  background: #6186C8;
+  color: #ffffff;
+  border-color: #6186C8;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(97, 134, 200, 0.35);
+}
+
+@media (max-width: 640px) {
+  .poster-carousel-wrap {
+    max-width: 92%;
+  }
+  .poster-prev {
+    left: 8px;
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .poster-next {
+    right: 8px;
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* Indicators */
+.poster-carousel-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+.poster-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(97, 134, 200, 0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+.poster-dot.active {
+  width: 24px;
+  background: #6186C8;
 }
 
 /* Lightbox Modal for Native Resolution View */
@@ -2909,6 +3003,22 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             <p class="graphic-case-study">Corporate trifold brochure outer panels highlighting company background, contact details, and overseas placement solutions.</p>
           </div>
         </div>
+
+        <!-- Card 13: World Television Day -->
+        <div class="graphic-card fan-hidden">
+          <div class="graphic-thumb graphic-item" data-src="images/poster-world-television-day.jpg?v=2" data-alt="World Television Day - Creative Social Campaign">
+            <img src="images/poster-world-television-day.jpg?v=2" alt="World Television Day - Creative Social Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="graphic-info">
+            <div class="graphic-tag-row">
+              <span class="graphic-client">Concept Creative</span>
+              <span class="graphic-category">Social Campaign</span>
+            </div>
+            <h3 class="graphic-card-title">World Television Day Post</h3>
+            <p class="graphic-case-study">Interactive advent-style calendar post revealing a retro television set and 3D broadcast character.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Centered Glassmorphic "See More" Button -->
@@ -2927,66 +3037,79 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <h2 class="sec reveal">Poster Designs</h2>
       <p class="sec-sub reveal">Conceptual and visual storytelling posters with custom art direction and typography. Click any poster to view it in full size.</p>
 
-      <div class="poster-grid reveal">
-        <!-- Poster 1: World Television Day -->
-        <div class="poster-card">
-          <div class="poster-thumb graphic-item" data-src="images/poster-world-television-day.jpg?v=2" data-alt="World Television Day - Concept Poster">
-            <img src="images/poster-world-television-day.jpg?v=2" alt="World Television Day - Concept Poster" loading="lazy">
-            <div class="graphic-item-overlay">View Full Res ↗</div>
-          </div>
-          <div class="poster-info">
-            <div class="poster-tag-row">
-              <span class="poster-tag">Concept Poster</span>
+      <div class="poster-carousel-wrap reveal">
+        <!-- Previous Button -->
+        <button class="poster-nav-btn poster-prev" id="poster-prev" aria-label="Previous poster">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div class="poster-stage" id="poster-stage">
+          <!-- Poster 1: Don’t Be Hard on Yourself -->
+          <div class="poster-slide active" data-index="0">
+            <div class="poster-card">
+              <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
+                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="lazy">
+                <div class="graphic-item-overlay">View Full Res ↗</div>
+              </div>
+              <div class="poster-info">
+                <div class="poster-tag-row">
+                  <span class="poster-tag">Concept Poster</span>
+                  <span class="poster-count">01 / 03</span>
+                </div>
+                <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
+                <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
+              </div>
             </div>
-            <h3 class="poster-card-title">World Television Day</h3>
-            <p class="poster-card-desc">Interactive advent-style calendar poster featuring an open door revealing a retro television set and 3D broadcast character.</p>
+          </div>
+
+          <!-- Poster 2: Burger House -->
+          <div class="poster-slide" data-index="1">
+            <div class="poster-card">
+              <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
+                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="lazy">
+                <div class="graphic-item-overlay">View Full Res ↗</div>
+              </div>
+              <div class="poster-info">
+                <div class="poster-tag-row">
+                  <span class="poster-tag">Brand Campaign</span>
+                  <span class="poster-count">02 / 03</span>
+                </div>
+                <h3 class="poster-card-title">Burger House: When Happiness Is Served</h3>
+                <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poster 3: Chaos to Clarity -->
+          <div class="poster-slide" data-index="2">
+            <div class="poster-card">
+              <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
+                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="lazy">
+                <div class="graphic-item-overlay">View Full Res ↗</div>
+              </div>
+              <div class="poster-info">
+                <div class="poster-tag-row">
+                  <span class="poster-tag">Brand Philosophy</span>
+                  <span class="poster-count">03 / 03</span>
+                </div>
+                <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
+                <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Poster 2: Don’t Be Hard on Yourself -->
-        <div class="poster-card">
-          <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
-            <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="lazy">
-            <div class="graphic-item-overlay">View Full Res ↗</div>
-          </div>
-          <div class="poster-info">
-            <div class="poster-tag-row">
-              <span class="poster-tag">Concept Poster</span>
-            </div>
-            <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
-            <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
-          </div>
-        </div>
+        <!-- Next Button -->
+        <button class="poster-nav-btn poster-next" id="poster-next" aria-label="Next poster">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
 
-        <!-- Poster 3: Burger House -->
-        <div class="poster-card">
-          <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
-            <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="lazy">
-            <div class="graphic-item-overlay">View Full Res ↗</div>
-          </div>
-          <div class="poster-info">
-            <div class="poster-tag-row">
-              <span class="poster-tag">Brand Campaign</span>
-            </div>
-            <h3 class="poster-card-title">Burger House: When Happiness Is Served</h3>
-            <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
-          </div>
-        </div>
-
-        <!-- Poster 4: Chaos to Clarity -->
-        <div class="poster-card">
-          <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
-            <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="lazy">
-            <div class="graphic-item-overlay">View Full Res ↗</div>
-          </div>
-          <div class="poster-info">
-            <div class="poster-tag-row">
-              <span class="poster-tag">Brand Philosophy</span>
-            </div>
-            <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
-            <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
-          </div>
-        </div>
+      <!-- Bottom Indicator Dots -->
+      <div class="poster-carousel-indicators" id="poster-indicators">
+        <button class="poster-dot active" data-index="0" aria-label="Poster 1"></button>
+        <button class="poster-dot" data-index="1" aria-label="Poster 2"></button>
+        <button class="poster-dot" data-index="2" aria-label="Poster 3"></button>
       </div>
     </div>
   </section>
@@ -4276,6 +4399,52 @@ document.addEventListener('click', function(e) {
       }
       setTimeout(function() { isAnimating = false; }, 400);
     }, 300);
+  });
+})();
+
+// ====== POSTER CAROUSEL (ONE AT A TIME) ======
+(function() {
+  var stage = document.getElementById('poster-stage');
+  if (!stage) return;
+  var slides = Array.from(stage.querySelectorAll('.poster-slide'));
+  var dots = Array.from(document.querySelectorAll('.poster-dot'));
+  var prevBtn = document.getElementById('poster-prev');
+  var nextBtn = document.getElementById('poster-next');
+  if (!slides.length) return;
+
+  var currentIndex = 0;
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    slides.forEach(function(s, i) {
+      s.classList.toggle('active', i === currentIndex);
+    });
+
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      showSlide(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      showSlide(currentIndex + 1);
+    });
+  }
+
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-index'), 10);
+      showSlide(idx);
+    });
   });
 })();
 </script>
