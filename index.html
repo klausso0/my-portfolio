@@ -2101,9 +2101,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
   gap: 32px;
   justify-content: center;
+  align-items: start;
   margin-top: 32px;
 }
 
@@ -2133,7 +2134,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .poster-thumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #f0f4f9;
   cursor: pointer;
@@ -2141,8 +2141,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-thumb img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   transition: transform 0.35s ease;
 }
@@ -2941,6 +2940,21 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             </div>
             <h3 class="poster-card-title">World Television Day</h3>
             <p class="poster-card-desc">Interactive advent-style calendar poster featuring an open door revealing a retro television set and 3D broadcast character.</p>
+          </div>
+        </div>
+
+        <!-- Poster 2: Don’t Be Hard on Yourself -->
+        <div class="poster-card">
+          <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
+            <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Concept Poster</span>
+            </div>
+            <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
+            <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
           </div>
         </div>
       </div>
