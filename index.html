@@ -2296,64 +2296,82 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 .video-btn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 4px;
-  padding: 18px 20px;
-  border-radius: 14px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 16px;
   text-decoration: none;
   font-family: 'DM Sans', sans-serif;
-  transition: all 0.25s ease;
-  border: 1px solid var(--card-border);
+  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .video-btn.primary {
   background: #6186C8;
   color: #ffffff;
   border-color: #6186C8;
-  box-shadow: 0 4px 14px rgba(97, 134, 200, 0.25);
+  box-shadow: 0 8px 22px rgba(97, 134, 200, 0.3);
 }
 .video-btn.primary:hover {
-  background: #4e73b5;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(97, 134, 200, 0.35);
+  background: #4d73b6;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(97, 134, 200, 0.4);
 }
+.video-btn.primary .video-btn-arrow { color: rgba(255,255,255,0.7); }
 .video-btn.secondary {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.88);
   color: #233440;
+  box-shadow: 0 4px 14px rgba(35, 52, 70, 0.06);
 }
 .video-btn.secondary:hover {
-  background: #e6dfce;
-  transform: translateY(-2px);
+  background: #ffffff;
+  border-color: #6186C8;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(97, 134, 200, 0.18);
 }
 .video-btn-title {
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .video-btn-desc {
-  font-size: 0.78rem;
-  opacity: 0.85;
+  font-size: 0.75rem;
+  opacity: 0.65;
+  margin-top: 2px;
+}
+.video-btn-arrow {
+  font-size: 1.1rem;
+  color: #6186C8;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.video-btn:hover .video-btn-arrow {
+  transform: translateX(3px);
 }
 .video-meta-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  border-radius: 18px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  gap: 14px;
+  box-shadow: 0 8px 24px -4px rgba(35, 52, 70, 0.07);
 }
 .video-meta-heading {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   font-weight: 700;
-  color: #6a91c1;
+  color: #6186C8;
 }
 .video-meta-badges {
   display: flex;
@@ -2363,22 +2381,29 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .video-meta-pill {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.84rem;
+  font-weight: 500;
   color: #2b3e4a;
-  background: var(--card);
-  padding: 7px 11px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(240, 246, 253, 0.7);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(195, 215, 240, 0.5);
   line-height: 1.35;
+  transition: all 0.2s ease;
+}
+.video-meta-pill:hover {
+  background: rgba(240, 246, 253, 0.95);
+  border-color: rgba(97, 134, 200, 0.4);
 }
 .video-meta-pill .dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #6186C8;
   flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(97, 134, 200, 0.15);
 }
 
 /* Video Carousel Navigation */
@@ -2847,16 +2872,16 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             </div>
           </div>
           <a id="btn-raw-video" class="video-btn secondary" href="https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="video-btn-title">See Raw Video (Part 1) ↗</span>
-            <span class="video-btn-desc">Unedited original footage</span>
+            <span class="video-btn-title">See Raw Video (Part 1)</span>
+            <span class="video-btn-arrow">→</span>
           </a>
           <a id="btn-raw-video-2" class="video-btn secondary" href="https://drive.google.com/file/d/19G98J0pEXTnqdVulQQQkd1tOXbyCRh1C/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="video-btn-title">See Raw Video (Part 2) ↗</span>
-            <span class="video-btn-desc">Additional raw footage</span>
+            <span class="video-btn-title">See Raw Video (Part 2)</span>
+            <span class="video-btn-arrow">→</span>
           </a>
           <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1d9Rchrq6kvHMBW7vG9U9KJFpBtpGKMtq/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="video-btn-title">See Premiere File ↗</span>
-            <span class="video-btn-desc">Project sequence & cut (.prproj)</span>
+            <span class="video-btn-title">See Premiere File</span>
+            <span class="video-btn-arrow">→</span>
           </a>
         </div>
       </div>
@@ -3955,7 +3980,7 @@ document.addEventListener('click', function(e) {
       if (Array.isArray(rawData) && rawData.length > 0) {
         rawLink.href = rawData[0];
         var t1 = rawLink.querySelector('.video-btn-title');
-        if (t1) t1.textContent = 'See Raw Video (Part 1) ↗';
+        if (t1) t1.textContent = 'See Raw Video (Part 1)';
         rawLink.style.display = 'flex';
         rawLink.classList.remove('primary');
         rawLink.classList.add('secondary');
@@ -3963,7 +3988,7 @@ document.addEventListener('click', function(e) {
         if (rawLink2 && rawData.length > 1) {
           rawLink2.href = rawData[1];
           var t2 = rawLink2.querySelector('.video-btn-title');
-          if (t2) t2.textContent = 'See Raw Video (Part 2) ↗';
+          if (t2) t2.textContent = 'See Raw Video (Part 2)';
           rawLink2.style.display = 'flex';
           rawLink2.classList.remove('primary');
           rawLink2.classList.add('secondary');
@@ -3973,7 +3998,7 @@ document.addEventListener('click', function(e) {
       } else if (typeof rawData === 'string' && rawData) {
         rawLink.href = rawData;
         var t = rawLink.querySelector('.video-btn-title');
-        if (t) t.textContent = 'See Raw Video ↗';
+        if (t) t.textContent = 'See Raw Video';
         rawLink.style.display = 'flex';
         rawLink.classList.remove('primary');
         rawLink.classList.add('secondary');
