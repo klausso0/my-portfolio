@@ -93,28 +93,7 @@ a { color: inherit; }
   overflow: hidden;
 }
 
-/* TOP LEFT NAME LOGOTYPE & TOP RIGHT ROTATING BADGE */
-.hero-brand-name {
-  position: absolute;
-  top: 36px;
-  left: clamp(16px, 4vw, 52px);
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
-  font-style: italic;
-  font-weight: 400;
-  color: #4a6fa5;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  line-height: 1;
-  z-index: 10;
-  transition: color 0.25s ease, transform 0.25s ease;
-  display: inline-block;
-}
-.hero-brand-name:hover {
-  color: #6186C8;
-  transform: scale(1.02);
-}
-
+/* TOP RIGHT ROTATING BADGE */
 .circle-badge {
   position: absolute;
   top: 28px;
@@ -396,24 +375,17 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: 16px;
 }
-.mindly-proof {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  color: #4a5d6d;
+.mindly-hero-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: #6186C8;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
-.proof-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-}
-.mindly-proof strong {
-  color: #1a2732;
-  font-weight: 700;
+.mindly-hero-name:hover {
+  opacity: 0.8;
 }
 .mindly-motto {
   display: flex;
@@ -446,11 +418,6 @@ a { color: inherit; }
   .mindly-center-piece {
     order: -1;
     margin: 0 auto 12px;
-  }
-  .hero-brand-name {
-    top: 22px;
-    left: 18px;
-    font-size: 1.85rem;
   }
   .circle-badge {
     width: 78px;
@@ -2527,9 +2494,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 <main id="home">
   <!-- Mindly-Inspired Hero Section -->
   <section class="hero mindly-hero">
-    <!-- Top Left Name Logotype (same font as editorial heading) -->
-    <a href="#home" class="hero-brand-name">Neeraj Bhatt</a>
-
     <!-- Top Right Rotating Circular Stamp Badge -->
     <div class="circle-badge" aria-label="Designer · Editor · Open to work">
       <svg viewBox="0 0 100 100" class="badge-spin-svg">
@@ -2602,10 +2566,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
       <!-- Bottom Highlights Bar -->
       <div class="mindly-bottom-bar">
-        <div class="mindly-proof">
-          <span class="proof-dot"></span>
-          <span class="proof-text"><strong>9.3K+</strong> search impressions on SmartCV</span>
-        </div>
+        <a href="#home" class="mindly-hero-name">Neeraj Bhatt</a>
         <div class="mindly-motto">
           <span class="motto-star">✦</span>
           <span class="motto-text">Less guessing. More clarity.</span>
