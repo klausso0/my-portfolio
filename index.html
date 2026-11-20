@@ -2092,6 +2092,129 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transform: rotate(180deg);
 }
 
+/* ==========================================================================
+   POSTER DESIGNS SECTION
+   ========================================================================== */
+#poster-designs {
+  padding: 40px 0 95px;
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  gap: 32px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.poster-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 12px 28px -6px rgba(35, 52, 70, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-card:hover {
+  transform: translateY(-5px);
+  border-color: #6186C8;
+  box-shadow: 
+    0 20px 40px -8px rgba(97, 134, 200, 0.22),
+    0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.poster-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f0f4f9;
+  cursor: pointer;
+}
+
+.poster-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.poster-thumb:hover img {
+  transform: scale(1.03);
+}
+
+.poster-thumb .graphic-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  backdrop-filter: blur(3px);
+  transition: opacity 0.22s ease;
+}
+
+.poster-thumb:hover .graphic-item-overlay {
+  opacity: 1;
+}
+
+.poster-info {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.poster-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.poster-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6186C8;
+  background: rgba(240, 246, 253, 0.95);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(195, 215, 240, 0.6);
+}
+
+.poster-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #17242d;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.poster-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #556877;
+  margin: 0;
+}
+
 /* Lightbox Modal for Native Resolution View */
 .lightbox-modal {
   position: fixed;
@@ -2795,6 +2918,31 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <span>See more</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Poster Designs Section -->
+  <section id="poster-designs">
+    <div class="wrap">
+      <h2 class="sec reveal">Poster Designs</h2>
+      <p class="sec-sub reveal">Conceptual and visual storytelling posters with custom art direction and typography. Click any poster to view it in full size.</p>
+
+      <div class="poster-grid reveal">
+        <!-- Poster 1: World Television Day -->
+        <div class="poster-card">
+          <div class="poster-thumb graphic-item" data-src="images/poster-world-television-day.jpg" data-alt="World Television Day - Concept Poster">
+            <img src="images/poster-world-television-day.jpg" alt="World Television Day - Concept Poster" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Concept Poster</span>
+            </div>
+            <h3 class="poster-card-title">World Television Day</h3>
+            <p class="poster-card-desc">Interactive advent-style calendar poster featuring an open door revealing a retro television set and 3D broadcast character.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
