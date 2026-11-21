@@ -107,33 +107,32 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  background: rgba(220, 232, 248, 0.55);
+  background: rgba(240, 245, 252, 0.75);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(180, 210, 245, 0.7);
+  border: 1px solid rgba(200, 220, 245, 0.75);
   border-radius: 999px;
   padding: 4px;
   overflow: hidden;
   isolation: isolate;
   box-shadow: 
-    0 8px 28px -4px rgba(45, 80, 150, 0.14),
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    inset 0 1px 2px rgba(255, 255, 255, 1),
-    inset 0 -1px 3px rgba(97, 134, 200, 0.2);
+    0 8px 24px -4px rgba(45, 80, 130, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(97, 134, 200, 0.12);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ── Fluid Lava-Lamp Smoke Chamber ── */
+/* ── Fluid Smoke Chamber — subtle but always present ── */
 .nav-smoke-chamber {
   position: absolute;
-  inset: -4px;
+  inset: 0;
   border-radius: 999px;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Each blob is a large, vivid, blurred color splotch */
 .smoke-stream {
   position: absolute;
   pointer-events: none;
@@ -141,112 +140,108 @@ a { color: inherit; }
   will-change: transform;
 }
 
-/* Blob 1 — large blue-violet orb gliding left→right */
+/* Blob 1 — soft blue orb gliding left→right */
 .smoke-stream-1 {
-  width: 160px;
-  height: 80px;
-  top: -20px;
-  left: -20px;
-  background: radial-gradient(circle, rgba(80, 120, 200, 0.55) 0%, rgba(120, 160, 230, 0.35) 40%, transparent 70%);
-  filter: blur(10px);
+  width: 140px;
+  height: 70px;
+  top: -15px;
+  left: -10px;
+  background: radial-gradient(circle, rgba(97, 134, 200, 0.25) 0%, rgba(130, 170, 235, 0.14) 45%, transparent 70%);
+  filter: blur(12px);
   animation: fluidGlide1 10s ease-in-out infinite;
 }
 
-/* Blob 2 — warm periwinkle orb gliding right→left (counter-current) */
+/* Blob 2 — periwinkle orb gliding right→left */
 .smoke-stream-2 {
-  width: 180px;
-  height: 90px;
-  bottom: -25px;
-  right: -20px;
-  background: radial-gradient(circle, rgba(100, 145, 220, 0.5) 0%, rgba(140, 180, 240, 0.3) 45%, transparent 72%);
-  filter: blur(12px);
+  width: 150px;
+  height: 75px;
+  bottom: -18px;
+  right: -10px;
+  background: radial-gradient(circle, rgba(110, 150, 220, 0.22) 0%, rgba(140, 180, 240, 0.12) 45%, transparent 70%);
+  filter: blur(14px);
   animation: fluidGlide2 13s ease-in-out infinite;
 }
 
-/* Blob 3 — bright white highlight shimmer sweeping through */
+/* Blob 3 — white highlight shimmer sweeping gently */
 .smoke-stream-3 {
-  width: 100px;
-  height: 60px;
-  top: -10px;
+  width: 90px;
+  height: 50px;
+  top: -8px;
   left: 35%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(200, 220, 255, 0.4) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(210, 225, 250, 0.2) 50%, transparent 70%);
   filter: blur(8px);
   animation: fluidGlide3 8s ease-in-out infinite;
 }
 
-/* Blob 4 — constant ambient haze so the pill is always tinted */
+/* Blob 4 — ambient tint haze, always present */
 .smoke-stream-4 {
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   background: linear-gradient(90deg, 
-    rgba(90, 130, 210, 0.3) 0%, 
-    rgba(130, 170, 240, 0.15) 30%, 
-    rgba(160, 190, 245, 0.2) 60%, 
-    rgba(100, 140, 215, 0.3) 100%);
-  filter: blur(6px);
+    rgba(97, 134, 200, 0.1) 0%, 
+    rgba(140, 175, 240, 0.06) 30%, 
+    rgba(160, 190, 245, 0.08) 60%, 
+    rgba(97, 134, 200, 0.1) 100%);
+  filter: blur(4px);
   animation: fluidPulse 6s ease-in-out infinite;
 }
 
-/* Top specular glass shine — makes the pill look like polished glass */
+/* Top specular glass shine */
 .smoke-glass-sheen {
   position: absolute;
   top: 0;
   left: 5%;
   right: 5%;
-  height: 55%;
+  height: 50%;
   background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0.75) 0%, 
-    rgba(255, 255, 255, 0.3) 40%, 
+    rgba(255, 255, 255, 0.5) 0%, 
+    rgba(255, 255, 255, 0.15) 40%, 
     rgba(255, 255, 255, 0) 100%);
   border-radius: 999px 999px 50% 50%;
   pointer-events: none;
 }
 
-/* Blob 1: steady left→center→right→center→left */
 @keyframes fluidGlide1 {
-  0%   { transform: translateX(0)    scale(1);    opacity: 0.75; }
-  25%  { transform: translateX(80px) scale(1.1);  opacity: 0.9; }
-  50%  { transform: translateX(200px) scale(1.05); opacity: 0.8; }
-  75%  { transform: translateX(100px) scale(1.15); opacity: 0.95; }
-  100% { transform: translateX(0)    scale(1);    opacity: 0.75; }
+  0%   { transform: translateX(0)     scale(1);   opacity: 0.5; }
+  25%  { transform: translateX(80px)  scale(1.08); opacity: 0.65; }
+  50%  { transform: translateX(190px) scale(1.04); opacity: 0.55; }
+  75%  { transform: translateX(95px)  scale(1.1);  opacity: 0.65; }
+  100% { transform: translateX(0)     scale(1);   opacity: 0.5; }
 }
 
-/* Blob 2: steady right→center→left→center→right */
 @keyframes fluidGlide2 {
-  0%   { transform: translateX(0)     scale(1);    opacity: 0.7; }
-  25%  { transform: translateX(-70px) scale(1.1);  opacity: 0.85; }
-  50%  { transform: translateX(-180px) scale(1.05); opacity: 0.75; }
-  75%  { transform: translateX(-90px) scale(1.12); opacity: 0.9; }
-  100% { transform: translateX(0)     scale(1);    opacity: 0.7; }
+  0%   { transform: translateX(0)      scale(1);   opacity: 0.45; }
+  25%  { transform: translateX(-65px)  scale(1.08); opacity: 0.6; }
+  50%  { transform: translateX(-170px) scale(1.04); opacity: 0.5; }
+  75%  { transform: translateX(-85px)  scale(1.1);  opacity: 0.6; }
+  100% { transform: translateX(0)      scale(1);   opacity: 0.45; }
 }
 
-/* Blob 3: white shimmer sweeping side to side */
 @keyframes fluidGlide3 {
-  0%   { transform: translateX(-50px); opacity: 0.6; }
-  50%  { transform: translateX(70px);  opacity: 0.9; }
-  100% { transform: translateX(-50px); opacity: 0.6; }
+  0%   { transform: translateX(-45px); opacity: 0.4; }
+  50%  { transform: translateX(65px);  opacity: 0.6; }
+  100% { transform: translateX(-45px); opacity: 0.4; }
 }
 
-/* Blob 4: ambient haze gently pulsing — keeps pill always alive */
 @keyframes fluidPulse {
-  0%   { opacity: 0.6; transform: scaleX(1); }
-  50%  { opacity: 0.85; transform: scaleX(1.03); }
-  100% { opacity: 0.6; transform: scaleX(1); }
+  0%   { opacity: 0.4; transform: scaleX(1); }
+  50%  { opacity: 0.6; transform: scaleX(1.02); }
+  100% { opacity: 0.4; transform: scaleX(1); }
 }
 
 /* Sticky elevated state on scroll */
 .top-navbar-wrap.is-scrolled .top-nav {
-  background: rgba(215, 230, 248, 0.6);
+  background: rgba(240, 245, 252, 0.88);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
-  border-color: rgba(170, 200, 240, 0.8);
+  border-color: rgba(190, 215, 242, 0.85);
   box-shadow: 
-    0 12px 32px -4px rgba(45, 80, 130, 0.16),
-    0 4px 10px rgba(0, 0, 0, 0.05),
-    inset 0 1px 2px rgba(255, 255, 255, 1),
-    inset 0 -1px 3px rgba(97, 134, 200, 0.2);
+    0 12px 32px -4px rgba(45, 80, 130, 0.13),
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(97, 134, 200, 0.12);
 }
 
 /* Fluid Gliding Active / Hover Highlight Pill */
