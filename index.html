@@ -18,9 +18,9 @@
 <link rel="preload" as="image" href="images/campaign-swaadmandu.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/smartcv-homepage.jpg?v=2" fetchpriority="high">
 <!-- Preload poster images so carousel switches instantly without lag -->
-<link rel="prefetch" as="image" href="images/poster-dont-be-hard-on-yourself.jpg">
-<link rel="prefetch" as="image" href="images/poster-burger-house.jpg">
-<link rel="prefetch" as="image" href="images/poster-chaos-to-clarity.jpg">
+<link rel="preload" as="image" href="images/poster-dont-be-hard-on-yourself.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/poster-burger-house.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="images/poster-chaos-to-clarity.jpg" fetchpriority="high">
 <!-- Prefetch inactive videos in background so switching is much faster -->
 <link rel="prefetch" as="video" href="videos/video-edit-2.mp4?v=6">
 <link rel="prefetch" as="video" href="videos/video-edit.mp4?v=5">
@@ -1859,120 +1859,36 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-/* 5-Card Radial Fan Showcase — Balanced deck fan with subtle natural overlap */
+/* 4-Column Graphic Works Grid & Case Study Cards */
 .graphic-grid {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  margin: 10px auto 0;
-  max-width: 1160px;
-  overflow: visible;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .graphic-card {
-  position: absolute;
-  width: 255px;
-  height: 255px;
-  left: 50%;
-  bottom: 25px;
-  margin-left: -127px;
-  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 
-    0 24px 52px -10px rgba(15, 23, 42, 0.26),
-    0 4px 14px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-  background: #f1f5f9;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  will-change: transform, opacity;
-  transition: transform 0.65s cubic-bezier(0.34, 1.3, 0.64, 1),
-              opacity 0.45s ease,
-              box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(45, 80, 130, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
 }
-
-/* Bulletproof Fan Position Classes (Balanced gentle card overlap) */
-.graphic-card.fan-pos-0 {
-  transform: translateX(-420px) translateY(32px) rotate(-31deg) !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+.graphic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(45, 80, 130, 0.12);
 }
-.graphic-card.fan-pos-1 {
-  transform: translateX(-215px) translateY(-22px) rotate(-16deg) !important;
-  z-index: 4 !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-.graphic-card.fan-pos-2 {
-  transform: translateX(0px) translateY(-58px) rotate(0deg) !important;
-  z-index: 6 !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-.graphic-card.fan-pos-3 {
-  transform: translateX(215px) translateY(-22px) rotate(16deg) !important;
-  z-index: 4 !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-.graphic-card.fan-pos-4 {
-  transform: translateX(420px) translateY(32px) rotate(31deg) !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-.graphic-card.fan-hidden {
-  transform: translateX(0px) translateY(80px) rotate(0deg) scale(0.65) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-.graphic-card.fan-exit {
-  transform: translateX(0px) translateY(70px) rotate(0deg) scale(0.75) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-
-/* Hover elevation */
-.graphic-card.fan-pos-0:hover { transform: translateX(-420px) translateY(12px) rotate(-31deg) scale(1.04) !important; z-index: 25 !important; }
-.graphic-card.fan-pos-1:hover { transform: translateX(-215px) translateY(-42px) rotate(-16deg) scale(1.04) !important; z-index: 25 !important; }
-.graphic-card.fan-pos-2:hover { transform: translateX(0px) translateY(-78px) rotate(0deg) scale(1.04) !important; z-index: 25 !important; }
-.graphic-card.fan-pos-3:hover { transform: translateX(215px) translateY(-42px) rotate(16deg) scale(1.04) !important; z-index: 25 !important; }
-.graphic-card.fan-pos-4:hover { transform: translateX(420px) translateY(12px) rotate(31deg) scale(1.04) !important; z-index: 25 !important; }
-
-/* Responsive Fan Positions (Tablet) */
-@media (max-width: 900px) {
-  .graphic-grid { height: 320px; }
-  .graphic-card { width: 190px; height: 190px; margin-left: -95px; bottom: 15px; border-radius: 20px; }
-  .graphic-card.fan-pos-0 { transform: translateX(-295px) translateY(24px) rotate(-26deg) !important; }
-  .graphic-card.fan-pos-1 { transform: translateX(-150px) translateY(-14px) rotate(-13deg) !important; }
-  .graphic-card.fan-pos-2 { transform: translateX(0px) translateY(-38px) rotate(0deg) !important; }
-  .graphic-card.fan-pos-3 { transform: translateX(150px) translateY(-14px) rotate(13deg) !important; }
-  .graphic-card.fan-pos-4 { transform: translateX(295px) translateY(24px) rotate(26deg) !important; }
-  .graphic-card.fan-pos-0:hover { transform: translateX(-295px) translateY(8px) rotate(-26deg) scale(1.04) !important; }
-  .graphic-card.fan-pos-1:hover { transform: translateX(-150px) translateY(-30px) rotate(-13deg) scale(1.04) !important; }
-  .graphic-card.fan-pos-2:hover { transform: translateX(0px) translateY(-54px) rotate(0deg) scale(1.04) !important; }
-  .graphic-card.fan-pos-3:hover { transform: translateX(150px) translateY(-30px) rotate(13deg) scale(1.04) !important; }
-  .graphic-card.fan-pos-4:hover { transform: translateX(295px) translateY(8px) rotate(26deg) scale(1.04) !important; }
-}
-
-/* Responsive Fan Positions (Mobile) */
-@media (max-width: 560px) {
-  .graphic-grid { height: 260px; }
-  .graphic-card { width: 135px; height: 135px; margin-left: -67px; border-radius: 16px; bottom: 10px; }
-  .graphic-card.fan-pos-0 { transform: translateX(-200px) translateY(18px) rotate(-22deg) !important; }
-  .graphic-card.fan-pos-1 { transform: translateX(-100px) translateY(-10px) rotate(-10deg) !important; }
-  .graphic-card.fan-pos-2 { transform: translateX(0px) translateY(-28px) rotate(0deg) !important; }
-  .graphic-card.fan-pos-3 { transform: translateX(100px) translateY(-10px) rotate(10deg) !important; }
-  .graphic-card.fan-pos-4 { transform: translateX(200px) translateY(18px) rotate(22deg) !important; }
+.graphic-card.is-hidden {
+  display: none !important;
 }
 
 .graphic-thumb {
   position: relative;
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #f8fafc;
+  cursor: pointer;
 }
 .graphic-thumb img {
   width: 100%;
@@ -2000,15 +1916,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: opacity 0.22s ease;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border-radius: 24px;
 }
 .graphic-thumb:hover .graphic-item-overlay {
   opacity: 1;
 }
 
-/* Info strip below the image (hidden in fan mode — only the image card shows) */
+/* Info strip below the image */
 .graphic-info {
-  display: none;
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-grow: 1;
+  background: #ffffff;
 }
 .graphic-tag-row {
   display: flex;
@@ -2105,7 +2025,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-carousel-wrap {
   position: relative;
-  max-width: 320px;
+  max-width: 285px;
   margin: 32px auto 0;
   display: flex;
   align-items: center;
@@ -2161,7 +2081,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-thumb img {
   width: 100%;
-  max-height: 420px;
+  max-height: 380px;
   object-fit: contain;
   display: block;
   transition: transform 0.35s ease;
@@ -2344,8 +2264,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   align-items: center;
 }
 .lightbox-img {
-  max-width: 100%;
-  max-height: 84vh;
+  max-width: 88vw;
+  max-height: 74vh;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
@@ -2691,12 +2611,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 @media (max-width: 900px) {
-  .graphic-grid { height: 420px; }
-  .graphic-card { width: 170px; height: 240px; margin-left: -85px; }
+  .graphic-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 520px) {
-  .graphic-grid { height: 350px; }
-  .graphic-card { width: 140px; height: 200px; margin-left: -70px; }
+  .graphic-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -2820,7 +2738,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <p class="sec-sub reveal">Posts that make people stop scrolling and actually act. Here’s what I’ve made for brands in education, jewelry, finance, and recruitment. Tap any design to see it full size.</p>
       <div class="graphic-grid" id="graphic-grid">
         <!-- Card 1 -->
-        <div class="graphic-card fan-pos-0">
+        <div class="graphic-card reveal">
           <div class="graphic-thumb graphic-item" data-src="images/kraymer-earrings.jpg" data-alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings">
             <img src="images/kraymer-earrings.jpg" alt="Kraymer Art Beyond Limits Jewelry Launch - Sapphire Earrings" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2836,7 +2754,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 2 -->
-        <div class="graphic-card fan-pos-1">
+        <div class="graphic-card reveal">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-rmit-application.jpg" data-alt="RMIT University - September & October Intake Application Call">
             <img src="images/campaign-rmit-application.jpg" alt="RMIT University - September & October Intake Application Call" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2852,7 +2770,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 3 -->
-        <div class="graphic-card fan-pos-2">
+        <div class="graphic-card reveal">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-smartmortgage.jpg" data-alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign">
             <img src="images/campaign-smartmortgage.jpg" alt="SmartMortgage Hub - Good Friday News Final Approval Secured Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2868,7 +2786,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 4 -->
-        <div class="graphic-card fan-pos-3">
+        <div class="graphic-card reveal">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-tirra-mcdonalds.jpg" data-alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies">
             <img src="images/campaign-tirra-mcdonalds.jpg" alt="Tirra Responsible Recruitment - McDonald's Saudi Arabia Job Vacancies" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2884,7 +2802,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 5 -->
-        <div class="graphic-card fan-pos-4">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-cold-coffee.jpg" data-alt="Premium Cold Coffee Campaign">
             <img src="images/campaign-cold-coffee.jpg" alt="Premium Cold Coffee Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2900,7 +2818,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 6 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-swaadmandu.jpg" data-alt="Swaadmandu New Year Mega Party Combo Campaign">
             <img src="images/campaign-swaadmandu.jpg" alt="Swaadmandu New Year Mega Party Combo Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2916,7 +2834,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 7 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/campaign-taxmate.jpg" data-alt="TaxMate Advisory Social Campaign">
             <img src="images/campaign-taxmate.jpg" alt="TaxMate Advisory Social Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2932,7 +2850,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 8 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-employment-trust.jpg" data-alt="Sadiksha Overseas - Foreign Employment Trust Campaign">
             <img src="images/sadiksha-employment-trust.jpg" alt="Sadiksha Overseas - Foreign Employment Trust Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2948,7 +2866,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 9 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-recruitment-post.jpg" data-alt="Sadiksha Overseas - Global Recruitment Partner Social Post">
             <img src="images/sadiksha-recruitment-post.jpg" alt="Sadiksha Overseas - Global Recruitment Partner Social Post" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2964,7 +2882,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 10 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-teej.jpg" data-alt="Sadiksha Overseas - Haritalika Teej Festival Greeting">
             <img src="images/sadiksha-teej.jpg" alt="Sadiksha Overseas - Haritalika Teej Festival Greeting" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2980,7 +2898,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 11 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-bhai-tika.jpg" data-alt="Sadiksha Overseas - Bhai Tika Festival Greeting">
             <img src="images/sadiksha-bhai-tika.jpg" alt="Sadiksha Overseas - Bhai Tika Festival Greeting" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -2996,7 +2914,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 12 -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/sadiksha-brochure-outer.jpg" data-alt="Sadiksha Overseas Trifold Brochure - Outside Panels">
             <img src="images/sadiksha-brochure-outer.jpg" alt="Sadiksha Overseas Trifold Brochure - Outside Panels" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -3012,7 +2930,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
 
         <!-- Card 13: World Television Day -->
-        <div class="graphic-card fan-hidden">
+        <div class="graphic-card reveal is-hidden">
           <div class="graphic-thumb graphic-item" data-src="images/poster-world-television-day.jpg?v=2" data-alt="World Television Day - Creative Social Campaign">
             <img src="images/poster-world-television-day.jpg?v=2" alt="World Television Day - Creative Social Campaign" loading="lazy">
             <div class="graphic-item-overlay">View Full Res ↗</div>
@@ -3055,7 +2973,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide active" data-index="0">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
-                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" decoding="async">
+                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="eager" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -3073,7 +2991,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide" data-index="1">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
-                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" decoding="async">
+                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="eager" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -3091,7 +3009,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide" data-index="2">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
-                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" decoding="async">
+                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="eager" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -4350,63 +4268,50 @@ document.addEventListener('click', function(e) {
   }
 })();
 
-// Fan-style card rotation for Graphic Works (batches of 5)
-(function initGraphicFan() {
-  var cards = Array.from(document.querySelectorAll('.graphic-card'));
+// Progressive disclosure for Graphic Works (4 -> 8 -> 12 -> 13)
+(function initGraphicSeeMore() {
+  var cards = document.querySelectorAll('.graphic-card');
   var btn = document.getElementById('btn-see-more-graphic');
   var btnText = btn ? btn.querySelector('span') : null;
   if (!cards.length || !btn) return;
 
-  var batchSize = 5;
+  var visibleCount = 4;
+  var batchSize = 4;
   var total = cards.length;
-  var currentBatch = 0;
-  var totalBatches = Math.ceil(total / batchSize);
-  var isAnimating = false;
 
-  function setBatch(batchIndex) {
-    var start = (batchIndex * batchSize) % total;
-    var activeIndices = [];
-    for (var i = 0; i < batchSize; i++) {
-      activeIndices.push((start + i) % total);
-    }
-
+  function updateVisibility() {
     cards.forEach(function(card, idx) {
-      card.classList.remove('fan-pos-0', 'fan-pos-1', 'fan-pos-2', 'fan-pos-3', 'fan-pos-4', 'fan-hidden', 'fan-exit');
-      var pos = activeIndices.indexOf(idx);
-      if (pos !== -1) {
-        card.classList.add('fan-pos-' + pos);
+      if (idx < visibleCount) {
+        card.classList.remove('is-hidden');
+        card.classList.add('is-visible');
       } else {
-        card.classList.add('fan-hidden');
+        card.classList.add('is-hidden');
       }
     });
 
-    if (btnText) {
-      btnText.textContent = (batchIndex >= totalBatches - 1) ? 'Back to first' : 'See more';
+    if (visibleCount >= total) {
+      if (btnText) btnText.textContent = 'Show less';
+      btn.classList.add('is-collapsed');
+    } else {
+      if (btnText) btnText.textContent = 'See more';
+      btn.classList.remove('is-collapsed');
     }
   }
 
   btn.addEventListener('click', function() {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    // Add exit transition to active cards
-    cards.forEach(function(card) {
-      if (card.className.indexOf('fan-pos-') !== -1) {
-        card.classList.remove('fan-pos-0', 'fan-pos-1', 'fan-pos-2', 'fan-pos-3', 'fan-pos-4');
-        card.classList.add('fan-exit');
-      }
-    });
-
-    setTimeout(function() {
-      currentBatch = (currentBatch + 1) % totalBatches;
-      setBatch(currentBatch);
-      if (currentBatch === 0) {
-        var sec = document.getElementById('graphic-works');
-        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-      }
-      setTimeout(function() { isAnimating = false; }, 400);
-    }, 300);
+    if (visibleCount >= total) {
+      visibleCount = batchSize;
+      updateVisibility();
+      var sec = document.getElementById('graphic-works');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      visibleCount = Math.min(visibleCount + batchSize, total);
+      updateVisibility();
+    }
   });
+
+  // Initial load: show only first 4
+  updateVisibility();
 })();
 
 // ====== POSTER CAROUSEL (ONE AT A TIME) ======
