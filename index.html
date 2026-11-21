@@ -17,6 +17,10 @@
 <link rel="preload" as="image" href="images/sadiksha-brochure-outer.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/campaign-swaadmandu.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="images/smartcv-homepage.jpg?v=2" fetchpriority="high">
+<!-- Preload poster images so carousel switches instantly without lag -->
+<link rel="prefetch" as="image" href="images/poster-dont-be-hard-on-yourself.jpg">
+<link rel="prefetch" as="image" href="images/poster-burger-house.jpg">
+<link rel="prefetch" as="image" href="images/poster-chaos-to-clarity.jpg">
 <!-- Prefetch inactive videos in background so switching is much faster -->
 <link rel="prefetch" as="video" href="videos/video-edit-2.mp4?v=6">
 <link rel="prefetch" as="video" href="videos/video-edit.mp4?v=5">
@@ -2101,8 +2105,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-carousel-wrap {
   position: relative;
-  max-width: 440px;
-  margin: 36px auto 0;
+  max-width: 320px;
+  margin: 32px auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2129,11 +2133,11 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .poster-card {
   background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid rgba(220, 235, 250, 0.9);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 
-    0 14px 34px -6px rgba(35, 52, 70, 0.09),
-    0 2px 8px rgba(0, 0, 0, 0.02);
+    0 12px 28px -6px rgba(35, 52, 70, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.02);
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.28s ease,
               border-color 0.28s ease;
@@ -2143,8 +2147,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transform: translateY(-4px);
   border-color: #6186C8;
   box-shadow: 
-    0 22px 44px -8px rgba(97, 134, 200, 0.24),
-    0 4px 12px rgba(0, 0, 0, 0.04);
+    0 20px 40px -8px rgba(97, 134, 200, 0.22),
+    0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
 .poster-thumb {
@@ -2157,7 +2161,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-thumb img {
   width: 100%;
-  height: auto;
+  max-height: 420px;
+  object-fit: contain;
   display: block;
   transition: transform 0.35s ease;
 }
@@ -2176,7 +2181,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   justify-content: center;
   color: #fff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
   backdrop-filter: blur(3px);
   transition: opacity 0.22s ease;
@@ -2187,10 +2192,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 .poster-info {
-  padding: 18px 22px 22px;
+  padding: 14px 18px 18px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .poster-tag-row {
@@ -2202,20 +2207,20 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-tag {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #6186C8;
   background: rgba(240, 246, 253, 0.95);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid rgba(195, 215, 240, 0.6);
 }
 
 .poster-count {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: #7b91a3;
   letter-spacing: 0.05em;
@@ -2223,7 +2228,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #17242d;
   margin: 0;
@@ -2232,8 +2237,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 .poster-card-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.84rem;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  line-height: 1.48;
   color: #556877;
   margin: 0;
 }
@@ -2258,10 +2263,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: all 0.22s ease;
 }
 .poster-prev {
-  left: -60px;
+  left: -54px;
 }
 .poster-next {
-  right: -60px;
+  right: -54px;
 }
 .poster-nav-btn:hover {
   background: #6186C8;
@@ -2273,15 +2278,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
 @media (max-width: 640px) {
   .poster-carousel-wrap {
-    max-width: 92%;
+    max-width: 290px;
   }
   .poster-prev {
-    left: 8px;
-    background: rgba(255, 255, 255, 0.88);
+    left: -20px;
+    width: 38px;
+    height: 38px;
   }
   .poster-next {
-    right: 8px;
-    background: rgba(255, 255, 255, 0.88);
+    right: -20px;
+    width: 38px;
+    height: 38px;
   }
 }
 
@@ -3048,7 +3055,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide active" data-index="0">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
-                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="lazy">
+                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -3066,7 +3073,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide" data-index="1">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
-                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="lazy">
+                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -3084,7 +3091,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-slide" data-index="2">
             <div class="poster-card">
               <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
-                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="lazy">
+                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" decoding="async">
                 <div class="graphic-item-overlay">View Full Res ↗</div>
               </div>
               <div class="poster-info">
@@ -4445,6 +4452,12 @@ document.addEventListener('click', function(e) {
       var idx = parseInt(this.getAttribute('data-index'), 10);
       showSlide(idx);
     });
+  });
+
+  // Preload all poster images into memory immediately so slide transitions are instant
+  ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg', 'images/poster-chaos-to-clarity.jpg'].forEach(function(src) {
+    var pre = new Image();
+    pre.src = src;
   });
 })();
 </script>
