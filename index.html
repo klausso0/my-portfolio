@@ -22,6 +22,7 @@
 <link rel="preload" as="image" href="images/poster-burger-house.jpg?v=2" fetchpriority="high">
 <link rel="preload" as="image" href="images/poster-chaos-to-clarity.jpg" fetchpriority="high">
 <link rel="prefetch" as="image" href="images/poster-dont-listen.jpg">
+<link rel="prefetch" as="image" href="images/poster-how-i-act.jpg">
 <!-- Prefetch inactive videos in background so switching is much faster -->
 <link rel="prefetch" as="video" href="videos/video-edit-2.mp4?v=6">
 <link rel="prefetch" as="video" href="videos/video-edit.mp4?v=5">
@@ -3197,7 +3198,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Concept Poster</span>
-              <span class="poster-count">01 / 04</span>
+              <span class="poster-count">01 / 05</span>
             </div>
             <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
             <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
@@ -3213,7 +3214,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Brand Campaign</span>
-              <span class="poster-count">02 / 04</span>
+              <span class="poster-count">02 / 05</span>
             </div>
             <h3 class="poster-card-title">Burger House: When Happiness Is Finally Served</h3>
             <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
@@ -3229,7 +3230,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Brand Philosophy</span>
-              <span class="poster-count">03 / 04</span>
+              <span class="poster-count">03 / 05</span>
             </div>
             <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
             <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
@@ -3245,10 +3246,26 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Concept Poster</span>
-              <span class="poster-count">04 / 04</span>
+              <span class="poster-count">04 / 05</span>
             </div>
             <h3 class="poster-card-title">Don’t Listen</h3>
             <p class="poster-card-desc">Striking neon chartreuse and shadow silhouette poster exploring internal defiance against negative noise and doubt.</p>
+          </div>
+        </div>
+
+        <!-- Poster 5: How I Act between you & your Audience -->
+        <div class="poster-card is-hidden">
+          <div class="poster-thumb graphic-item" data-src="images/poster-how-i-act.jpg" data-alt="How I Act Between You & Your Audience - Brand Philosophy & Concept Poster">
+            <img src="images/poster-how-i-act.jpg" alt="How I Act Between You & Your Audience - Brand Philosophy & Concept Poster" loading="lazy" decoding="async">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Brand Philosophy</span>
+              <span class="poster-count">05 / 05</span>
+            </div>
+            <h3 class="poster-card-title">How I Act Between You &amp; Your Audience</h3>
+            <p class="poster-card-desc">Clean editorial poster featuring chrome chain links and focal green connection, symbolizing design as the empathy bridge between brand and audience.</p>
           </div>
         </div>
       </div>
@@ -4602,7 +4619,7 @@ document.addEventListener('click', function(e) {
 
 // Preload all poster images into memory immediately so lightbox view is instant
 (function() {
-  ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg?v=2', 'images/poster-chaos-to-clarity.jpg', 'images/poster-dont-listen.jpg'].forEach(function(src) {
+  ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg?v=2', 'images/poster-chaos-to-clarity.jpg', 'images/poster-dont-listen.jpg', 'images/poster-how-i-act.jpg'].forEach(function(src) {
     var pre = new Image();
     pre.src = src;
   });
