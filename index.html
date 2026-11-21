@@ -23,6 +23,7 @@
 <link rel="preload" as="image" href="images/poster-chaos-to-clarity.jpg" fetchpriority="high">
 <link rel="prefetch" as="image" href="images/poster-dont-listen.jpg">
 <link rel="prefetch" as="image" href="images/poster-how-i-act.jpg">
+<link rel="prefetch" as="image" href="images/poster-dashain-festival.jpg">
 <!-- Prefetch inactive videos in background so switching is much faster -->
 <link rel="prefetch" as="video" href="videos/video-edit-2.mp4?v=6">
 <link rel="prefetch" as="video" href="videos/video-edit.mp4?v=5">
@@ -130,57 +131,58 @@ a { color: inherit; }
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
 }
 
-/* Continuous multi-stream smoky fluid vapor clouds */
+/* Continuous gentle smoky fluid vapor clouds — always visible, smooth horizontal drift */
 .smoke-stream {
   position: absolute;
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(10px);
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
-/* Stream 1: Soft billowing mist blowing west to east */
+/* Stream 1: Wide soft mist drifting steadily left-to-right across the top half */
 .smoke-stream-1 {
-  width: 140px;
-  height: 48px;
-  top: -6px;
-  left: -40px;
-  background: radial-gradient(ellipse at center, rgba(97, 134, 200, 0.38) 0%, rgba(147, 180, 235, 0.22) 50%, transparent 75%);
-  animation: smokeBlowOne 9s ease-in-out infinite alternate;
+  width: 200px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(ellipse at center, rgba(97, 134, 200, 0.28) 0%, rgba(147, 180, 235, 0.15) 50%, transparent 75%);
+  filter: blur(14px);
+  animation: smokeGlide1 16s ease-in-out infinite;
 }
 
-/* Stream 2: Deeper organic vapor swirling in the mid-lower track */
+/* Stream 2: Wider mist drifting right-to-left along the bottom half, offset timing */
 .smoke-stream-2 {
-  width: 180px;
-  height: 52px;
-  bottom: -10px;
-  right: -50px;
-  background: radial-gradient(ellipse at center, rgba(135, 175, 230, 0.35) 0%, rgba(97, 134, 200, 0.18) 55%, transparent 80%);
-  animation: smokeBlowTwo 12s ease-in-out infinite alternate;
+  width: 220px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: radial-gradient(ellipse at center, rgba(135, 175, 230, 0.26) 0%, rgba(97, 134, 200, 0.14) 55%, transparent 78%);
+  filter: blur(16px);
+  animation: smokeGlide2 20s ease-in-out infinite;
 }
 
-/* Stream 3: High-velocity wispy center plume crossing through */
+/* Stream 3: Narrow bright wisp gliding through the center — adds shimmer */
 .smoke-stream-3 {
-  width: 95px;
-  height: 36px;
-  top: 3px;
-  left: 20%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, rgba(185, 215, 250, 0.4) 45%, transparent 75%);
-  filter: blur(8px);
-  animation: smokeBlowThree 7.5s ease-in-out infinite;
+  width: 120px;
+  height: 100%;
+  top: 0;
+  left: 30%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(185, 215, 250, 0.25) 50%, transparent 75%);
+  filter: blur(12px);
+  animation: smokeGlide3 12s ease-in-out infinite;
 }
 
-/* Stream 4: Ambient counter-current smoke puff creating turbulent fluid vortex */
+/* Stream 4: Broad ambient haze that slowly pulses in place, keeping the pill always "alive" */
 .smoke-stream-4 {
-  width: 145px;
-  height: 42px;
-  top: 2px;
-  right: 15%;
-  background: radial-gradient(circle, rgba(110, 150, 220, 0.3) 0%, rgba(200, 225, 255, 0.22) 50%, transparent 75%);
-  animation: smokeBlowFour 14s ease-in-out infinite alternate;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(110, 150, 220, 0.18) 0%, transparent 70%);
+  filter: blur(18px);
+  animation: smokeBreath 8s ease-in-out infinite;
 }
 
 /* Pill Glass Specular Reflection Highlight */
@@ -190,84 +192,37 @@ a { color: inherit; }
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
   border-radius: 999px 999px 0 0;
   pointer-events: none;
-  opacity: 0.7;
 }
 
-@keyframes smokeBlowOne {
-  0% {
-    transform: translate3d(-30px, 4px, 0) scale(0.9, 0.8) rotate(-4deg);
-    opacity: 0.35;
-  }
-  30% {
-    opacity: 0.8;
-    transform: translate3d(120px, -3px, 0) scale(1.15, 1.2) rotate(3deg);
-  }
-  70% {
-    opacity: 0.7;
-    transform: translate3d(280px, 5px, 0) scale(1.05, 0.95) rotate(-2deg);
-  }
-  100% {
-    transform: translate3d(420px, -2px, 0) scale(1.25, 1.1) rotate(5deg);
-    opacity: 0.3;
-  }
+/* Smooth horizontal glide left→right→left — always stays within pill bounds */
+@keyframes smokeGlide1 {
+  0%   { transform: translateX(-40px) scaleX(1);   opacity: 0.6; }
+  50%  { transform: translateX(180px) scaleX(1.15); opacity: 0.85; }
+  100% { transform: translateX(-40px) scaleX(1);   opacity: 0.6; }
 }
 
-@keyframes smokeBlowTwo {
-  0% {
-    transform: translate3d(30px, -4px, 0) scale(1.1, 0.9) rotate(5deg);
-    opacity: 0.35;
-  }
-  40% {
-    opacity: 0.8;
-    transform: translate3d(-140px, 3px, 0) scale(1.25, 1.15) rotate(-3deg);
-  }
-  75% {
-    opacity: 0.55;
-    transform: translate3d(-300px, -5px, 0) scale(0.95, 1.05) rotate(4deg);
-  }
-  100% {
-    transform: translate3d(-430px, 2px, 0) scale(1.15, 0.85) rotate(-5deg);
-    opacity: 0.35;
-  }
+/* Opposite direction glide right→left→right */
+@keyframes smokeGlide2 {
+  0%   { transform: translateX(40px) scaleX(1);    opacity: 0.55; }
+  50%  { transform: translateX(-160px) scaleX(1.1); opacity: 0.8; }
+  100% { transform: translateX(40px) scaleX(1);    opacity: 0.55; }
 }
 
-@keyframes smokeBlowThree {
-  0% {
-    transform: translate3d(-100px, 2px, 0) scale(0.85) rotate(0deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.85;
-  }
-  60% {
-    opacity: 0.9;
-    transform: translate3d(160px, -4px, 0) scale(1.3) rotate(8deg);
-  }
-  90% {
-    opacity: 0.45;
-  }
-  100% {
-    transform: translate3d(340px, 3px, 0) scale(0.9) rotate(-6deg);
-    opacity: 0;
-  }
+/* Center wisp drifting gently side-to-side */
+@keyframes smokeGlide3 {
+  0%   { transform: translateX(-60px); opacity: 0.5; }
+  50%  { transform: translateX(80px);  opacity: 0.75; }
+  100% { transform: translateX(-60px); opacity: 0.5; }
 }
 
-@keyframes smokeBlowFour {
-  0% {
-    transform: translate3d(20px, 3px, 0) scale(0.95) rotate(-3deg);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translate3d(-160px, -4px, 0) scale(1.2, 1.1) rotate(6deg);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate3d(-320px, 2px, 0) scale(1.05) rotate(-4deg);
-    opacity: 0.4;
-  }
+/* Ambient pulse — keeps haze always visible even when other streams overlap */
+@keyframes smokeBreath {
+  0%   { opacity: 0.4; transform: scale(0.95); }
+  50%  { opacity: 0.65; transform: scale(1.05); }
+  100% { opacity: 0.4; transform: scale(0.95); }
 }
 
 /* Sticky elevated state on scroll */
@@ -634,11 +589,14 @@ a { color: inherit; }
   align-items: center;
   justify-content: space-between;
   margin-top: 14px;
-  padding-top: 16px;
+  padding: 16px 4px 0;
   border-top: 1px solid rgba(195, 215, 240, 0.45);
   font-family: 'DM Sans', sans-serif;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .mindly-hero-name {
   font-family: 'DM Sans', sans-serif;
@@ -3198,7 +3156,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Concept Poster</span>
-              <span class="poster-count">01 / 05</span>
+              <span class="poster-count">01 / 06</span>
             </div>
             <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
             <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
@@ -3214,7 +3172,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Brand Campaign</span>
-              <span class="poster-count">02 / 05</span>
+              <span class="poster-count">02 / 06</span>
             </div>
             <h3 class="poster-card-title">Burger House: When Happiness Is Finally Served</h3>
             <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
@@ -3230,7 +3188,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Brand Philosophy</span>
-              <span class="poster-count">03 / 05</span>
+              <span class="poster-count">03 / 06</span>
             </div>
             <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
             <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
@@ -3246,7 +3204,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Concept Poster</span>
-              <span class="poster-count">04 / 05</span>
+              <span class="poster-count">04 / 06</span>
             </div>
             <h3 class="poster-card-title">Don’t Listen</h3>
             <p class="poster-card-desc">Striking neon chartreuse and shadow silhouette poster exploring internal defiance against negative noise and doubt.</p>
@@ -3262,10 +3220,26 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="poster-info">
             <div class="poster-tag-row">
               <span class="poster-tag">Brand Philosophy</span>
-              <span class="poster-count">05 / 05</span>
+              <span class="poster-count">05 / 06</span>
             </div>
             <h3 class="poster-card-title">How I Act Between You &amp; Your Audience</h3>
             <p class="poster-card-desc">Clean editorial poster featuring chrome chain links and focal green connection, symbolizing design as the empathy bridge between brand and audience.</p>
+          </div>
+        </div>
+
+        <!-- Poster 6: Bada Dashain Festival -->
+        <div class="poster-card is-hidden">
+          <div class="poster-thumb graphic-item" data-src="images/poster-dashain-festival.jpg" data-alt="Bada Dashain Festival - Traditional & Typography Poster">
+            <img src="images/poster-dashain-festival.jpg" alt="Bada Dashain Festival - Traditional & Typography Poster" loading="lazy" decoding="async">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Cultural Campaign</span>
+              <span class="poster-count">06 / 06</span>
+            </div>
+            <h3 class="poster-card-title">Bada Dashain Festival Greetings</h3>
+            <p class="poster-card-desc">Traditional Nepali festival artwork combining custom Devanagari calligraphy, Durga eye iconography, kite silhouettes, and Himalayan temple vistas.</p>
           </div>
         </div>
       </div>
@@ -4619,7 +4593,7 @@ document.addEventListener('click', function(e) {
 
 // Preload all poster images into memory immediately so lightbox view is instant
 (function() {
-  ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg?v=2', 'images/poster-chaos-to-clarity.jpg', 'images/poster-dont-listen.jpg', 'images/poster-how-i-act.jpg'].forEach(function(src) {
+  ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg?v=2', 'images/poster-chaos-to-clarity.jpg', 'images/poster-dont-listen.jpg', 'images/poster-how-i-act.jpg', 'images/poster-dashain-festival.jpg'].forEach(function(src) {
     var pre = new Image();
     pre.src = src;
   });
