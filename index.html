@@ -84,7 +84,7 @@ a { color: inherit; }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ==========================================================================
-   TOP FLOATING NAVBAR (3 SECTION SHORTCUTS) — ULTRA-SLEEK & SPACIOUS
+   TOP FLOATING NAVBAR — FLUID MOTION & STICKY WITH SLIDING INDICATOR
    ========================================================================== */
 .top-navbar-wrap {
   position: fixed;
@@ -96,47 +96,96 @@ a { color: inherit; }
   justify-content: center;
   align-items: center;
   pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .top-nav {
+  position: relative;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.82);
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(215, 230, 245, 0.85);
   border-radius: 999px;
-  padding: 4px 6px;
+  padding: 4px;
   box-shadow: 
-    0 8px 20px -4px rgba(45, 80, 130, 0.07),
-    0 1px 4px rgba(0, 0, 0, 0.02);
-  transition: all 0.22s ease;
+    0 8px 24px -4px rgba(45, 80, 130, 0.07),
+    0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.top-nav-link {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #4f6474;
-  text-decoration: none;
-  padding: 5px 15px;
+
+/* Sticky elevated state on scroll */
+.top-navbar-wrap.is-scrolled .top-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(195, 218, 242, 0.95);
+  box-shadow: 
+    0 12px 32px -4px rgba(45, 80, 130, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Fluid Gliding Active / Hover Highlight Pill */
+.top-nav-indicator {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: calc(100% - 8px);
+  background: rgba(97, 134, 200, 0.13);
+  border: 1px solid rgba(97, 134, 200, 0.24);
   border-radius: 999px;
-  transition: all 0.18s ease;
-  letter-spacing: 0.02em;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(0);
+  width: 0;
+  transition: transform 0.32s cubic-bezier(0.25, 1, 0.35, 1),
+              width 0.32s cubic-bezier(0.25, 1, 0.35, 1),
+              opacity 0.22s ease;
+}
+
+.top-nav-link {
+  position: relative;
+  z-index: 2;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #556877;
+  text-decoration: none;
+  padding: 5px 13px;
+  border-radius: 999px;
+  transition: color 0.22s ease, transform 0.18s ease;
+  letter-spacing: 0.015em;
   white-space: nowrap;
 }
 .top-nav-link:hover {
-  color: #1a2732;
-  background: rgba(97, 134, 200, 0.12);
+  color: #17242d;
+}
+.top-nav-link.active {
+  color: #2b5490;
+  font-weight: 600;
 }
 .top-nav-link:active {
-  transform: scale(0.96);
+  transform: scale(0.95);
 }
-@media (max-width: 520px) {
-  .top-navbar-wrap { top: 10px; }
+
+@media (max-width: 580px) {
+  .top-navbar-wrap { top: 10px; padding: 0 10px; }
+  .top-nav {
+    gap: 2px;
+    padding: 3px;
+    max-width: calc(100vw - 20px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .top-nav::-webkit-scrollbar { display: none; }
   .top-nav-link {
     font-size: 0.72rem;
-    padding: 4px 10px;
+    padding: 4px 9px;
+    flex-shrink: 0;
   }
 }
 
@@ -2637,12 +2686,14 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 <body>
 
 <main id="home">
-  <!-- Top Floating Glassmorphic Navbar -->
+  <!-- Top Floating Glassmorphic Navbar with Fluid Motion Indicator -->
   <header class="top-navbar-wrap">
     <nav class="top-nav" aria-label="Main Navigation">
-      <a href="#graphic-works" class="top-nav-link">Graphics work</a>
-      <a href="#video-editing" class="top-nav-link">Editing work</a>
-      <a href="#work" class="top-nav-link">Research work</a>
+      <div class="top-nav-indicator" id="top-nav-indicator"></div>
+      <a href="#graphic-works" class="top-nav-link" data-section="graphic-works">Social media</a>
+      <a href="#poster-designs" class="top-nav-link" data-section="poster-designs">Poster designs</a>
+      <a href="#video-editing" class="top-nav-link" data-section="video-editing">Editing work</a>
+      <a href="#work" class="top-nav-link" data-section="work">Research work</a>
     </nav>
   </header>
 
@@ -4378,6 +4429,102 @@ document.addEventListener('click', function(e) {
     var pre = new Image();
     pre.src = src;
   });
+})();
+
+// Fluid Motion & Scroll-Spy for Top Floating Sticky Navbar
+(function initFluidNavbar() {
+  var wrap = document.querySelector('.top-navbar-wrap');
+  var nav = document.querySelector('.top-nav');
+  var indicator = document.getElementById('top-nav-indicator');
+  var links = Array.from(document.querySelectorAll('.top-nav-link'));
+  if (!wrap || !nav || !indicator || !links.length) return;
+
+  var sections = [
+    { id: 'graphic-works', link: links[0] },
+    { id: 'poster-designs', link: links[1] },
+    { id: 'video-editing', link: links[2] },
+    { id: 'work', link: links[3] }
+  ];
+
+  var currentActive = null;
+
+  function moveTo(targetLink, isVisible) {
+    if (!targetLink || isVisible === false) {
+      indicator.style.opacity = '0';
+      return;
+    }
+    var navRect = nav.getBoundingClientRect();
+    var linkRect = targetLink.getBoundingClientRect();
+    var left = linkRect.left - navRect.left;
+    var width = linkRect.width;
+
+    indicator.style.opacity = '1';
+    indicator.style.transform = 'translateX(' + left + 'px)';
+    indicator.style.width = width + 'px';
+  }
+
+  function setActive(link) {
+    if (currentActive === link) return;
+    currentActive = link;
+    links.forEach(function(l) { l.classList.toggle('active', l === link); });
+    moveTo(link, !!link);
+  }
+
+  // Hover fluid gliding animation
+  links.forEach(function(link) {
+    link.addEventListener('mouseenter', function() {
+      moveTo(this, true);
+    });
+    link.addEventListener('mouseleave', function() {
+      moveTo(currentActive, !!currentActive);
+    });
+    link.addEventListener('click', function() {
+      setActive(this);
+    });
+  });
+
+  // Sticky blur elevation & Scroll-Spy as user scrolls through sections
+  function onScroll() {
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Sticky elevation style when scrolled
+    wrap.classList.toggle('is-scrolled', scrollY > 40);
+
+    // If near top hero, clear active indicator
+    if (scrollY < 260) {
+      setActive(null);
+      return;
+    }
+
+    var scrollPos = scrollY + 160;
+    var currentSection = null;
+
+    for (var i = 0; i < sections.length; i++) {
+      var secEl = document.getElementById(sections[i].id);
+      if (secEl) {
+        var top = secEl.offsetTop;
+        var height = secEl.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSection = sections[i].link;
+          break;
+        }
+      }
+    }
+
+    if (!currentSection && sections.length) {
+      var lastEl = document.getElementById(sections[sections.length - 1].id);
+      if (lastEl && scrollPos >= lastEl.offsetTop) {
+        currentSection = sections[sections.length - 1].link;
+      }
+    }
+
+    setActive(currentSection);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function() { moveTo(currentActive, !!currentActive); }, { passive: true });
+
+  onScroll();
 })();
 </script>
 </body>
