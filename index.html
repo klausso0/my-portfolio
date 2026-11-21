@@ -59,7 +59,7 @@ body.dark {
   --line: #27254a;
 }
 * { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
   font: 16px/1.65 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
@@ -84,12 +84,69 @@ a { color: inherit; }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ==========================================================================
+   TOP FLOATING NAVBAR (3 SECTION SHORTCUTS)
+   ========================================================================== */
+.top-navbar-wrap {
+  position: sticky;
+  top: 14px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.top-nav {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(220, 235, 250, 0.9);
+  border-radius: 999px;
+  padding: 5px 6px;
+  box-shadow: 
+    0 10px 25px -4px rgba(45, 80, 130, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+.top-nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #3e5262;
+  text-decoration: none;
+  padding: 7px 18px;
+  border-radius: 999px;
+  transition: all 0.22s ease;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.top-nav-link:hover {
+  color: #1a2732;
+  background: rgba(97, 134, 200, 0.12);
+  transform: translateY(-1px);
+}
+.top-nav-link:active {
+  transform: scale(0.97);
+}
+@media (max-width: 520px) {
+  .top-navbar-wrap { top: 10px; }
+  .top-nav-link {
+    font-size: 0.76rem;
+    padding: 6px 11px;
+  }
+}
+
+/* ==========================================================================
    MINDLY-INSPIRED EDITORIAL HERO SECTION
    ========================================================================== */
 .hero {
   position: relative;
   text-align: center;
-  padding: 88px 0 64px;
+  padding: 38px 0 24px;
   background: 
     radial-gradient(ellipse 70% 60% at 50% 55%, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.75) 60%, transparent 100%),
     radial-gradient(circle at 12% 25%, rgba(97, 134, 200, 0.08) 0%, transparent 50%),
@@ -100,10 +157,10 @@ a { color: inherit; }
 /* TOP RIGHT ROTATING BADGE */
 .circle-badge {
   position: absolute;
-  top: 28px;
-  right: clamp(16px, 4vw, 52px);
-  width: 96px;
-  height: 96px;
+  top: 16px;
+  right: clamp(14px, 3vw, 36px);
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -144,13 +201,13 @@ a { color: inherit; }
 /* MAIN EDITORIAL HEADLINE */
 .mindly-hero-title {
   font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(2.8rem, 6.4vw, 4.8rem);
-  line-height: 1.08;
+  font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+  line-height: 1.15;
   color: #1a2732;
   font-weight: 400;
   letter-spacing: -0.015em;
-  margin: 0 auto 16px;
-  max-width: 920px;
+  margin: 0 auto 12px;
+  max-width: 760px;
 }
 .mindly-hero-title em {
   font-style: italic;
@@ -160,11 +217,11 @@ a { color: inherit; }
 /* SUBTITLE */
 .mindly-hero-sub {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  line-height: 1.62;
+  font-size: clamp(0.9rem, 1.35vw, 1rem);
+  line-height: 1.55;
   color: #536777;
-  max-width: 620px;
-  margin: 0 auto 30px;
+  max-width: 540px;
+  margin: 0 auto 16px;
   font-weight: 400;
 }
 
@@ -173,9 +230,9 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 22px;
+  margin-bottom: 12px;
 }
 .mindly-btn-primary {
   display: inline-flex;
@@ -183,19 +240,19 @@ a { color: inherit; }
   gap: 8px;
   background: #6186C8;
   color: #ffffff;
-  padding: 13px 30px;
+  padding: 10px 22px;
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(97, 134, 200, 0.35);
+  box-shadow: 0 6px 18px rgba(97, 134, 200, 0.3);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .mindly-btn-primary:hover {
   background: #4d73b6;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(97, 134, 200, 0.45);
+  box-shadow: 0 10px 24px rgba(97, 134, 200, 0.4);
 }
 .mindly-btn-primary .arrow {
   transition: transform 0.2s ease;
@@ -210,10 +267,10 @@ a { color: inherit; }
   gap: 8px;
   background: rgba(255, 255, 255, 0.9);
   color: #233440;
-  padding: 13px 26px;
+  padding: 10px 20px;
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
   border: 1px solid rgba(195, 215, 240, 0.65);
@@ -238,9 +295,9 @@ a { color: inherit; }
    ========================================================================== */
 .mindly-stage {
   position: relative;
-  max-width: 1260px;
+  max-width: 1040px;
   margin: 0 auto;
-  min-height: 540px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,14 +318,14 @@ a { color: inherit; }
 .mindly-side-card {
   position: absolute;
   z-index: 4;
-  width: 172px;
+  width: 156px;
   background: rgba(255, 255, 255, 0.94);
   border: 1.5px solid rgba(255, 255, 255, 0.98);
-  border-radius: 16px;
-  padding: 13px 14px;
+  border-radius: 14px;
+  padding: 10px 12px;
   text-align: left;
   box-shadow: 
-    0 16px 36px -8px rgba(35, 52, 70, 0.12),
+    0 14px 30px -8px rgba(35, 52, 70, 0.1),
     0 2px 6px rgba(0, 0, 0, 0.03);
   backdrop-filter: blur(14px);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -276,14 +333,14 @@ a { color: inherit; }
 .mindly-side-card:hover {
   transform: translateY(-4px) !important;
   box-shadow: 
-    0 22px 42px -8px rgba(35, 52, 70, 0.16),
+    0 20px 38px -8px rgba(35, 52, 70, 0.14),
     0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Left Card: Elevated high on left */
 .mindly-side-card.card-left {
-  top: 15px;
-  left: clamp(12px, 2vw, 36px);
+  top: 10px;
+  left: clamp(10px, 3vw, 42px);
   animation: floatLeft 6.5s ease-in-out infinite alternate;
 }
 @keyframes floatLeft {
@@ -291,10 +348,10 @@ a { color: inherit; }
   100% { transform: translateY(-8px); }
 }
 
-/* Right Card: Mid-height on right, generous clearance from portrait */
+/* Right Card: Mid-height on right */
 .mindly-side-card.card-right {
-  top: 195px;
-  right: clamp(-15px, 0.5vw, 22px);
+  top: 110px;
+  right: clamp(10px, 3vw, 42px);
   animation: floatRight 7s ease-in-out infinite alternate;
 }
 @keyframes floatRight {
@@ -303,30 +360,30 @@ a { color: inherit; }
 }
 
 .card-icon-pill {
-  width: 28px;
-  height: 28px;
-  border-radius: 9px;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
   background: rgba(240, 246, 253, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .card-icon-pill svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 .mindly-side-card .card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #1a2732;
-  margin: 0 0 3px;
+  margin: 0 0 2px;
   line-height: 1.25;
 }
 .mindly-side-card .card-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   color: #637788;
   line-height: 1.35;
   margin: 0;
@@ -338,19 +395,19 @@ a { color: inherit; }
 .mindly-center-piece {
   position: relative;
   z-index: 2;
-  width: 780px;
+  width: 480px;
   max-width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: -42px auto 0;
+  margin: -10px auto 0;
 }
 
 .portrait-frame {
   position: relative;
-  width: 760px;
-  max-width: 98vw;
-  height: 535px;
+  width: 450px;
+  max-width: 90vw;
+  height: 330px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -361,8 +418,9 @@ a { color: inherit; }
   object-fit: contain;
   object-position: center bottom;
   display: block;
-  mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  image-rendering: -webkit-optimize-contrast;
 }
 
 /* ==========================================================================
@@ -372,8 +430,8 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 18px;
-  padding-top: 22px;
+  margin-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid rgba(195, 215, 240, 0.45);
   font-family: 'DM Sans', sans-serif;
   flex-wrap: wrap;
@@ -410,29 +468,38 @@ a { color: inherit; }
   .mindly-stage {
     flex-direction: column;
     min-height: auto;
-    gap: 32px;
+    gap: 20px;
   }
   .mindly-side-card {
     position: static;
     width: 100%;
-    max-width: 340px;
+    max-width: 320px;
     margin: 0 auto;
     animation: none !important;
   }
   .mindly-center-piece {
     order: -1;
-    margin: 0 auto 12px;
+    margin: 0 auto 8px;
+    width: 100%;
+  }
+  .portrait-frame {
+    width: 360px;
+    height: 260px;
   }
   .circle-badge {
-    width: 78px;
-    height: 78px;
-    top: 16px;
-    right: 16px;
+    width: 68px;
+    height: 68px;
+    top: 12px;
+    right: 12px;
   }
 }
 @media (max-width: 600px) {
-  .hero { padding: 60px 0 40px; }
-  .mindly-hero-title { font-size: 2.35rem; }
+  .hero { padding: 32px 0 20px; }
+  .mindly-hero-title { font-size: 1.7rem; }
+  .portrait-frame {
+    width: 290px;
+    height: 220px;
+  }
   .mindly-bottom-bar {
     justify-content: center;
     text-align: center;
@@ -2570,6 +2637,15 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 <body>
 
 <main id="home">
+  <!-- Top Floating Glassmorphic Navbar -->
+  <header class="top-navbar-wrap">
+    <nav class="top-nav" aria-label="Main Navigation">
+      <a href="#graphic-works" class="top-nav-link">Graphics work</a>
+      <a href="#video-editing" class="top-nav-link">Editing work</a>
+      <a href="#work" class="top-nav-link">Research work</a>
+    </nav>
+  </header>
+
   <!-- Mindly-Inspired Hero Section -->
   <section class="hero mindly-hero">
     <!-- Top Right Rotating Circular Stamp Badge -->
@@ -2609,11 +2685,11 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <!-- Central Stage with 3D Cylindrical Cards & Connector Wires -->
       <div class="mindly-stage">
         <!-- SVG Curved Connector Wires (Desktop) -->
-        <svg class="mindly-connectors" viewBox="0 0 1000 480" fill="none" preserveAspectRatio="none">
+        <svg class="mindly-connectors" viewBox="0 0 1000 350" fill="none" preserveAspectRatio="none">
           <!-- Wire from Left Card right edge to left face ring -->
-          <path d="M 230 65 C 310 85, 360 140, 420 180" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <path d="M 215 50 C 290 65, 340 100, 420 135" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
           <!-- Wire from Right Card left edge to right face ring -->
-          <path d="M 810 235 C 740 240, 680 230, 580 215" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <path d="M 800 155 C 730 160, 670 150, 580 140" stroke="rgba(97, 134, 200, 0.32)" stroke-width="1.5" stroke-dasharray="4 4" />
         </svg>
 
         <!-- Left Floating Card (Elevated High on Left, level with subtitle/buttons) -->
@@ -3792,7 +3868,7 @@ var SoundFX = (function() {
 // Interactive pop sound for buttons and cards
 document.addEventListener('click', function(e) {
   var interactiveEl = e.target.closest(
-    '#btn-see-more-graphic, #btn-see-more-poster, .video-num-btn, .video-nav-btn, .btn, .btn-close-gallery, .graphic-item, .case-study-hero-card, .lightbox-nav-btn, .lightbox-close, .info a, .swatch'
+    '#btn-see-more-graphic, #btn-see-more-poster, .top-nav-link, .video-num-btn, .video-nav-btn, .btn, .btn-close-gallery, .graphic-item, .case-study-hero-card, .lightbox-nav-btn, .lightbox-close, .info a, .swatch'
   );
   if (interactiveEl) {
     SoundFX.pop();
