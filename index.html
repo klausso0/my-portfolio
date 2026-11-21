@@ -2017,37 +2017,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 /* ==========================================================================
-   POSTER DESIGNS SECTION — FOCUSED SINGLE POSTER SHOWCASE WITH NEXT/PREV
+   POSTER DESIGNS SECTION — 3-COLUMN SHOWCASE
    ========================================================================== */
 #poster-designs {
   padding: 40px 0 95px;
 }
 
-.poster-carousel-wrap {
-  position: relative;
-  max-width: 285px;
-  margin: 32px auto 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.poster-stage {
-  position: relative;
-  width: 100%;
-}
-
-.poster-slide {
-  display: none;
-  animation: posterFadeIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.poster-slide.active {
-  display: block;
-}
-
-@keyframes posterFadeIn {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
 }
 
 .poster-card {
@@ -2058,6 +2038,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   box-shadow: 
     0 12px 28px -6px rgba(35, 52, 70, 0.08),
     0 2px 6px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.28s ease,
               border-color 0.28s ease;
@@ -2074,21 +2056,25 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .poster-thumb {
   position: relative;
   width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: #f0f4f9;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .poster-thumb img {
   width: 100%;
-  max-height: 380px;
+  height: 100%;
   object-fit: contain;
   display: block;
   transition: transform 0.35s ease;
 }
 
 .poster-thumb:hover img {
-  transform: scale(1.025);
+  transform: scale(1.03);
 }
 
 .poster-thumb .graphic-item-overlay {
@@ -2104,6 +2090,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   font-size: 0.88rem;
   font-weight: 600;
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   transition: opacity 0.22s ease;
 }
 
@@ -2112,10 +2099,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 .poster-info {
-  padding: 14px 18px 18px;
+  padding: 16px 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex-grow: 1;
+  background: #ffffff;
 }
 
 .poster-tag-row {
@@ -2163,76 +2152,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   margin: 0;
 }
 
-/* Navigation Arrow Buttons */
-.poster-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1.5px solid rgba(220, 235, 250, 0.9);
-  color: #2b3e4a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 14px rgba(35, 52, 70, 0.1);
-  transition: all 0.22s ease;
-}
-.poster-prev {
-  left: -54px;
-}
-.poster-next {
-  right: -54px;
-}
-.poster-nav-btn:hover {
-  background: #6186C8;
-  color: #ffffff;
-  border-color: #6186C8;
-  transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 6px 18px rgba(97, 134, 200, 0.35);
-}
-
-@media (max-width: 640px) {
-  .poster-carousel-wrap {
-    max-width: 290px;
-  }
-  .poster-prev {
-    left: -20px;
-    width: 38px;
-    height: 38px;
-  }
-  .poster-next {
-    right: -20px;
-    width: 38px;
-    height: 38px;
+@media (max-width: 860px) {
+  .poster-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Indicators */
-.poster-carousel-indicators {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 22px;
-}
-.poster-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(97, 134, 200, 0.25);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.25s ease;
-}
-.poster-dot.active {
-  width: 24px;
-  background: #6186C8;
+@media (max-width: 560px) {
+  .poster-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Lightbox Modal for Native Resolution View */
@@ -2962,79 +2894,54 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <h2 class="sec reveal">Poster Designs</h2>
       <p class="sec-sub reveal">Conceptual and visual storytelling posters with custom art direction and typography. Click any poster to view it in full size.</p>
 
-      <div class="poster-carousel-wrap reveal">
-        <!-- Previous Button -->
-        <button class="poster-nav-btn poster-prev" id="poster-prev" aria-label="Previous poster">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-
-        <div class="poster-stage" id="poster-stage">
-          <!-- Poster 1: Don’t Be Hard on Yourself -->
-          <div class="poster-slide active" data-index="0">
-            <div class="poster-card">
-              <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
-                <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="eager" decoding="async">
-                <div class="graphic-item-overlay">View Full Res ↗</div>
-              </div>
-              <div class="poster-info">
-                <div class="poster-tag-row">
-                  <span class="poster-tag">Concept Poster</span>
-                  <span class="poster-count">01 / 03</span>
-                </div>
-                <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
-                <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
-              </div>
-            </div>
+      <div class="poster-grid reveal">
+        <!-- Poster 1: Don’t Be Hard on Yourself -->
+        <div class="poster-card">
+          <div class="poster-thumb graphic-item" data-src="images/poster-dont-be-hard-on-yourself.jpg" data-alt="Don’t Be Hard on Yourself - Typography & Concept Poster">
+            <img src="images/poster-dont-be-hard-on-yourself.jpg" alt="Don’t Be Hard on Yourself - Typography & Concept Poster" loading="eager" decoding="async">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
           </div>
-
-          <!-- Poster 2: Burger House -->
-          <div class="poster-slide" data-index="1">
-            <div class="poster-card">
-              <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
-                <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="eager" decoding="async">
-                <div class="graphic-item-overlay">View Full Res ↗</div>
-              </div>
-              <div class="poster-info">
-                <div class="poster-tag-row">
-                  <span class="poster-tag">Brand Campaign</span>
-                  <span class="poster-count">02 / 03</span>
-                </div>
-                <h3 class="poster-card-title">Burger House: When Happiness Is Served</h3>
-                <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
-              </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Concept Poster</span>
+              <span class="poster-count">01 / 03</span>
             </div>
-          </div>
-
-          <!-- Poster 3: Chaos to Clarity -->
-          <div class="poster-slide" data-index="2">
-            <div class="poster-card">
-              <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
-                <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="eager" decoding="async">
-                <div class="graphic-item-overlay">View Full Res ↗</div>
-              </div>
-              <div class="poster-info">
-                <div class="poster-tag-row">
-                  <span class="poster-tag">Brand Philosophy</span>
-                  <span class="poster-count">03 / 03</span>
-                </div>
-                <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
-                <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
-              </div>
-            </div>
+            <h3 class="poster-card-title">Don’t Be Hard on Yourself</h3>
+            <p class="poster-card-desc">High-contrast crimson poster pairing anime-inspired character illustration with reflective typography on self-worth.</p>
           </div>
         </div>
 
-        <!-- Next Button -->
-        <button class="poster-nav-btn poster-next" id="poster-next" aria-label="Next poster">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
+        <!-- Poster 2: Burger House -->
+        <div class="poster-card">
+          <div class="poster-thumb graphic-item" data-src="images/poster-burger-house.jpg" data-alt="Burger House - When Happiness Is Served Concept Poster">
+            <img src="images/poster-burger-house.jpg" alt="Burger House - When Happiness Is Served Concept Poster" loading="eager" decoding="async">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Brand Campaign</span>
+              <span class="poster-count">02 / 03</span>
+            </div>
+            <h3 class="poster-card-title">Burger House: When Happiness Is Served</h3>
+            <p class="poster-card-desc">Playful, formula-driven food campaign poster transforming a bad mood into happiness through delicious craft burgers.</p>
+          </div>
+        </div>
 
-      <!-- Bottom Indicator Dots -->
-      <div class="poster-carousel-indicators" id="poster-indicators">
-        <button class="poster-dot active" data-index="0" aria-label="Poster 1"></button>
-        <button class="poster-dot" data-index="1" aria-label="Poster 2"></button>
-        <button class="poster-dot" data-index="2" aria-label="Poster 3"></button>
+        <!-- Poster 3: Chaos to Clarity -->
+        <div class="poster-card">
+          <div class="poster-thumb graphic-item" data-src="images/poster-chaos-to-clarity.jpg" data-alt="Chaos to Clarity - Brand Philosophy & Typography Poster">
+            <img src="images/poster-chaos-to-clarity.jpg" alt="Chaos to Clarity - Brand Philosophy & Typography Poster" loading="eager" decoding="async">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="poster-info">
+            <div class="poster-tag-row">
+              <span class="poster-tag">Brand Philosophy</span>
+              <span class="poster-count">03 / 03</span>
+            </div>
+            <h3 class="poster-card-title">I Turn Chaos to Clarity</h3>
+            <p class="poster-card-desc">Minimalist designer manifesto poster illustrating the journey from complex tangled thoughts into directed, high-impact clarity.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -4314,52 +4221,8 @@ document.addEventListener('click', function(e) {
   updateVisibility();
 })();
 
-// ====== POSTER CAROUSEL (ONE AT A TIME) ======
+// Preload all poster images into memory immediately so lightbox view is instant
 (function() {
-  var stage = document.getElementById('poster-stage');
-  if (!stage) return;
-  var slides = Array.from(stage.querySelectorAll('.poster-slide'));
-  var dots = Array.from(document.querySelectorAll('.poster-dot'));
-  var prevBtn = document.getElementById('poster-prev');
-  var nextBtn = document.getElementById('poster-next');
-  if (!slides.length) return;
-
-  var currentIndex = 0;
-
-  function showSlide(index) {
-    if (index < 0) index = slides.length - 1;
-    if (index >= slides.length) index = 0;
-    currentIndex = index;
-
-    slides.forEach(function(s, i) {
-      s.classList.toggle('active', i === currentIndex);
-    });
-
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === currentIndex);
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', function() {
-      showSlide(currentIndex - 1);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
-      showSlide(currentIndex + 1);
-    });
-  }
-
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
-      var idx = parseInt(this.getAttribute('data-index'), 10);
-      showSlide(idx);
-    });
-  });
-
-  // Preload all poster images into memory immediately so slide transitions are instant
   ['images/poster-dont-be-hard-on-yourself.jpg', 'images/poster-burger-house.jpg', 'images/poster-chaos-to-clarity.jpg'].forEach(function(src) {
     var pre = new Image();
     pre.src = src;
