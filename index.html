@@ -797,45 +797,23 @@ a { color: inherit; }
 }
 
 /* Staggered Floating Skills Constellation */
-.editorial-skills-scatter {
-  margin: 38px 0 54px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  max-width: 900px;
-}
-.skills-scatter-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.skills-scatter-row-2 {
-  padding-left: 80px;
-  padding-right: 30px;
+/* Clean 3-Column Left-Aligned Skills Grid */
+.editorial-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 32px;
+  max-width: 760px;
+  margin: 32px 0 36px;
+  text-align: left;
 }
 .skill-item {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: #111827;
   letter-spacing: -0.015em;
-  white-space: nowrap;
-}
-
-/* Metadata Footer Line */
-.editorial-meta-line {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  color: #8b9baa;
-  letter-spacing: 0.02em;
-  font-weight: 500;
-  padding-top: 14px;
 }
 
 @media (max-width: 768px) {
@@ -847,20 +825,17 @@ a { color: inherit; }
   }
   .editorial-body {
     font-size: 1rem;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
-  .skills-scatter-row-2 {
-    padding-left: 0;
-    padding-right: 0;
+  .editorial-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
   }
-  .skills-scatter-row {
-    justify-content: flex-start;
-    gap: 14px 22px;
-  }
-  .editorial-meta-line {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+}
+@media (max-width: 480px) {
+  .editorial-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -1543,7 +1518,7 @@ h2.sec .editorial-italic {
   color: #17242d;
   line-height: 1.3;
   margin-bottom: 6px;
-  word-break: break-all;
+  word-break: normal;
 }
 
 .channel-hint {
@@ -1557,6 +1532,13 @@ h2.sec .editorial-italic {
 .contact-channel-card.card-email {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 246, 255, 0.94) 100%);
   border-color: rgba(97, 134, 200, 0.55);
+}
+.contact-channel-card.card-email .channel-value {
+  font-size: clamp(0.78rem, 1.05vw, 0.86rem);
+  white-space: nowrap;
+  letter-spacing: -0.015em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Responsive adjustments */
@@ -3018,43 +3000,33 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
             I also love editing. I haven’t done it professionally yet, but I’m working on it, and I’m looking for a place where I can keep learning about both design and editing.
           </p>
         </div>
-        <div class="editorial-meta-line">
-          <span>A collect of creative work for the bold &amp; wonderful</span>
-        </div>
       </div>
 
-      <!-- Block 2: What I do? -->
+      <!-- Block 2: What I do -->
       <div class="editorial-block">
         <h2 class="editorial-title">
-          <span class="editorial-italic">What</span> I do?
+          <span class="editorial-italic">What</span> I do
         </h2>
         <p class="editorial-body">
-          I like to team up with purpose-driven businesses, ambitious startups and big thinkers who want their brand to be remembered, not just seen.
+          I like working with teams who care about why they're making something, not only how it looks.
         </p>
-        <div class="editorial-skills-scatter">
-          <div class="skills-scatter-row skills-scatter-row-1">
-            <span class="skill-item">Logo Design</span>
-            <span class="skill-item">Branding</span>
-            <span class="skill-item">UI Design</span>
-          </div>
-          <div class="skills-scatter-row skills-scatter-row-2">
-            <span class="skill-item">Editing</span>
-            <span class="skill-item">UX Research</span>
-            <span class="skill-item">Content Writing</span>
-          </div>
-        </div>
-        <div class="editorial-meta-line">
-          <span>A collect of creative work for the bold &amp; wonderful</span>
+        <div class="editorial-skills-grid">
+          <span class="skill-item">Social Media Design</span>
+          <span class="skill-item">Poster Design</span>
+          <span class="skill-item">Video Editing</span>
+          <span class="skill-item">UI Design</span>
+          <span class="skill-item">UX Research</span>
+          <span class="skill-item">Content Writing</span>
         </div>
       </div>
 
-      <!-- Block 3: How I do it? -->
+      <!-- Block 3: How I do it -->
       <div class="editorial-block">
         <h2 class="editorial-title">
-          <span class="editorial-italic">How</span> I do it?
+          <span class="editorial-italic">How</span> I do it
         </h2>
         <p class="editorial-body" style="margin-bottom: 0;">
-          <strong>Adobe Creative Suite, Figma.</strong> Various AI tools help me integrate into design, direction, concept development and creative exploration.
+          I design in Adobe Creative Suite and Figma, and use AI tools to explore ideas early on.
         </p>
       </div>
 
@@ -3410,7 +3382,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <div class="video-carousel-wrap">
           <div class="video-player-container">
             <video id="portfolio-video" controls playsinline preload="metadata">
-              <source src="videos/video-edit-2.mp4?v=6" type="video/mp4">
+              <source src="videos/video-edit-4.mp4?v=2" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -4462,12 +4434,6 @@ document.addEventListener('click', function(e) {
 (function(){
   var videoList = [
     {
-      src: 'videos/video-edit-2.mp4?v=6',
-      raw: '',
-      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
-      aspect: '9/16'
-    },
-    {
       src: 'videos/video-edit-4.mp4?v=2',
       raw: [
         'https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing',
@@ -4482,16 +4448,37 @@ document.addEventListener('click', function(e) {
       ]
     },
     {
+      src: 'videos/video-edit-2.mp4?v=6',
+      raw: '',
+      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
+      aspect: '9/16',
+      credits: [
+        'Pacing & Dynamic Rhythm Cuts',
+        'Sound Design & Transitions',
+        'Edited on Premiere Pro'
+      ]
+    },
+    {
       src: 'videos/video-edit.mp4?v=5',
       raw: 'https://drive.google.com/file/d/1h2pTWUNZtmJ1WBG25-e9pgIMltfQYBBc/view?usp=sharing',
       premiere: 'https://drive.google.com/file/d/1P68YZ-YIbXhk4vVysn0aN3Pqe8KnpQbl/view?usp=sharing',
-      aspect: '9/16'
+      aspect: '9/16',
+      credits: [
+        'Story Arc & Sequence Arrangement',
+        'Audio Mastering & Beat Sync',
+        'Edited on Premiere Pro'
+      ]
     },
     {
       src: 'videos/video-edit-3.mp4?v=2',
       raw: '',
       premiere: 'https://drive.google.com/file/d/1xFyburL-NS5onCt3Dou3XiNr0ybbV_CC/view?usp=sharing',
-      aspect: '1/1'
+      aspect: '1/1',
+      credits: [
+        '1:1 Social Frame Composition',
+        'Motion Graphics & Clean Cuts',
+        'Edited on Premiere Pro'
+      ]
     }
   ];
 
