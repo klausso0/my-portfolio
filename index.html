@@ -90,233 +90,12 @@ a { color: inherit; }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
 /* ==========================================================================
-   TOP FLOATING NAVBAR — FLUID MOTION & STICKY WITH SLIDING INDICATOR
-   ========================================================================== */
-.top-navbar-wrap {
-  position: fixed;
-  top: 18px;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.top-nav {
-  position: relative;
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  background: rgba(240, 245, 252, 0.75);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(200, 220, 245, 0.75);
-  border-radius: 999px;
-  padding: 4px;
-  overflow: hidden;
-  isolation: isolate;
-  box-shadow: 
-    0 8px 24px -4px rgba(45, 80, 130, 0.1),
-    0 2px 6px rgba(0, 0, 0, 0.03),
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -1px 2px rgba(97, 134, 200, 0.12);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* ── Fluid Smoke Chamber — subtle but always present ── */
-.nav-smoke-chamber {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.smoke-stream {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-  will-change: transform;
-}
-
-/* Blob 1 — soft blue orb gliding left→right */
-.smoke-stream-1 {
-  width: 140px;
-  height: 70px;
-  top: -15px;
-  left: -10px;
-  background: radial-gradient(circle, rgba(97, 134, 200, 0.25) 0%, rgba(130, 170, 235, 0.14) 45%, transparent 70%);
-  filter: blur(12px);
-  animation: fluidGlide1 10s ease-in-out infinite;
-}
-
-/* Blob 2 — periwinkle orb gliding right→left */
-.smoke-stream-2 {
-  width: 150px;
-  height: 75px;
-  bottom: -18px;
-  right: -10px;
-  background: radial-gradient(circle, rgba(110, 150, 220, 0.22) 0%, rgba(140, 180, 240, 0.12) 45%, transparent 70%);
-  filter: blur(14px);
-  animation: fluidGlide2 13s ease-in-out infinite;
-}
-
-/* Blob 3 — white highlight shimmer sweeping gently */
-.smoke-stream-3 {
-  width: 90px;
-  height: 50px;
-  top: -8px;
-  left: 35%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(210, 225, 250, 0.2) 50%, transparent 70%);
-  filter: blur(8px);
-  animation: fluidGlide3 8s ease-in-out infinite;
-}
-
-/* Blob 4 — ambient tint haze, always present */
-.smoke-stream-4 {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(90deg, 
-    rgba(97, 134, 200, 0.1) 0%, 
-    rgba(140, 175, 240, 0.06) 30%, 
-    rgba(160, 190, 245, 0.08) 60%, 
-    rgba(97, 134, 200, 0.1) 100%);
-  filter: blur(4px);
-  animation: fluidPulse 6s ease-in-out infinite;
-}
-
-/* Top specular glass shine */
-.smoke-glass-sheen {
-  position: absolute;
-  top: 0;
-  left: 5%;
-  right: 5%;
-  height: 50%;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0.5) 0%, 
-    rgba(255, 255, 255, 0.15) 40%, 
-    rgba(255, 255, 255, 0) 100%);
-  border-radius: 999px 999px 50% 50%;
-  pointer-events: none;
-}
-
-@keyframes fluidGlide1 {
-  0%   { transform: translateX(0)     scale(1);   opacity: 0.5; }
-  25%  { transform: translateX(80px)  scale(1.08); opacity: 0.65; }
-  50%  { transform: translateX(190px) scale(1.04); opacity: 0.55; }
-  75%  { transform: translateX(95px)  scale(1.1);  opacity: 0.65; }
-  100% { transform: translateX(0)     scale(1);   opacity: 0.5; }
-}
-
-@keyframes fluidGlide2 {
-  0%   { transform: translateX(0)      scale(1);   opacity: 0.45; }
-  25%  { transform: translateX(-65px)  scale(1.08); opacity: 0.6; }
-  50%  { transform: translateX(-170px) scale(1.04); opacity: 0.5; }
-  75%  { transform: translateX(-85px)  scale(1.1);  opacity: 0.6; }
-  100% { transform: translateX(0)      scale(1);   opacity: 0.45; }
-}
-
-@keyframes fluidGlide3 {
-  0%   { transform: translateX(-45px); opacity: 0.4; }
-  50%  { transform: translateX(65px);  opacity: 0.6; }
-  100% { transform: translateX(-45px); opacity: 0.4; }
-}
-
-@keyframes fluidPulse {
-  0%   { opacity: 0.4; transform: scaleX(1); }
-  50%  { opacity: 0.6; transform: scaleX(1.02); }
-  100% { opacity: 0.4; transform: scaleX(1); }
-}
-
-/* Sticky elevated state on scroll */
-.top-navbar-wrap.is-scrolled .top-nav {
-  background: rgba(240, 245, 252, 0.88);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border-color: rgba(190, 215, 242, 0.85);
-  box-shadow: 
-    0 12px 32px -4px rgba(45, 80, 130, 0.13),
-    0 4px 10px rgba(0, 0, 0, 0.04),
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -1px 2px rgba(97, 134, 200, 0.12);
-}
-
-/* Fluid Gliding Active / Hover Highlight Pill */
-.top-nav-indicator {
-  position: absolute;
-  top: 4px;
-  left: 0;
-  height: calc(100% - 8px);
-  background: rgba(97, 134, 200, 0.16);
-  border: 1px solid rgba(97, 134, 200, 0.28);
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transform: translateX(0);
-  width: 0;
-  transition: transform 0.32s cubic-bezier(0.25, 1, 0.35, 1),
-              width 0.32s cubic-bezier(0.25, 1, 0.35, 1),
-              opacity 0.22s ease;
-}
-
-.top-nav-link {
-  position: relative;
-  z-index: 2;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 5px 13px;
-  border-radius: 999px;
-  transition: color 0.22s ease, transform 0.18s ease;
-  letter-spacing: 0.015em;
-  white-space: nowrap;
-  text-shadow: 0 0.5px 1px rgba(255, 255, 255, 0.6);
-}
-.top-nav-link:hover {
-  color: #0f1d2a;
-}
-.top-nav-link.active {
-  color: #1a3f7a;
-  font-weight: 700;
-}
-.top-nav-link:active {
-  transform: scale(0.95);
-}
-
-@media (max-width: 580px) {
-  .top-navbar-wrap { top: 10px; padding: 0 10px; }
-  .top-nav {
-    gap: 2px;
-    padding: 3px;
-    max-width: calc(100vw - 20px);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .top-nav::-webkit-scrollbar { display: none; }
-  .top-nav-link {
-    font-size: 0.72rem;
-    padding: 4px 9px;
-    flex-shrink: 0;
-  }
-}
-
-/* ==========================================================================
    MINDLY-INSPIRED EDITORIAL HERO SECTION
    ========================================================================== */
 .hero {
   position: relative;
   text-align: center;
-  padding: 96px 0 24px;
+  padding: clamp(36px, 6vw, 64px) 0 24px;
   background: 
     radial-gradient(ellipse 70% 60% at 50% 55%, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.75) 60%, transparent 100%),
     radial-gradient(circle at 12% 25%, rgba(97, 134, 200, 0.08) 0%, transparent 50%),
@@ -591,47 +370,6 @@ a { color: inherit; }
   mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
   image-rendering: -webkit-optimize-contrast;
-}
-
-/* ==========================================================================
-   BOTTOM HIGHLIGHTS ROW (STATS & MOTTO)
-   ========================================================================== */
-.mindly-bottom-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 14px;
-  padding: 16px 0 0;
-  border-top: 1px solid rgba(195, 215, 240, 0.55);
-  font-family: 'DM Sans', sans-serif;
-  flex-wrap: nowrap;
-  gap: 16px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.mindly-hero-name {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.86rem;
-  font-weight: 400;
-  color: #6186C8;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-.mindly-hero-name:hover {
-  opacity: 0.8;
-}
-.mindly-motto {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  color: #4a5d6d;
-  font-weight: 500;
-}
-.motto-star {
-  color: #6186C8;
-  font-size: 0.95rem;
 }
 
 /* RESPONSIVE MEDIA QUERIES */
@@ -2890,25 +2628,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 <body>
 
 <main id="home">
-  <!-- Top Floating Glassmorphic Navbar with Continuous Smoky Fluid Animation -->
-  <header class="top-navbar-wrap">
-    <nav class="top-nav" aria-label="Main Navigation">
-      <!-- Continuous blowing smoky fluid chamber inside the pill capsule -->
-      <div class="nav-smoke-chamber" aria-hidden="true">
-        <div class="smoke-stream smoke-stream-1"></div>
-        <div class="smoke-stream smoke-stream-2"></div>
-        <div class="smoke-stream smoke-stream-3"></div>
-        <div class="smoke-stream smoke-stream-4"></div>
-        <div class="smoke-glass-sheen"></div>
-      </div>
-      <div class="top-nav-indicator" id="top-nav-indicator"></div>
-      <a href="#graphic-works" class="top-nav-link" data-section="graphic-works">Social media</a>
-      <a href="#poster-designs" class="top-nav-link" data-section="poster-designs">Poster designs</a>
-      <a href="#video-editing" class="top-nav-link" data-section="video-editing">Editing work</a>
-      <a href="#work" class="top-nav-link" data-section="work">Research work</a>
-    </nav>
-  </header>
-
   <!-- Mindly-Inspired Hero Section -->
   <section class="hero mindly-hero">
     <!-- Top Right Rotating Circular Stamp Badge -->
@@ -2971,15 +2690,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <p class="card-desc">Focused on rhythm, clean cuts, sound design, and clarity.</p>
         </div>
       </div>
-
-      <!-- Bottom Highlights Bar -->
-      <div class="mindly-bottom-bar">
-        <a href="#home" class="mindly-hero-name">Neeraj Bhatt</a>
-        <div class="mindly-motto">
-          <span class="motto-star">✦</span>
-          <span class="motto-text">Less guessing. More clarity.</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -3018,16 +2728,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <span class="skill-item">UX Research</span>
           <span class="skill-item">Content Writing</span>
         </div>
-      </div>
-
-      <!-- Block 3: How I do it -->
-      <div class="editorial-block">
-        <h2 class="editorial-title">
-          <span class="editorial-italic">How</span> I do it
-        </h2>
-        <p class="editorial-body" style="margin-bottom: 0;">
-          I design in Adobe Creative Suite and Figma, and use AI tools to explore ideas early on.
-        </p>
       </div>
 
     </div>
@@ -3382,7 +3082,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <div class="video-carousel-wrap">
           <div class="video-player-container">
             <video id="portfolio-video" controls playsinline preload="metadata">
-              <source src="videos/video-edit-4.mp4?v=2" type="video/mp4">
+              <source src="videos/video-edit-2.mp4?v=6" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -3401,20 +3101,20 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div id="video-meta-box" class="video-meta-card">
             <span class="video-meta-heading">Creation Details</span>
             <div class="video-meta-badges">
-              <div class="video-meta-pill"><span class="dot"></span><span>Character generated from Gemini</span></div>
-              <div class="video-meta-pill"><span class="dot"></span><span>Voiceover generated from ElevenLabs</span></div>
+              <div class="video-meta-pill"><span class="dot"></span><span>Pacing & Dynamic Rhythm Cuts</span></div>
+              <div class="video-meta-pill"><span class="dot"></span><span>Sound Design & Transitions</span></div>
               <div class="video-meta-pill"><span class="dot"></span><span>Edited on Premiere Pro</span></div>
             </div>
           </div>
-          <a id="btn-raw-video" class="video-btn secondary" href="https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-raw-video" class="video-btn secondary" href="#" target="_blank" rel="noopener" style="display: none;">
             <span class="video-btn-title">See Raw Video (Part 1)</span>
             <span class="video-btn-arrow">→</span>
           </a>
-          <a id="btn-raw-video-2" class="video-btn secondary" href="https://drive.google.com/file/d/19G98J0pEXTnqdVulQQQkd1tOXbyCRh1C/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-raw-video-2" class="video-btn secondary" href="#" target="_blank" rel="noopener" style="display: none;">
             <span class="video-btn-title">See Raw Video (Part 2)</span>
             <span class="video-btn-arrow">→</span>
           </a>
-          <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1d9Rchrq6kvHMBW7vG9U9KJFpBtpGKMtq/view?usp=sharing" target="_blank" rel="noopener">
+          <a id="btn-premiere-file" class="video-btn primary" href="https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing" target="_blank" rel="noopener">
             <span class="video-btn-title">See Premiere File</span>
             <span class="video-btn-arrow">→</span>
           </a>
@@ -4434,6 +4134,17 @@ document.addEventListener('click', function(e) {
 (function(){
   var videoList = [
     {
+      src: 'videos/video-edit-2.mp4?v=6',
+      raw: '',
+      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
+      aspect: '9/16',
+      credits: [
+        'Pacing & Dynamic Rhythm Cuts',
+        'Sound Design & Transitions',
+        'Edited on Premiere Pro'
+      ]
+    },
+    {
       src: 'videos/video-edit-4.mp4?v=2',
       raw: [
         'https://drive.google.com/file/d/1JZPIfgYJGojuLJQjRlwWDdLVm344YnuQ/view?usp=sharing',
@@ -4444,17 +4155,6 @@ document.addEventListener('click', function(e) {
       credits: [
         'Character generated from Gemini',
         'Voiceover generated from ElevenLabs',
-        'Edited on Premiere Pro'
-      ]
-    },
-    {
-      src: 'videos/video-edit-2.mp4?v=6',
-      raw: '',
-      premiere: 'https://drive.google.com/file/d/1bsHGhb3vXENmohZN3kw05RN1e_MZMPh2/view?usp=sharing',
-      aspect: '9/16',
-      credits: [
-        'Pacing & Dynamic Rhythm Cuts',
-        'Sound Design & Transitions',
         'Edited on Premiere Pro'
       ]
     },
@@ -4741,102 +4441,6 @@ document.addEventListener('click', function(e) {
     var pre = new Image();
     pre.src = src;
   });
-})();
-
-// Fluid Motion & Scroll-Spy for Top Floating Sticky Navbar
-(function initFluidNavbar() {
-  var wrap = document.querySelector('.top-navbar-wrap');
-  var nav = document.querySelector('.top-nav');
-  var indicator = document.getElementById('top-nav-indicator');
-  var links = Array.from(document.querySelectorAll('.top-nav-link'));
-  if (!wrap || !nav || !indicator || !links.length) return;
-
-  var sections = [
-    { id: 'graphic-works', link: links[0] },
-    { id: 'poster-designs', link: links[1] },
-    { id: 'video-editing', link: links[2] },
-    { id: 'work', link: links[3] }
-  ];
-
-  var currentActive = null;
-
-  function moveTo(targetLink, isVisible) {
-    if (!targetLink || isVisible === false) {
-      indicator.style.opacity = '0';
-      return;
-    }
-    var navRect = nav.getBoundingClientRect();
-    var linkRect = targetLink.getBoundingClientRect();
-    var left = linkRect.left - navRect.left;
-    var width = linkRect.width;
-
-    indicator.style.opacity = '1';
-    indicator.style.transform = 'translateX(' + left + 'px)';
-    indicator.style.width = width + 'px';
-  }
-
-  function setActive(link) {
-    if (currentActive === link) return;
-    currentActive = link;
-    links.forEach(function(l) { l.classList.toggle('active', l === link); });
-    moveTo(link, !!link);
-  }
-
-  // Hover fluid gliding animation
-  links.forEach(function(link) {
-    link.addEventListener('mouseenter', function() {
-      moveTo(this, true);
-    });
-    link.addEventListener('mouseleave', function() {
-      moveTo(currentActive, !!currentActive);
-    });
-    link.addEventListener('click', function() {
-      setActive(this);
-    });
-  });
-
-  // Sticky blur elevation & Scroll-Spy as user scrolls through sections
-  function onScroll() {
-    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Sticky elevation style when scrolled
-    wrap.classList.toggle('is-scrolled', scrollY > 40);
-
-    // If near top hero, clear active indicator
-    if (scrollY < 260) {
-      setActive(null);
-      return;
-    }
-
-    var scrollPos = scrollY + 160;
-    var currentSection = null;
-
-    for (var i = 0; i < sections.length; i++) {
-      var secEl = document.getElementById(sections[i].id);
-      if (secEl) {
-        var top = secEl.offsetTop;
-        var height = secEl.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentSection = sections[i].link;
-          break;
-        }
-      }
-    }
-
-    if (!currentSection && sections.length) {
-      var lastEl = document.getElementById(sections[sections.length - 1].id);
-      if (lastEl && scrollPos >= lastEl.offsetTop) {
-        currentSection = sections[sections.length - 1].link;
-      }
-    }
-
-    setActive(currentSection);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', function() { moveTo(currentActive, !!currentActive); }, { passive: true });
-
-  onScroll();
 })();
 </script>
 </body>
