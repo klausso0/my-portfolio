@@ -749,30 +749,113 @@ a { color: inherit; }
   font-weight: 500;
 }
 
-/* ABOUT SECTION */
-.about-section {
-  padding: 44px 0 32px;
+/* ==========================================================================
+   EDITORIAL ABOUT SHOWCASE (HELLO / WHAT I DO / HOW I DO IT)
+   ========================================================================== */
+.editorial-about-section {
+  padding: 50px 0 70px;
 }
-.section-tag {
-  display: block;
-  font-family: 'DM Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #6a91c1;
-  margin-bottom: 12px;
+.editorial-block {
+  padding: 44px 0 38px;
+  border-bottom: 1px solid rgba(210, 226, 244, 0.45);
 }
-.about-text {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.15rem;
-  line-height: 1.68;
-  color: #2b3e4a;
-  max-width: 820px;
+.editorial-block:last-child {
+  border-bottom: none;
+  padding-bottom: 10px;
+}
+.editorial-title {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #111827;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px 0;
+}
+.editorial-italic {
+  font-style: italic;
   font-weight: 400;
+  margin-right: 0.12em;
+}
+.editorial-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: #374151;
+  max-width: 480px;
+  margin: 0 0 46px 0;
+}
+.editorial-body strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+/* Staggered Floating Skills Constellation */
+.editorial-skills-scatter {
+  margin: 38px 0 54px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 22px;
+  max-width: 900px;
+}
+.skills-scatter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.skills-scatter-row-2 {
+  padding-left: 80px;
+  padding-right: 30px;
+}
+.skill-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+/* Metadata Footer Line */
+.editorial-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #8b9baa;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  padding-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .editorial-about-section {
+    padding: 36px 0 44px;
+  }
+  .editorial-block {
+    padding: 32px 0 28px;
+  }
+  .editorial-body {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  .skills-scatter-row-2 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .skills-scatter-row {
+    justify-content: flex-start;
+    gap: 14px 22px;
+  }
+  .editorial-meta-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
 }
 
 /* SELECTED PROJECTS & GRAPHIC WORKS — LUXURIOUS SECTION SPACING */
@@ -2904,18 +2987,62 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
-  <!-- About Me Section -->
-  <section class="about-section reveal">
+  <!-- Editorial Showcase (Hello / What I do? / How I do it?) -->
+  <section class="editorial-about-section reveal">
     <div class="wrap">
-      <span class="section-tag">About me</span>
-      <div class="about-text">
-        <p>
-          I’ve been a graphic designer for a little over a year, and somewhere along the way I got more curious about the thinking behind a product than the visuals on top of it. Why would someone like it? How would they actually use it? Does a feature really help, or is it just an unnecessary step between people and what they came to do? That’s the part of design I enjoy most.
+
+      <!-- Block 1: Hello! I'm Neeraj Bhatt -->
+      <div class="editorial-block">
+        <h2 class="editorial-title">
+          <span class="editorial-italic">Hello!</span> I’m Neeraj Bhatt
+        </h2>
+        <p class="editorial-body">
+          A multidisciplinary designer. I’ve been crafting brand visuals for the rebels, the brave and the businesses that dare to truly stand out. I’m on a mission to work alongside people who shake things up and do things differently.
         </p>
-        <p>
-          I also love editing. I haven’t done it professionally yet, but I’m working on it, and I’m looking for a place where I can keep learning about both design and editing.
+        <div class="editorial-meta-line">
+          <span>A collect of creative work for the bold &amp; wonderful</span>
+          <span>07 Apr, 2026</span>
+        </div>
+      </div>
+
+      <!-- Block 2: What I do? -->
+      <div class="editorial-block">
+        <h2 class="editorial-title">
+          <span class="editorial-italic">What</span> I do?
+        </h2>
+        <p class="editorial-body">
+          I like to team up with purpose-driven businesses, ambitious startups and big thinkers who want their brand to be remembered, not just seen.
+        </p>
+        <div class="editorial-skills-scatter">
+          <div class="skills-scatter-row skills-scatter-row-1">
+            <span class="skill-item">Logo Design</span>
+            <span class="skill-item">Team Leading</span>
+            <span class="skill-item">Mentoring</span>
+            <span class="skill-item">Branding</span>
+          </div>
+          <div class="skills-scatter-row skills-scatter-row-2">
+            <span class="skill-item">Art Direction</span>
+            <span class="skill-item">UI Design</span>
+            <span class="skill-item">Editorial</span>
+            <span class="skill-item">Motion Design</span>
+          </div>
+        </div>
+        <div class="editorial-meta-line">
+          <span>A collect of creative work for the bold &amp; wonderful</span>
+          <span>07 Apr, 2026</span>
+        </div>
+      </div>
+
+      <!-- Block 3: How I do it? -->
+      <div class="editorial-block">
+        <h2 class="editorial-title">
+          <span class="editorial-italic">How</span> I do it?
+        </h2>
+        <p class="editorial-body" style="margin-bottom: 0;">
+          <strong>Adobe Creative Suite, Figma.</strong> Various AI tools help me integrate into design, direction, concept development and creative exploration.
         </p>
       </div>
+
     </div>
   </section>
 
