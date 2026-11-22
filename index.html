@@ -2257,14 +2257,14 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 /* ==========================================================================
-   BRAND IDENTITY SECTION: SADIKSHA OVERSEAS (DEDICATED SECTION SHOWCASES)
+   BRAND IDENTITY SECTION: SADIKSHA OVERSEAS (SCROLLABLE EDITORIAL SHOWCASE)
    ========================================================================== */
 #brand-identity {
   padding: 40px 0 95px;
 }
 .brand-identity-block {
-  margin-bottom: 76px;
-  padding-bottom: 64px;
+  margin-bottom: 72px;
+  padding-bottom: 58px;
   border-bottom: 1px solid rgba(195, 215, 240, 0.45);
 }
 .brand-identity-block:last-of-type {
@@ -2277,7 +2277,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   align-items: flex-start;
   justify-content: space-between;
   gap: 40px;
-  margin-bottom: 28px;
+  margin-bottom: 34px;
 }
 .brand-header-left {
   flex: 1 1 50%;
@@ -2333,132 +2333,50 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   margin: 0;
 }
 
-/* Big Hero Image Container */
-.brand-hero-display {
+/* Reduced & Crisp Showcase Presentation Frame (Compact & Non-Clickable) */
+.brand-frame-wrap {
   position: relative;
-  width: 100%;
-  border-radius: 20px;
+  max-width: 620px;
+  margin: 0 auto 20px;
+  border-radius: 14px;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid rgba(210, 226, 244, 0.85);
   box-shadow: 
-    0 16px 36px -10px rgba(45, 80, 130, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
-  margin-bottom: 26px;
-  cursor: pointer;
-}
-.brand-hero-display:hover {
-  transform: translateY(-4px);
-  border-color: rgba(97, 134, 200, 0.6);
-  box-shadow: 
-    0 24px 48px -10px rgba(45, 80, 130, 0.18),
-    0 4px 14px rgba(0, 0, 0, 0.04);
-}
-.brand-hero-display img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.brand-hero-display:hover img {
-  transform: scale(1.02);
-}
-
-/* Two-Column Overview Cards (Slide 1 Reference) */
-.brand-overview-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-bottom: 12px;
-}
-.brand-overview-card {
-  display: flex;
-  flex-direction: column;
-}
-.brand-card-display {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(210, 226, 244, 0.85);
-  box-shadow: 
-    0 12px 30px -8px rgba(45, 80, 130, 0.08),
+    0 10px 24px -6px rgba(45, 80, 130, 0.08),
     0 2px 6px rgba(0, 0, 0, 0.02);
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
-  margin-bottom: 16px;
-  cursor: pointer;
+  cursor: default;
 }
-.brand-card-display:hover {
-  transform: translateY(-4px);
-  border-color: rgba(97, 134, 200, 0.6);
-  box-shadow: 
-    0 20px 42px -10px rgba(45, 80, 130, 0.16),
-    0 4px 12px rgba(0, 0, 0, 0.04);
-}
-.brand-card-display img {
+.brand-frame-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.brand-card-display:hover img {
-  transform: scale(1.025);
-}
-
-/* Environmental Framed Posters Backdrop */
-.brand-frames-backdrop {
-  background: linear-gradient(180deg, #f7f9fd 0%, #edf2f9 100%);
-  padding: 38px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.brand-frames-backdrop img {
-  width: 100%;
-  max-width: 980px;
   height: auto;
-  filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.15));
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* Universal graphic-item-overlay so hover works on every image! */
-.graphic-item .graphic-item-overlay,
-.brand-hero-display .graphic-item-overlay,
-.brand-card-display .graphic-item-overlay,
-.graphic-thumb .graphic-item-overlay,
-.poster-thumb .graphic-item-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.48);
-  opacity: 0;
+/* Framed Posters Gallery Backdrop */
+.brand-poster-backdrop {
+  background: linear-gradient(180deg, #f7f9fd 0%, #edf2f9 100%);
+  padding: 24px 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: opacity 0.22s ease;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  pointer-events: none;
-  z-index: 10;
 }
-.graphic-item:hover .graphic-item-overlay,
-.brand-hero-display:hover .graphic-item-overlay,
-.brand-card-display:hover .graphic-item-overlay,
-.graphic-thumb:hover .graphic-item-overlay,
-.poster-thumb:hover .graphic-item-overlay {
-  opacity: 1;
+.brand-poster-backdrop img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.12));
 }
 
 /* Rich Text Block Directly Below Image */
 .brand-story-below {
-  padding: 4px 4px 0;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 4px;
 }
 .brand-story-meta-row {
   display: flex;
@@ -2497,7 +2415,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   font-size: 0.98rem;
   line-height: 1.7;
   color: #4a5e70;
-  max-width: 960px;
   margin: 0;
 }
 
@@ -2538,6 +2455,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 @media (max-width: 860px) {
   .brand-identity-block {
     margin-bottom: 56px;
+    padding-bottom: 46px;
+  }
+  .brand-editorial-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .brand-frame-wrap {
+    max-width: 100%;
+  }
+  .brand-story-below {
+    max-width: 100%;
+  }
+}
     padding-bottom: 46px;
   }
   .brand-editorial-header {
@@ -3222,88 +3152,27 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="brand-identity">
     <div class="wrap">
 
-      <!-- =====================================================================
-           SECTION 1: BRAND OVERVIEW & IDENTITY FOUNDATION (SLIDE 1 REFERENCE)
-           ===================================================================== -->
-      <div class="brand-identity-block reveal" id="brand-overview">
-        <!-- Behance-Inspired Editorial Header -->
-        <div class="brand-editorial-header">
-          <div class="brand-header-left">
-            <span class="brand-kicker">Branding</span>
-            <h2 class="brand-title">Sadiksha Overseas &mdash; Manpower &amp; Recruitment Identity</h2>
-            <div class="brand-tag-pill">Client Project</div>
-          </div>
-          <div class="brand-header-right">
-            <p class="brand-desc">
-              Sadiksha Overseas is a government-licensed foreign employment agency based in Kathmandu, connecting skilled and certified Nepalese workers with institutional career opportunities across the Gulf and beyond. Designed an end-to-end brand system &mdash; from stationery and collateral to digital applicant portals and campaign media &mdash; engineered to project transparency, dignity, and unwavering institutional trust.
-            </p>
-          </div>
+      <!-- Behance-Inspired Editorial Header -->
+      <div class="brand-editorial-header reveal">
+        <div class="brand-header-left">
+          <span class="brand-kicker">Branding</span>
+          <h2 class="brand-title">Sadiksha Overseas &mdash; Manpower &amp; Recruitment Identity</h2>
+          <div class="brand-tag-pill">Brand Identity System</div>
         </div>
-
-        <!-- Two-Column Overview Cards (Matching Reference Slide 1) -->
-        <div class="brand-overview-row">
-          <!-- Overview Card A: Stationery Flat-Lay -->
-          <div class="brand-overview-card">
-            <div class="brand-card-display graphic-item" data-src="images/sadiksha-brand-stationery.jpg" data-alt="Sadiksha Overseas - Corporate Stationery & Identity Kit Overview">
-              <img src="images/sadiksha-brand-stationery.jpg" alt="Sadiksha Overseas - Corporate Stationery & Identity Kit Overview" loading="eager" decoding="async">
-              <div class="graphic-item-overlay">View Full Res ↗</div>
-            </div>
-            <div class="brand-story-below">
-              <div class="brand-story-meta-row">
-                <span class="brand-story-num">Identity System</span>
-                <span class="brand-story-tag">Corporate Collateral</span>
-              </div>
-              <h3 class="brand-story-title" style="font-size: 1.15rem; margin-bottom: 6px;">Stationery &amp; Physical Touchpoints</h3>
-              <p class="brand-story-desc" style="font-size: 0.92rem; line-height: 1.6;">
-                Presentation folder, official letterheads, business cards, employee ID badges with custom lanyards, and corporate stationery unified under a disciplined cobalt and cyan palette.
-              </p>
-            </div>
-          </div>
-
-          <!-- Overview Card B: Digital Web & Mobile Experience -->
-          <div class="brand-overview-card">
-            <div class="brand-card-display graphic-item" data-src="images/sadiksha-digital-platform.jpg" data-alt="Sadiksha Overseas - Digital Platform & Responsive Web Experience">
-              <img src="images/sadiksha-digital-platform.jpg" alt="Sadiksha Overseas - Digital Platform & Responsive Web Experience" loading="eager" decoding="async">
-              <div class="graphic-item-overlay">View Full Res ↗</div>
-            </div>
-            <div class="brand-story-below">
-              <div class="brand-story-meta-row">
-                <span class="brand-story-num">Digital Interface</span>
-                <span class="brand-story-tag">Web &amp; Mobile</span>
-              </div>
-              <h3 class="brand-story-title" style="font-size: 1.15rem; margin-bottom: 6px;">Responsive Candidate Platform</h3>
-              <p class="brand-story-desc" style="font-size: 0.92rem; line-height: 1.6;">
-                Multi-device digital onboarding portal featuring streamlined Gulf job listings, candidate profile management, visa tracking, and transparent recruitment standards.
-              </p>
-            </div>
-          </div>
+        <div class="brand-header-right">
+          <p class="brand-desc">
+            Sadiksha Overseas is a government-licensed foreign employment agency based in Kathmandu, connecting skilled and certified Nepalese workers with institutional career opportunities across the Gulf and beyond. Designed an end-to-end brand system &mdash; from stationery and collateral to digital applicant portals and campaign media &mdash; engineered to project transparency, dignity, and unwavering institutional trust.
+          </p>
         </div>
       </div>
 
       <!-- =====================================================================
-           SECTION 2: CORPORATE STATIONERY & COLLATERAL SYSTEM (SLIDE 2 REFERENCE)
+           BLOCK 1: CORPORATE STATIONERY & COLLATERAL SYSTEM
            ===================================================================== -->
       <div class="brand-identity-block reveal" id="brand-stationery">
-        <div class="brand-editorial-header">
-          <div class="brand-header-left">
-            <span class="brand-kicker">Corporate Stationery</span>
-            <h2 class="brand-title">Sadiksha Overseas &mdash; Institutional Stationery System</h2>
-            <div class="brand-tag-pill">Print &amp; Collateral</div>
-          </div>
-          <div class="brand-header-right">
-            <p class="brand-desc">
-              Every physical piece was designed with disciplined geometry, structured typography, and high-grade finishing to ensure that every letter, card, and folder passed to a client or worker carries the weight of a trusted institution.
-            </p>
-          </div>
+        <div class="brand-frame-wrap">
+          <img src="images/sadiksha-brand-stationery.jpg" alt="Sadiksha Overseas - Complete Corporate Stationery &amp; Identity Kit" loading="eager" decoding="async">
         </div>
-
-        <!-- Full-Width Hero Display: Stationery Flat-Lay (Slide 2 Reference) -->
-        <div class="brand-hero-display graphic-item" data-src="images/sadiksha-brand-stationery.jpg" data-alt="Sadiksha Overseas - Complete Corporate Stationery & Identity Kit">
-          <img src="images/sadiksha-brand-stationery.jpg" alt="Sadiksha Overseas - Complete Corporate Stationery & Identity Kit" loading="lazy" decoding="async">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
-        </div>
-
-        <!-- Rich Text Below Image -->
         <div class="brand-story-below">
           <div class="brand-story-meta-row">
             <span class="brand-story-num">01 / Corporate Kit</span>
@@ -3311,35 +3180,18 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
           <h3 class="brand-story-title">Complete Institutional Stationery &amp; Identity Kit</h3>
           <p class="brand-story-desc">
-            Designed an end-to-end corporate identity package including official document folders, bilingual corporate letterheads, executive business cards, employee security badges with custom-woven branded lanyards, envelopes, and office stationery. Built around a disciplined palette of deep maritime navy, luminous cyan, and crisp white &mdash; visually communicating transparency, legal compliance, and professional dignity across every stakeholder touchpoint.
+            Designed an end-to-end corporate identity package including official document presentation folders, bilingual corporate letterheads, executive business cards, employee security badges with custom-woven branded lanyards, envelopes, and office stationery. Built around a disciplined palette of deep maritime navy, luminous cyan, and crisp white &mdash; visually communicating transparency, legal compliance, and professional dignity across every stakeholder touchpoint.
           </p>
         </div>
       </div>
 
       <!-- =====================================================================
-           SECTION 3: DIGITAL PLATFORM & MOBILE PORTAL
+           BLOCK 2: DIGITAL PLATFORM & MOBILE PORTAL
            ===================================================================== -->
       <div class="brand-identity-block reveal" id="brand-digital">
-        <div class="brand-editorial-header">
-          <div class="brand-header-left">
-            <span class="brand-kicker">Digital Experience</span>
-            <h2 class="brand-title">Sadiksha Overseas &mdash; Responsive Candidate Web Portal</h2>
-            <div class="brand-tag-pill">Web &amp; Mobile UI</div>
-          </div>
-          <div class="brand-header-right">
-            <p class="brand-desc">
-              Bridging traditional manpower operations with a streamlined digital experience &mdash; making verified overseas job opportunities, visa status tracking, and candidate registration effortless and clear.
-            </p>
-          </div>
+        <div class="brand-frame-wrap">
+          <img src="images/sadiksha-digital-platform.jpg" alt="Sadiksha Overseas - Responsive Candidate Portal &amp; Digital Job Board" loading="lazy" decoding="async">
         </div>
-
-        <!-- Full-Width Hero Display: Digital Web & Mobile Showcase -->
-        <div class="brand-hero-display graphic-item" data-src="images/sadiksha-digital-platform.jpg" data-alt="Sadiksha Overseas - Responsive Candidate Portal & Digital Job Board">
-          <img src="images/sadiksha-digital-platform.jpg" alt="Sadiksha Overseas - Responsive Candidate Portal & Digital Job Board" loading="lazy" decoding="async">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
-        </div>
-
-        <!-- Rich Text Below Image -->
         <div class="brand-story-below">
           <div class="brand-story-meta-row">
             <span class="brand-story-num">02 / Digital Platform</span>
@@ -3353,29 +3205,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       </div>
 
       <!-- =====================================================================
-           SECTION 4: ENVIRONMENTAL CAMPAIGN & ADVERTISING FRAMES (SLIDE 3 REFERENCE)
+           BLOCK 3: ENVIRONMENTAL CAMPAIGN & ADVERTISING FRAMES
            ===================================================================== -->
       <div class="brand-identity-block reveal" id="brand-campaign">
-        <div class="brand-editorial-header">
-          <div class="brand-header-left">
-            <span class="brand-kicker">Campaign &amp; Display</span>
-            <h2 class="brand-title">Sadiksha Overseas &mdash; Four Pillars Campaign Frames</h2>
-            <div class="brand-tag-pill">Environmental Branding</div>
-          </div>
-          <div class="brand-header-right">
-            <p class="brand-desc">
-              A four-part gallery campaign displayed throughout Sadiksha’s Kathmandu headquarters, interview chambers, and pre-departure orientation halls &mdash; reinforcing ethical recruitment values to candidates and visiting international employers.
-            </p>
-          </div>
-        </div>
-
-        <!-- Full-Width Hero Display: 4-Frame Gallery Exhibition (Slide 3 Reference) -->
-        <div class="brand-hero-display brand-frames-backdrop graphic-item" data-src="images/sadiksha-campaign-frames-cropped.png" data-alt="Sadiksha Overseas - Four Pillars Campaign Exhibition Frames">
+        <div class="brand-frame-wrap brand-poster-backdrop">
           <img src="images/sadiksha-campaign-frames-cropped.png" alt="Sadiksha Overseas - Four Pillars Campaign Exhibition Frames" loading="lazy" decoding="async">
-          <div class="graphic-item-overlay">View Full Res ↗</div>
         </div>
-
-        <!-- Rich Text Below Image -->
         <div class="brand-story-below">
           <div class="brand-story-meta-row">
             <span class="brand-story-num">03 / Campaign Media</span>
