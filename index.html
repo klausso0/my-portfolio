@@ -2256,219 +2256,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transform: rotate(180deg);
 }
 
-/* ==========================================================================
-   BRAND IDENTITY SECTION: SADIKSHA OVERSEAS (SCROLLABLE EDITORIAL SHOWCASE)
-   ========================================================================== */
-#brand-identity {
-  padding: 40px 0 95px;
-}
-.brand-identity-block {
-  margin-bottom: 72px;
-  padding-bottom: 58px;
-  border-bottom: 1px solid rgba(195, 215, 240, 0.45);
-}
-.brand-identity-block:last-of-type {
-  margin-bottom: 36px;
-  padding-bottom: 24px;
-  border-bottom: none;
-}
-.brand-editorial-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 34px;
-}
-.brand-header-left {
-  flex: 1 1 50%;
-  min-width: 280px;
-}
-.brand-kicker {
-  display: inline-block;
-  font-family: 'Caveat', cursive;
-  font-size: 2.35rem;
-  font-weight: 600;
-  line-height: 1;
-  color: #1a2732;
-  margin-bottom: 4px;
-  transform: rotate(-1.5deg);
-  transform-origin: left bottom;
-}
-.brand-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: #1a2732;
-  letter-spacing: -0.015em;
-  margin: 0 0 14px 0;
-  text-transform: uppercase;
-}
-.brand-tag-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #1a2732;
-  border: 1.5px solid #1a2732;
-  border-radius: 999px;
-  padding: 4px 14px;
-  background: transparent;
-}
-.brand-header-right {
-  flex: 1 1 50%;
-  min-width: 280px;
-  display: flex;
-  align-items: center;
-}
-.brand-desc {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.68;
-  color: #4a5e70;
-  margin: 0;
-}
 
-/* Slide 1: Two images side by side (Matching Reference Slide 1) */
-.brand-two-col {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-.brand-card-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(210, 226, 244, 0.85);
-  box-shadow: 
-    0 10px 24px -6px rgba(45, 80, 130, 0.08),
-    0 2px 6px rgba(0, 0, 0, 0.02);
-  cursor: default;
-}
-.brand-card-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  image-rendering: -webkit-optimize-contrast;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* Slide 2 & 3: Standalone Presentation Frames (JUST IMAGE, NO TEXT) */
-.brand-slide-frame {
-  position: relative;
-  max-width: 760px;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(210, 226, 244, 0.85);
-  box-shadow: 
-    0 12px 28px -6px rgba(45, 80, 130, 0.09),
-    0 2px 8px rgba(0, 0, 0, 0.03);
-  cursor: default;
-}
-.brand-slide-frame img {
-  width: 100%;
-  height: auto;
-  display: block;
-  image-rendering: -webkit-optimize-contrast;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-/* Framed Posters Gallery Backdrop */
-.brand-poster-backdrop {
-  background: linear-gradient(180deg, #f7f9fd 0%, #edf2f9 100%);
-  padding: 28px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.brand-poster-backdrop img {
-  width: 100%;
-  max-width: 720px;
-  height: auto;
-  filter: drop-shadow(0 10px 22px rgba(15, 23, 42, 0.14));
-}
-
-.brand-case-cta {
-  margin-top: 36px;
-  text-align: center;
-}
-.brand-case-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 30px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2c4a75;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(195, 218, 242, 0.9);
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 6px 20px -4px rgba(45, 80, 130, 0.08);
-  transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.brand-case-btn:hover {
-  background: #ffffff;
-  color: #1a355a;
-  border-color: #6186C8;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(45, 80, 130, 0.16);
-}
-.brand-case-btn .arrow {
-  transition: transform 0.25s ease;
-}
-.brand-case-btn:hover .arrow {
-  transform: translateX(4px);
-}
-
-@media (max-width: 860px) {
-  .brand-identity-block {
-    margin-bottom: 56px;
-    padding-bottom: 46px;
-  }
-  .brand-editorial-header {
-    flex-direction: column;
-    gap: 18px;
-  }
-  .brand-two-col {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .brand-slide-frame {
-    max-width: 100%;
-  }
-}
-    padding-bottom: 46px;
-  }
-  .brand-editorial-header {
-    flex-direction: column;
-    gap: 16px;
-  }
-  .brand-kicker {
-    font-size: 2.1rem;
-  }
-  .brand-frames-backdrop {
-    padding: 22px 14px;
-  }
-  .brand-hero-display {
-    border-radius: 16px;
-    margin-bottom: 20px;
-  }
-}
 
 /* ==========================================================================
    POSTER DESIGNS SECTION — 3-COLUMN SHOWCASE
@@ -3035,7 +2823,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         <div class="smoke-glass-sheen"></div>
       </div>
       <div class="top-nav-indicator" id="top-nav-indicator"></div>
-      <a href="#brand-identity" class="top-nav-link" data-section="brand-identity">Brand identity</a>
       <a href="#graphic-works" class="top-nav-link" data-section="graphic-works">Social media</a>
       <a href="#poster-designs" class="top-nav-link" data-section="poster-designs">Poster designs</a>
       <a href="#video-editing" class="top-nav-link" data-section="video-editing">Editing work</a>
@@ -3132,66 +2919,6 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
-  <!-- Brand Identity Section: Sadiksha Overseas (Exact Reference Layout) -->
-  <section id="brand-identity">
-    <div class="wrap">
-
-      <!-- =====================================================================
-           SLIDE 1: EDITORIAL HEADER + FIRST TWO IMAGES SIDE BY SIDE
-           ===================================================================== -->
-      <div class="brand-identity-block reveal" id="brand-overview">
-        <!-- Behance-Inspired Editorial Header -->
-        <div class="brand-editorial-header">
-          <div class="brand-header-left">
-            <span class="brand-kicker">Branding</span>
-            <h2 class="brand-title">Sadiksha Overseas &mdash; Manpower &amp; Recruitment Identity</h2>
-            <div class="brand-tag-pill">Client Project</div>
-          </div>
-          <div class="brand-header-right">
-            <p class="brand-desc">
-              Sadiksha Overseas is a government-licensed foreign employment agency based in Kathmandu, connecting skilled and certified Nepalese workers with institutional career opportunities across the Gulf and beyond. Designed an end-to-end brand system &mdash; from stationery and collateral to digital applicant portals and campaign media &mdash; engineered to project transparency, dignity, and unwavering institutional trust.
-            </p>
-          </div>
-        </div>
-
-        <!-- First Two Images Side by Side (Exact same position as Reference Slide 1) -->
-        <div class="brand-two-col">
-          <div class="brand-card-frame">
-            <img src="images/sadiksha-brand-stationery.jpg" alt="Sadiksha Overseas - Corporate Stationery Overview" loading="eager" decoding="async">
-          </div>
-          <div class="brand-card-frame">
-            <img src="images/sadiksha-digital-platform.jpg" alt="Sadiksha Overseas - Digital Platform &amp; Experience Overview" loading="eager" decoding="async">
-          </div>
-        </div>
-      </div>
-
-      <!-- =====================================================================
-           SLIDE 2: CORPORATE STATIONERY PRESENTATION (JUST IMAGE, NO TEXT)
-           ===================================================================== -->
-      <div class="brand-identity-block reveal" id="brand-stationery">
-        <div class="brand-slide-frame">
-          <img src="images/sadiksha-brand-stationery.jpg" alt="Sadiksha Overseas - Complete Corporate Stationery Kit" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- =====================================================================
-           SLIDE 3: ENVIRONMENTAL CAMPAIGN FRAMES (JUST IMAGE, NO TEXT)
-           ===================================================================== -->
-      <div class="brand-identity-block reveal" id="brand-campaign">
-        <div class="brand-slide-frame brand-poster-backdrop">
-          <img src="images/sadiksha-campaign-frames-cropped.png" alt="Sadiksha Overseas - Four Pillars Campaign Exhibition Frames" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Link to full Case Study / Gallery -->
-      <div class="brand-case-cta reveal">
-        <a href="#sadiksha-overseas" class="brand-case-btn">
-          <span>Explore Sadiksha Trifold Brochure &amp; Case Study</span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- Social Media Designs Section (Top Priority) -->
   <section id="graphic-works">
@@ -4896,11 +4623,10 @@ document.addEventListener('click', function(e) {
   if (!wrap || !nav || !indicator || !links.length) return;
 
   var sections = [
-    { id: 'brand-identity', link: links[0] },
-    { id: 'graphic-works', link: links[1] },
-    { id: 'poster-designs', link: links[2] },
-    { id: 'video-editing', link: links[3] },
-    { id: 'work', link: links[4] }
+    { id: 'graphic-works', link: links[0] },
+    { id: 'poster-designs', link: links[1] },
+    { id: 'video-editing', link: links[2] },
+    { id: 'work', link: links[3] }
   ];
 
   var currentActive = null;
