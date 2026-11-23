@@ -1982,7 +1982,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 /* ==========================================================================
-   LOGO DESIGNS SECTION — BALANCED STANDALONE CASE BLOCKS
+   LOGO DESIGNS SECTION — SPLIT HERO & STANDALONE VISUALS
    ========================================================================== */
 .logo-section {
   padding: 44px 0 20px;
@@ -1991,59 +1991,49 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 38px;
-  margin-top: 14px;
+  gap: 36px;
+  margin-top: 20px;
   width: 100%;
 }
-.logo-display-card {
-  background: #ffffff;
+
+/* Showcase 1: Logo on Left, Text on Right (Separate containers) */
+.logo-hero-row {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 860px;
+}
+.logo-hero-media {
+  flex: 0 0 380px;
+  max-width: 380px;
+  background: #fbfaf7;
   border: 1px solid var(--card-border);
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 4px 18px rgba(45, 80, 130, 0.05);
+  line-height: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  width: 100%;
 }
-.logo-display-card:hover {
+.logo-hero-media:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(45, 80, 130, 0.08);
 }
-/* Drastically reduced logo size */
-.logo-display-card.card-logo-mark {
-  max-width: 440px;
-}
-/* Crisp high-density sizing for brand guidelines */
-.logo-display-card.card-identity-guide {
-  max-width: 660px;
-}
-/* Proportioned sizing for collateral mockups */
-.logo-display-card.card-collateral {
-  max-width: 740px;
-}
-.logo-display-thumb {
-  position: relative;
-  overflow: hidden;
-  background: #fbfaf7;
-  cursor: default;
-  line-height: 0;
-}
-.logo-display-thumb img {
+.logo-hero-media img {
   width: 100%;
   height: auto;
   display: block;
   image-rendering: -webkit-optimize-contrast;
 }
-.logo-display-info {
-  padding: 16px 20px 18px;
-  background: #ffffff;
-  border-top: 1px solid var(--line);
+.logo-hero-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .logo-display-badge {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2051,28 +2041,64 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 .logo-display-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  font-size: clamp(1.12rem, 1.7vw, 1.3rem);
   font-weight: 700;
   color: #111827;
   margin: 0;
+  line-height: 1.35;
 }
 .logo-display-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  color: #6b7280;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  color: #555e6d;
+  line-height: 1.6;
   margin: 0;
 }
-@media (max-width: 640px) {
-  .logo-display-card.card-logo-mark,
-  .logo-display-card.card-identity-guide,
-  .logo-display-card.card-collateral {
+
+/* Showcase 2 & 3: Standalone Clean Visuals (No text, independent frames) */
+.logo-standalone-image {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(45, 80, 130, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  line-height: 0;
+  width: 100%;
+}
+.logo-standalone-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(45, 80, 130, 0.08);
+}
+.logo-standalone-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+.logo-standalone-image.card-identity-guide {
+  max-width: 860px;
+}
+.logo-standalone-image.card-collateral {
+  max-width: 860px;
+}
+
+@media (max-width: 768px) {
+  .logo-hero-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .logo-hero-media {
+    flex: none;
     max-width: 100%;
   }
-  .logo-display-info {
-    padding: 14px 16px 16px;
+}
+@media (max-width: 640px) {
+  .logo-standalone-image {
+    border-radius: 14px;
   }
-  .logo-display-card {
+  .logo-hero-media {
     border-radius: 14px;
   }
 }
@@ -2904,40 +2930,26 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
       <div class="logo-showcase-list">
 
-        <!-- Showcase 1: Mascot & Primary Brand Mark -->
-        <div class="logo-display-card card-logo-mark reveal">
-          <div class="logo-display-thumb">
+        <!-- Showcase 1: Mascot & Primary Brand Mark (Logo Left, Text Right) -->
+        <div class="logo-hero-row reveal">
+          <div class="logo-hero-media">
             <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
           </div>
-          <div class="logo-display-info">
+          <div class="logo-hero-info">
             <span class="logo-display-badge">01 / Mascot &amp; Logo Mark</span>
             <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
             <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
           </div>
         </div>
 
-        <!-- Showcase 2: Brand Identity Guidelines -->
-        <div class="logo-display-card card-identity-guide reveal">
-          <div class="logo-display-thumb">
-            <img src="images/clever-hoot-identity.jpg" alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography" loading="lazy">
-          </div>
-          <div class="logo-display-info">
-            <span class="logo-display-badge">02 / Design System &amp; Guidelines</span>
-            <h3 class="logo-display-title">Visual Identity System · Color Palette &amp; Typography</h3>
-            <p class="logo-display-desc">Comprehensive brand rulebook covering light/dark logo variations, precise hex palettes (#FFD600 electric yellow, #0B183B deep navy, #F7F6EE warm cream, #D9D9D9 light grey), and modern geometric typography (Outfit).</p>
-          </div>
+        <!-- Showcase 2: Brand Identity Guidelines (Standalone Image, No Text) -->
+        <div class="logo-standalone-image card-identity-guide reveal">
+          <img src="images/clever-hoot-identity.png" alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography" loading="lazy">
         </div>
 
-        <!-- Showcase 3: Brand Merch, Environmental Signage & Social -->
-        <div class="logo-display-card card-collateral reveal">
-          <div class="logo-display-thumb">
-            <img src="images/clever-hoot-collateral.jpg" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
-          </div>
-          <div class="logo-display-info">
-            <span class="logo-display-badge">03 / Merch, Environment &amp; Social Collateral</span>
-            <h3 class="logo-display-title">Omnichannel Brand Experience · Merch, Interior Space &amp; Social</h3>
-            <p class="logo-display-desc">Real-world brand touchpoints across custom cotton tote bags, embroidered hoodies, collectible vinyl sticker packs, interior yellow wall graphics, quiet study room table signage, branded event lanyards, and Instagram promotional posts.</p>
-          </div>
+        <!-- Showcase 3: Brand Merch, Environmental Signage & Social (Standalone Image, No Text) -->
+        <div class="logo-standalone-image card-collateral reveal">
+          <img src="images/clever-hoot-collateral.jpg" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
         </div>
 
       </div>
