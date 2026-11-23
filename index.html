@@ -1994,14 +1994,33 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   width: 100%;
 }
 
-/* Section 1: Logo on Left, Text on Right (Separate containers) */
+/* Section 1: Logo Showcase Item with Index Num (Shifted slightly right) */
+.logo-showcase-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 32px;
+  margin-left: clamp(16px, 3vw, 40px);
+}
+.logo-entry-num {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  color: #94a3b8;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  padding-top: 8px;
+  flex-shrink: 0;
+  width: 52px;
+  user-select: none;
+}
 .logo-hero-row {
   display: flex;
   align-items: center;
-  gap: 40px;
-  width: 100%;
-  max-width: 920px;
-  margin-top: 24px;
+  gap: 36px;
+  flex: 1;
 }
 .logo-hero-media {
   flex: 0 0 380px;
@@ -2103,10 +2122,20 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     min-height: auto;
     padding: 40px 0;
   }
+  .logo-showcase-entry {
+    gap: 16px;
+    margin-left: 0;
+    margin-top: 24px;
+  }
+  .logo-entry-num {
+    font-size: 1.8rem;
+    width: 36px;
+    padding-top: 2px;
+  }
   .logo-hero-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
+    gap: 18px;
   }
   .logo-hero-media {
     flex: none;
@@ -2947,14 +2976,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <h2 class="sec reveal"><span class="editorial-italic">Logo</span> Designs</h2>
       <p class="sec-sub reveal">Brand identity, custom mascot illustration, and complete visual systems crafted for modern businesses. Here’s the brand design for Clever Hoot.</p>
 
-      <div class="logo-hero-row reveal">
-        <div class="logo-hero-media">
-          <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
-        </div>
-        <div class="logo-hero-info">
-          <span class="logo-display-badge">01 / Mascot &amp; Logo Mark</span>
-          <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
-          <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
+      <div class="logo-showcase-entry reveal">
+        <div class="logo-entry-num">01</div>
+        <div class="logo-hero-row">
+          <div class="logo-hero-media">
+            <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
+          </div>
+          <div class="logo-hero-info">
+            <span class="logo-display-badge">Mascot &amp; Logo Mark</span>
+            <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
+            <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
+          </div>
         </div>
       </div>
     </div>
