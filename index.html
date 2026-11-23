@@ -1981,6 +1981,105 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
+/* ==========================================================================
+   LOGO DESIGNS SECTION — FULL-WIDTH STANDALONE CASE BLOCKS
+   ========================================================================== */
+.logo-section {
+  padding: 44px 0 20px;
+}
+.logo-showcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-top: 14px;
+}
+.logo-display-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(45, 80, 130, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.logo-display-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(45, 80, 130, 0.1);
+}
+.logo-display-thumb {
+  position: relative;
+  overflow: hidden;
+  background: #fbfaf7;
+  cursor: pointer;
+  line-height: 0;
+}
+.logo-display-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.logo-display-thumb:hover img {
+  transform: scale(1.015);
+}
+.logo-display-thumb .graphic-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: opacity 0.22s ease;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.logo-display-thumb:hover .graphic-item-overlay {
+  opacity: 1;
+}
+.logo-display-info {
+  padding: 18px 24px 22px;
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.logo-display-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6186C8;
+}
+.logo-display-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.logo-display-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #6b7280;
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .logo-display-info {
+    padding: 14px 16px 16px;
+  }
+  .logo-display-card {
+    border-radius: 14px;
+  }
+}
+
 /* 4-Column Graphic Works Grid & Case Study Cards */
 .graphic-grid {
   display: grid;
@@ -2796,6 +2895,58 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
       </div>
 
+    </div>
+  </section>
+
+
+  <!-- Logo Designs Section (Clever Hoot Brand Identity) -->
+  <section id="logo-designs" class="logo-section">
+    <div class="wrap">
+      <h2 class="sec reveal"><span class="editorial-italic">Logo</span> Designs</h2>
+      <p class="sec-sub reveal">Brand identity, custom mascot illustration, and complete visual systems crafted for modern businesses. Here’s the comprehensive brand design for Clever Hoot. Tap any design to see it full size.</p>
+
+      <div class="logo-showcase-list">
+
+        <!-- Showcase 1: Mascot & Primary Brand Mark -->
+        <div class="logo-display-card reveal">
+          <div class="logo-display-thumb graphic-item" data-src="images/clever-hoot-mascot.jpg" data-alt="Clever Hoot - Primary Mascot &amp; Logo Design">
+            <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Primary Mascot &amp; Logo Design" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="logo-display-info">
+            <span class="logo-display-badge">01 / Mascot &amp; Logo Mark</span>
+            <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
+            <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
+          </div>
+        </div>
+
+        <!-- Showcase 2: Brand Identity Guidelines -->
+        <div class="logo-display-card reveal">
+          <div class="logo-display-thumb graphic-item" data-src="images/clever-hoot-identity.jpg" data-alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography">
+            <img src="images/clever-hoot-identity.jpg" alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="logo-display-info">
+            <span class="logo-display-badge">02 / Design System &amp; Guidelines</span>
+            <h3 class="logo-display-title">Visual Identity System · Color Palette &amp; Typography</h3>
+            <p class="logo-display-desc">Comprehensive brand rulebook covering light/dark logo variations, precise hex palettes (#FFD600 electric yellow, #0B183B deep navy, #F7F6EE warm cream, #D9D9D9 light grey), and modern geometric typography (Outfit).</p>
+          </div>
+        </div>
+
+        <!-- Showcase 3: Brand Merch, Environmental Signage & Social -->
+        <div class="logo-display-card reveal">
+          <div class="logo-display-thumb graphic-item" data-src="images/clever-hoot-collateral.jpg" data-alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign">
+            <img src="images/clever-hoot-collateral.jpg" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
+            <div class="graphic-item-overlay">View Full Res ↗</div>
+          </div>
+          <div class="logo-display-info">
+            <span class="logo-display-badge">03 / Merch, Environment &amp; Social Collateral</span>
+            <h3 class="logo-display-title">Omnichannel Brand Experience · Merch, Interior Space &amp; Social</h3>
+            <p class="logo-display-desc">Real-world brand touchpoints across custom cotton tote bags, embroidered hoodies, collectible vinyl sticker packs, interior yellow wall graphics, quiet study room table signage, branded event lanyards, and Instagram promotional posts.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
