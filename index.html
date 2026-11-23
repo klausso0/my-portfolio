@@ -1982,27 +1982,26 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 /* ==========================================================================
-   LOGO DESIGNS SECTION — SPLIT HERO & STANDALONE VISUALS
+   LOGO DESIGNS — 3 INDEPENDENT STANDALONE SCROLL SECTIONS
    ========================================================================== */
 .logo-section {
-  padding: 44px 0 20px;
-}
-.logo-showcase-list {
+  padding: 60px 0 50px;
+  min-height: 70vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 36px;
-  margin-top: 20px;
+}
+.logo-section .wrap {
   width: 100%;
 }
 
-/* Showcase 1: Logo on Left, Text on Right (Separate containers) */
+/* Section 1: Logo on Left, Text on Right (Separate containers) */
 .logo-hero-row {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 40px;
   width: 100%;
-  max-width: 860px;
+  max-width: 920px;
+  margin-top: 24px;
 }
 .logo-hero-media {
   flex: 0 0 380px;
@@ -2029,7 +2028,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 .logo-display-badge {
   font-family: 'DM Sans', sans-serif;
@@ -2041,7 +2040,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 .logo-display-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(1.12rem, 1.7vw, 1.3rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 700;
   color: #111827;
   margin: 0;
@@ -2049,26 +2048,38 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 .logo-display-desc {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: #555e6d;
   line-height: 1.6;
   margin: 0;
 }
 
-/* Showcase 2 & 3: Standalone Clean Visuals (No text, independent frames) */
+/* Standalone Visual Showcase Sections (Each image is its own screen scroll) */
+.logo-visual-section {
+  padding: 60px 0;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-visual-section .wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .logo-standalone-image {
   background: #ffffff;
   border: 1px solid var(--card-border);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(45, 80, 130, 0.05);
+  box-shadow: 0 6px 24px rgba(45, 80, 130, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   line-height: 0;
   width: 100%;
 }
 .logo-standalone-image:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(45, 80, 130, 0.08);
+  box-shadow: 0 12px 30px rgba(45, 80, 130, 0.09);
 }
 .logo-standalone-image img {
   width: 100%;
@@ -2077,13 +2088,18 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   image-rendering: -webkit-optimize-contrast;
 }
 .logo-standalone-image.card-identity-guide {
-  max-width: 860px;
+  max-width: 1000px;
 }
 .logo-standalone-image.card-collateral {
-  max-width: 860px;
+  max-width: 1000px;
 }
 
 @media (max-width: 768px) {
+  .logo-section,
+  .logo-visual-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
   .logo-hero-row {
     flex-direction: column;
     align-items: stretch;
@@ -2922,36 +2938,39 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
 
-  <!-- Logo Designs Section (Clever Hoot Brand Identity) -->
+  <!-- Section 1: Logo Designs & Mascot Showcase -->
   <section id="logo-designs" class="logo-section">
     <div class="wrap">
       <h2 class="sec reveal"><span class="editorial-italic">Logo</span> Designs</h2>
       <p class="sec-sub reveal">Brand identity, custom mascot illustration, and complete visual systems crafted for modern businesses. Here’s the brand design for Clever Hoot.</p>
 
-      <div class="logo-showcase-list">
-
-        <!-- Showcase 1: Mascot & Primary Brand Mark (Logo Left, Text Right) -->
-        <div class="logo-hero-row reveal">
-          <div class="logo-hero-media">
-            <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
-          </div>
-          <div class="logo-hero-info">
-            <span class="logo-display-badge">01 / Mascot &amp; Logo Mark</span>
-            <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
-            <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
-          </div>
+      <div class="logo-hero-row reveal">
+        <div class="logo-hero-media">
+          <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
         </div>
-
-        <!-- Showcase 2: Brand Identity Guidelines (Standalone Image, No Text) -->
-        <div class="logo-standalone-image card-identity-guide reveal">
-          <img src="images/clever-hoot-identity.png" alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography" loading="lazy">
+        <div class="logo-hero-info">
+          <span class="logo-display-badge">01 / Mascot &amp; Logo Mark</span>
+          <h3 class="logo-display-title">Clever Hoot · Character-Driven Brand Identity</h3>
+          <p class="logo-display-desc">A bold, modern mascot illustration featuring a sharp, attentive owl that projects authority, intelligence, and playful approachability.</p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Showcase 3: Brand Merch, Environmental Signage & Social (Standalone Image, No Text) -->
-        <div class="logo-standalone-image card-collateral reveal">
-          <img src="images/clever-hoot-collateral.jpg" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
-        </div>
+  <!-- Section 2: Brand Identity Guidelines Visual -->
+  <section id="logo-guidelines" class="logo-visual-section">
+    <div class="wrap">
+      <div class="logo-standalone-image card-identity-guide reveal">
+        <img src="images/clever-hoot-identity.png" alt="Clever Hoot - Brand Guidelines, Logo Variations, Color Palette &amp; Typography" loading="lazy">
+      </div>
+    </div>
+  </section>
 
+  <!-- Section 3: Brand Collateral, Environment & Social Visual -->
+  <section id="logo-collateral" class="logo-visual-section">
+    <div class="wrap">
+      <div class="logo-standalone-image card-collateral reveal">
+        <img src="images/clever-hoot-collateral.png" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
       </div>
     </div>
   </section>
