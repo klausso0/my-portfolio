@@ -515,36 +515,6 @@ a { color: inherit; }
   font-weight: 400;
   margin-right: 0.12em;
 }
-/* Heading Hand-Drawn 2D Stroke Character Illustration */
-.doodle-anchor {
-  position: relative;
-  display: inline-block;
-}
-.heading-doodle-char {
-  position: absolute;
-  width: 2.15em;
-  height: 2.15em;
-  right: -0.82em;
-  top: -1.52em;
-  pointer-events: auto;
-  overflow: visible;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.doodle-anchor:hover .heading-doodle-char {
-  transform: translateY(-4px) rotate(-1.5deg);
-}
-.c-stroke {
-  stroke: #111827;
-  stroke-width: 3.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.c-thin {
-  stroke: #111827;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 .editorial-body {
   font-family: 'DM Sans', sans-serif;
   font-size: 1.05rem;
@@ -2796,79 +2766,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <!-- Block 1: Hello! I'm Neeraj Bhatt -->
       <div class="editorial-block">
         <h2 class="editorial-title">
-          <span class="editorial-italic">Hello!</span> I’m Neeraj <span class="doodle-anchor">Bhatt
-            <svg class="heading-doodle-char" viewBox="0 0 200 200" fill="none" aria-hidden="true">
-              <!-- Dangling Legs Behind -->
-              <g class="char-legs">
-                <!-- Back leg (dangling) -->
-                <path d="M 124 135 L 126 158 L 138 162 L 146 160 C 148 156 144 152 136 152 L 132 135" fill="#f4f4f5" class="c-stroke" />
-                <path d="M 126 162 L 147 163" class="c-stroke" />
-
-                <!-- Front leg (crossed slightly, relaxed) -->
-                <path d="M 112 134 C 114 148, 116 162, 118 174 L 134 177 C 138 175 136 170 128 168 L 124 134" fill="#ffffff" class="c-stroke" />
-                <path d="M 118 177 L 137 178" class="c-stroke" />
-                <path d="M 125 170 Q 128 166 133 171" class="c-thin" />
-                <!-- Pant fold lines -->
-                <path d="M 115 146 C 119 148 122 147 125 145" class="c-thin" />
-              </g>
-
-              <!-- Torso & Hoodie -->
-              <g class="char-torso">
-                <!-- Hoodie body -->
-                <path d="M 92 84 C 84 96 82 115 88 132 C 92 136 120 137 128 133 C 132 118 134 98 126 84 Z" fill="#ffffff" class="c-stroke" />
-                <!-- Kangaroo Pocket -->
-                <path d="M 94 112 C 102 110, 116 110, 124 112 L 122 128 C 114 130, 102 130, 96 128 Z" fill="#f8fafc" class="c-stroke" />
-                <path d="M 94 118 L 98 126" class="c-thin" />
-                <path d="M 124 118 L 120 126" class="c-thin" />
-                <!-- Hoodie fold lines -->
-                <path d="M 90 98 C 96 102 104 100 108 97" class="c-thin" />
-              </g>
-
-              <!-- Left Arm: Leaning across, elbow bent, hand resting on 'tt' -->
-              <g class="char-leaning-arm">
-                <!-- Upper arm & elbow -->
-                <path d="M 94 86 C 80 84, 58 88, 46 104 L 54 116 C 64 104, 78 100, 92 102 Z" fill="#ffffff" class="c-stroke" />
-                <!-- Forearm extending down to the letter -->
-                <path d="M 46 104 C 38 114, 28 126, 18 134 L 30 142 C 40 134, 48 124, 54 116 Z" fill="#ffffff" class="c-stroke" />
-                <!-- Sleeve Cuff -->
-                <path d="M 16 132 L 28 141" class="c-stroke" stroke-width="4" />
-                <!-- Hand / Fingers resting flat on horizontal bar (y ≈ 140) -->
-                <path d="M 16 136 C 12 138, 4 140, 2 142 C 2 144, 6 144, 14 143 L 26 143 C 28 143, 29 141, 26 140 Z" fill="#fdedd0" class="c-stroke" />
-                <path d="M 8 141 L 8 143" class="c-thin" />
-                <path d="M 14 141 L 14 143" class="c-thin" />
-                <path d="M 20 141 L 20 143" class="c-thin" />
-              </g>
-
-              <!-- Right Arm: Hand in pocket -->
-              <g class="char-right-arm">
-                <path d="M 124 86 C 134 94 138 106 136 118 C 133 124 126 125 122 121 C 124 114 125 102 118 94 Z" fill="#ffffff" class="c-stroke" />
-              </g>
-
-              <!-- Neck & Hoodie Collar -->
-              <path d="M 100 78 C 102 84 114 84 118 78 C 122 84 118 90 108 91 C 98 90 96 84 100 78 Z" fill="#f4f4f5" class="c-stroke" />
-              <path d="M 104 88 L 103 100" class="c-thin" />
-              <path d="M 112 88 L 113 101" class="c-thin" />
-
-              <!-- Head & Face -->
-              <g class="char-head">
-                <!-- Head base / skin -->
-                <path d="M 98 52 C 94 66 102 78 114 78 C 124 78 128 68 128 54 C 128 42 120 38 110 38 C 102 38 98 44 98 52 Z" fill="#fdedd0" class="c-stroke" />
-                
-                <!-- Features -->
-                <circle cx="106" cy="56" r="2.2" fill="#111827" />
-                <path d="M 103 51 Q 107 49 110 51" class="c-thin" />
-                <path d="M 103 66 Q 108 71 113 66" class="c-stroke" stroke-width="2.5" />
-                <path d="M 102 56 L 100 60 L 103 61" class="c-thin" />
-                <!-- Ear -->
-                <path d="M 126 55 C 130 55 130 62 126 63" class="c-stroke" stroke-width="2.5" fill="#fdedd0" />
-                <path d="M 127 58 Q 125 60 127 61" class="c-thin" />
-
-                <!-- Messy Wavy Designer Hair -->
-                <path d="M 96 50 C 92 46, 94 36, 102 30 C 110 24, 126 26, 132 36 C 136 44, 134 56, 130 60 C 131 52, 128 44, 124 42 C 118 40, 110 44, 106 44 C 100 44, 98 48, 96 50 Z" fill="#111827" class="c-stroke" />
-                <path d="M 102 36 C 100 42 104 46 106 48 C 104 44 106 40 110 40 C 114 40 116 43 118 45 C 118 41 122 39 126 42" fill="#111827" class="c-stroke" stroke-width="2.5" />
-              </g>
-            </svg>
-          </span>
+          <span class="editorial-italic">Hello!</span> I’m Neeraj Bhatt
         </h2>
         <div class="editorial-body">
           <p>
