@@ -583,12 +583,46 @@ a { color: inherit; }
   }
 }
 
-/* SELECTED PROJECTS & GRAPHIC WORKS — LUXURIOUS SECTION SPACING */
-#graphic-works { padding: 50px 0 95px; }
-#poster-designs { padding: 50px 0 95px; }
-#video-editing { padding: 50px 0 95px; }
-#work { padding: 75px 0 85px; }
-#contact { padding: 60px 0 80px; }
+/* SELECTED PROJECTS & GRAPHIC WORKS — LUXURIOUS SECTION SPACING & PACING */
+#graphic-works { padding: 130px 0 110px; }
+#poster-designs { padding: 130px 0 110px; }
+#video-editing { padding: 130px 0 110px; }
+#work { padding: 140px 0 120px; }
+#contact { padding: 100px 0 90px; }
+
+/* Generous Editorial Section Dividers & Case Transitions */
+.major-section-divider {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(203, 213, 225, 0.75) 15%, rgba(203, 213, 225, 0.75) 85%, transparent 100%);
+}
+.project-case-divider {
+  width: 100%;
+  max-width: 1040px;
+  margin: 50px auto 65px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.project-case-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(203, 213, 225, 0.65) 30%, rgba(203, 213, 225, 0.65) 100%);
+}
+.project-case-divider-line:last-child {
+  background: linear-gradient(90deg, rgba(203, 213, 225, 0.65) 0%, rgba(203, 213, 225, 0.65) 70%, transparent 100%);
+}
+.project-case-divider-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #94a3b8;
+  white-space: nowrap;
+}
 h2.sec {
   font-family: 'DM Sans', -apple-system, sans-serif;
   font-size: clamp(2.4rem, 5.2vw, 4.2rem);
@@ -1991,11 +2025,18 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
    LOGO DESIGNS — 3 INDEPENDENT STANDALONE SCROLL SECTIONS
    ========================================================================== */
 .logo-section {
-  padding: 60px 0 50px;
+  padding: 85px 0 60px;
   display: block;
 }
 .logo-section .wrap {
   width: 100%;
+}
+#logo-go-digital {
+  padding: 110px 0 90px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Section 1: Logo Showcase Item with Index Num */
@@ -3109,13 +3150,20 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
   <!-- Section 3: Brand Collateral, Environment & Social Visual -->
-  <section id="logo-collateral" class="logo-visual-section">
+  <section id="logo-collateral" class="logo-visual-section" style="padding-bottom: 90px;">
     <div class="wrap">
       <div class="logo-standalone-image card-collateral reveal">
         <img src="images/clever-hoot-collateral.png" alt="Clever Hoot Library - Brand Merchandise, Environmental Signage &amp; Social Campaign" loading="lazy">
       </div>
     </div>
   </section>
+
+  <!-- Project 02 Case Transition Divider -->
+  <div class="project-case-divider reveal">
+    <div class="project-case-divider-line"></div>
+    <span class="project-case-divider-label">02 · Brand Identity Case Study</span>
+    <div class="project-case-divider-line"></div>
+  </div>
 
   <!-- Section: Logo 02 - Go Digital Showcase -->
   <section id="logo-go-digital" class="logo-section">
@@ -3164,7 +3212,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
   <!-- Go Digital: Brand Collateral, Environment & Social Visual -->
-  <section class="logo-visual-section" style="padding-bottom: 70px;">
+  <section class="logo-visual-section" style="padding-bottom: 100px;">
     <div class="wrap" style="max-width: 1180px;">
       <div class="logo-standalone-image card-collateral reveal">
         <img src="images/go-digital-collateral.png" alt="Go Digital - Brand Merchandise, Environmental Signage &amp; Campaign Collateral" loading="lazy">
@@ -3172,6 +3220,8 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
+  <!-- Major Section Divider: Social Media Designs -->
+  <div class="major-section-divider reveal"></div>
 
   <!-- Social Media Designs Section (Top Priority) -->
   <section id="graphic-works">
@@ -3382,6 +3432,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
+  <!-- Major Section Divider: Poster Designs -->
+  <div class="major-section-divider reveal"></div>
+
   <!-- Poster Designs Section -->
   <section id="poster-designs">
     <div class="wrap">
@@ -3496,6 +3549,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
   </section>
 
+  <!-- Major Section Divider: Video Editing -->
+  <div class="major-section-divider reveal"></div>
+
   <!-- Video Editing Section -->
   <section id="video-editing">
     <div class="wrap">
@@ -3544,6 +3600,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       </div>
     </div>
   </section>
+
+  <!-- Major Section Divider: Product Case Study -->
+  <div class="major-section-divider reveal"></div>
 
   <!-- Product Case Study Section -->
   <section id="work">
@@ -3635,6 +3694,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     </div>
     <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
   </div>
+
+  <!-- Major Section Divider: Contact Hub -->
+  <div class="major-section-divider reveal"></div>
 
   <!-- Contact Section (Creative Studio Hub) -->
   <section id="contact" class="contact-section reveal">
