@@ -535,12 +535,12 @@ a { color: inherit; }
 }
 
 /* Staggered Floating Skills Constellation */
-/* Clean 3-Column Left-Aligned Skills Grid */
+/* Clean 4-Column Left-Aligned Skills Grid */
 .editorial-skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px 32px;
-  max-width: 760px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 28px;
+  max-width: 960px;
   margin: 32px 0 36px;
   text-align: left;
 }
@@ -554,6 +554,11 @@ a { color: inherit; }
   align-items: center;
 }
 
+@media (max-width: 960px) {
+  .editorial-skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media (max-width: 768px) {
   .editorial-about-section {
     padding: 36px 0 44px;
