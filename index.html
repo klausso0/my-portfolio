@@ -522,7 +522,7 @@ a { color: inherit; }
   line-height: 1.68;
   color: #374151;
   max-width: 680px;
-  margin: 0 0 46px 0;
+  margin: 0 0 24px 0;
 }
 .editorial-body p {
   margin: 0 0 16px 0;
@@ -533,6 +533,98 @@ a { color: inherit; }
 .editorial-body strong {
   color: #111827;
   font-weight: 700;
+}
+
+/* Editorial Split Row for Hello Block (Bio on Left, Tools on Right) */
+.editorial-split-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+.editorial-main-col {
+  flex: 1;
+  max-width: 640px;
+}
+.editorial-tools-col {
+  flex: 0 0 220px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tools-col-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6186C8;
+}
+.tools-app-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 14px;
+}
+.tool-app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.app-icon-tile {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  user-select: none;
+}
+.tool-app-card:hover .app-icon-tile {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+}
+.app-icon-tile.icon-ps {
+  background: #001e36;
+  border: 1.5px solid #31a8ff;
+  color: #31a8ff;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+.app-icon-tile.icon-ai {
+  background: #330000;
+  border: 1.5px solid #ff9a00;
+  color: #ff9a00;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+.app-icon-tile.icon-pr {
+  background: #00005b;
+  border: 1.5px solid #ea77ff;
+  color: #ea77ff;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+.app-icon-tile.icon-figma {
+  background: #1e1e1e;
+  border: 1.5px solid #383838;
+}
+.app-tool-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: -0.01em;
 }
 
 /* Staggered Floating Skills Constellation */
@@ -566,6 +658,20 @@ a { color: inherit; }
   }
   .editorial-block {
     padding: 32px 0 28px;
+  }
+  .editorial-split-row {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .editorial-tools-col {
+    flex: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  .tools-app-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 320px;
+    gap: 12px;
   }
   .editorial-body {
     font-size: 1rem;
@@ -3016,16 +3122,60 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 
       <!-- Block 1: Hello! I'm Neeraj Bhatt -->
       <div class="editorial-block">
-        <h2 class="editorial-title">
-          <span class="editorial-italic">Hello!</span> I’m Neeraj Bhatt
-        </h2>
-        <div class="editorial-body">
-          <p>
-            I’ve been a graphic designer for a little over a year, and somewhere along the way I got more curious about the thinking behind a product than the visuals on top of it. Why would someone like it? How would they actually use it? Does a feature really help, or is it just an unnecessary step between people and what they came to do? That’s the part of design I enjoy most.
-          </p>
-          <p>
-            I also love editing. I haven’t done it professionally yet, but I’m working on it, and I’m looking for a place where I can keep learning about both design and editing.
-          </p>
+        <div class="editorial-split-row">
+          <div class="editorial-main-col">
+            <h2 class="editorial-title">
+              <span class="editorial-italic">Hello!</span> I’m Neeraj Bhatt
+            </h2>
+            <div class="editorial-body">
+              <p>
+                I’ve been a graphic designer for a little over a year, and somewhere along the way I got more curious about the thinking behind a product than the visuals on top of it. Why would someone like it? How would they actually use it? Does a feature really help, or is it just an unnecessary step between people and what they came to do? That’s the part of design I enjoy most.
+              </p>
+              <p>
+                I also love editing. I haven’t done it professionally yet, but I’m working on it, and I’m looking for a place where I can keep learning about both design and editing.
+              </p>
+            </div>
+          </div>
+
+          <div class="editorial-tools-col">
+            <span class="tools-col-heading">Core Tools</span>
+            <div class="tools-app-grid">
+              <!-- Photoshop -->
+              <div class="tool-app-card" title="Adobe Photoshop">
+                <div class="app-icon-tile icon-ps">
+                  <span>Ps</span>
+                </div>
+                <span class="app-tool-name">Photoshop</span>
+              </div>
+              <!-- Illustrator -->
+              <div class="tool-app-card" title="Adobe Illustrator">
+                <div class="app-icon-tile icon-ai">
+                  <span>Ai</span>
+                </div>
+                <span class="app-tool-name">Illustrator</span>
+              </div>
+              <!-- Premiere Pro -->
+              <div class="tool-app-card" title="Adobe Premiere Pro">
+                <div class="app-icon-tile icon-pr">
+                  <span>Pr</span>
+                </div>
+                <span class="app-tool-name">Premiere</span>
+              </div>
+              <!-- Figma -->
+              <div class="tool-app-card" title="Figma">
+                <div class="app-icon-tile icon-figma">
+                  <svg width="22" height="34" viewBox="0 0 38 57" fill="none">
+                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                  </svg>
+                </div>
+                <span class="app-tool-name">Figma</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
