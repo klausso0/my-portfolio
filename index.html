@@ -548,18 +548,11 @@ a { color: inherit; }
 }
 .editorial-tools-col {
   flex: 0 0 220px;
-  margin-top: 14px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
-.tools-col-heading {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #6186C8;
+.editorial-tools-col .editorial-title {
+  margin: 0 0 20px 0;
 }
 .tools-app-grid {
   display: grid;
@@ -580,44 +573,30 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #111827;
+  border: 1px solid #2d3748;
+  color: #ffffff;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
   user-select: none;
 }
 .tool-app-card:hover .app-icon-tile {
   transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+  background: #000000;
 }
-.app-icon-tile.icon-ps {
-  background: #001e36;
-  border: 1.5px solid #31a8ff;
-  color: #31a8ff;
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: -0.04em;
-}
-.app-icon-tile.icon-ai {
-  background: #330000;
-  border: 1.5px solid #ff9a00;
-  color: #ff9a00;
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: -0.04em;
-}
-.app-icon-tile.icon-pr {
-  background: #00005b;
-  border: 1.5px solid #ea77ff;
-  color: #ea77ff;
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: -0.04em;
+.app-icon-tile.icon-ps span,
+.app-icon-tile.icon-ai span,
+.app-icon-tile.icon-pr span {
+  color: #ffffff;
 }
 .app-icon-tile.icon-figma {
-  background: #1e1e1e;
-  border: 1.5px solid #383838;
+  background: #111827;
+  border: 1px solid #2d3748;
 }
 .app-tool-name {
   font-family: 'DM Sans', sans-serif;
@@ -3138,7 +3117,9 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           </div>
 
           <div class="editorial-tools-col">
-            <span class="tools-col-heading">Core Tools</span>
+            <h2 class="editorial-title">
+              <span class="editorial-italic">Skills</span>
+            </h2>
             <div class="tools-app-grid">
               <!-- Photoshop -->
               <div class="tool-app-card" title="Adobe Photoshop">
@@ -3164,12 +3145,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
               <!-- Figma -->
               <div class="tool-app-card" title="Figma">
                 <div class="app-icon-tile icon-figma">
-                  <svg width="22" height="34" viewBox="0 0 38 57" fill="none">
-                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
-                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
-                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
-                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
-                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                  <svg width="20" height="30" viewBox="0 0 38 57" fill="none">
+                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#FFFFFF"/>
+                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#FFFFFF"/>
+                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FFFFFF"/>
+                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#FFFFFF"/>
+                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#FFFFFF"/>
                   </svg>
                 </div>
                 <span class="app-tool-name">Figma</span>
@@ -3207,7 +3188,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <section id="logo-designs" class="logo-section">
     <div class="wrap">
       <h2 class="sec reveal"><span class="editorial-italic">Logo</span> Designs</h2>
-      <p class="sec-sub reveal">Brand identity, custom mascot illustration, and complete visual systems crafted for modern businesses. Here’s the brand design for Clever Hoot and Go Digital.</p>
+      <p class="sec-sub reveal">I design logos and mascots that give a business a face people remember. Here are two recent ones.</p>
 
       <div class="logo-showcase-entry entry-detailed reveal">
         <div class="logo-entry-num">01</div>
