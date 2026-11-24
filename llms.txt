@@ -1,0 +1,60 @@
+# Neeraj Bhatt — Portfolio & Professional Context
+> Graphic Designer & Video Editor who focuses on the thinking and purpose behind products.
+
+## About Neeraj Bhatt
+- **Name:** Neeraj Bhatt
+- **Role:** Graphic Designer, Video Editor, and Product Thinker
+- **Location:** Nepal (Open to global remote opportunities)
+- **Contact:** bhattneeraj742@gmail.com
+- **Philosophy:** "Design that starts with the purpose behind the product." Curious about how people actually experience, use, and perceive design before making visual decisions.
+- **Core Design Tools:** Adobe Photoshop (Ps), Adobe Illustrator (Ai), Adobe Premiere Pro (Pr), Figma
+
+## Core Disciplines & Skills
+- **Brand Identity & Logo Design:** Concept-driven logos, custom character mascots, typography systems, vector guidelines.
+- **Social Media & Campaign Design:** High-conversion social carousels, campaign key visuals, marketing collateral for education, jewelry, finance, and recruitment industries.
+- **Poster Design:** Anime-inspired concept posters, typography posters, event & festival branding.
+- **Video Editing:** Pacing, rhythm cuts, audio mastering, beat synchronization, sound design, and motion graphics on Adobe Premiere Pro.
+- **Product Design & UX Research:** User-centric workflows, friction removal, client-side web application UI/UX.
+
+---
+
+## Featured Work & Case Studies
+
+### 1. SmartCV Builders (Featured Product Case Study)
+- **Role:** Solo Founder, Product Designer & Creator
+- **Type:** Live Free SaaS Web Application
+- **Problem Solved:** Most online resume builders force user signups, gate downloads behind unexpected paywalls, and store personal data.
+- **Solution:** A 100% free, private, client-side resume builder with zero logins, no stored user data, instant live side-by-side preview, and pixel-perfect PDF export.
+- **Key Metrics:** 44+ dynamic ATS-ready templates, global user adoption.
+
+### 2. Clever Hoot Library (Brand & Character Mascot)
+- **Client / Concept:** Brand identity and custom mascot for a modern library.
+- **Concept & Metaphor:** The owl was selected because owls fly completely silently, tying directly to the library's quiet rule ("a hoot that makes no sound").
+- **Visual Execution:**
+  - Peeking pose with paws gripping the ledge (curious, watchful personality).
+  - Sharp, focused eyes (attention & intelligence).
+  - Spark lines around head (an idea landing silently).
+  - Heavy, rounded typography stacked as "Clever" over "Hoot" matching outline weights.
+
+### 3. Go Digital (Agency Brand Identity & Motion System)
+- **Client:** Marketing & digital growth agency.
+- **Concept:** Communicating "Go" at a glance before reading a single word.
+- **Lettermark Construction:** The negative space inside the fresh mint "G" forms a golf club, and the sliced deep green "O" below it forms the ball.
+- **Wordmark Typography:** Rounded geometric typeface with mint dots on the i's that echo the G.
+- **Motion Animation Rationale:** Designed for animation so the mark is never static — the golf club swings, and the ball bounces playfully across the dots on the i's.
+
+### 4. Social Media Campaign Works
+- **Kraymer Art Beyond Limits:** Luxury sapphire jewelry launch posts emphasizing quiet elegance and high visual contrast.
+- **Sadiksha Overseas:** Recruitment and student consultancy campaigns focused on trust, clarity, and stopping the scroll.
+- **Swaadmandu:** Food branding and festival social media campaigns.
+
+### 5. Video Editing Practice Pieces
+- **Focus:** Sharp pacing, rhythm cuts, seamless transitions, beat-synced sound design.
+- **Aspiration:** Editing at the creative caliber of narrative and dynamic music videos.
+
+---
+
+## Contact & Links
+- **Email:** bhattneeraj742@gmail.com
+- **Portfolio:** Available on live deployment
+- **Status:** Open to design and video editing roles, internships, and collaborative team opportunities.
