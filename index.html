@@ -448,17 +448,20 @@ a { color: inherit; }
   .mindly-connectors { display: none; }
   .mindly-side-card { display: none; }
   .circle-badge {
-    position: static;
-    margin: 0 auto 18px;
-    width: 64px;
-    height: 64px;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    z-index: 10;
   }
   .mindly-stage {
     min-height: auto;
-    margin: 16px auto 0;
+    margin: -4px auto 0;
   }
   .mindly-center-piece {
-    margin: 0 auto;
+    margin: -10px auto 0;
     width: 100%;
     max-width: 380px;
   }
@@ -471,24 +474,32 @@ a { color: inherit; }
   }
 }
 @media (max-width: 600px) {
-  .hero { padding: 48px 0 16px; }
+  .hero { padding: 20px 0 10px; }
   .circle-badge {
-    position: static;
-    margin: 0 auto 14px;
-    width: 58px;
-    height: 58px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    z-index: 10;
   }
   .mindly-hero-title {
-    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+    font-size: clamp(1.58rem, 7vw, 2.1rem);
     line-height: 1.18;
+    padding: 10px 48px 0 0;
+    margin: 0 auto 10px;
   }
   .mindly-hero-sub {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: 18px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 0 auto 10px;
+  }
+  .mindly-stage {
+    margin: -8px auto 0;
   }
   .portrait-frame {
-    max-width: 290px;
+    max-width: 300px;
   }
   .mindly-bottom-bar {
     justify-content: center;
