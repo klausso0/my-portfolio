@@ -2088,6 +2088,63 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   margin: 0;
 }
 
+/* Detailed story layout for brand case studies */
+.logo-showcase-entry.entry-detailed {
+  align-items: flex-start;
+}
+.logo-showcase-entry.entry-detailed .logo-entry-num {
+  position: sticky;
+  top: 100px;
+}
+.logo-showcase-entry.entry-detailed .logo-hero-row {
+  align-items: flex-start;
+}
+.logo-showcase-entry.entry-detailed .logo-hero-media {
+  position: sticky;
+  top: 100px;
+}
+.logo-story {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 6px;
+}
+.logo-story p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: #4b5563;
+  margin: 0;
+}
+.logo-story-highlights {
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(210, 226, 244, 0.7);
+}
+.logo-story-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #12594F;
+  display: block;
+  margin-bottom: 8px;
+}
+.logo-story-highlights ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.logo-story-highlights li {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #4b5563;
+}
+
 /* Standalone Visual Showcase Sections (Each image is its own screen scroll) */
 .logo-visual-section {
   padding: 60px 0;
@@ -2155,6 +2212,10 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   .logo-hero-media {
     flex: none;
     max-width: 100%;
+  }
+  .logo-showcase-entry.entry-detailed .logo-entry-num,
+  .logo-showcase-entry.entry-detailed .logo-hero-media {
+    position: static;
   }
 }
 @media (max-width: 640px) {
@@ -3030,7 +3091,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   <!-- Section: Logo 02 - Go Digital Showcase -->
   <section id="logo-go-digital" class="logo-section">
     <div class="wrap">
-      <div class="logo-showcase-entry reveal">
+      <div class="logo-showcase-entry entry-detailed reveal">
         <div class="logo-entry-num">02</div>
         <div class="logo-hero-row">
           <div class="logo-hero-media logo-media-framed">
@@ -3039,7 +3100,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           <div class="logo-hero-info">
             <span class="logo-display-badge">Marketing &amp; Digital Growth</span>
             <h3 class="logo-display-title">Go Digital · Modern Agency Brand Identity</h3>
-            <p class="logo-display-desc">A fresh, dynamic tech &amp; marketing identity combining modern geometric letterforms with an uplifting upward-momentum mint mark.</p>
+            <div class="logo-story">
+              <p>Go Digital is a marketing and digital growth agency, so the logo had to say “go” before anyone read a word. The mark is a bold G in fresh mint, and the negative space cut into its curve forms a golf club, mid-swing and ready to strike. Just below it, a deep green O is sliced diagonally, like a ball that has just been hit. The club and ball sit together in one shape, so the G and O read as a single lettermark: the first two letters of “Go.”</p>
+              <p>The wordmark “Digital” is set in a heavy, rounded geometric typeface that feels friendly, confident and modern, never cold or corporate. The two i's carry mint dots that echo the G, which ties the symbol and the name together. Those dots also act as landing points, so the ball has somewhere to bounce when the logo moves.</p>
+              <p>In the animated version, the club swings, the ball launches from the O and bounces across the dots above “Digital,” and the mark settles back into place. It's a small moment of play that shows what the agency does: take a brand, give it momentum, and send it forward.</p>
+              <div class="logo-story-highlights">
+                <span class="logo-story-label">Why it works:</span>
+                <ul>
+                  <li>The golf-club-and-ball idea is hidden, so people get a small reward when they spot it.</li>
+                  <li>The upward, forward motion matches the idea of digital growth.</li>
+                  <li>The shapes are simple enough to scale from a favicon to a billboard.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
