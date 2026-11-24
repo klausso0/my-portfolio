@@ -373,43 +373,40 @@ a { color: inherit; }
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* RESPONSIVE MEDIA QUERIES */
+/* RESPONSIVE MEDIA QUERIES FOR HERO */
 @media (max-width: 900px) {
   .mindly-connectors { display: none; }
+  .mindly-side-card { display: none; }
   .mindly-stage {
-    flex-direction: column;
     min-height: auto;
-    gap: 20px;
-  }
-  .mindly-side-card {
-    position: static;
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-    animation: none !important;
+    margin: 16px auto 0;
   }
   .mindly-center-piece {
-    order: -1;
-    margin: 0 auto 8px;
+    margin: 0 auto;
     width: 100%;
+    max-width: 380px;
   }
   .portrait-frame {
-    width: 395px;
-    height: 295px;
-  }
-  .circle-badge {
-    width: 68px;
-    height: 68px;
-    top: 12px;
-    right: 12px;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 1024 / 764;
+    margin: 0 auto;
   }
 }
 @media (max-width: 600px) {
-  .hero { padding: 75px 0 20px; }
-  .mindly-hero-title { font-size: 1.7rem; }
+  .hero { padding: 65px 0 16px; }
+  .mindly-hero-title {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+    line-height: 1.18;
+  }
+  .mindly-hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
   .portrait-frame {
-    width: 320px;
-    height: 240px;
+    max-width: 290px;
   }
   .mindly-bottom-bar {
     justify-content: center;
@@ -2206,29 +2203,55 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 
 @media (max-width: 768px) {
+  #graphic-works,
+  #poster-designs,
+  #video-editing,
+  #work {
+    padding: 60px 0 45px !important;
+  }
+  #contact {
+    padding: 50px 0 40px !important;
+  }
+  #logo-go-digital {
+    min-height: auto !important;
+    padding: 50px 0 !important;
+  }
   .logo-section,
   .logo-visual-section {
     min-height: auto;
     padding: 40px 0;
   }
   .logo-showcase-entry {
-    gap: 20px;
+    flex-direction: column;
+    gap: 12px;
     margin-left: 0;
-    margin-top: 24px;
+    margin-top: 18px;
     align-items: flex-start;
+    width: 100%;
   }
   .logo-entry-num {
-    font-size: 2rem;
-    padding-top: 4px;
+    font-size: 2.2rem;
+    line-height: 1;
+    padding-top: 0;
+    margin-bottom: 2px;
   }
   .logo-hero-row {
     flex-direction: column;
     align-items: stretch;
     gap: 18px;
+    width: 100%;
   }
   .logo-hero-media {
     flex: none;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+  .logo-hero-media.logo-media-framed {
+    height: auto !important;
+    min-height: 180px;
+    padding: 24px 20px;
   }
   .logo-showcase-entry.entry-detailed .logo-entry-num,
   .logo-showcase-entry.entry-detailed .logo-hero-media {
