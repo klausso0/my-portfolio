@@ -657,7 +657,7 @@ a { color: inherit; }
   position: relative;
   width: 100%;
   min-width: 820px;
-  height: 290px;
+  height: 310px;
   user-select: none;
 }
 
@@ -3311,7 +3311,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   </section>
 
   <!-- Editorial Showcase (Hello / What I do? / How I do it?) -->
-  <section class="editorial-about-section reveal">
+  <section class="editorial-about-section reveal is-visible">
     <div class="wrap">
 
       <!-- Block 1: Hello! I'm Neeraj Bhatta -->
@@ -5277,15 +5277,16 @@ document.addEventListener('click', function(e) {
 })();
 
   // Interactive click/tap sound for car skill badges
-  var carBadges = document.querySelectorAll('.car-skill-badge .badge-tag');
-  carBadges.forEach(function(badge) {
-    badge.addEventListener('click', function() {
-      if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
-        window.SoundFX.pop();
-      }
+  (function() {
+    var carBadges = document.querySelectorAll('.car-skill-badge .badge-tag');
+    carBadges.forEach(function(badge) {
+      badge.addEventListener('click', function() {
+        if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
+          window.SoundFX.pop();
+        }
+      });
     });
-  });
-})();
+  })();
 </script>
 </body>
 </html>
