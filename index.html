@@ -637,111 +637,136 @@ a { color: inherit; }
   font-weight: 700;
 }
 
-/* ====== CAR SHAPE SKILLS SECTION (PURE TYPOGRAPHY CAR PROFILE) ====== */
-.car-flow-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 36px 0 44px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 10px 0 16px;
-}
-.car-flow-wrapper::-webkit-scrollbar {
-  display: none;
+/* ====== EDITORIAL "WHAT I DO" SECTION (REFERENCE-INSPIRED 4-COLUMN LAYOUT) ====== */
+.what-i-do-showcase {
+  margin: 38px 0 20px;
 }
 
-.car-flow-stage {
-  position: relative;
-  width: 100%;
-  min-width: 860px;
-  height: 190px;
+.what-i-do-headline {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.8rem, 6.8vw, 5.8rem);
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin: 0 0 44px;
   user-select: none;
 }
 
-/* Pure Typography Item - No boxes, borders or drawings */
-.car-flow-text {
-  position: absolute;
+.what-i-do-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.what-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.what-col-bottom-num {
+  justify-content: space-between;
+}
+
+.what-col-top-num {
+  justify-content: space-between;
+}
+
+.what-num {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(4.2rem, 5.4vw, 5.8rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: #111827;
+  user-select: none;
+}
+
+.what-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.what-title {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #111827;
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
-  transition: color 0.2s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
 }
 
-.car-flow-text:hover {
-  color: #2563eb;
-  transform: translateY(-2px);
+.what-sub {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.45;
+  margin: 0 0 10px;
 }
 
-/* 7 Stations forming the continuous left-to-right car silhouette curve */
-/* 1. Low Front Bumper (Straight / Ground) */
-.car-node-1 {
-  left: 0%;
-  bottom: 12px;
+.what-desc {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.55;
+  margin: 0;
 }
 
-/* 2. Front Hood (Straight / Subtle Rise) */
-.car-node-2 {
-  left: 13%;
-  bottom: 24px;
-}
-
-/* 3. Windshield Incline (Ascending Upward) */
-.car-node-3 {
-  left: 28%;
-  bottom: 78px;
-}
-
-/* 4. Roof Apex / Front Cabin (Peak Height) */
-.car-node-4 {
-  left: 46%;
-  bottom: 140px;
-}
-
-/* 5. Roof Ridge / Fastback Top (High Plateau) */
-.car-node-5 {
-  left: 62%;
-  bottom: 126px;
-}
-
-/* 6. Rear Fastback Slope (Descending Downward) */
-.car-node-6 {
-  left: 76%;
-  bottom: 70px;
-}
-
-/* 7. Rear Deck & Spoiler (Straight / Ground Finish) */
-.car-node-7 {
-  right: 0%;
-  bottom: 16px;
-}
-
-@media (max-width: 860px) {
-  .car-flow-wrapper {
-    margin: 24px 0 28px;
-    padding-bottom: 12px;
+@media (max-width: 990px) {
+  .what-i-do-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 32px;
+  }
+  .what-col {
+    min-height: auto;
+    gap: 20px;
+  }
+  .what-col-top-num {
+    flex-direction: column-reverse;
   }
 }
 
-@media (max-width: 768px) {
-  .editorial-about-section {
-    padding: 36px 0 44px;
+@media (max-width: 640px) {
+  .what-i-do-headline {
+    margin-bottom: 28px;
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
   }
-  .editorial-block {
-    padding: 32px 0 28px;
+  .what-i-do-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-  .editorial-body {
-    font-size: 1rem;
-    margin-bottom: 24px;
+  .what-col {
+    min-height: auto;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    padding-bottom: 26px;
+    gap: 12px;
   }
-  .car-flow-text {
-    font-size: 1.05rem;
+  .what-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .what-col-top-num {
+    flex-direction: column;
+  }
+  .what-num {
+    font-size: 3.4rem;
+    order: -1;
+    margin-bottom: 4px;
+  }
+  .what-title {
+    font-size: 1.08rem;
+  }
+  .what-sub {
+    font-size: 0.9rem;
+  }
+  .what-desc {
+    font-size: 0.82rem;
   }
 }
 
@@ -3301,25 +3326,52 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
         </div>
       </div>
 
-      <!-- Block 2: What I do -->
-      <div class="editorial-block" id="what-i-do">
-        <h2 class="editorial-title">
-          <span class="editorial-italic">What</span> I do
-        </h2>
-        <p class="editorial-body">
+      <!-- Block 2: What I do (Reference-Inspired 4-Pillar Showcase) -->
+      <div class="editorial-block what-i-do-showcase" id="what-i-do">
+        <h2 class="what-i-do-headline">What I Do</h2>
+        <p class="editorial-body" style="margin-top:-24px;margin-bottom:44px;max-width:760px;">
           I like working with teams who care about why they're making something, not only how it looks.
         </p>
 
-        <!-- Skills Car Contour (Pure Typography) -->
-        <div class="car-flow-wrapper" aria-label="Skills arranged in car silhouette contour">
-          <div class="car-flow-stage">
-            <span class="car-flow-text car-node-1">Logo Design</span>
-            <span class="car-flow-text car-node-2">Brand Identity</span>
-            <span class="car-flow-text car-node-3">Social Media Design</span>
-            <span class="car-flow-text car-node-4">Poster Design</span>
-            <span class="car-flow-text car-node-5">Video Editing</span>
-            <span class="car-flow-text car-node-6">UX Research</span>
-            <span class="car-flow-text car-node-7">Content Writing</span>
+        <div class="what-i-do-grid">
+          <!-- 01: Visual Identity (Content top, 01 bottom) -->
+          <div class="what-col what-col-bottom-num">
+            <div class="what-content">
+              <h3 class="what-title">Visual Identity</h3>
+              <div class="what-sub">Logo design, social media visuals, posters &amp; brand systems.</div>
+              <p class="what-desc">Transforming a brand's strategic purpose into a cohesive visual language. Every mark, layout, and asset is built to strengthen recognition and long-term brand presence.</p>
+            </div>
+            <div class="what-num">01</div>
+          </div>
+
+          <!-- 02: Video Editing (02 top, Content bottom) -->
+          <div class="what-col what-col-top-num">
+            <div class="what-num">02</div>
+            <div class="what-content">
+              <h3 class="what-title">Video Editing</h3>
+              <div class="what-sub">Pacing, rhythm, text transitions, motion &amp; sound design.</div>
+              <p class="what-desc">Cutting videos in Premiere Pro with a sharp eye for narrative momentum. Working on rhythm, intentional cuts, and crisp audio mixing to make edits that feel cohesive and engaging.</p>
+            </div>
+          </div>
+
+          <!-- 03: Content Writing (Content top, 03 bottom) -->
+          <div class="what-col what-col-bottom-num">
+            <div class="what-content">
+              <h3 class="what-title">Content Writing</h3>
+              <div class="what-sub">Brand messaging, product copywriting, storytelling &amp; clarity.</div>
+              <p class="what-desc">Writing clear, human words that articulate why something exists. Keeping communication direct, authentic, and free from unnecessary filler so the message connects instantly.</p>
+            </div>
+            <div class="what-num">03</div>
+          </div>
+
+          <!-- 04: UX Research & UI (04 top, Content bottom) -->
+          <div class="what-col what-col-top-num">
+            <div class="what-num">04</div>
+            <div class="what-content">
+              <h3 class="what-title">UX Research &amp; UI</h3>
+              <div class="what-sub">User research, UI interface design, wireframes &amp; flows.</div>
+              <p class="what-desc">Investigating how people actually interact with and experience what we make. Translating genuine user insights into clean, purposeful UI structures where every step has a reason.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -5148,11 +5200,11 @@ document.addEventListener('click', function(e) {
   });
 })();
 
-  // Interactive click/tap sound for car skill text
+  // Interactive click/tap sound for what I do cards
   (function() {
-    var carItems = document.querySelectorAll('.car-flow-text');
-    carItems.forEach(function(item) {
-      item.addEventListener('click', function() {
+    var cols = document.querySelectorAll('.what-col');
+    cols.forEach(function(col) {
+      col.addEventListener('click', function() {
         if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
           window.SoundFX.pop();
         }
