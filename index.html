@@ -637,31 +637,118 @@ a { color: inherit; }
   font-weight: 700;
 }
 
-/* Staggered Floating Skills Constellation */
-/* Clean 4-Column Left-Aligned Skills Grid */
-.editorial-skills-grid {
+/* Curvy Fluid Scroll Animation for "What I do" Skills */
+.editorial-skills-fluid-track {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px 28px;
+  gap: 18px 22px;
   max-width: 960px;
   margin: 32px 0 36px;
   text-align: left;
 }
+
+.skill-item-wrapper {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.34, 1.42, 0.64, 1),
+              filter 0.6s ease;
+}
+
+/* Curvy fluid initial trajectory: odd items glide in from left-curve, even from right-curve */
+.skill-item-wrapper:nth-child(odd) {
+  transform: translate3d(-24px, 34px, 0) rotate(-3.5deg) scale(0.92);
+  filter: blur(5px);
+}
+.skill-item-wrapper:nth-child(even) {
+  transform: translate3d(24px, 34px, 0) rotate(3.5deg) scale(0.92);
+  filter: blur(5px);
+}
+
+/* Light micro-stagger when multiple items reveal together on fast scroll */
+.skill-item-wrapper:nth-child(1) { transition-delay: 0s; }
+.skill-item-wrapper:nth-child(2) { transition-delay: 0.03s; }
+.skill-item-wrapper:nth-child(3) { transition-delay: 0.06s; }
+.skill-item-wrapper:nth-child(4) { transition-delay: 0.09s; }
+.skill-item-wrapper:nth-child(5) { transition-delay: 0.12s; }
+.skill-item-wrapper:nth-child(6) { transition-delay: 0.15s; }
+.skill-item-wrapper:nth-child(7) { transition-delay: 0.18s; }
+.skill-item-wrapper:nth-child(8) { transition-delay: 0.21s; }
+
+/* When scrolled into view: settle into place with fluid spring physics */
+.skill-item-wrapper.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  filter: blur(0);
+}
+
+/* Tactile Pill Capsule Styling */
 .skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: #111827;
   letter-spacing: -0.015em;
-  display: inline-flex;
-  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.25s ease;
+}
+
+.skill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3b82f6;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.25s ease;
+}
+
+.skill-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: #1d4ed8;
+}
+
+.skill-item:hover .skill-dot {
+  transform: scale(1.4);
+  background: #2563eb;
+}
+
+.skill-item:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 @media (max-width: 960px) {
-  .editorial-skills-grid {
+  .editorial-skills-fluid-track {
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px 18px;
   }
 }
+
 @media (max-width: 768px) {
   .editorial-about-section {
     padding: 36px 0 44px;
@@ -671,26 +758,40 @@ a { color: inherit; }
   }
   .editorial-body {
     font-size: 1rem;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
-  .editorial-skills-grid {
+  .editorial-skills-fluid-track {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px 18px;
-    margin: 20px 0 24px;
-  }
-  .skill-item {
-    font-size: 0.94rem;
-    line-height: 1.35;
-  }
-}
-@media (max-width: 480px) {
-  .editorial-skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px 14px;
+    gap: 10px 10px;
     margin: 18px 0 20px;
   }
   .skill-item {
-    font-size: 0.9rem;
+    padding: 10px 13px;
+    font-size: 0.88rem;
+    gap: 7px;
+    border-radius: 12px;
+  }
+  .skill-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editorial-skills-fluid-track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px 8px;
+    margin: 16px 0 18px;
+  }
+  .skill-item {
+    padding: 9px 11px;
+    font-size: 0.84rem;
+    gap: 6px;
+    border-radius: 10px;
+  }
+  .skill-dot {
+    width: 5px;
+    height: 5px;
   }
 }
 
@@ -3251,22 +3352,62 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       </div>
 
       <!-- Block 2: What I do -->
-      <div class="editorial-block">
+      <div class="editorial-block" id="what-i-do">
         <h2 class="editorial-title">
           <span class="editorial-italic">What</span> I do
         </h2>
         <p class="editorial-body">
           I like working with teams who care about why they're making something, not only how it looks.
         </p>
-        <div class="editorial-skills-grid">
-          <span class="skill-item">Logo Design</span>
-          <span class="skill-item">Brand Identity</span>
-          <span class="skill-item">Social Media Design</span>
-          <span class="skill-item">Poster Design</span>
-          <span class="skill-item">Video Editing</span>
-          <span class="skill-item">UI Design</span>
-          <span class="skill-item">UX Research</span>
-          <span class="skill-item">Content Writing</span>
+        <div class="editorial-skills-fluid-track" id="whatIDoTrack">
+          <div class="skill-item-wrapper" data-index="0">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Logo Design</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="1">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Brand Identity</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="2">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Social Media Design</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="3">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Poster Design</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="4">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Video Editing</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="5">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">UI Design</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="6">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">UX Research</span>
+            </span>
+          </div>
+          <div class="skill-item-wrapper" data-index="7">
+            <span class="skill-item">
+              <span class="skill-dot"></span>
+              <span class="skill-label">Content Writing</span>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -5092,6 +5233,75 @@ document.addEventListener('click', function(e) {
     var pre = new Image();
     pre.src = src;
   });
+})();
+
+// Curvy Fluid Scroll Reveal for "What I do" Skills
+(function() {
+  var track = document.getElementById('whatIDoTrack');
+  if (!track) return;
+  var items = Array.prototype.slice.call(track.querySelectorAll('.skill-item-wrapper'));
+  if (!items.length) return;
+
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    items.forEach(function(item) { item.classList.add('is-revealed'); });
+    return;
+  }
+
+  var ticking = false;
+  function updateSkillsOnScroll() {
+    ticking = false;
+    var rect = track.getBoundingClientRect();
+    var winH = window.innerHeight || document.documentElement.clientHeight;
+
+    // Reset if scrolled completely above the section so it replays smoothly
+    if (rect.top > winH + 40) {
+      items.forEach(function(item) { item.classList.remove('is-revealed'); });
+      return;
+    }
+
+    // Start revealing when section enters lower 90% of viewport, finish by upper 45%
+    var startY = winH * 0.90;
+    var endY = winH * 0.42;
+    var progress = (startY - rect.top) / Math.max(1, startY - endY);
+    progress = Math.max(0, Math.min(1, progress));
+
+    var revealCount = Math.ceil(progress * items.length);
+    if (rect.bottom <= winH * 0.85 || rect.top <= endY) {
+      revealCount = items.length;
+    }
+
+    items.forEach(function(item, idx) {
+      if (idx < revealCount) {
+        item.classList.add('is-revealed');
+      }
+    });
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(updateSkillsOnScroll);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // Interactive tap/click feedback
+  items.forEach(function(wrapper) {
+    var pill = wrapper.querySelector('.skill-item');
+    if (pill) {
+      pill.addEventListener('click', function() {
+        if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
+          window.SoundFX.pop();
+        }
+      });
+    }
+  });
+
+  // Initial check in case section is already in view on load
+  updateSkillsOnScroll();
 })();
 </script>
 </body>
