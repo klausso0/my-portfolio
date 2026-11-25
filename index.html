@@ -637,127 +637,83 @@ a { color: inherit; }
   font-weight: 700;
 }
 
-/* ====== CAR SHAPE SKILLS SECTION ====== */
-.car-shape-wrapper {
+/* ====== CAR SHAPE SKILLS SECTION (PURE TYPOGRAPHY) ====== */
+.car-text-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  margin: 36px 0 44px;
+  max-width: 980px;
+  margin: 38px 0 44px;
   overflow-x: auto;
-  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 10px 0 16px;
+  padding: 8px 0 16px;
 }
-.car-shape-wrapper::-webkit-scrollbar {
+.car-text-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.car-shape-stage {
-  position: relative;
+.car-text-layout {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  min-width: 820px;
-  height: 310px;
+  min-width: 680px;
   user-select: none;
 }
 
-/* Automotive Silhouette SVG */
-.car-silhouette-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.car-silhouette-line {
-  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.15));
-}
-
-/* Car Skill Badges */
-.car-skill-badge {
-  position: absolute;
-  z-index: 5;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.badge-tag {
-  display: inline-flex;
+/* Tier 1: Roof / Cabin Top (Elevated & Centered) */
+.car-text-roof {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 7px;
-  padding: 7px 15px;
-  background: #ffffff;
-  border: 1.5px solid rgba(17, 24, 39, 0.12);
-  border-radius: 9999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  gap: 72px;
+  margin-bottom: 34px;
+}
+
+/* Tier 2: Windshield & Rear Fastback Slope (Mid Height) */
+.car-text-slope {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14%;
+  margin-bottom: 34px;
+}
+
+/* Tier 3: Chassis / Front Hood & Rear Trunk (Bottom Level) */
+.car-text-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.car-base-hood {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.car-base-trunk {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Pure Text Item (No boxes, no pills, no borders) */
+.car-text-item {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #111827;
   letter-spacing: -0.015em;
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.25s ease,
-              border-color 0.25s ease,
-              color 0.25s ease,
-              background-color 0.25s ease;
-}
-
-.badge-tag::before {
-  content: '';
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #3b82f6;
-  flex-shrink: 0;
-  transition: transform 0.25s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.badge-tag.highlight-tag {
-  border-color: rgba(59, 130, 246, 0.4);
-  background: #f8faff;
-  color: #1d4ed8;
-}
-
-.badge-tag:hover {
-  transform: translateY(-4px) scale(1.04);
-  background: #ffffff;
-  border-color: #2563eb;
-  color: #1d4ed8;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.badge-tag:hover::before {
-  transform: scale(1.5);
-  background: #1d4ed8;
-}
-
-.car-swipe-hint {
-  display: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #6b7280;
-  margin-top: -6px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-@media (max-width: 860px) {
-  .car-swipe-hint {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .car-shape-wrapper {
-    margin: 24px 0 28px;
-    padding-bottom: 12px;
-  }
+.car-text-item:hover {
+  color: #2563eb;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -770,6 +726,24 @@ a { color: inherit; }
   .editorial-body {
     font-size: 1rem;
     margin-bottom: 24px;
+  }
+  .car-text-wrapper {
+    margin: 24px 0 28px;
+  }
+  .car-text-item {
+    font-size: 1.02rem;
+  }
+  .car-text-roof {
+    gap: 48px;
+    margin-bottom: 26px;
+  }
+  .car-text-slope {
+    padding: 0 11%;
+    margin-bottom: 26px;
+  }
+  .car-base-hood,
+  .car-base-trunk {
+    gap: 28px;
   }
 }
 
@@ -3338,115 +3312,31 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           I like working with teams who care about why they're making something, not only how it looks.
         </p>
 
-        <!-- Automotive Silhouette Skills Display -->
-        <span class="car-swipe-hint">✦ Drag / swipe car shape ➔</span>
-        <div class="car-shape-wrapper" aria-label="Skills arranged in car shape">
-          <div class="car-shape-stage">
-            <!-- Sleek Automotive Silhouette SVG -->
-            <svg class="car-silhouette-svg" viewBox="0 0 1000 300" fill="none" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="carBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3"/>
-                  <stop offset="30%" stop-color="#3b82f6" stop-opacity="0.9"/>
-                  <stop offset="70%" stop-color="#2563eb" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.4"/>
-                </linearGradient>
-                <linearGradient id="carBodyFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.08"/>
-                  <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.01"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Car Silhouette Body Fill -->
-              <path d="
-                M 35 240
-                L 100 240
-                A 36 36 0 0 1 176 240
-                L 260 236
-                C 285 230, 320 165, 365 115
-                C 410 70, 470 66, 520 66
-                L 640 68
-                C 685 70, 735 125, 770 178
-                L 820 230
-                A 36 36 0 0 1 896 230
-                L 965 230
-                L 970 252
-                L 35 252
-                Z" fill="url(#carBodyFillGrad)"/>
-
-              <!-- Outer Aerodynamic Car Contour -->
-              <path class="car-silhouette-line" d="
-                M 30 250
-                C 30 238, 45 228, 65 226
-                L 100 226
-                A 36 36 0 0 1 176 226
-                L 265 224
-                C 290 220, 325 158, 368 110
-                C 410 65, 470 62, 520 62
-                L 640 64
-                C 688 66, 738 122, 772 176
-                L 820 224
-                A 36 36 0 0 1 896 224
-                L 965 224
-                C 976 224, 982 232, 982 242
-              " stroke="url(#carBodyGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-              <!-- Front Wheel -->
-              <circle cx="138" cy="238" r="28" stroke="#3b82f6" stroke-width="2" fill="#ffffff"/>
-              <circle cx="138" cy="238" r="16" stroke="rgba(59, 130, 246, 0.4)" stroke-width="1.5" fill="none"/>
-              <circle cx="138" cy="238" r="6" fill="#3b82f6"/>
-
-              <!-- Rear Wheel -->
-              <circle cx="858" cy="238" r="28" stroke="#3b82f6" stroke-width="2" fill="#ffffff"/>
-              <circle cx="858" cy="238" r="16" stroke="rgba(59, 130, 246, 0.4)" stroke-width="1.5" fill="none"/>
-              <circle cx="858" cy="238" r="6" fill="#3b82f6"/>
-
-              <!-- Ground Reference Line -->
-              <line x1="15" y1="266" x2="985" y2="266" stroke="rgba(17, 24, 39, 0.08)" stroke-width="1.5" stroke-dasharray="6 6"/>
-
-              <!-- Headlight & Taillight Accents -->
-              <line x1="38" y1="228" x2="68" y2="228" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
-              <line x1="958" y1="225" x2="980" y2="225" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-
-            <!-- 1. Front Bumper: Straight -->
-            <div class="car-skill-badge" style="left: 2%; top: 178px;">
-              <span class="badge-tag">Logo Design</span>
+        <!-- Skills Car Shape (Pure Typography) -->
+        <div class="car-text-wrapper" aria-label="Skills arranged in car shape">
+          <div class="car-text-layout">
+            <!-- Tier 1: Roof / Cabin Top (Up at the Top) -->
+            <div class="car-text-roof">
+              <span class="car-text-item">Poster Design</span>
+              <span class="car-text-item">Video Editing</span>
             </div>
 
-            <!-- 2. Front Hood: Straight -->
-            <div class="car-skill-badge" style="left: 17%; top: 174px;">
-              <span class="badge-tag">Brand Identity</span>
+            <!-- Tier 2: Windshield & Rear Window Slopes (Mid Height) -->
+            <div class="car-text-slope">
+              <span class="car-text-item">Social Media Design</span>
+              <span class="car-text-item">UI Design</span>
             </div>
 
-            <!-- 3. Windshield: Rising Up -->
-            <div class="car-skill-badge" style="left: 31%; top: 104px;">
-              <span class="badge-tag">Social Media Design</span>
-            </div>
-
-            <!-- 4. Roof Peak: Up at Top -->
-            <div class="car-skill-badge" style="left: 45%; top: 22px;">
-              <span class="badge-tag highlight-tag">Poster Design</span>
-            </div>
-
-            <!-- 5. Roof Line: Up at Top -->
-            <div class="car-skill-badge" style="left: 59%; top: 24px;">
-              <span class="badge-tag highlight-tag">Video Editing</span>
-            </div>
-
-            <!-- 6. Rear Window: Sloping Down -->
-            <div class="car-skill-badge" style="left: 71%; top: 108px;">
-              <span class="badge-tag">UI Design</span>
-            </div>
-
-            <!-- 7. Trunk: Lower / Straight -->
-            <div class="car-skill-badge" style="left: 81%; top: 174px;">
-              <span class="badge-tag">UX Research</span>
-            </div>
-
-            <!-- 8. Rear Spoiler: Tail -->
-            <div class="car-skill-badge" style="left: 89%; top: 170px;">
-              <span class="badge-tag">Content Writing</span>
+            <!-- Tier 3: Chassis / Front Hood & Rear Trunk (Straight Base) -->
+            <div class="car-text-base">
+              <div class="car-base-hood">
+                <span class="car-text-item">Logo Design</span>
+                <span class="car-text-item">Brand Identity</span>
+              </div>
+              <div class="car-base-trunk">
+                <span class="car-text-item">UX Research</span>
+                <span class="car-text-item">Content Writing</span>
+              </div>
             </div>
           </div>
         </div>
@@ -5276,11 +5166,11 @@ document.addEventListener('click', function(e) {
   });
 })();
 
-  // Interactive click/tap sound for car skill badges
+  // Interactive click/tap sound for car skill text
   (function() {
-    var carBadges = document.querySelectorAll('.car-skill-badge .badge-tag');
-    carBadges.forEach(function(badge) {
-      badge.addEventListener('click', function() {
+    var carItems = document.querySelectorAll('.car-text-item');
+    carItems.forEach(function(item) {
+      item.addEventListener('click', function() {
         if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
           window.SoundFX.pop();
         }
