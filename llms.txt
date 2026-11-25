@@ -27,7 +27,7 @@
 - **Solution:** A 100% free, private, client-side resume builder with zero logins, no stored user data, instant live side-by-side preview, and pixel-perfect PDF export.
 - **Key Metrics:** 44+ dynamic ATS-ready templates, global user adoption.
 
-### 2. Clever Hoot Library (Brand & Character Mascot)
+### 2. Clever Hoot Library (Brand & Character Mascot · Concept Design)
 - **Client / Concept:** Brand identity and custom mascot for a modern library.
 - **Concept & Metaphor:** The owl was selected because owls fly completely silently, tying directly to the library's quiet rule ("a hoot that makes no sound").
 - **Visual Execution:**
@@ -36,7 +36,7 @@
   - Spark lines around head (an idea landing silently).
   - Heavy, rounded typography stacked as "Clever" over "Hoot" matching outline weights.
 
-### 3. Go Digital (Agency Brand Identity & Motion System)
+### 3. Go Digital (Agency Brand Identity & Motion System · Concept Design)
 - **Client:** Marketing & digital growth agency.
 - **Concept:** Communicating "Go" at a glance before reading a single word.
 - **Lettermark Construction:** The negative space inside the fresh mint "G" forms a golf club, and the sliced deep green "O" below it forms the ball.
