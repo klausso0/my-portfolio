@@ -664,20 +664,20 @@ a { color: inherit; }
 .what-col {
   display: flex;
   flex-direction: column;
-  min-height: 400px;
+  min-height: 290px;
   justify-content: space-between;
 }
 
 /* Giant ultra-light hairline numerals matching reference exactly */
 .what-num {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(6.6rem, 8.4vw, 8.8rem);
+  font-size: clamp(8.2rem, 10.8vw, 11.2rem);
   font-weight: 100;
-  line-height: 0.8;
-  letter-spacing: -0.055em;
+  line-height: 0.76;
+  letter-spacing: -0.06em;
   color: #111827;
   user-select: none;
-  height: clamp(100px, 11vw, 125px);
+  height: clamp(125px, 14vw, 160px);
   display: flex;
   align-items: center;
 }
@@ -729,10 +729,10 @@ a { color: inherit; }
 @media (max-width: 990px) {
   .what-i-do-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 48px 32px;
+    gap: 40px 32px;
   }
   .what-col {
-    min-height: 320px;
+    min-height: 270px;
   }
   .what-col-top-num {
     flex-direction: column-reverse;
