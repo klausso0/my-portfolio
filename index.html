@@ -637,69 +637,32 @@ a { color: inherit; }
   font-weight: 700;
 }
 
-/* ====== CAR SHAPE SKILLS SECTION (PURE TYPOGRAPHY) ====== */
-.car-text-wrapper {
+/* ====== CAR SHAPE SKILLS SECTION (PURE TYPOGRAPHY CAR PROFILE) ====== */
+.car-flow-wrapper {
   position: relative;
   width: 100%;
-  max-width: 980px;
-  margin: 38px 0 44px;
+  max-width: 1000px;
+  margin: 36px 0 44px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 8px 0 16px;
+  padding: 10px 0 16px;
 }
-.car-text-wrapper::-webkit-scrollbar {
+.car-flow-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-.car-text-layout {
-  display: flex;
-  flex-direction: column;
+.car-flow-stage {
+  position: relative;
   width: 100%;
-  min-width: 680px;
+  min-width: 860px;
+  height: 190px;
   user-select: none;
 }
 
-/* Tier 1: Roof / Cabin Top (Elevated & Centered) */
-.car-text-roof {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 72px;
-  margin-bottom: 34px;
-}
-
-/* Tier 2: Windshield & Rear Fastback Slope (Mid Height) */
-.car-text-slope {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 14%;
-  margin-bottom: 34px;
-}
-
-/* Tier 3: Chassis / Front Hood & Rear Trunk (Bottom Level) */
-.car-text-base {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.car-base-hood {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.car-base-trunk {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-/* Pure Text Item (No boxes, no pills, no borders) */
-.car-text-item {
+/* Pure Typography Item - No boxes, borders or drawings */
+.car-flow-text {
+  position: absolute;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.15rem;
   font-weight: 600;
@@ -711,9 +674,59 @@ a { color: inherit; }
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.car-text-item:hover {
+.car-flow-text:hover {
   color: #2563eb;
   transform: translateY(-2px);
+}
+
+/* 7 Stations forming the continuous left-to-right car silhouette curve */
+/* 1. Low Front Bumper (Straight / Ground) */
+.car-node-1 {
+  left: 0%;
+  bottom: 12px;
+}
+
+/* 2. Front Hood (Straight / Subtle Rise) */
+.car-node-2 {
+  left: 13%;
+  bottom: 24px;
+}
+
+/* 3. Windshield Incline (Ascending Upward) */
+.car-node-3 {
+  left: 28%;
+  bottom: 78px;
+}
+
+/* 4. Roof Apex / Front Cabin (Peak Height) */
+.car-node-4 {
+  left: 46%;
+  bottom: 140px;
+}
+
+/* 5. Roof Ridge / Fastback Top (High Plateau) */
+.car-node-5 {
+  left: 62%;
+  bottom: 126px;
+}
+
+/* 6. Rear Fastback Slope (Descending Downward) */
+.car-node-6 {
+  left: 76%;
+  bottom: 70px;
+}
+
+/* 7. Rear Deck & Spoiler (Straight / Ground Finish) */
+.car-node-7 {
+  right: 0%;
+  bottom: 16px;
+}
+
+@media (max-width: 860px) {
+  .car-flow-wrapper {
+    margin: 24px 0 28px;
+    padding-bottom: 12px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -727,23 +740,8 @@ a { color: inherit; }
     font-size: 1rem;
     margin-bottom: 24px;
   }
-  .car-text-wrapper {
-    margin: 24px 0 28px;
-  }
-  .car-text-item {
-    font-size: 1.02rem;
-  }
-  .car-text-roof {
-    gap: 48px;
-    margin-bottom: 26px;
-  }
-  .car-text-slope {
-    padding: 0 11%;
-    margin-bottom: 26px;
-  }
-  .car-base-hood,
-  .car-base-trunk {
-    gap: 28px;
+  .car-flow-text {
+    font-size: 1.05rem;
   }
 }
 
@@ -3312,32 +3310,16 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
           I like working with teams who care about why they're making something, not only how it looks.
         </p>
 
-        <!-- Skills Car Shape (Pure Typography) -->
-        <div class="car-text-wrapper" aria-label="Skills arranged in car shape">
-          <div class="car-text-layout">
-            <!-- Tier 1: Roof / Cabin Top (Up at the Top) -->
-            <div class="car-text-roof">
-              <span class="car-text-item">Poster Design</span>
-              <span class="car-text-item">Video Editing</span>
-            </div>
-
-            <!-- Tier 2: Windshield & Rear Window Slopes (Mid Height) -->
-            <div class="car-text-slope">
-              <span class="car-text-item">Social Media Design</span>
-              <span class="car-text-item">UI Design</span>
-            </div>
-
-            <!-- Tier 3: Chassis / Front Hood & Rear Trunk (Straight Base) -->
-            <div class="car-text-base">
-              <div class="car-base-hood">
-                <span class="car-text-item">Logo Design</span>
-                <span class="car-text-item">Brand Identity</span>
-              </div>
-              <div class="car-base-trunk">
-                <span class="car-text-item">UX Research</span>
-                <span class="car-text-item">Content Writing</span>
-              </div>
-            </div>
+        <!-- Skills Car Contour (Pure Typography) -->
+        <div class="car-flow-wrapper" aria-label="Skills arranged in car silhouette contour">
+          <div class="car-flow-stage">
+            <span class="car-flow-text car-node-1">Logo Design</span>
+            <span class="car-flow-text car-node-2">Brand Identity</span>
+            <span class="car-flow-text car-node-3">Social Media Design</span>
+            <span class="car-flow-text car-node-4">Poster Design</span>
+            <span class="car-flow-text car-node-5">Video Editing</span>
+            <span class="car-flow-text car-node-6">UX Research</span>
+            <span class="car-flow-text car-node-7">Content Writing</span>
           </div>
         </div>
       </div>
@@ -5168,7 +5150,7 @@ document.addEventListener('click', function(e) {
 
   // Interactive click/tap sound for car skill text
   (function() {
-    var carItems = document.querySelectorAll('.car-text-item');
+    var carItems = document.querySelectorAll('.car-flow-text');
     carItems.forEach(function(item) {
       item.addEventListener('click', function() {
         if (window.SoundFX && typeof window.SoundFX.pop === 'function') {
