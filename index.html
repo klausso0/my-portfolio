@@ -188,15 +188,28 @@ a { color: inherit; }
   z-index: 10;
   pointer-events: none;
 }
+.badge-spin-wrap {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: badgeSpin 22s linear infinite;
+  -webkit-animation: badgeSpin 22s linear infinite;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  will-change: transform;
+}
 .badge-spin-svg {
   width: 100%;
   height: 100%;
-  animation: badgeSpin 22s linear infinite;
-  transform-origin: center center;
+  display: block;
+}
+@-webkit-keyframes badgeSpin {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to   { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }
 @keyframes badgeSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  to   { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }
 .badge-center-icon {
   position: absolute;
@@ -3335,7 +3348,7 @@ body.dark .logo-source-btn:hover .logo-source-arrow {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; animation: none !important; }
+  *:not(.badge-spin-wrap):not(.badge-spin-svg):not(.badge-center-icon) { transition: none !important; animation: none !important; }
 }
 </style>
 </head>
@@ -3346,14 +3359,16 @@ body.dark .logo-source-btn:hover .logo-source-arrow {
   <section class="hero mindly-hero">
     <!-- Top Right Rotating Circular Stamp Badge -->
     <div class="circle-badge" aria-label="Designer · Editor · Open to work">
-      <svg viewBox="0 0 100 100" class="badge-spin-svg">
-        <path id="badge-circle-path" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-        <text font-family="'DM Sans', sans-serif" font-size="8.8" font-weight="600" letter-spacing="2.2" fill="#2b3e4a">
-          <textPath xlink:href="#badge-circle-path">
-            DESIGNER · EDITOR · OPEN TO WORK ·
-          </textPath>
-        </text>
-      </svg>
+      <div class="badge-spin-wrap">
+        <svg viewBox="0 0 100 100" class="badge-spin-svg">
+          <path id="badge-circle-path" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+          <text font-family="'DM Sans', sans-serif" font-size="8.8" font-weight="600" letter-spacing="2.2" fill="#2b3e4a">
+            <textPath xlink:href="#badge-circle-path">
+              DESIGNER · EDITOR · OPEN TO WORK ·
+            </textPath>
+          </text>
+        </svg>
+      </div>
       <div class="badge-center-icon">✦</div>
     </div>
 
