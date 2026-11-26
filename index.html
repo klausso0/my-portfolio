@@ -2340,53 +2340,68 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .logo-source-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: var(--card, #ffffff);
-  border: 1px solid var(--card-border, #e6dfce);
+  gap: 10px;
+  padding: 8px 18px 8px 10px;
+  background: #111827;
+  color: #ffffff !important;
+  border: 1px solid #111827;
   border-radius: 9999px;
-  color: var(--fg, #1f2937);
   font-family: 'DM Sans', -apple-system, sans-serif;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   width: fit-content;
 }
 .logo-source-btn:hover {
-  background: #111827;
-  color: #ffffff;
-  border-color: #111827;
+  background: #1f2937;
+  border-color: #1f2937;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.22);
+  color: #ffffff !important;
+}
+.logo-source-ai-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ff9a00;
+  color: #2b1100;
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
 }
 body.dark .logo-source-btn {
-  background: #12112b;
-  border-color: #27254a;
-  color: #e9f3ef;
+  background: #ffffff;
+  color: #111827 !important;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
 }
 body.dark .logo-source-btn:hover {
-  background: #ffffff;
-  color: #111827;
-  border-color: #ffffff;
-}
-.logo-source-btn svg {
-  flex-shrink: 0;
-  opacity: 0.75;
-}
-.logo-source-btn:hover svg {
-  opacity: 1;
+  background: #f3f4f6;
+  border-color: #f3f4f6;
+  color: #111827 !important;
 }
 .logo-source-arrow {
-  font-size: 0.88em;
-  color: var(--mut, #6b7280);
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.65);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 .logo-source-btn:hover .logo-source-arrow {
-  color: inherit;
+  color: #ffffff;
   transform: translate(2px, -2px);
+}
+body.dark .logo-source-btn .logo-source-arrow {
+  color: rgba(17, 24, 39, 0.6);
+}
+body.dark .logo-source-btn:hover .logo-source-arrow {
+  color: #111827;
 }
 .logo-story {
   display: flex;
@@ -3491,7 +3506,7 @@ body.dark .logo-source-btn:hover {
             </div>
             <div class="logo-source-btn-wrap">
               <a class="logo-source-btn" href="https://drive.google.com/file/d/1JKVhKvnWJoktQMQiwkaWZ67_hgKXywBF/view?usp=sharing" target="_blank" rel="noopener" aria-label="Illustrator File for Clever Hoot">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span class="logo-source-ai-pill">Ai</span>
                 <span>Illustrator File</span>
                 <span class="logo-source-arrow" aria-hidden="true">↗</span>
               </a>
@@ -3536,7 +3551,7 @@ body.dark .logo-source-btn:hover {
             </div>
             <div class="logo-source-btn-wrap">
               <a class="logo-source-btn" href="https://drive.google.com/file/d/1jDS_yRaEzqFRbw09GJdAh1mScsS-fe8N/view?usp=sharing" target="_blank" rel="noopener" aria-label="Illustrator File for Go Digital">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span class="logo-source-ai-pill">Ai</span>
                 <span>Illustrator File</span>
                 <span class="logo-source-arrow" aria-hidden="true">↗</span>
               </a>
