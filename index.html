@@ -2212,7 +2212,7 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 }
 .logo-hero-row {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 36px;
   flex: 1;
 }
@@ -2221,7 +2221,12 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   width: 380px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+}
+.logo-hero-media-track {
+  flex: 1;
+  position: relative;
+  min-height: 214px;
 }
 .logo-hero-media {
   width: 100%;
@@ -2321,66 +2326,61 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   top: 100px;
 }
 .logo-showcase-entry.entry-detailed .logo-hero-row {
-  align-items: flex-start;
+  align-items: stretch;
 }
-.logo-showcase-entry.entry-detailed .logo-hero-media,
-.logo-showcase-entry.entry-detailed .logo-hero-media-col {
+.logo-showcase-entry.entry-detailed .logo-hero-media {
   position: sticky;
   top: 100px;
 }
-.logo-source-btn {
+.logo-source-btn-wrap {
+  margin-top: 24px;
   display: flex;
+  align-items: flex-start;
+}
+.logo-source-btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 18px;
+  gap: 8px;
+  padding: 8px 16px;
   background: var(--card, #ffffff);
   border: 1px solid var(--card-border, #e6dfce);
-  border-radius: 14px;
+  border-radius: 9999px;
   color: var(--fg, #1f2937);
   font-family: 'DM Sans', -apple-system, sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(45, 80, 130, 0.04);
-  transition: all 0.22s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
 }
 .logo-source-btn:hover {
   background: #111827;
   color: #ffffff;
   border-color: #111827;
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.12);
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+}
+body.dark .logo-source-btn {
+  background: #12112b;
+  border-color: #27254a;
+  color: #e9f3ef;
 }
 body.dark .logo-source-btn:hover {
   background: #ffffff;
   color: #111827;
   border-color: #ffffff;
 }
-.logo-source-btn-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-source-ai-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: #310000;
-  color: #ff9a00;
-  border: 1px solid rgba(255, 154, 0, 0.45);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+.logo-source-btn svg {
   flex-shrink: 0;
+  opacity: 0.75;
+}
+.logo-source-btn:hover svg {
+  opacity: 1;
 }
 .logo-source-arrow {
-  font-size: 0.95rem;
+  font-size: 0.88em;
   color: var(--mut, #6b7280);
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -3484,16 +3484,18 @@ body.dark .logo-source-btn:hover {
         <div class="logo-entry-num">01</div>
         <div class="logo-hero-row">
           <div class="logo-hero-media-col">
-            <div class="logo-hero-media logo-media-clever-hoot">
-              <img src="images/clever-hoot-logo.png" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
+            <div class="logo-hero-media-track">
+              <div class="logo-hero-media logo-media-clever-hoot">
+                <img src="images/clever-hoot-logo.png" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
+              </div>
             </div>
-            <a class="logo-source-btn" href="https://drive.google.com/file/d/1JKVhKvnWJoktQMQiwkaWZ67_hgKXywBF/view?usp=sharing" target="_blank" rel="noopener" aria-label="See Clever Hoot Illustrator Files">
-              <span class="logo-source-btn-left">
-                <span class="logo-source-ai-tag">Ai</span>
-                <span>See Illustrator Files</span>
-              </span>
-              <span class="logo-source-arrow" aria-hidden="true">↗</span>
-            </a>
+            <div class="logo-source-btn-wrap">
+              <a class="logo-source-btn" href="https://drive.google.com/file/d/1JKVhKvnWJoktQMQiwkaWZ67_hgKXywBF/view?usp=sharing" target="_blank" rel="noopener" aria-label="Illustrator File for Clever Hoot">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span>Illustrator File</span>
+                <span class="logo-source-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
           <div class="logo-hero-info">
             <span class="logo-display-badge">Mascot &amp; Logo Mark</span>
@@ -3527,16 +3529,18 @@ body.dark .logo-source-btn:hover {
         <div class="logo-entry-num">02</div>
         <div class="logo-hero-row">
           <div class="logo-hero-media-col">
-            <div class="logo-hero-media logo-media-framed">
-              <img src="images/go-digital-logo.png" alt="Go Digital - Logo Design" loading="lazy">
+            <div class="logo-hero-media-track">
+              <div class="logo-hero-media logo-media-framed">
+                <img src="images/go-digital-logo.png" alt="Go Digital - Logo Design" loading="lazy">
+              </div>
             </div>
-            <a class="logo-source-btn" href="https://drive.google.com/file/d/1jDS_yRaEzqFRbw09GJdAh1mScsS-fe8N/view?usp=sharing" target="_blank" rel="noopener" aria-label="See Go Digital Illustrator Files">
-              <span class="logo-source-btn-left">
-                <span class="logo-source-ai-tag">Ai</span>
-                <span>See Illustrator Files</span>
-              </span>
-              <span class="logo-source-arrow" aria-hidden="true">↗</span>
-            </a>
+            <div class="logo-source-btn-wrap">
+              <a class="logo-source-btn" href="https://drive.google.com/file/d/1jDS_yRaEzqFRbw09GJdAh1mScsS-fe8N/view?usp=sharing" target="_blank" rel="noopener" aria-label="Illustrator File for Go Digital">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span>Illustrator File</span>
+                <span class="logo-source-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
           <div class="logo-hero-info">
             <span class="logo-display-badge">Marketing &amp; Digital Growth</span>
