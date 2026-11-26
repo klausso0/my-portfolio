@@ -25,7 +25,7 @@
 - **Type:** Live Free SaaS Web Application
 - **Problem Solved:** Most online resume builders force user signups, gate downloads behind unexpected paywalls, and store personal data.
 - **Solution:** A 100% free, private, client-side resume builder with zero logins, no stored user data, instant live side-by-side preview, and pixel-perfect PDF export.
-- **Key Metrics:** 44+ dynamic ATS-ready templates, global user adoption.
+- **Key Metrics:** 44+ dynamic ATS-ready templates, 17K+ Google search impressions, global user adoption.
 
 ### 2. Clever Hoot Library (Brand & Character Mascot)
 - **Client / Concept:** Brand identity and custom mascot for a modern library.
