@@ -2216,9 +2216,15 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   gap: 36px;
   flex: 1;
 }
-.logo-hero-media {
+.logo-hero-media-col {
   flex: 0 0 380px;
   width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.logo-hero-media {
+  width: 100%;
   height: 214px;
   box-sizing: border-box;
   background: #fbfaf7;
@@ -2239,6 +2245,19 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
   object-fit: cover;
   display: block;
   image-rendering: -webkit-optimize-contrast;
+}
+.logo-hero-media.logo-media-clever-hoot {
+  background: #f7d74a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 214px;
+  box-sizing: border-box;
+}
+.logo-hero-media.logo-media-clever-hoot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .logo-hero-media.logo-media-framed {
   background: #f2f8f6;
@@ -2304,9 +2323,70 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
 .logo-showcase-entry.entry-detailed .logo-hero-row {
   align-items: flex-start;
 }
-.logo-showcase-entry.entry-detailed .logo-hero-media {
+.logo-showcase-entry.entry-detailed .logo-hero-media,
+.logo-showcase-entry.entry-detailed .logo-hero-media-col {
   position: sticky;
   top: 100px;
+}
+.logo-source-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--card-border, #e6dfce);
+  border-radius: 14px;
+  color: var(--fg, #1f2937);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(45, 80, 130, 0.04);
+  transition: all 0.22s ease;
+}
+.logo-source-btn:hover {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.12);
+}
+body.dark .logo-source-btn:hover {
+  background: #ffffff;
+  color: #111827;
+  border-color: #ffffff;
+}
+.logo-source-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-source-ai-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #310000;
+  color: #ff9a00;
+  border: 1px solid rgba(255, 154, 0, 0.45);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  flex-shrink: 0;
+}
+.logo-source-arrow {
+  font-size: 0.95rem;
+  color: var(--mut, #6b7280);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.logo-source-btn:hover .logo-source-arrow {
+  color: inherit;
+  transform: translate(2px, -2px);
 }
 .logo-story {
   display: flex;
@@ -2432,6 +2512,11 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     gap: 18px;
     width: 100%;
   }
+  .logo-hero-media-col {
+    flex: none;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
   .logo-hero-media {
     flex: none;
     width: 100% !important;
@@ -2439,13 +2524,15 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
     height: auto !important;
     aspect-ratio: 16 / 9;
   }
+  .logo-hero-media.logo-media-clever-hoot,
   .logo-hero-media.logo-media-framed {
     height: auto !important;
     min-height: 180px;
-    padding: 24px 20px;
+    padding: 12px 16px;
   }
   .logo-showcase-entry.entry-detailed .logo-entry-num,
-  .logo-showcase-entry.entry-detailed .logo-hero-media {
+  .logo-showcase-entry.entry-detailed .logo-hero-media,
+  .logo-showcase-entry.entry-detailed .logo-hero-media-col {
     position: static;
   }
 }
@@ -3396,8 +3483,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <div class="logo-showcase-entry entry-detailed reveal">
         <div class="logo-entry-num">01</div>
         <div class="logo-hero-row">
-          <div class="logo-hero-media">
-            <img src="images/clever-hoot-mascot.jpg" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
+          <div class="logo-hero-media-col">
+            <div class="logo-hero-media logo-media-clever-hoot">
+              <img src="images/clever-hoot-logo.png" alt="Clever Hoot - Mascot &amp; Logo Design" loading="lazy">
+            </div>
+            <a class="logo-source-btn" href="https://drive.google.com/file/d/1JKVhKvnWJoktQMQiwkaWZ67_hgKXywBF/view?usp=sharing" target="_blank" rel="noopener" aria-label="See Clever Hoot Illustrator Files">
+              <span class="logo-source-btn-left">
+                <span class="logo-source-ai-tag">Ai</span>
+                <span>See Illustrator Files</span>
+              </span>
+              <span class="logo-source-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
           <div class="logo-hero-info">
             <span class="logo-display-badge">Mascot &amp; Logo Mark</span>
@@ -3430,8 +3526,17 @@ figcaption { font-size: 0.92rem; color: var(--mut); margin-top: 10px; }
       <div class="logo-showcase-entry entry-detailed reveal">
         <div class="logo-entry-num">02</div>
         <div class="logo-hero-row">
-          <div class="logo-hero-media logo-media-framed">
-            <img src="images/go-digital-logo.png" alt="Go Digital - Logo Design" loading="lazy">
+          <div class="logo-hero-media-col">
+            <div class="logo-hero-media logo-media-framed">
+              <img src="images/go-digital-logo.png" alt="Go Digital - Logo Design" loading="lazy">
+            </div>
+            <a class="logo-source-btn" href="https://drive.google.com/file/d/1jDS_yRaEzqFRbw09GJdAh1mScsS-fe8N/view?usp=sharing" target="_blank" rel="noopener" aria-label="See Go Digital Illustrator Files">
+              <span class="logo-source-btn-left">
+                <span class="logo-source-ai-tag">Ai</span>
+                <span>See Illustrator Files</span>
+              </span>
+              <span class="logo-source-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
           <div class="logo-hero-info">
             <span class="logo-display-badge">Marketing &amp; Digital Growth</span>
